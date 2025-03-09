@@ -11,11 +11,11 @@
       </div>
   
       <ng-container *ngIf="isMultiSelect">
-        <cyberfab-checkbox
+        <maxterdev-checkbox
           [checked]="item.selected || false"
           (checkedChange)="toggleItem(item, $event)"
           class="checkbox">
-        </cyberfab-checkbox>
+        </maxterdev-checkbox>
         <ng-container *ngIf="itemTemplate; else defaultTemplate" 
                       [ngTemplateOutlet]="itemTemplate" 
                       [ngTemplateOutletContext]="{ $implicit: item }">
@@ -30,7 +30,7 @@
       </ng-container>  
     </div>
     
-    <cyberfab-list
+    <maxterdev-list
       *ngIf="item.expanded && item.children"
       [items]="item.children"
       [isMultiSelect]="isMultiSelect"
@@ -39,7 +39,7 @@
       (itemSelected)="itemSelected.emit($event)"
       [inputItemTemplate]="itemTemplate"
       class="list-item-expansion">
-    </cyberfab-list>
+    </maxterdev-list>
 
     <ng-template #defaultTemplate>{{ item.data }}</ng-template>
   </li>

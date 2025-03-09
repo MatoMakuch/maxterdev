@@ -4,7 +4,7 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { ListNode } from './list.interface';
 
 @Component({
-  selector: 'cyberfab-list',
+  selector: 'maxterdev-list',
   standalone: true,
   imports: [CommonModule, CheckboxComponent],
   templateUrl: './list.component.html',

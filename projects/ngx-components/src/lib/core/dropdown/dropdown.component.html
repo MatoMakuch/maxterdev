@@ -15,7 +15,7 @@
     <i class="pi pi-chevron-down"></i>
   </span>
   <div class="dropdown-menu" *ngIf="isOpen" (click)="$event.stopPropagation()">
-    <cyberfab-list
+    <maxterdev-list
       [items]="options"
       [isMultiSelect]="isMultiSelect"
       [selectedItems]="selectedOptions"
@@ -24,6 +24,6 @@
       <ng-template let-item>
         <span>{{ item.data }}</span>
       </ng-template>
-    </cyberfab-list>
+    </maxterdev-list>
   </div>
 </div>

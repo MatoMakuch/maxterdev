@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'cyberfab-checkbox',
+  selector: 'maxterdev-checkbox',
   standalone: true,
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],

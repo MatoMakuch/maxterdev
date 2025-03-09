@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-tablist',
+  selector: 'maxterdev-tablist',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './tablist.component.html',

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from '../list/list.component';
 
 @Component({
-  selector: 'cyberfab-table',
+  selector: 'maxterdev-table',
   standalone: true,
   imports: [CommonModule, ListComponent],
   templateUrl: './table.component.html',

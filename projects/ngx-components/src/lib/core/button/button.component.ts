@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'cyberfab-button',
+  selector: 'maxterdev-button',
   standalone: true,
   templateUrl: './button.component.html'
 })
