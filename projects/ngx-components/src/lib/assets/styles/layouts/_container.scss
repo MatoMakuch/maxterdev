@@ -1,0 +1,40 @@
+@import '../base/variables';
+@import '../base/mixins/common';
+
+.container {
+  width: 100%;
+
+  display: flex;
+
+  padding-left: $padding-medium;
+  padding-right: $padding-medium;
+  
+  // Breakpoints for responsive layouts
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+
+  @media (min-width: 1400px) {
+    max-width: 1320px;
+  }
+
+  &.container-horizontal {
+    flex-direction: row;
+  }
+
+  &.container-vertical {
+    flex-direction: column;
+  }
+}

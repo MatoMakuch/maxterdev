@@ -1,0 +1,43 @@
+// _buttons.scss
+
+@import '../base/variables';
+@import '../base/mixins/common';
+
+.button {
+  box-sizing: border-box;
+  width: calc(#{unit-size-vw(1)}vw + #{2 * $padding-medium}rem);
+  //min-width: calc(#{unit-size-vw(1)}vw + #{2 * $padding-medium}rem);
+  height: calc(#{unit-size-rem(1)}rem + #{2 * $padding-medium}rem);
+  padding: #{$padding-medium}rem;
+
+  background-color: #000000; // Dark background color to match the image
+
+  border-style: none;
+  @include rounded($border-radius-medium);
+
+  // Text
+  color: white;
+  font-size: $font-size-large;
+  line-height: 1rem;
+  text-align: center;
+  font-family: 'Slate Pro';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  font-stretch: normal;
+
+  // Layout
+
+  cursor: pointer;
+
+  // Hover and focus effects
+  &:hover,
+  &:focus {
+    background-color: #001233; // Slightly lighter shade on hover
+  }
+
+  // Active state for click effect
+  &:active {
+    background-color: #0a192f; // Even lighter shade for click feedback
+  }
+}

@@ -1,0 +1,29 @@
+// main.scss
+@import 'base/variables';
+@import 'base/mixins/common';
+@import 'base/mixins/inputs';
+@import 'base/functions';
+@import 'base/typography';
+@import 'components/buttons';
+@import 'components/dropdowns';
+@import 'components/group';
+@import 'components/inputs';
+@import 'components/labels';
+@import 'components/validation';
+@import 'components/popups';
+@import 'components/uploads';
+@import 'components/lists';
+@import 'components/checkboxes';
+@import 'layouts/container';
+@import 'layouts/grid';
+@import 'utilities/helpers';
+@import 'utilities/responsive';
+
+
+* {
+    font-family: 'Slate Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5rem;
+    vertical-align: baseline; 
+}
+  

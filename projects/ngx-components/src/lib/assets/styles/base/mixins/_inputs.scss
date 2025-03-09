@@ -1,0 +1,37 @@
+@import '../functions';
+@import '../variables';
+
+@mixin input() {
+  position: relative;
+
+  box-sizing: border-box;
+  width: calc(#{unit-size-vw(3)}vw + #{2 * $padding-medium}rem);
+  height: calc(#{unit-size-rem(1)}rem + #{2 * $padding-medium}rem);
+  padding: #{$padding-medium}rem;
+
+  // Border
+  border-style: solid;
+  @include border-color($inactive-color);
+  @include border-width($border-width-thin);
+  @include rounded-top-left($border-radius-medium);
+  @include rounded-bottom-left($border-radius-medium);
+  @include rounded-top-right($border-radius-medium);
+  @include rounded-bottom-right($border-radius-medium);
+
+  font-size: $font-size-large;
+  line-height: 1rem;
+
+  &:hover {
+    @include border-color($hover-color);
+  }
+
+  &:focus {
+    @include border-color($active-color);
+    @include border-width($border-width-thick);
+    outline: none;
+  }
+
+  &--invalid {
+    @include border-color($warning-color);
+  }
+}

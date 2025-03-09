@@ -1,0 +1,7 @@
+@function unit-size-rem($units: 1) {
+  @return (1.0 * $units);
+}
+
+@function unit-size-vw($units: 1) {
+  @return (8.0 * $units);
+}

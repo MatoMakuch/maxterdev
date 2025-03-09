@@ -1,0 +1,11 @@
+<div class="tablist">
+    <button
+      class="tab"
+      [class.active]="activeTab === i"
+      *ngFor="let tab of tabs; let i = index"
+      (click)="selectTab(i)"
+    >
+      {{ tab }}
+    </button>
+</div>
+  

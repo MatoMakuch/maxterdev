@@ -1,0 +1,40 @@
+@import '../base/variables';
+
+// Rounded border utility classes
+.rounded {
+  border-radius: $border-radius-medium;
+}
+
+.rounded-small {
+  border-radius: $border-radius-small;
+}
+
+.rounded-large {
+  border-radius: $border-radius-large;
+}
+
+// Border utility
+.border {
+  border: $border-width-thin solid $inactive-color;
+}
+
+.border-thick {
+  border: $border-width-thick solid $active-color;
+}
+
+// Background color utility classes
+.bg-primary {
+  background-color: $primary-color;
+}
+
+.bg-secondary {
+  background-color: $secondary-color;
+}
+
+.bg-light {
+  background-color: $background-color;
+}
+
+.bg-warning {
+  background-color: $warning-color;
+}

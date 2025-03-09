@@ -1,0 +1,47 @@
+@import '../base/variables';
+@import '../base/mixins/common';
+
+.input-group {
+  display: flex;
+  align-items: center;
+  
+
+  &-start,
+  &-middle,
+  &-end {
+    z-index: 1;
+
+    &:hover {
+      z-index: 2;
+    }
+
+    &:focus {
+      z-index: 3;
+    }
+  }
+
+  &-start {
+    flex: 1;
+
+    @include rounded-top-right(0, true);
+    @include rounded-bottom-right(0, true);
+  }
+
+  &-middle {
+    flex-grow: 1;
+    margin-left: -1px;
+
+    @include rounded-top-right(0, true);
+    @include rounded-bottom-right(0, true);
+    @include rounded-top-left(0, true);
+    @include rounded-bottom-left(0, true);
+  }
+
+  &-end {
+    flex: 1;
+    margin-left: -1px;
+    
+    @include rounded-top-left(0, true);
+    @include rounded-bottom-left(0, true);
+  }
+}

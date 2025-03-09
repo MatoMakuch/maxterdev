@@ -1,0 +1,49 @@
+@import '../base/variables';
+@import '../base/mixins/common';
+@import '../base/mixins/inputs';
+
+// Dropdown container and button styling
+.dropdown {
+  background-color: $background-color;
+
+  @include input();
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-size: $font-size-large;
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+
+  &.open .dropdown-menu {
+    display: block;
+  }
+}
+
+// Icon inside the dropdown
+.dropdown-icon {
+  font-size: $font-size-small;
+  color: $inactive-color;
+}
+
+// Dropdown menu itself
+.dropdown-menu {
+  position: absolute;
+  left: 0;
+  top: calc(#{unit-size-rem(1)}rem + #{2 * $padding-medium}rem + #{$padding-small}rem);
+
+  box-sizing: border-box;
+  width: calc(#{unit-size-vw(3)}vw + 2 * #{$padding-medium}rem);
+  max-height: calc(#{unit-size-rem(12)}rem + 2 * #{$padding-medium}rem);
+
+  background-color: $background-color;
+
+  border: $border-width-thin solid $inactive-color;
+  @include rounded($border-radius-medium);
+
+  overflow-y: auto;
+
+  z-index: 1000;
+}

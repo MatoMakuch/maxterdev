@@ -1,0 +1,36 @@
+@import '../base/variables';
+
+.tablist {
+  display: flex;
+  justify-content: flex-start;
+  //border-bottom: $border-width-thin solid $inactive-color;
+  background-color: $background-color;
+  gap: $padding-large;
+
+  .tab {
+    padding: #{$padding-medium}rem #{$padding-large}rem;
+    margin-right: #{$padding-small}rem;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: $font-size-medium;
+    font-weight: 900;
+    text-align: center;
+    border-radius: #{$border-radius-medium}rem; 
+    transition: background-color 0.2s, color 0.2s, border-radius 0.2s;
+
+    &:hover {
+      background-color: $hover-color;
+      color: $background-color;
+    }
+
+    &.active {
+      background-color: $active-color;
+      color: $background-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $hover-color;
+    }
+  }
+}

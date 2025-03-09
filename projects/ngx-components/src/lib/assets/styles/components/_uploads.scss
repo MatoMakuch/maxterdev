@@ -1,0 +1,16 @@
+input[type='file'][cyberfab-upload] {
+  display: none; // Hide the file input
+}
+
+.upload-button {
+  background-color: $primary-color;
+  color: white;
+  padding: $padding-medium;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}

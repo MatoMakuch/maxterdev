@@ -1,0 +1,46 @@
+<ul class="list">
+  <li *ngFor="let item of items" class="list-item">
+    <div class="list-item-header">
+      <button *ngIf="item.children && item.children.length !== 0;" class="expand-toggle" (click)="toggleExpand(item)">
+        <i *ngIf="!item.expanded" class="pi pi-angle-right"></i>
+        <i *ngIf="item.expanded" class="pi pi-angle-down"></i>
+      </button>
+
+      <div *ngIf="!item.children || item.children.length === 0;" class="expand-toggle">
+
+      </div>
+  
+      <ng-container *ngIf="isMultiSelect">
+        <cyberfab-checkbox
+          [checked]="item.selected || false"
+          (checkedChange)="toggleItem(item, $event)"
+          class="checkbox">
+        </cyberfab-checkbox>
+        <ng-container *ngIf="itemTemplate; else defaultTemplate" 
+                      [ngTemplateOutlet]="itemTemplate" 
+                      [ngTemplateOutletContext]="{ $implicit: item }">
+        </ng-container>
+      </ng-container>
+  
+      <ng-container *ngIf="!isMultiSelect" (click)="selectItem(item)">
+        <ng-container *ngIf="itemTemplate; else defaultTemplate" 
+                      [ngTemplateOutlet]="itemTemplate" 
+                      [ngTemplateOutletContext]="{ $implicit: item }">
+        </ng-container>
+      </ng-container>  
+    </div>
+    
+    <cyberfab-list
+      *ngIf="item.expanded && item.children"
+      [items]="item.children"
+      [isMultiSelect]="isMultiSelect"
+      [selectedItems]="selectedItems"
+      (selectedItemsChange)="onNestedListChange($event)"
+      (itemSelected)="itemSelected.emit($event)"
+      [inputItemTemplate]="itemTemplate"
+      class="list-item-expansion">
+    </cyberfab-list>
+
+    <ng-template #defaultTemplate>{{ item.data }}</ng-template>
+  </li>
+</ul>

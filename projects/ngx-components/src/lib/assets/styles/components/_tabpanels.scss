@@ -1,0 +1,9 @@
+@import '../base/variables';
+
+.tabpanel {
+    flex: 1;
+    padding: #{$padding-medium}rem;
+    height: 100%;
+    overflow-y: auto;
+  }
+  

@@ -1,0 +1,15 @@
+@import '../base/variables';
+
+.validation {
+  font-size: $font-size-small;
+  margin-top: $margin-small;
+
+  &--valid {
+    color: $primary-color;
+  }
+
+  &--invalid {
+    color: $warning-color;
+  }
+}
+

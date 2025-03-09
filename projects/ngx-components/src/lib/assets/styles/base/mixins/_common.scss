@@ -1,0 +1,59 @@
+@import '../functions';
+
+// Border Radius Mixins
+@mixin rounded-top-left($radius: $border-radius-medium, $important: false) {
+  @if $important {
+    border-top-left-radius: #{$radius}rem !important;
+  } @else {
+    border-top-left-radius: #{$radius}rem;
+  }
+}
+
+@mixin rounded-top-right($radius: $border-radius-medium, $important: false) {
+  @if $important {
+    border-top-right-radius: #{$radius}rem !important;
+  } @else {
+    border-top-right-radius: #{$radius}rem;
+  }
+}
+
+@mixin rounded-bottom-right($radius: $border-radius-medium, $important: false) {
+  @if $important {
+    border-bottom-right-radius: #{$radius}rem !important;
+  } @else {
+    border-bottom-right-radius: #{$radius}rem;
+  }
+}
+
+@mixin rounded-bottom-left($radius: $border-radius-medium, $important: false) {
+  @if $important {
+    border-bottom-left-radius: #{$radius}rem !important;
+  } @else {
+    border-bottom-left-radius: #{$radius}rem;
+  }
+}
+
+@mixin rounded($radius: $border-radius-medium, $important: false) {
+  @if $important {
+    border-radius: #{$radius}rem !important;
+  } @else {
+    border-radius: #{$radius}rem;
+  }
+}
+
+// Border and Color Mixins
+@mixin border-width($width: $border-width-thin, $important: false) {
+  @if $important {
+    border-width: #{$width} !important;
+  } @else {
+    border-width: #{$width};
+  }
+}
+
+@mixin border-color($color: $primary-color, $important: false) {
+  @if $important {
+    border-color: #{$color} !important;
+  } @else {
+    border-color: #{$color};
+  }
+}

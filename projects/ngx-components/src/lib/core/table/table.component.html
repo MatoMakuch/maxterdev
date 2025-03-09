@@ -1,0 +1,29 @@
+<div class="table-container">
+    <!-- Table Headers -->
+    <div class="table-header">
+      <div *ngIf="isMultiSelect" class="table-header-cell select-cell"></div>
+      <div *ngFor="let column of columns" class="table-header-cell">
+        {{ column.label }}
+      </div>
+    </div>
+  
+    <!-- Table Rows -->
+    <cyberfab-list
+      [items]="items"
+      [isMultiSelect]="isMultiSelect"
+      [selectedItems]="selectedItems"
+      (selectedItemsChange)="selectedItemsChange.emit($event)"
+      (itemSelected)="onRowSelected($event)">
+      <ng-template let-item>
+        <div class="table-row">
+          <div *ngIf="isMultiSelect" class="table-row-cell select-cell"></div>
+          <div
+            *ngFor="let column of columns"
+            class="table-row-cell">
+            {{ item[column.key] }}
+          </div>
+        </div>
+      </ng-template>
+    </cyberfab-list>
+  </div>
+  
