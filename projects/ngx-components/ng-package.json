@@ -6,5 +6,8 @@
     "styleIncludePaths": [
       "src/lib/assets/styles"
     ]
-  }
+  },
+  "assets": [
+    "src/lib/assets/styles"
+  ]
 }
