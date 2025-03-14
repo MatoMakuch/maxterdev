@@ -4,6 +4,14 @@
 
 .input {
   background-color: $background-color;
+  font-size: $font-size-medium;
 
   @include input();
+
+  @include input-size($medium-height);
+
+  &.large {
+    @include input-size($large-height);
+    font-size: $font-size-large;
+  }
 }

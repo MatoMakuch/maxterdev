@@ -25,8 +25,7 @@
     "tslib": "^2.3.0"
   },
   "scripts": {
-    "build": "ng build ngx-components && npm run copy-styles",
-    "copy-styles": "cp -R ./projects/ngx-components/src/lib/assets/styles ./dist/ngx-components/assets"
+    "build": "ng build ngx-components"
   },
   "sideEffects": false
 }

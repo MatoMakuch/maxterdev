@@ -1,0 +1,35 @@
+@import '../base/variables';
+@import '../base/mixins/common';
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: #{$padding-large}rem; 
+  width: 60vw;
+  margin: 0.5rem auto;
+}
+
+.chat-card {
+	min-height: calc(#{unit-size-rem($medium-height)}rem + #{2 * $padding-medium}rem);
+	box-sizing: border-box;
+  border-radius: #{$border-radius-large}rem;
+  background-color: white;
+  padding: #{$padding-large}rem;
+  width: 100%;
+
+  .card-text {
+    margin: 0;
+    font-size: $font-size-large;
+    color: $text-color;
+  }
+}
+
+/* Question Card Styles */
+.question-card {
+	background-color: rgb(255, 255, 255);
+}
+
+/* Answer Card Styles */
+.answer-card {
+	background-color: rgb(242, 242, 242);
+}

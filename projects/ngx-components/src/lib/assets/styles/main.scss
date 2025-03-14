@@ -14,14 +14,18 @@
 @import 'components/uploads';
 @import 'components/lists';
 @import 'components/checkboxes';
+@import 'components/cards';
+@import 'components/menubars';
 @import 'layouts/container';
 @import 'layouts/grid';
 @import 'utilities/helpers';
 @import 'utilities/responsive';
 
 
+
 * {
     font-family: 'Slate Pro', sans-serif;
+    font-size: 18px;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5rem;
     vertical-align: baseline; 

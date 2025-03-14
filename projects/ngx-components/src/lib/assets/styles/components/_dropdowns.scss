@@ -7,6 +7,7 @@
   background-color: $background-color;
 
   @include input();
+  @include input-size($medium-height);
 
   display: flex;
   flex-direction: row;
