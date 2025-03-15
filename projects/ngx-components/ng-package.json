@@ -8,6 +8,7 @@
     ]
   },
   "assets": [
-    "src/lib/assets/styles"
+    "src/lib/assets/styles",
+    "README.md"
   ]
 }
