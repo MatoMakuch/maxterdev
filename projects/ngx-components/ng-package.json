@@ -8,7 +8,11 @@
     ]
   },
   "assets": [
-    "dist/ngx-components/assets/themes",
+    {
+      "glob": "**/*",
+      "input": "dist/ngx-components/assets/themes",
+      "output": "assets/themes"
+    },
     "README.md"
   ]
 }
