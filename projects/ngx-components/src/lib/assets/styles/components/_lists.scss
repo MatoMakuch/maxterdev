@@ -1,14 +1,13 @@
 @import '../base/variables';
-@import '../base/mixins/common';
 
 .list {
   display: flex;
   flex-direction: column;
 
-  padding: #{$padding-small}rem;
+  padding: calc(var(--padding-small) * 1rem);
   margin: 0;
 
-  @include rounded($border-radius-medium);
+  border-radius: var(--border-radius-medium);
 
   list-style-type: none;
 }
@@ -24,56 +23,56 @@
 
   box-sizing: border-box;
 
-  height: calc(#{unit-size-rem(1)}rem + #{2 * $padding-medium}rem);
+  height: calc(#{unit-size-rem(1)}rem + var(--padding-medium) * 2rem);
   
-  padding: #{$padding-medium}rem;
+  padding: calc(var(--padding-medium) * 1rem);
 
-  @include rounded($border-radius-medium);
+  border-radius: var(--border-radius-medium);
 
-  font-size: $font-size-large;
+  font-size: var(--font-size-large);
   font-weight: 300;
   line-height: normal;
-  color: $text-color;
+  color: var(--text-color);
 
   &:hover {
-    background-color: $list-hover-color;
-    color: $text-color;
+    background-color: var(--hover-color);
+    color: var(--text-color);
   }
 
   &.selected {
-    background-color: $active-color;
-    color: $text-color;
+    background-color: var(--active-color);
+    color: var(--text-color);
   }
 
   .expand-toggle {
     box-sizing: border-box;
 
-    width: calc(#{unit-size-rem(1)}rem + #{2 * $padding-medium}rem);
+    width: calc(#{unit-size-rem(1)}rem + var(--padding-medium) * 2rem);
     height: calc(#{unit-size-rem(1)}rem);
 
-    padding-right: #{$padding-medium}rem;
-    padding-right: #{$padding-medium}rem;
+    padding-right: calc(var(--padding-medium) * 1rem);
+    padding-right: calc(var(--padding-medium) * 1rem);
 
     background: none;
     border: none;
 
     .pi {
       font-size: 0.8rem;
-      color: $inactive-color;
+      color: var(--primary-light-color);
 
       cursor: pointer;
 
       &:hover {
-        color: $hover-color;
+        color: var(--hover-color);
       }
     }
   }
 
   .checkbox {
-    margin-right: 0.5rem;
+    margin-right: var(--margin-medium);
   }
 }
 
 .list-item-expansion {
-  margin-left: 1rem;
+  margin-left: var(--margin-large);
 }

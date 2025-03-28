@@ -1,18 +1,17 @@
 @import '../base/variables';
-@import '../base/mixins/common';
 
 .input-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: #{$padding-large}rem;
+  padding: calc(var(--padding-large) * 1rem);
   //height: 100vh;
 }
 
 .input-group {
   display: flex;
   width: 100%;
-  border-radius: $border-radius-medium;
+  border-radius: var(--border-radius-medium);
   overflow: hidden;
 
   &-start,
@@ -32,25 +31,22 @@
   &-start {
     flex: 1;
 
-    @include rounded-top-right(0, true);
-    @include rounded-bottom-right(0, true);
+    border-top-left-radius: var(--border-radius-medium);
+    border-bottom-left-radius: var(--border-radius-medium);
   }
 
   &-middle {
     flex-grow: 1;
     margin-left: -1px;
 
-    @include rounded-top-right(0, true);
-    @include rounded-bottom-right(0, true);
-    @include rounded-top-left(0, true);
-    @include rounded-bottom-left(0, true);
+    border-radius: 0;
   }
 
   &-end {
     flex: 1;
     margin-left: -1px;
     
-    @include rounded-top-left(0, true);
-    @include rounded-bottom-left(0, true);
+    border-top-right-radius: var(--border-radius-medium);
+    border-bottom-right-radius: var(--border-radius-medium);;
   }
 }

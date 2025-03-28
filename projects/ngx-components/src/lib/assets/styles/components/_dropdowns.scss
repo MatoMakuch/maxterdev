@@ -1,19 +1,18 @@
 @import '../base/variables';
-@import '../base/mixins/common';
 @import '../base/mixins/inputs';
 
 // Dropdown container and button styling
 .dropdown {
-  background-color: $background-color;
+  background-color: var(--background-color);
 
   @include input();
-  @include input-size($medium-height);
+  @include input-size(1);
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  font-size: $font-size-large;
+  font-size: var(--font-size-large);
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -23,26 +22,25 @@
   }
 }
 
-// Icon inside the dropdown
 .dropdown-icon {
-  font-size: $font-size-small;
-  color: $inactive-color;
+  font-size: var(--font-size-small);
+  color: var(--background-light-color);
 }
 
-// Dropdown menu itself
 .dropdown-menu {
   position: absolute;
   left: 0;
-  top: calc(#{unit-size-rem(1)}rem + #{2 * $padding-medium}rem + #{$padding-small}rem);
+  top: calc(#{unit-size-rem(1)}rem + var(--padding-medium) * 2rem + var(--padding-small) * 1rem);
 
   box-sizing: border-box;
-  width: calc(#{unit-size-vw(3)}vw + 2 * #{$padding-medium}rem);
-  max-height: calc(#{unit-size-rem(12)}rem + 2 * #{$padding-medium}rem);
+  width: calc(#{unit-size-vw(3)}vw + var(--padding-medium) * 2rem);
+  max-height: calc(#{unit-size-rem(12)}rem + var(--padding-medium) * 2rem);
 
-  background-color: $background-color;
+  background-color: var(--background-color);
 
-  border: $border-width-thin solid $inactive-color;
-  @include rounded($border-radius-medium);
+  border: var(--border-width-thin) solid var(--primary-light-color);
+
+  border-radius: var(--border-radius-medium);
 
   overflow-y: auto;
 

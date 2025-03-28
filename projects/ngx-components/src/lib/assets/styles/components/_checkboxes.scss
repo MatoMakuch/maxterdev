@@ -1,5 +1,4 @@
 @import '../base/variables';
-@import '../base/mixins/common';
 
 .custom-checkbox-wrapper {
   display: flex;
@@ -13,11 +12,11 @@
   }
 
   &.checked .custom-checkbox {
-    background-color: $primary-color;
-    border-color: $primary-color;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 
     i.pi {
-      color: white; // Icon color when checked
+      color: var(--background-color); 
     }
   }
 }
@@ -28,13 +27,13 @@
   justify-content: center;
   width: calc(#{unit-size-rem(1)}rem);
   height: calc(#{unit-size-rem(1)}rem);
-  background-color: $background-color;
-  border: $border-width-thin solid $inactive-color;
-  @include rounded($border-radius-small);
+  background-color: var(--background-color);
+  border: var(--border-width-thin) solid var(--primary-light-color);
+  border-radius: var(--border-radius-small);
   z-index: 101;
 
   i.pi {
     font-size: 0.8rem;
-    color: white;
+    color: var(--background-color);
   }
 }

@@ -1,17 +1,16 @@
 @import '../base/variables';
-@import '../base/mixins/common';
 @import '../base/mixins/inputs';
 
 .input {
-  background-color: $background-color;
-  font-size: $font-size-medium;
+  background-color: var(--background-color);
+  font-size: var(--font-size-medium);
 
   @include input();
 
-  @include input-size($medium-height);
+  @include input-size(1);
 
   &.large {
-    @include input-size($large-height);
-    font-size: $font-size-large;
+    @include input-size(2);
+    font-size: var(--font-size-large);
   }
 }

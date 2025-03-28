@@ -3,21 +3,21 @@
 .table-container {
     display: flex;
     flex-direction: column;
-    border: 1px solid $inactive-color;
-    border-radius: #{$border-radius-medium}rem;
+    border: var(--border-width-thin) solid var(--primary-light-color);
+    border-radius: var(--border-radius-medium);
     overflow: hidden;
   }
   
   .table-header {
     display: flex;
-    background-color: $background-color;
+    background-color: var(--background-color);
     font-weight: 500;
-    border-bottom: 1px solid $inactive-color;
+    border: var(--border-width-thin) solid var(--primary-light-color);
   }
   
   .table-header-cell {
     flex: 1;
-    padding: #{$padding-small}rem #{$padding-medium}rem;
+    padding: calc(var(--padding-small) * 1rem) calc(var(--padding-medium) * 1rem);
     text-align: left;
   }
   
@@ -35,7 +35,7 @@
   
   .table-row-cell {
     flex: 1;
-    padding: #{$padding-small}rem #{$padding-medium}rem;
+    padding: calc(var(--padding-small) * 1rem) calc(var(--padding-medium) * 1rem);
     text-align: left;
   }
   

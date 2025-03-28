@@ -4,23 +4,36 @@
 @import '../styles/base/variables.scss';
 @import '../styles/base/typography.scss';
 @import '../styles/base/functions.scss';
-@import '../styles/base/mixins/common.scss';
 @import '../styles/base/mixins/buttons.scss';
 @import '../styles/base/mixins/inputs.scss';
 
 // 2. Define CSS Custom Properties Using SCSS Variables
 :root {
   --primary-color: #{$primary-color};
+  --primary-light-color: #cecece;
   --background-color: #{$background-color};
   --text-color: #{$text-color};
   --hover-color: #{$hover-color};
   --inactive-color: #{$inactive-color};
   --active-color: #{$active-color};
+  --warning-color: #{$warning-color};
   --padding-small: #{$padding-small};
   --padding-medium: #{$padding-medium};
+  --padding-large: #{$padding-large};
+  --margin-small: #{$margin-small};
+  --margin-medium: #{$margin-medium};
+  --margin-large: #{$margin-large};
   --border-width-thin: #{$border-width-thin};
+  --border-width-thick: #{$border-width-thick};
+  --border-radius-small: #{$border-radius-small};
   --border-radius-medium: #{$border-radius-medium};
+  --border-radius-large: #{$border-radius-large};
+  --font-size-small: #{$font-size-small};
+  --font-size-medium: #{$font-size-medium};
   --font-size-large: #{$font-size-large};
+  --input-height: #{$input-height};
+  --medium-height: #{$medium-height};
+  --large-height: #{$large-height};
 }
 
 // 3. Import component styles that are theme-dependent.

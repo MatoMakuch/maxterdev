@@ -1,5 +1,4 @@
 @import '../base/variables';
-@import '../base/mixins/common';
 
 .popup {
   position: absolute;
@@ -7,9 +6,9 @@
   left: 0;
   width: 100%;
   max-height: 200px;
-  background-color: $background-color;
-  border: $border-width-thin solid $inactive-color;
-  border-radius: $border-radius-medium;
+  background-color: var(--background-color);
+  border: var(--border-width-thin) solid var(--primary-light-color);
+  border-radius: var(--border-radius-medium);
   z-index: 1000;
   overflow-y: auto;
   display: none;

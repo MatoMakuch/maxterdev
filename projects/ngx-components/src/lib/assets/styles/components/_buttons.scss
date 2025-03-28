@@ -1,7 +1,5 @@
 // _buttons.scss
-
 @import '../base/variables';
-@import '../base/mixins/common';
 @import '../base/mixins/buttons';
 
 .button {
@@ -9,11 +7,10 @@
 
   @include button();
 
-  @include button-size($medium-height);
+  @include button-size(1);
 
   &.large {
-    //@include button();
-    @include button-size($large-height);
+    @include button-size(2);
     font-size: $font-size-large;
   }
 }

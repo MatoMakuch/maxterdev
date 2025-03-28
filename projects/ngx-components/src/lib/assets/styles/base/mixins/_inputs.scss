@@ -3,34 +3,30 @@
 
 @mixin input() {
   position: relative;
-  @include border-color($inactive-color);
+  border-color: var(--primary-light-color);
 
   &:hover {
-    @include border-color($hover-color);
+    border-color: var(--primary-light-color);
   }
 
   &:focus {
-    @include border-color($active-color);
-    @include border-width($border-width-thick);
+    border-color: var(--active-color);
+    border-width: var(--border-width-thick);
     outline: none;
   }
 
   &--invalid {
-    @include border-color($warning-color);
+    border-color: var(--warning-color);
   }
 }
 
 @mixin input-size($height) {
-  height: calc(#{unit-size-rem($height)}rem + #{2 * $padding-medium}rem);
+  height: calc(#{unit-size-rem($height)}rem + var(--padding-medium) * 2rem);
   box-sizing: border-box;
-  padding: #{$padding-medium}rem;
+  padding: calc(var(--padding-medium) * 2rem);
 
   border-style: solid;
-  @include border-width($border-width-thin);
-  @include rounded-top-left($border-radius-large);
-  @include rounded-bottom-left($border-radius-large);
-  @include rounded-top-right($border-radius-large);
-  @include rounded-bottom-right($border-radius-large);
+  border-radius: (var(--border-radius-medium));
 
   line-height: 2rem;
 }

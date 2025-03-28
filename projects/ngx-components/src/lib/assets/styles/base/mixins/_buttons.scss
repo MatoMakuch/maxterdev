@@ -35,5 +35,5 @@
   padding: calc(var(--padding-medium) * 2rem);
 
   border-style: none;
-  @include rounded(var(--border-radius-medium));
+  border-radius: (var(--border-radius-medium));
 }
