@@ -5,7 +5,6 @@
 @import '../base/mixins/buttons';
 
 .button {
-  background-color: $background-color;
   font-size: $font-size-medium;
 
   @include button();

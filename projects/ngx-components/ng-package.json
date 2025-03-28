@@ -8,7 +8,7 @@
     ]
   },
   "assets": [
-    "src/lib/assets/styles",
+    "dist/ngx-components/assets/themes",
     "README.md"
   ]
 }

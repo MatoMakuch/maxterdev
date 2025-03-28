@@ -1,0 +1,33 @@
+// default-theme.scss
+
+// 1. Import global variables & mixins.
+@import '../styles/base/variables.scss';
+@import '../styles/base/typography.scss';
+@import '../styles/base/functions.scss';
+@import '../styles/base/mixins/common.scss';
+@import '../styles/base/mixins/buttons.scss';
+@import '../styles/base/mixins/inputs.scss';
+
+// 2. Define CSS Custom Properties Using SCSS Variables
+:root {
+  --primary-color: #{$primary-color};
+  --background-color: #{$background-color};
+  --text-color: #{$text-color};
+  --hover-color: #{$hover-color};
+  --inactive-color: #{$inactive-color};
+  --active-color: #{$active-color};
+  --padding-small: #{$padding-small};
+  --padding-medium: #{$padding-medium};
+  --border-width-thin: #{$border-width-thin};
+  --border-radius-medium: #{$border-radius-medium};
+  --font-size-large: #{$font-size-large};
+}
+
+// 3. Import component styles that are theme-dependent.
+// Instead of distributing many separate SCSS files, consolidate them here.
+@import '../styles/components/_buttons.scss';
+@import '../styles/components/_inputs.scss';
+@import '../styles/components/_checkboxes.scss';
+@import '../styles/components/_dropdowns.scss';
+@import '../styles/components/_lists.scss';
+@import '../styles/components/_tabs.scss';

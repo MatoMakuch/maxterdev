@@ -4,7 +4,7 @@
 
 @mixin button() {
 
-  background-color: rgb(0, 0, 0);
+  background-color: var(--primary-color);
   color: white;
   line-height: 1rem;
   text-align: center;
@@ -19,21 +19,21 @@
   // Hover and focus effects
   &:hover,
   &:focus {
-    background-color: #001233; 
+    background-color: var(--hover-color); 
   }
 
   // Active state for click effect
   &:active {
-    background-color: #0a192f; 
+    background-color: var(--active-color); 
   }
 }
 
 @mixin button-size($height){
   box-sizing: border-box;
-  width: calc(#{unit-size-vw(1)}vw + #{2 * $padding-medium}rem);
-  height: calc(#{unit-size-rem($height)}rem + #{2 * $padding-medium}rem);
-  padding: #{$padding-medium}rem;
+  width: calc(#{unit-size-vw(1)}vw + var(--padding-medium) * 2rem);
+  height: calc(#{unit-size-rem($height)}rem + var(--padding-medium) * 2rem);
+  padding: calc(var(--padding-medium) * 2rem);
 
   border-style: none;
-  @include rounded($border-radius-large);
+  @include rounded(var(--border-radius-medium));
 }
