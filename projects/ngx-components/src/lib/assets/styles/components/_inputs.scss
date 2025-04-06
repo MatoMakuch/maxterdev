@@ -2,8 +2,8 @@
 @import '../base/mixins/inputs';
 
 .input {
-  background-color: var(--background-color);
-  font-size: var(--font-size-medium);
+  background-color: var(--color-background);
+  font-size: var(--font-size-md);
 
   @include input();
 
@@ -11,6 +11,6 @@
 
   &.large {
     @include input-size(2);
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-md);
   }
 }

@@ -3,21 +3,21 @@
 .table-container {
     display: flex;
     flex-direction: column;
-    border: var(--border-width-thin) solid var(--primary-light-color);
-    border-radius: var(--border-radius-medium);
+    border: var(--border-width-sm) solid var(--color-inactive);
+    border-radius: var(--border-radius-md);
     overflow: hidden;
   }
   
   .table-header {
     display: flex;
-    background-color: var(--background-color);
+    background-color: var(--color-background);
     font-weight: 500;
-    border: var(--border-width-thin) solid var(--primary-light-color);
+    border: var(--border-width-sm) solid var(--color-inactive);
   }
   
   .table-header-cell {
     flex: 1;
-    padding: calc(var(--padding-small) * 1rem) calc(var(--padding-medium) * 1rem);
+    padding: calc(var(--padding-sm) * 1) calc(var(--padding-md) * 1);
     text-align: left;
   }
   
@@ -35,7 +35,7 @@
   
   .table-row-cell {
     flex: 1;
-    padding: calc(var(--padding-small) * 1rem) calc(var(--padding-medium) * 1rem);
+    padding: calc(var(--padding-sm) * 1) calc(var(--padding-md) * 1);
     text-align: left;
   }
   

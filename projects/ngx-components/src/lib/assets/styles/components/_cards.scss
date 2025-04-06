@@ -10,24 +10,28 @@
 }
 
 .chat-card {
-  min-height: calc(#{unit-size-rem($medium-height)}rem + var(--padding-medium) * 2rem);
+  min-height: calc(#{unit-size-rem($medium-height)}rem + var(--padding-md) * 2rem);
 	box-sizing: border-box;
-  border-radius: (var(--border-radius-large));
-  background-color: var(--background-color);
-  padding: calc(var(--padding-large) * 2rem);
+  border-radius: (var(--border-radius-lg));
+  background-color: var(--color-background);
+  padding: calc(var(--padding-md) * 2);
   width: 100%;
 
   .card-text {
     margin: 0;
-    font-size: var(--font-size-large);
-    color: var(--text-color);
+    font-size: var(--font-size-md);
+    color: var(--color-text);
+    line-height: var(--line-height-md);
   }
 }
 
 .question-card {
-	background-color: var(--background-color);
+	background-color: var(--color-primary-accent);
+  width: fit-content;
+  margin-left: auto;
+  align-self: flex-end;
 }
 
 .answer-card {
-	background-color: var(--primary-light-color);
+	background-color: var(--color-surface);
 }

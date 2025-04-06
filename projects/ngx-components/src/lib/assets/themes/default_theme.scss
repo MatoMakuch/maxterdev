@@ -1,43 +1,60 @@
 // default-theme.scss
 
-// 1. Import global variables & mixins.
 @import '../styles/base/variables.scss';
-@import '../styles/base/typography.scss';
 @import '../styles/base/functions.scss';
 @import '../styles/base/mixins/buttons.scss';
 @import '../styles/base/mixins/inputs.scss';
 
-// 2. Define CSS Custom Properties Using SCSS Variables
 :root {
-  --primary-color: #{$primary-color};
-  --primary-light-color: #cecece;
-  --background-color: #{$background-color};
-  --text-color: #{$text-color};
-  --hover-color: #{$hover-color};
-  --inactive-color: #{$inactive-color};
-  --active-color: #{$active-color};
-  --warning-color: #{$warning-color};
-  --padding-small: #{$padding-small};
-  --padding-medium: #{$padding-medium};
-  --padding-large: #{$padding-large};
-  --margin-small: #{$margin-small};
-  --margin-medium: #{$margin-medium};
-  --margin-large: #{$margin-large};
-  --border-width-thin: #{$border-width-thin};
-  --border-width-thick: #{$border-width-thick};
-  --border-radius-small: #{$border-radius-small};
-  --border-radius-medium: #{$border-radius-medium};
-  --border-radius-large: #{$border-radius-large};
-  --font-size-small: #{$font-size-small};
-  --font-size-medium: #{$font-size-medium};
-  --font-size-large: #{$font-size-large};
-  --input-height: #{$input-height};
-  --medium-height: #{$medium-height};
-  --large-height: #{$large-height};
+  // ======== Colors ======== //
+  --color-primary: #0064FA;
+  --color-primary-accent: #{lighten(#0064FA, 40%)};
+  --color-surface: #ebebeb;
+  --color-background: #ffffff;
+
+  --color-text: rgba(0, 0, 0, 0.87);
+  --color-text-secondary: rgba(0, 0, 0, 0.6);
+
+  --color-hover-outline: #979797;
+  --color-hover-fill: #3f3f3f;
+  --color-primary-hover: #{lighten(#0064FA, 10%)};
+  --color-primary-active: #{lighten(#0064FA, 25%)};
+  --color-inactive: #d4d4d4;
+  --color-active: #1d1d1d;
+  --color-warning: #e53e3e;
+
+
+  // ======== Spacing ======== //
+  --padding-sm: 0.2rem;
+  --padding-md: 0.4rem;
+  --padding-lg: 0.8rem;
+  --margin-sm: 0.2rem;
+  --margin-md: 0.4rem;
+  --margin-lg: 0.8rem;
+
+  // ======== Borders ======== //
+  --border-width-sm: 1.4px;
+  --border-width-md: 1.8px;
+  --border-width-lg: 2.2px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+
+  // ======== Typography ======== //
+  --font-size-sm: 0.9rem;
+  --font-size-md: 1.1rem;
+  --font-size-lg: 1.3rem;
+  --font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --line-height-sm: 1;
+  --line-height-md: 1.5;
+  --line-height-lg: 2;
+
+  // ======== Components ======== //
+  --height-input: 40px;
+  --height-md: 1;
+  --height-lg: 2;
 }
 
-// 3. Import component styles that are theme-dependent.
-// Instead of distributing many separate SCSS files, consolidate them here.
 @import '../styles/components/_buttons.scss';
 @import '../styles/components/_inputs.scss';
 @import '../styles/components/_checkboxes.scss';

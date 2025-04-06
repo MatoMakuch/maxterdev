@@ -4,36 +4,33 @@
 
 @mixin button() {
 
-  background-color: var(--primary-color);
-  color: white;
-  line-height: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-background);
   text-align: center;
-  font-family: 'Slate Pro';
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  font-stretch: normal;
+  
 
   cursor: pointer;
 
-  // Hover and focus effects
-  &:hover,
-  &:focus {
-    background-color: var(--hover-color); 
+  &:focus-visible {
+    background-color: var(--color-primary-hover); 
+    outline: none;
   }
 
-  // Active state for click effect
+  &:hover {
+    background-color: var(--color-primary-hover); 
+  }
+
   &:active {
-    background-color: var(--active-color); 
+    background-color: var(--color-primary-active); 
   }
 }
 
 @mixin button-size($height){
   box-sizing: border-box;
-  width: calc(#{unit-size-vw(1)}vw + var(--padding-medium) * 2rem);
-  height: calc(#{unit-size-rem($height)}rem + var(--padding-medium) * 2rem);
-  padding: calc(var(--padding-medium) * 2rem);
+  width: calc(#{unit-size-vw(1)}vw + var(--padding-md) * 2);
+  height: calc(#{unit-size-rem($height)}rem + var(--padding-md) * 2);
+  padding: calc(var(--padding-md) * 2);
 
   border-style: none;
-  border-radius: (var(--border-radius-medium));
+  border-radius: (var(--border-radius-md));
 }

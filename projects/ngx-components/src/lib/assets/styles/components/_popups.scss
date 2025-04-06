@@ -6,9 +6,9 @@
   left: 0;
   width: 100%;
   max-height: 200px;
-  background-color: var(--background-color);
-  border: var(--border-width-thin) solid var(--primary-light-color);
-  border-radius: var(--border-radius-medium);
+  background-color: var(--color-background);
+  border: var(--border-width-sm) solid var(--color-inactive);
+  border-radius: var(--border-radius-md);
   z-index: 1000;
   overflow-y: auto;
   display: none;

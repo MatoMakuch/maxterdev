@@ -3,7 +3,7 @@
 
 // Dropdown container and button styling
 .dropdown {
-  background-color: var(--background-color);
+  background-color: var(--color-background);
 
   @include input();
   @include input-size(1);
@@ -12,7 +12,7 @@
   flex-direction: row;
   justify-content: space-between;
 
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-md);
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -23,24 +23,24 @@
 }
 
 .dropdown-icon {
-  font-size: var(--font-size-small);
-  color: var(--background-light-color);
+  font-size: var(--font-size-sm);
+  color: var(--color-surface);
 }
 
 .dropdown-menu {
   position: absolute;
   left: 0;
-  top: calc(#{unit-size-rem(1)}rem + var(--padding-medium) * 2rem + var(--padding-small) * 1rem);
+  top: calc(#{unit-size-rem(1)}rem + var(--padding-md) * 2rem + var(--padding-sm) * 1rem);
 
   box-sizing: border-box;
-  width: calc(#{unit-size-vw(3)}vw + var(--padding-medium) * 2rem);
-  max-height: calc(#{unit-size-rem(12)}rem + var(--padding-medium) * 2rem);
+  width: calc(#{unit-size-vw(3)}vw + var(--padding-md) * 2rem);
+  max-height: calc(#{unit-size-rem(12)}rem + var(--padding-md) * 2rem);
 
-  background-color: var(--background-color);
+  background-color: var(--color-background);
 
-  border: var(--border-width-thin) solid var(--primary-light-color);
+  border: var(--border-width-sm) solid var(--color-inactive);
 
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-md);
 
   overflow-y: auto;
 

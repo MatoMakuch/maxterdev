@@ -3,7 +3,7 @@
 @import '../base/mixins/buttons';
 
 .button {
-  font-size: $font-size-medium;
+  font-size: var(--font-size-md);
 
   @include button();
 
@@ -11,6 +11,6 @@
 
   &.large {
     @include button-size(2);
-    font-size: $font-size-large;
+    font-size: var(--font-size-md);
   }
 }

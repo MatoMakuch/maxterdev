@@ -3,18 +3,18 @@
 .label {
   display: border-box;
 
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
 
-  color: var(--text-color);
+  color: var(--color-text);
 
-  margin-top: var(--margin-small);
-  margin-bottom: var(--margin-small);
+  margin-top: var(--margin-sm);
+  margin-bottom: var(--margin-sm);
 
   &.label-small {
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
   }
 
   &.label-medium {
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-md);
   }
 }

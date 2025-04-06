@@ -3,15 +3,16 @@
 
 @mixin input() {
   position: relative;
-  border-color: var(--primary-light-color);
+  border-color: var(--color-inactive);
+  border-width: var(--border-width-sm);
 
   &:hover {
-    border-color: var(--primary-light-color);
+    border-color: var(--color-hover-outline);
   }
 
   &:focus {
-    border-color: var(--active-color);
-    border-width: var(--border-width-thick);
+    border-color: var(--color-primary);
+    border-width: var(--border-width-lg);
     outline: none;
   }
 
@@ -21,12 +22,11 @@
 }
 
 @mixin input-size($height) {
-  height: calc(#{unit-size-rem($height)}rem + var(--padding-medium) * 2rem);
+  height: calc(#{unit-size-rem($height)}rem + var(--padding-md) * 2);
   box-sizing: border-box;
-  padding: calc(var(--padding-medium) * 2rem);
+  padding: calc(var(--padding-md) * 2);
 
   border-style: solid;
-  border-radius: (var(--border-radius-medium));
+  border-radius: (var(--border-radius-md));
 
-  line-height: 2rem;
 }

@@ -3,33 +3,33 @@
 .tablist {
   display: flex;
   justify-content: flex-start;
-  background-color: var(--background-color);
-  gap: calc(var(--padding-large) * 1rem);
+  background-color: var(--color-background);
+  gap: calc(var(--padding-lg) * 1);
 
   .tab {
-    padding: calc(var(--padding-medium) * 1rem) calc(var(--padding-large) * 1rem);
-    margin-right: calc(var(--padding-small) * 1rem);
+    padding: calc(var(--padding-md) * 1) calc(var(--padding-lg) * 1);
+    margin-right: calc(var(--padding-sm) * 1);
     cursor: pointer;
     background-color: transparent;
     border: none;
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-md);
     font-weight: 900;
     text-align: center;
-    border-radius: var(--border-radius-medium); 
+    border-radius: var(--border-radius-md); 
     transition: background-color 0.2s, color 0.2s, border-radius 0.2s;
 
     &:hover {
-      background-color: var(--hover-color);
-      color: var(--background-color);
+      background-color: var(--color-hover);
+      color: var(--color-background);
     }
 
     &.active {
-      background-color: var(--active-color);
-      color: var(--background-color);
+      background-color: var(--color-active);
+      color: var(--color-background);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--hover-color);
+      outline: 2px solid var(--color-hover);
     }
   }
 }
