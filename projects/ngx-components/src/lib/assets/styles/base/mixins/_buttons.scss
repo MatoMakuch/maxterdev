@@ -2,35 +2,23 @@
 @import '../functions';
 @import '../variables';
 
-@mixin button() {
+@mixin button($variant: primary) {
+  background-color: var(--color-button-#{$variant}-background-inactive);
+  border-color: var(--color-button-#{$variant}-border-inactive);
+  border-bottom-color: var(--color-button-#{$variant}-border-bottom-inactive);
+  color: var(--color-button-#{$variant}-text-inactive);
 
-  background-color: var(--color-primary);
-  color: var(--color-background);
-  text-align: center;
-  
-
-  cursor: pointer;
-
-  &:focus-visible {
-    background-color: var(--color-primary-hover); 
-    outline: none;
-  }
-
-  &:hover {
-    background-color: var(--color-primary-hover); 
+  &:hover, &:focus-visible {
+    background-color: var(--color-button-#{$variant}-background-hover);
+    border-color: var(--color-button-#{$variant}-border-hover);
+    border-bottom-color: var(--color-button-#{$variant}-border-bottom-hover);
+    color: var(--color-button-#{$variant}-text-hover);
   }
 
   &:active {
-    background-color: var(--color-primary-active); 
+    background-color: var(--color-button-#{$variant}-background-active);
+    border-color: var(--color-button-#{$variant}-border-active);
+    border-bottom-color: var(--color-button-#{$variant}-border-bottom-active);
+    color: var(--color-button-#{$variant}-text-active);
   }
-}
-
-@mixin button-size($height){
-  box-sizing: border-box;
-  width: calc(#{unit-size-vw(1)}vw + var(--padding-md) * 2);
-  height: calc(#{unit-size-rem($height)}rem + var(--padding-md) * 2);
-  padding: calc(var(--padding-md) * 2);
-
-  border-style: none;
-  border-radius: (var(--border-radius-md));
 }

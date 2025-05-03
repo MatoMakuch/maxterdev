@@ -1,4 +1,4 @@
-<div class="dropdown" (click)="toggleDropdown()">
+<div class="dropdown" [ngClass]="{'open': isOpen}" (click)="toggleDropdown()">
   <span *ngIf="isMultiSelect && selectedOptions.length === 0" class="placeholder">
     {{ placeholder }}
   </span>
@@ -14,7 +14,9 @@
   <span class="dropdown-icon">
     <i class="pi pi-chevron-down"></i>
   </span>
-  <div class="dropdown-menu" *ngIf="isOpen" (click)="$event.stopPropagation()">
+  <div class="dropdown-menu" *ngIf="isOpen" 
+      (click)="$event.stopPropagation()"
+      (mousedown)="$event.stopPropagation()">
     <maxterdev-list
       [items]="options"
       [isMultiSelect]="isMultiSelect"
@@ -22,7 +24,7 @@
       (selectedItemsChange)="handleSelectedItemsChange($event)"
       (itemSelected)="handleSingleSelect($event)">
       <ng-template let-item>
-        <span>{{ item.data }}</span>
+        <span>{{ item }}</span>
       </ng-template>
     </maxterdev-list>
   </div>

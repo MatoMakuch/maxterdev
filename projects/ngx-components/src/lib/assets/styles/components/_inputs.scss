@@ -1,16 +1,37 @@
 @import '../base/variables';
+@import '../base/mixins/components';
 @import '../base/mixins/inputs';
 
 .input {
-  background-color: var(--color-background);
-  font-size: var(--font-size-md);
+  position: relative;
 
+  @include component-base();
+  @include component-height();
+  @include component-border();
+  @include component-font();
+  
   @include input();
 
-  @include input-size(1);
+  > input, 
+  > textarea {
+    @include component-base();
+    @include component-padding();
 
-  &.large {
-    @include input-size(2);
-    font-size: var(--font-size-md);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    background-color: transparent;
+    color: inherit;
+
+    font: inherit;
+  }
+
+  > textarea {
+    resize: none;
   }
 }
+

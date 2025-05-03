@@ -1,2 +1,6 @@
 @import '../../assets/styles/components/buttons';
 @import "primeicons/primeicons.css";
+
+:host {
+  display: block;
+}

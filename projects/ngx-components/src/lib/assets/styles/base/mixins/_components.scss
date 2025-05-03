@@ -1,0 +1,29 @@
+
+@mixin component-base() {  
+  box-sizing: border-box;
+
+  margin: 0;
+
+  outline: none;
+}
+
+@mixin component-padding() {
+  padding-inline: 0.6rem;
+  padding-block: 0.45rem;
+}
+
+@mixin component-height() {
+  min-height: calc(1.55rem + 3px);
+}
+
+@mixin component-border() {
+  border-style: solid;
+  border-width: var(--border-width-sm);
+  border-radius: var(--border-radius-sm);
+}
+
+@mixin component-font() {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  -webkit-font-smoothing: antialiased;
+}

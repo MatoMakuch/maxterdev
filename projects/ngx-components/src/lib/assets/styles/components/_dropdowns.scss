@@ -1,48 +1,53 @@
 @import '../base/variables';
-@import '../base/mixins/inputs';
+@import '../base/mixins/components';
+@import '../base/mixins/buttons';
 
 // Dropdown container and button styling
 .dropdown {
-  background-color: var(--color-background);
-
-  @include input();
-  @include input-size(1);
+  position: relative;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  font-size: var(--font-size-md);
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+  cursor: pointer;
+
+  @include component-base();
+  @include component-height();
+  @include component-border();
+  @include component-padding();
+  @include component-font();
+  
+  @include button(primary);
+
+  &.secondary {
+    @include button(secondary);
+  }
+
+  .dropdown-icon {
+    font-size: var(--font-size-sm);
+    color: var(--color-inactive);
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    left: -1.5px;
+    top: calc(100% + .35rem);
+    width: calc(100% + 3px);
+  
+    @include component-base();
+    @include component-border();
+    border-radius: 0.45rem;
+  
+    background-color: var(--color-button-secondary-background-inactive);
+    border-color: var(--color-button-secondary-border-inactive);
+  
+    overflow-y: auto;
+  
+    z-index: 1000;
+  }
 
   &.open .dropdown-menu {
     display: block;
   }
-}
-
-.dropdown-icon {
-  font-size: var(--font-size-sm);
-  color: var(--color-surface);
-}
-
-.dropdown-menu {
-  position: absolute;
-  left: 0;
-  top: calc(#{unit-size-rem(1)}rem + var(--padding-md) * 2rem + var(--padding-sm) * 1rem);
-
-  box-sizing: border-box;
-  width: calc(#{unit-size-vw(3)}vw + var(--padding-md) * 2rem);
-  max-height: calc(#{unit-size-rem(12)}rem + var(--padding-md) * 2rem);
-
-  background-color: var(--color-background);
-
-  border: var(--border-width-sm) solid var(--color-inactive);
-
-  border-radius: var(--border-radius-md);
-
-  overflow-y: auto;
-
-  z-index: 1000;
 }

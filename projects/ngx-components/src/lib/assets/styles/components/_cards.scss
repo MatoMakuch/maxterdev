@@ -12,26 +12,31 @@
 .chat-card {
   min-height: calc(#{unit-size-rem($medium-height)}rem + var(--padding-md) * 2rem);
 	box-sizing: border-box;
-  border-radius: (var(--border-radius-lg));
+  //border-radius: (var(--border-radius-lg));
   background-color: var(--color-background);
-  padding: calc(var(--padding-md) * 2);
+  //padding: calc(var(--padding-md) * 2);
   width: 100%;
+  border-color: var(--color-border-primary);
+  @include component-font();
+  @include component-border();
+  @include component-padding();
 
   .card-text {
     margin: 0;
-    font-size: var(--font-size-md);
+    //font-size: var(--font-size-sm);
     color: var(--color-text);
     line-height: var(--line-height-md);
+    //font-family: var(--font-family);
   }
 }
 
-.question-card {
-	background-color: var(--color-primary-accent);
-  width: fit-content;
-  margin-left: auto;
-  align-self: flex-end;
-}
+// .question-card {
+// 	background-color: var(--color-primary-accent);
+//   width: fit-content;
+//   margin-left: auto;
+//   align-self: flex-end;
+// }
 
-.answer-card {
-	background-color: var(--color-surface);
-}
+// .answer-card {
+// 	background-color: var(--color-surface);
+// }

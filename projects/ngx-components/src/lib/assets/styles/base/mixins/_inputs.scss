@@ -2,31 +2,44 @@
 @import '../variables';
 
 @mixin input() {
-  position: relative;
-  border-color: var(--color-inactive);
-  border-width: var(--border-width-sm);
+  background-color: var(--color-input-background-inactive);
 
-  &:hover {
+  border-color: var(--color-border-primary);
+  border-bottom-color: var(--color-input-line);
+
+  &:not(:focus-within):hover {
+    background-color: var(--color-input-background-inactive-hover);
     border-color: var(--color-hover-outline);
+    border-bottom-color: var(--color-input-line);
   }
 
-  &:focus {
-    border-color: var(--color-primary);
-    border-width: var(--border-width-lg);
-    outline: none;
+  &:focus-within {
+    background-color: var(--color-input-background-active);
+    border-color: var(--color-input-border-active);
+    border-bottom-color: var(--color-input-border-active);
   }
 
   &--invalid {
     border-color: var(--warning-color);
   }
-}
 
-@mixin input-size($height) {
-  height: calc(#{unit-size-rem($height)}rem + var(--padding-md) * 2);
-  box-sizing: border-box;
-  padding: calc(var(--padding-md) * 2);
+  .input-line {
+    box-sizing: inherit;
+    border-radius: inherit;
 
-  border-style: solid;
-  border-radius: (var(--border-radius-md));
+    position: absolute;
+    bottom: -1px;
+    left: -1.5px;
+    width: calc(100% + 3px);
+    height: var(--show-line);
 
+    background-color: transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  &:focus-within .input-line {
+    background: linear-gradient(to top, var(--color-list-item-indicator) 2px, transparent 2px);
+    background-repeat: no-repeat;
+  }
 }

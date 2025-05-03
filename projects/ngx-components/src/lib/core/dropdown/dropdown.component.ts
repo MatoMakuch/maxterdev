@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 
-import { ListNode } from '../list/list.interface';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from '../list/list.component';
 
@@ -12,11 +11,11 @@ import { ListComponent } from '../list/list.component';
   styleUrls: ['./dropdown.component.scss'],
 })
 export class DropdownComponent {
-  @Input() options: ListNode[] = [];
+  @Input() options: any[] = [];
   @Input() placeholder: string = 'Select an option';
   @Input() isMultiSelect: boolean = false;
-  @Input() selectedOptions: ListNode[] = [];
-  @Output() selectedOptionsChange = new EventEmitter<ListNode[]>();
+  @Input() selectedOptions: any[] = [];
+  @Output() selectedOptionsChange = new EventEmitter<any[]>();
 
   isOpen = false;
 
@@ -24,16 +23,16 @@ export class DropdownComponent {
     this.isOpen = !this.isOpen;
   }
 
-  handleSelectedItemsChange(items: ListNode[]) {
+  handleSelectedItemsChange(items: any[]) {
     this.selectedOptions = items;
     this.selectedOptionsChange.emit(this.selectedOptions);
   }
 
-  handleSingleSelect(item: ListNode) {
+  handleSingleSelect(item: any) {
     this.selectOption(item);
   }
 
-  selectOption(option: ListNode) {
+  selectOption(option: any) {
     if (!this.isMultiSelect) {
       this.selectedOptions = [option];
       this.selectedOptionsChange.emit(this.selectedOptions);

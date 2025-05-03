@@ -1,0 +1,16 @@
+<div class="input">
+
+  <!-- Multiline -->
+  <ng-container *ngIf="multiline; else singleLine">
+    <textarea autosize [placeholder]="placeholder" [value]="value"></textarea>
+  </ng-container>
+
+  <!-- Singleline -->
+  <ng-template #singleLine>
+    <input type="text" [placeholder]="placeholder" [value]="value" />
+  </ng-template>
+
+  <!-- Input line -->
+  <div class="input-line"></div>
+</div>
+  

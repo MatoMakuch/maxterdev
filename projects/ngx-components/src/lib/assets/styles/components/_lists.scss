@@ -1,78 +1,78 @@
 @import '../base/variables';
+@import '../base/mixins/components';
 
 .list {
   display: flex;
   flex-direction: column;
 
-  padding: calc(var(--padding-sm) * 1rem);
+  @include component-base();
+
+  padding: 0.35rem;
+  gap: 0.35rem;
   margin: 0;
 
-  border-radius: var(--border-radius-md);
+  border-radius: 0.45rem;
 
   list-style-type: none;
 }
 
 .list-item {
-  display: flex;
-  flex-direction: column;
-}
+  @include component-base();
+  @include component-height();
+  @include component-border();
+  @include component-padding();
+  @include component-font();
 
-.list-item-header {
   display: flex;
   flex-direction: row;
-
-  box-sizing: border-box;
-
-  height: calc(#{unit-size-rem(1)}rem + var(--padding-md) * 2rem);
   
-  padding: calc(var(--padding-md) * 1rem);
+  cursor: pointer;
 
-  border-radius: var(--border-radius-md);
-
-  font-size: var(--font-size-md);
-  font-weight: 300;
-  line-height: normal;
-  color: var(--color-text);
-
+  background-color: var(--color-button-secondary-background-inactive);
+  border-color: var(--color-button-secondary-background-inactive);
+  color: var(--color-button-secondary-text-inactive);
+  
   &:hover {
-    background-color: var(--color-hover);
-    color: var(--color-text);
+    background-color: var(--color-button-secondary-background-hover);
+    border-color: var(--color-button-secondary-background-hover);
+    color: var(--color-button-secondary-text-hover);
   }
 
+  &.active {
+    background-color: var(--color-button-secondary-background-active);
+    border-color: var(--color-button-secondary-background-active);
+    color: var(--color-button-secondary-text-active);
+  }
+  
   &.selected {
-    background-color: var(--color-active);
-    color: var(--color-text);
+    background-color: var(--color-button-secondary-background-hover);
+    border-color: var(--color-button-secondary-background-hover);
   }
-
-  .expand-toggle {
-    box-sizing: border-box;
-
-    width: calc(#{unit-size-rem(1)}rem + var(--padding-md) * 2);
-    height: calc(#{unit-size-rem(1)}rem);
-
-    padding-right: calc(var(--padding-md) * 1rem);
-    padding-right: calc(var(--padding-md) * 1rem);
-
-    background: none;
-    border: none;
-
-    .pi {
-      font-size: 0.8rem;
-      color: var(--color-inactive);
-
-      cursor: pointer;
-
-      &:hover {
-        color: var(--color-hover);
-      }
-    }
-  }
-
+  
   .checkbox {
     margin-right: var(--margin-md);
   }
 }
 
-.list-item-expansion {
-  margin-left: var(--margin-lg);
+.list-item-indicator {
+  position: relative;
+  top: 0;
+  left: calc(0rem - var(--padding-lg));
+  width: 4px;
+  height: var(--font-size-lg);
+  background-color: var(--color-primary);
+  border-radius: 2px;
+
+  &.active {
+    top: 0.2rem;
+    height: var(--font-size-sm);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.list-item-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
 }
