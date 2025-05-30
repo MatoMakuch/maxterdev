@@ -1,42 +1,15 @@
-@import '../base/variables';
-@import '../base/functions';
-
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  gap: #{$padding-large}rem; 
-  width: 60vw;
-  margin: 0.5rem auto;
-}
-
-.chat-card {
-  min-height: calc(#{unit-size-rem($medium-height)}rem + var(--padding-md) * 2rem);
+.card {
 	box-sizing: border-box;
-  //border-radius: (var(--border-radius-lg));
   background-color: var(--color-background);
-  //padding: calc(var(--padding-md) * 2);
   width: 100%;
   border-color: var(--color-border-primary);
   @include component-font();
   @include component-border();
   @include component-padding();
 
-  .card-text {
+  .text {
     margin: 0;
-    //font-size: var(--font-size-sm);
     color: var(--color-text);
     line-height: var(--line-height-md);
-    //font-family: var(--font-family);
   }
 }
-
-// .question-card {
-// 	background-color: var(--color-primary-accent);
-//   width: fit-content;
-//   margin-left: auto;
-//   align-self: flex-end;
-// }
-
-// .answer-card {
-// 	background-color: var(--color-surface);
-// }

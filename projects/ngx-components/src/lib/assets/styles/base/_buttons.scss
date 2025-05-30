@@ -1,7 +1,3 @@
-
-@import '../functions';
-@import '../variables';
-
 @mixin button($variant: primary) {
   background-color: var(--color-button-#{$variant}-background-inactive);
   border-color: var(--color-button-#{$variant}-border-inactive);

@@ -1,7 +1,6 @@
 // _buttons.scss
-@import '../base/variables';
-@import '../base/mixins/components';
-@import '../base/mixins/buttons';
+@import '../base/components';
+@import '../base/buttons';
 
 .button {
   cursor: pointer;
@@ -11,11 +10,23 @@
   @include component-border();
   @include component-padding();
   @include component-font();
+  
+  width: 100%;
 
   @include button(primary);
 
   &.secondary {
     @include button(secondary);
+  }
+
+  &.disabled {
+    @include button(disabled);
+
+    cursor: default;
+  }
+
+  &.text {
+    @include button(text);
   }
 
   .text {

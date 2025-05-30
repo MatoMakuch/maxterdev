@@ -1,10 +1,5 @@
-
-// default-theme.scss
-
-@import '../styles/base/variables.scss';
-@import '../styles/base/functions.scss';
-@import '../styles/base/mixins/buttons.scss';
-@import '../styles/base/mixins/inputs.scss';
+@import '../styles/base/buttons.scss';
+@import '../styles/base/inputs.scss';
 
 
 :root {
@@ -60,6 +55,32 @@
   --color-button-secondary-text-hover: #1A1A1B;
   --color-button-secondary-text-active: #5E5E5F;
 
+  --color-button-disabled-background-inactive: #F6F7F9;
+  --color-button-disabled-background-hover: #F6F7F9;
+  --color-button-disabled-background-active: #F6F7F9;
+  --color-button-disabled-border-inactive: #F6F7F9;
+  --color-button-disabled-border-hover: #F6F7F9;
+  --color-button-disabled-border-active: #F6F7F9;
+  --color-button-disabled-border-bottom-inactive: #F6F7F9;
+  --color-button-disabled-border-bottom-hover: #F6F7F9;
+  --color-button-disabled-border-bottom-active: #F6F7F9;
+  --color-button-disabled-text-inactive: #5E5E5F;
+  --color-button-disabled-text-hover: #5E5E5F;
+  --color-button-disabled-text-active: #5E5E5F;
+
+  --color-button-text-background-inactive: transparent;
+  --color-button-text-background-hover: transparent;
+  --color-button-text-background-active: transparent;
+  --color-button-text-border-inactive: transparent;
+  --color-button-text-border-hover: transparent;
+  --color-button-text-border-active: transparent;
+  --color-button-text-border-bottom-inactive: transparent;
+  --color-button-text-border-bottom-hover: transparent;
+  --color-button-text-border-bottom-active: transparent;
+  --color-button-text-text-inactive: #1B1B1B;
+  --color-button-text-text-hover: #565657;
+  --color-button-text-text-active: #7e7e7e;
+
   --color-input-background-inactive: #FFFFFF;
   --color-input-background-inactive-hover: #FFFFFF;
   --color-input-background-active: #FFFFFF;
@@ -108,9 +129,7 @@
 }
 
 @import '../styles/components/_buttons.scss';
-@import '../styles/components/_inputs.scss';
-@import '../styles/components/_checkboxes.scss';
+@import '../styles/components/_cards.scss';
 @import '../styles/components/_dropdowns.scss';
+@import '../styles/components/_inputs.scss';
 @import '../styles/components/_lists.scss';
-@import '../styles/components/_trees.scss';
-@import '../styles/components/_tabs.scss';

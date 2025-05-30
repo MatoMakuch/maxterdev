@@ -1,11 +1,10 @@
 import { Component, ContentChild, Input, TemplateRef, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CheckboxComponent } from '../checkbox/checkbox.component';
 
 @Component({
   selector: 'maxterdev-list',
   standalone: true,
-  imports: [CommonModule, CheckboxComponent],
+  imports: [CommonModule],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
@@ -19,11 +18,11 @@ export class ListComponent {
   @Input() inputItemTemplate?: TemplateRef<any>;
   @ContentChild(TemplateRef) contentItemTemplate?: TemplateRef<any>;
 
-  activeItem: any = null;
-
   get itemTemplate(): TemplateRef<any> | null {
     return this.inputItemTemplate || this.contentItemTemplate || null;
   }
+
+  activeItem: any = null;
 
   toggleItem(item: any, checked: boolean): void {
     if (checked) {

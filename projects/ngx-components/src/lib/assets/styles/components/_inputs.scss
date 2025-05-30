@@ -1,6 +1,5 @@
-@import '../base/variables';
-@import '../base/mixins/components';
-@import '../base/mixins/inputs';
+@import '../base/components';
+@import '../base/inputs';
 
 .input {
   position: relative;
@@ -11,6 +10,11 @@
   @include component-font();
   
   @include input();
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
 
   > input, 
   > textarea {
