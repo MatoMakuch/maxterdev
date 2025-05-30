@@ -1,27 +1,43 @@
 <div class="input">
 
-  <!-- Multiline -->
-  <ng-container *ngIf="multiline; else singleLine">
-    <textarea 
-      autosize 
-      [autosizeDisabled]="autosizeDisabled"
-      [maxRows]="maxRows"
-      [placeholder]="placeholder" 
-      [(ngModel)]="value" 
-      (ngModelChange)="onValueChange()"
-      [style.height]="autosizeDisabled ? 'unset' : null"
-      [style.overflow-y]="autosizeDisabled ? 'auto' : null">
-    </textarea>
+  <ng-container *ngIf="contentTopTemplate;" 
+    [ngTemplateOutlet]="contentTopTemplate">
+  </ng-container>
+
+  <div class="horizontal-content">
+
+    <ng-container *ngIf="contentLeftTemplate;" 
+      [ngTemplateOutlet]="contentLeftTemplate">
+    </ng-container>
+
+    <!-- Multiline -->
+    <ng-container *ngIf="multiline;">
+      <textarea 
+        autosize 
+        [autosizeDisabled]="autosizeDisabled"
+        [maxRows]="maxRows"
+        [placeholder]="placeholder" 
+        [(ngModel)]="value" 
+        (ngModelChange)="onValueChange()"
+        [style.height]="autosizeDisabled ? 'unset' : null"
+        [style.overflow-y]="autosizeDisabled ? 'auto' : null">
+      </textarea>
+    </ng-container>
+
+    <!-- Singleline -->
+    <ng-container *ngIf="!multiline;">
+      <input type="text" [placeholder]="placeholder" [(ngModel)]="value" (ngModelChange)="onValueChange()" />
+    </ng-container>
 
     <ng-container *ngIf="contentRightTemplate;" 
       [ngTemplateOutlet]="contentRightTemplate">
     </ng-container>
-  </ng-container>
 
-  <!-- Singleline -->
-  <ng-template #singleLine>
-    <input type="text" [placeholder]="placeholder" [(ngModel)]="value" (ngModelChange)="onValueChange()" />
-  </ng-template>
+  </div>
+
+  <ng-container *ngIf="contentBottomTemplate;" 
+    [ngTemplateOutlet]="contentBottomTemplate">
+  </ng-container>
 
   <!-- Input line -->
   <div class="input-line"></div>

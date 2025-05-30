@@ -1,6 +1,6 @@
 {
   "name": "@maxter-dev/ngx-components", 
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Angular standalone component library with PrimeIcons support",
   "author": "Mato Makuch",
   "license": "MIT",

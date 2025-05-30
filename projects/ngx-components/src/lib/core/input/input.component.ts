@@ -20,11 +20,28 @@ export class InputComponent {
   @Input() autosizeDisabled: boolean = false;
   @Input() maxRows?: number;
 
+  @Input() inputContentTop?: TemplateRef<any>;
+  @Input() inputContentLeft?: TemplateRef<any>;
   @Input() inputContentRight?: TemplateRef<any>;
-  @ContentChild(TemplateRef) contentContentRight?: TemplateRef<any>;
+  @Input() inputContentBottom?: TemplateRef<any>;
 
+  @ContentChild('contentTop',    { read: TemplateRef }) contentTplTop?:    TemplateRef<any>;
+  @ContentChild('contentLeft',   { read: TemplateRef }) contentTplLeft?:   TemplateRef<any>;
+  @ContentChild('contentRight',  { read: TemplateRef }) contentTplRight?:  TemplateRef<any>;
+  @ContentChild('contentBottom', { read: TemplateRef }) contentTplBottom?: TemplateRef<any>;
+
+  // Pick whichever was provided
+  get contentTopTemplate(): TemplateRef<any> | null {
+    return this.inputContentTop || this.contentTplTop || null;
+  }
+  get contentLeftTemplate(): TemplateRef<any> | null {
+    return this.inputContentLeft || this.contentTplLeft || null;
+  }
   get contentRightTemplate(): TemplateRef<any> | null {
-    return this.inputContentRight || this.contentContentRight || null;
+    return this.inputContentRight || this.contentTplRight || null;
+  }
+  get contentBottomTemplate(): TemplateRef<any> | null {
+    return this.inputContentBottom || this.contentTplBottom || null;
   }
   
   protected onValueChange(): void {
