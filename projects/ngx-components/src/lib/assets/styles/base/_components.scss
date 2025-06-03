@@ -15,10 +15,18 @@
   min-height: calc(1.55rem + 3px);
 }
 
-@mixin component-border() {
+@mixin component-border-radius() {
+  border-radius: var(--border-radius-sm);
+}
+
+@mixin component-border-style() {
   border-style: solid;
   border-width: var(--border-width-sm);
-  border-radius: var(--border-radius-sm);
+}
+
+@mixin component-border() {
+  @include component-border-radius();
+  @include component-border-style();
 }
 
 @mixin component-font() {

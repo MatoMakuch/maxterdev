@@ -1,37 +1,44 @@
 @import '../base/components';
 @import '../base/buttons';
 
-// Dropdown container and button styling
 .dropdown {
   position: relative;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 1rem;
 
   cursor: pointer;
 
   @include component-base();
   @include component-height();
-  @include component-border();
-  @include component-padding();
   @include component-font();
-  
-  @include button(primary);
+  @include component-border-radius();
 
-  &.secondary {
-    @include button(secondary);
-  }
+  .button {
+    @include component-base();
+    @include component-border();
+    @include component-padding();
+    @include component-border();
 
-  .dropdown-icon {
-    font-size: var(--font-size-sm);
-    color: var(--color-inactive);
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  
+    &.primary {
+      @include button(primary);
+    }
+
+    &.secondary {
+      @include button(secondary);
+    }
+
+    .icon {
+      font-size: var(--font-size-sm);
+      color: var(--color-inactive);
+      display: flex;
+      align-items: center;
+    }
   }
   
-  .dropdown-menu {
+  .menu {
     position: absolute;
     left: -1.5px;
     top: calc(100% + .35rem);
@@ -49,7 +56,7 @@
     z-index: 1000;
   }
 
-  &.open .dropdown-menu {
+  &.open .menu {
     display: block;
   }
 }

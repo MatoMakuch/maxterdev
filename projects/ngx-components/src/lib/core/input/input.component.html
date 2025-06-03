@@ -1,45 +1,41 @@
-<div class="input">
+<ng-container *ngIf="contentTop;" 
+  [ngTemplateOutlet]="contentTop">
+</ng-container>
 
-  <ng-container *ngIf="contentTopTemplate;" 
-    [ngTemplateOutlet]="contentTopTemplate">
+<div class="horizontal-content">
+
+  <ng-container *ngIf="contentLeft;" 
+    [ngTemplateOutlet]="contentLeft">
   </ng-container>
 
-  <div class="horizontal-content">
-
-    <ng-container *ngIf="contentLeftTemplate;" 
-      [ngTemplateOutlet]="contentLeftTemplate">
-    </ng-container>
-
-    <!-- Multiline -->
-    <ng-container *ngIf="multiline;">
-      <textarea 
-        autosize 
-        [autosizeDisabled]="autosizeDisabled"
-        [maxRows]="maxRows"
-        [placeholder]="placeholder" 
-        [(ngModel)]="value" 
-        (ngModelChange)="onValueChange()"
-        [style.height]="autosizeDisabled ? 'unset' : null"
-        [style.overflow-y]="autosizeDisabled ? 'auto' : null">
-      </textarea>
-    </ng-container>
-
-    <!-- Singleline -->
-    <ng-container *ngIf="!multiline;">
-      <input type="text" [placeholder]="placeholder" [(ngModel)]="value" (ngModelChange)="onValueChange()" />
-    </ng-container>
-
-    <ng-container *ngIf="contentRightTemplate;" 
-      [ngTemplateOutlet]="contentRightTemplate">
-    </ng-container>
-
-  </div>
-
-  <ng-container *ngIf="contentBottomTemplate;" 
-    [ngTemplateOutlet]="contentBottomTemplate">
+  <!-- Multiline -->
+  <ng-container *ngIf="multiline;">
+    <textarea 
+      autosize 
+      [autosizeDisabled]="autosizeDisabled"
+      [maxRows]="maxRows"
+      [placeholder]="placeholder" 
+      [(ngModel)]="value" 
+      (ngModelChange)="onValueChange()"
+      [style.height]="autosizeDisabled ? 'unset' : null"
+      [style.overflow-y]="autosizeDisabled ? 'auto' : null">
+    </textarea>
   </ng-container>
 
-  <!-- Input line -->
-  <div class="input-line"></div>
+  <!-- Singleline -->
+  <ng-container *ngIf="!multiline;">
+    <input type="text" [placeholder]="placeholder" [(ngModel)]="value" (ngModelChange)="onValueChange()" />
+  </ng-container>
+
+  <ng-container *ngIf="contentRight;" 
+    [ngTemplateOutlet]="contentRight">
+  </ng-container>
+
 </div>
-  
+
+<ng-container *ngIf="contentBottom;" 
+  [ngTemplateOutlet]="contentBottom">
+</ng-container>
+
+<!-- Input line -->
+<div class="input-line"></div>

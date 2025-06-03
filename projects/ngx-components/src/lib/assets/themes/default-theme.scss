@@ -129,7 +129,10 @@
 }
 
 @import '../styles/components/_buttons.scss';
-@import '../styles/components/_cards.scss';
 @import '../styles/components/_dropdowns.scss';
 @import '../styles/components/_inputs.scss';
 @import '../styles/components/_lists.scss';
+
+@import '../styles/utilities/_cards.scss';
+@import '../styles/utilities/_groups.scss';
+@import '../styles/utilities/_helpers.scss';

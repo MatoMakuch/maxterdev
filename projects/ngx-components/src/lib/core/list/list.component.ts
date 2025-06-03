@@ -15,11 +15,12 @@ export class ListComponent {
   @Output() selectedItemsChange = new EventEmitter<any[]>();
   @Output() itemSelected = new EventEmitter<any>();
 
-  @Input() inputItemTemplate?: TemplateRef<any>;
-  @ContentChild(TemplateRef) contentItemTemplate?: TemplateRef<any>;
+  @Input() itemTemplate?: TemplateRef<any>;
 
-  get itemTemplate(): TemplateRef<any> | null {
-    return this.inputItemTemplate || this.contentItemTemplate || null;
+  @ContentChild('item', { read: TemplateRef }) itemContentChild?: TemplateRef<any>;
+
+  get item(): TemplateRef<any> | null {
+    return this.itemTemplate || this.itemContentChild || null;
   }
 
   activeItem: any = null;
@@ -40,6 +41,7 @@ export class ListComponent {
 
   selectItem(item: any): void {
     if (!this.isMultiSelect) {
+      this.selectedItems = [item];
       this.itemSelected.emit(item);
     }
   }

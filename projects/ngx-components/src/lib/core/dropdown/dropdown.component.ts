@@ -11,6 +11,7 @@ import { ListComponent } from '../list/list.component';
   styleUrls: ['./dropdown.component.scss'],
 })
 export class DropdownComponent {
+  @Input() variant: 'primary' | 'secondary' = 'primary';
   @Input() options: any[] = [];
   @Input() placeholder: string = 'Select an option';
   @Input() isMultiSelect: boolean = false;

@@ -20,28 +20,27 @@ export class InputComponent {
   @Input() autosizeDisabled: boolean = false;
   @Input() maxRows?: number;
 
-  @Input() inputContentTop?: TemplateRef<any>;
-  @Input() inputContentLeft?: TemplateRef<any>;
-  @Input() inputContentRight?: TemplateRef<any>;
-  @Input() inputContentBottom?: TemplateRef<any>;
+  @Input() contentTopTemplate?: TemplateRef<any>;
+  @Input() contentLeftTemplate?: TemplateRef<any>;
+  @Input() contentRightTemplate?: TemplateRef<any>;
+  @Input() contentBottomTemplate?: TemplateRef<any>;
 
-  @ContentChild('contentTop',    { read: TemplateRef }) contentTplTop?:    TemplateRef<any>;
-  @ContentChild('contentLeft',   { read: TemplateRef }) contentTplLeft?:   TemplateRef<any>;
-  @ContentChild('contentRight',  { read: TemplateRef }) contentTplRight?:  TemplateRef<any>;
-  @ContentChild('contentBottom', { read: TemplateRef }) contentTplBottom?: TemplateRef<any>;
+  @ContentChild('contentTop', { read: TemplateRef }) contentTopContentChild?: TemplateRef<any>;
+  @ContentChild('contentLeft', { read: TemplateRef }) contentLeftContentChild?: TemplateRef<any>;
+  @ContentChild('contentRight', { read: TemplateRef }) contentRightContentChild?: TemplateRef<any>;
+  @ContentChild('contentBottom', { read: TemplateRef }) contentBottomContentChild?: TemplateRef<any>;
 
-  // Pick whichever was provided
-  get contentTopTemplate(): TemplateRef<any> | null {
-    return this.inputContentTop || this.contentTplTop || null;
+  get contentTop(): TemplateRef<any> | null {
+    return this.contentTopTemplate || this.contentTopContentChild || null;
   }
-  get contentLeftTemplate(): TemplateRef<any> | null {
-    return this.inputContentLeft || this.contentTplLeft || null;
+  get contentLeft(): TemplateRef<any> | null {
+    return this.contentLeftTemplate || this.contentLeftContentChild || null;
   }
-  get contentRightTemplate(): TemplateRef<any> | null {
-    return this.inputContentRight || this.contentTplRight || null;
+  get contentRight(): TemplateRef<any> | null {
+    return this.contentRightTemplate || this.contentRightContentChild || null;
   }
-  get contentBottomTemplate(): TemplateRef<any> | null {
-    return this.inputContentBottom || this.contentTplBottom || null;
+  get contentBottom(): TemplateRef<any> | null {
+    return this.contentBottomTemplate || this.contentBottomContentChild || null;
   }
   
   protected onValueChange(): void {

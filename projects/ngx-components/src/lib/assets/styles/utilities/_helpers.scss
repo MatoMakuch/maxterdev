@@ -1,0 +1,46 @@
+@import '../base/components';
+
+.rounded {
+  border-radius: var(--border-radius-sm);
+}
+
+.rounded-left {
+  border-top-left-radius: var(--border-radius-sm);
+  border-bottom-left-radius: var(--border-radius-sm);
+}
+
+.rounded-right {
+  border-top-right-radius: var(--border-radius-sm);
+  border-bottom-right-radius: var(--border-radius-sm);
+}
+
+.rounded-top {
+  border-top-left-radius: var(--border-radius-sm);
+  border-top-right-radius: var(--border-radius-sm);
+}
+
+.rounded-bottom {
+  border-bottom-left-radius: var(--border-radius-sm);
+  border-bottom-right-radius: var(--border-radius-sm);
+}
+
+.rounded-top-left {
+  border-top-left-radius: var(--border-radius-sm);
+}
+
+.rounded-top-right {
+  border-top-right-radius: var(--border-radius-sm);
+}
+
+.rounded-bottom-left {
+  border-bottom-left-radius: var(--border-radius-sm);
+}
+
+.rounded-bottom-right {
+  border-bottom-right-radius: var(--border-radius-sm);
+}
+
+.border {
+  @include component-border-style();
+  border-color: var(--color-border-primary);
+}

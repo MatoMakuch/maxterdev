@@ -1,19 +1,19 @@
 <ul class="list">
   <li *ngFor="let item of items" 
       [ngClass]="{'selected': selectedItems.includes(item), 'active': activeItem === item}"
-      class="list-item"
+      class="item"
       (mousedown)="setActive(item)"
       (mouseup)="clearActive()"
       (mouseleave)="clearActive()">
-
-    <div *ngIf="selectedItems.includes(item)" 
-        [ngClass]="{'active': activeItem === item}"
-        class="list-item-indicator"></div>
     
     <!-- Multi-Select Mode -->
-    <div *ngIf="isMultiSelect; else singleSelect" class="list-item-content" 
+    <div *ngIf="isMultiSelect; else singleSelect" class="content" 
         (click)="$event.stopPropagation();"
         (mousedown)="$event.stopPropagation()">
+
+        <div *ngIf="selectedItems.includes(item)" class="indicator">
+        </div>
+
       <!-- <maxterdev-checkbox
         [checked]="selectedItems.includes(item)"
         (checkedChange)="toggleItem(item, $event)">
@@ -26,9 +26,13 @@
 
     <!-- Single-Select Mode -->
     <ng-template #singleSelect>
-      <div class="list-item-content" 
+      <div class="content" 
           (click)="selectItem(item)"
           (mousedown)="$event.stopPropagation()">
+
+        <div *ngIf="selectedItems.includes(item)" class="indicator">
+        </div>
+
         <ng-container *ngIf="itemTemplate; else defaultTemplate" 
                       [ngTemplateOutlet]="itemTemplate" 
                       [ngTemplateOutletContext]="{ $implicit: item }">

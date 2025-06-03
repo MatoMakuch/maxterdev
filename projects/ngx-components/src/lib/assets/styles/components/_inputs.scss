@@ -1,12 +1,12 @@
 @import '../base/components';
 @import '../base/inputs';
 
-.input {
+maxterdev-input {
   position: relative;
 
   @include component-base();
   @include component-height();
-  @include component-border();
+  @include component-border-style();
   @include component-font();
   
   @include input();
