@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ContentChild, ViewChild, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AutosizeDirective } from '../../directives/autosize.directive';
@@ -8,7 +8,7 @@ import { AutosizeDirective } from '../../directives/autosize.directive';
   standalone: true,
   imports: [CommonModule, FormsModule, AutosizeDirective],
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  styleUrls: [],
 })
 export class InputComponent {
   @Input() placeholder: string = 'Select an option';
@@ -41,6 +41,15 @@ export class InputComponent {
   }
   get contentBottom(): TemplateRef<any> | null {
     return this.contentBottomTemplate || this.contentBottomContentChild || null;
+  }
+
+  @ViewChild('autosizeDir') 
+  autosizeDirective?: AutosizeDirective;
+
+  public resetHeight() {
+    setTimeout(() => {
+      this.autosizeDirective?.forceReset();
+    }, 0);
   }
   
   protected onValueChange(): void {

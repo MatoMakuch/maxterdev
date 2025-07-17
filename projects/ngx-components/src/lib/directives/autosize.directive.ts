@@ -10,7 +10,8 @@ import {
 
 @Directive({
   selector: 'textarea[autosize]',
-  standalone: true
+  standalone: true,
+  exportAs: 'autosize'
 })
 export class AutosizeDirective implements AfterViewInit, OnDestroy {
   @Input() autosizeDisabled = false;
@@ -37,7 +38,7 @@ export class AutosizeDirective implements AfterViewInit, OnDestroy {
     this.resize();
   }
 
-  private resize(): void {
+  public resize(): void {
     if (this.autosizeDisabled) return;
 
     const textarea = this.elementRef.nativeElement;
@@ -57,6 +58,12 @@ export class AutosizeDirective implements AfterViewInit, OnDestroy {
     const newHeight = Math.min(contentHeight, maxHeight);
     textarea.style.height = `${newHeight}px`;
     textarea.style.overflowY = newHeight >= maxHeight ? 'auto' : 'hidden';
+  }
+
+  public forceReset(): void {
+    const textarea = this.elementRef.nativeElement;
+    textarea.style.height = 'auto';
+    textarea.style.overflowY = 'hidden';
   }
 
   private getLineHeight(computed: CSSStyleDeclaration): number {

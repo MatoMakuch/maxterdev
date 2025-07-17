@@ -1,18 +1,12 @@
-<ng-container *ngIf="contentTop;" 
-  [ngTemplateOutlet]="contentTop">
-</ng-container>
-
-<div class="horizontal-content">
-
-  <ng-container *ngIf="contentLeft;" 
-    [ngTemplateOutlet]="contentLeft">
-  </ng-container>
+<div class="content">
 
   <!-- Multiline -->
   <ng-container *ngIf="multiline;">
     <textarea 
+    rows="1"
       autosize 
       [autosizeDisabled]="autosizeDisabled"
+      #autosizeDir="autosize"
       [maxRows]="maxRows"
       [placeholder]="placeholder" 
       [(ngModel)]="value" 
@@ -27,15 +21,23 @@
     <input type="text" [placeholder]="placeholder" [(ngModel)]="value" (ngModelChange)="onValueChange()" />
   </ng-container>
 
-  <ng-container *ngIf="contentRight;" 
-    [ngTemplateOutlet]="contentRight">
-  </ng-container>
+  <div class="top" *ngIf="contentTop">
+    <ng-container [ngTemplateOutlet]="contentTop"></ng-container>
+  </div>
+
+  <div class="left" *ngIf="contentLeft">
+    <ng-container [ngTemplateOutlet]="contentLeft"></ng-container>
+  </div>
+
+  <div class="right" *ngIf="contentRight">
+    <ng-container [ngTemplateOutlet]="contentRight"></ng-container>
+  </div>
+
+  <div class="bottom" *ngIf="contentBottom">
+    <ng-container [ngTemplateOutlet]="contentBottom"></ng-container>
+  </div>
 
 </div>
-
-<ng-container *ngIf="contentBottom;" 
-  [ngTemplateOutlet]="contentBottom">
-</ng-container>
 
 <!-- Input line -->
 <div class="input-line"></div>

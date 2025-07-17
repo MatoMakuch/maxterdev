@@ -8,7 +8,7 @@ import { ListComponent } from '../list/list.component';
   standalone: true,
   imports: [CommonModule, ListComponent],
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss'],
+  styleUrls: [],
 })
 export class DropdownComponent {
   @Input() variant: 'primary' | 'secondary' = 'primary';
@@ -18,7 +18,7 @@ export class DropdownComponent {
   @Input() selectedOptions: any[] = [];
   @Output() selectedOptionsChange = new EventEmitter<any[]>();
 
-  isOpen = false;
+  protected isOpen = false;
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;
@@ -50,7 +50,7 @@ export class DropdownComponent {
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
-    if (!event.target || !(event.target as HTMLElement).closest('.dropdown')) {
+    if (!event.target || !(event.target as HTMLElement).closest('maxterdev-dropdown')) {
       this.isOpen = false;
     }
   }

@@ -7,21 +7,21 @@
   --color-primary: #0064FA;
   --color-primary-accent: #{lighten(#0064FA, 45%)};
   --color-secondary: #FEFEFE;
-  --color-surface: #FFFFFF;
-  --color-background: #FFFFFF;
-  --color-border-bottom-input: #ffffff;
+  --color-surface:	#f2f1f1;
+  --color-background: #ffffff;
+  --color-border-bottom-input: #dfdfdf;
   //--color-border-bottom-button: #d4d4d4;
 
-  --color-text: #252626;
-  --color-text-active: #5A5B5B;
-  --color-text-secondary: #5B5D5F;
+  --color-text: #202020;
+  --color-text-active: #202020;
+  --color-text-secondary: #525252;
 
   --color-hover-outline: #dfdfdf;
   --color-hover-background: #F4F7F9;
-  --color-border-primary: #dfdfdf;
+  --color-border-primary: #b9b9b9;
   --color-hover-fill: #3f3f3f;
-  --color-primary-hover: #{lighten(#0477BF, 5%)};
-  --color-primary-active: #{lighten(#0477BF, 10%)};
+  --color-primary-hover: #{lighten(#0064FA, 5%)};
+  --color-primary-active: #{lighten(#0064FA, 10%)};
   --color-secondary-hover: #F6F7F9;
   --color-secondary-active: #F6F7F9;
   --color-inactive: #d4d4d4;
@@ -51,16 +51,43 @@
   --color-button-secondary-border-bottom-inactive: #dfdfdf;
   --color-button-secondary-border-bottom-hover: #dfdfdf;
   --color-button-secondary-border-bottom-active: #dfdfdf;
-  --color-button-secondary-text-inactive: #1B1B1B;
-  --color-button-secondary-text-hover: #1A1A1B;
-  --color-button-secondary-text-active: #5E5E5F;
+  --color-button-secondary-text-inactive: #202020;
+  --color-button-secondary-text-hover: #3c3c3c;
+  --color-button-secondary-text-active: #202020;
 
-  --color-button-disabled-background-inactive: #F6F7F9;
-  --color-button-disabled-background-hover: #F6F7F9;
-  --color-button-disabled-background-active: #F6F7F9;
-  --color-button-disabled-border-inactive: #F6F7F9;
-  --color-button-disabled-border-hover: #F6F7F9;
-  --color-button-disabled-border-active: #F6F7F9;
+  --color-button-primary-text-background-inactive: transparent;
+  --color-button-primary-text-background-hover: transparent;
+  --color-button-primary-text-background-active: transparent;
+  --color-button-primary-text-border-inactive: transparent;
+  --color-button-primary-text-border-hover: transparent;
+  --color-button-primary-text-border-active: transparent;
+  --color-button-primary-text-border-bottom-inactive: transparent;
+  --color-button-primary-text-border-bottom-hover: transparent;
+  --color-button-primary-text-border-bottom-active: transparent;
+  --color-button-primary-text-text-inactive: #0064FA;
+  --color-button-primary-text-text-hover: #{lighten(#0064FA, 5%)};
+  --color-button-primary-text-text-active: #{lighten(#0064FA, 10%)};
+
+  --color-button-secondary-text-background-inactive: transparent;
+  --color-button-secondary-text-background-hover: transparent;
+  --color-button-secondary-text-background-active: transparent;
+  --color-button-secondary-text-background-disabled: transparent;
+  --color-button-secondary-text-border-inactive: transparent;
+  --color-button-secondary-text-border-hover: transparent;
+  --color-button-secondary-text-border-active: transparent;
+  --color-button-secondary-text-border-bottom-inactive: transparent;
+  --color-button-secondary-text-border-bottom-hover: transparent;
+  --color-button-secondary-text-border-bottom-active: transparent;
+  --color-button-secondary-text-text-inactive: #202020;
+  --color-button-secondary-text-text-hover: #474747;
+  --color-button-secondary-text-text-active: #656565;
+
+  --color-button-disabled-background-inactive: #F5F7FA;
+  --color-button-disabled-background-hover: #F5F7FA;
+  --color-button-disabled-background-active: #F5F7FA;
+  --color-button-disabled-border-inactive: #F5F7FA;
+  --color-button-disabled-border-hover: #F5F7FA;
+  --color-button-disabled-border-active: #F5F7FA;
   --color-button-disabled-border-bottom-inactive: #F6F7F9;
   --color-button-disabled-border-bottom-hover: #F6F7F9;
   --color-button-disabled-border-bottom-active: #F6F7F9;
@@ -68,33 +95,51 @@
   --color-button-disabled-text-hover: #5E5E5F;
   --color-button-disabled-text-active: #5E5E5F;
 
-  --color-button-text-background-inactive: transparent;
-  --color-button-text-background-hover: transparent;
-  --color-button-text-background-active: transparent;
-  --color-button-text-border-inactive: transparent;
-  --color-button-text-border-hover: transparent;
-  --color-button-text-border-active: transparent;
-  --color-button-text-border-bottom-inactive: transparent;
-  --color-button-text-border-bottom-hover: transparent;
-  --color-button-text-border-bottom-active: transparent;
-  --color-button-text-text-inactive: #1B1B1B;
-  --color-button-text-text-hover: #565657;
-  --color-button-text-text-active: #7e7e7e;
+  --color-selectable-button-unselected-background-inactive: transparent;
+  --color-selectable-button-unselected-background-hover: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-background-active: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-inactive: transparent;
+  --color-selectable-button-unselected-border-hover: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-active: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-bottom-inactive: transparent;
+  --color-selectable-button-unselected-border-bottom-hover: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-bottom-active: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-text-inactive: #202020;
+  --color-selectable-button-unselected-text-hover: #202020;
+  --color-selectable-button-unselected-text-active: #202020;
 
-  --color-input-background-inactive: #FFFFFF;
-  --color-input-background-inactive-hover: #FFFFFF;
-  --color-input-background-active: #FFFFFF;
-  --color-input-border-active: #0064FA;
+  --color-selectable-button-selected-background-inactive: #0064FA;
+  --color-selectable-button-selected-background-hover: #{lighten(#0064FA, 5%)};
+  --color-selectable-button-selected-background-active: #{lighten(#0064FA, 5%)};
+  --color-selectable-button-selected-border-inactive: #0064FA;
+  --color-selectable-button-selected-border-hover: #{lighten(#0064FA, 5%)};
+  --color-selectable-button-selected-border-active: #{lighten(#0064FA, 5%)};
+  --color-selectable-button-selected-border-bottom-inactive: #0064FA;
+  --color-selectable-button-selected-border-bottom-hover: #{lighten(#0064FA, 5%)};
+  --color-selectable-button-selected-border-bottom-active: #{lighten(#0064FA, 5%)};
+  --color-selectable-button-selected-text-inactive: #FFFFFF;
+  --color-selectable-button-selected-text-hover: #FFFFFF;
+  --color-selectable-button-selected-text-active: #FFFFFF;
+
+  --color-input-background-inactive: transparent;
+  --color-input-background-inactive-hover: #fbfcfd;
+  --color-input-background-active: transparent;
+  --color-input-border-active: #b9b9b9;
+  --color-input-border: #dfdfdf;
+  --color-input-border-hover: #dfdfdf;
   --color-input-line: #dfdfdf;
 
-  --color-list-item-hover: #EEF0F1;
-  --color-list-item-active: #F0F1F1;
+  // --color-list-item-hover: #EEF0F1;
+  // --color-list-item-active: #F0F1F1;
   --color-list-item-indicator: #0067C0;
 
-  --color-list-hover: #d4d4d4;
+  --color-card-response: rgba(255, 255, 255, 0);
+  --color-card-input: #e3eefd;
+  --color-card-border: transparent;
+
+  // --color-list-hover: #d4d4d4;
 
   --show-line: 0;
-
 
   // ======== Spacing ======== //
   --padding-sm: 0.2rem;
@@ -114,9 +159,9 @@
   --border-bottom-focus: 2.2px solid #0477BF;
 
   // ======== Typography ======== //
-  --font-size-sm: 0.9rem;
-  --font-size-md: 1.1rem;
-  --font-size-lg: 1.3rem;
+  --font-size-sm: 0.8rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
   --font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   --line-height-sm: 1;
   --line-height-md: 1.5;

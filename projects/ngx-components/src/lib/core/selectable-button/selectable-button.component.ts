@@ -2,23 +2,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'maxterdev-button',
+  selector: 'maxterdev-selectable-button',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './button.component.html',
+  templateUrl: './selectable-button.component.html',
   styleUrls: [],
 })
-export class ButtonComponent {
-  @Input() severity: 'primary' | 'secondary' = 'primary';
-  @Input() text: boolean = false;
+export class SelectableButtonComponent {
+  @Input() selected: boolean = false;
   @Input() disabled: boolean = false;
   @Output() onClick = new EventEmitter<any>();
 
   protected getClass() {
     if (!this.disabled) {
-      var cl = this.severity;
-      if (this.text) cl += ' text';
-      return cl;
+      if (this.selected) return 'selected';
+      else return 'unselected';
     }
     else return 'disabled';
   }

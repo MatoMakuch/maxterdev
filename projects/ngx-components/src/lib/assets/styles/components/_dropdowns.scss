@@ -1,7 +1,10 @@
 @import '../base/components';
 @import '../base/buttons';
 
-.dropdown {
+// Dropdown container and button styling
+maxterdev-dropdown {
+  display: block;
+
   position: relative;
 
   cursor: pointer;
@@ -9,17 +12,16 @@
   @include component-base();
   @include component-height();
   @include component-font();
-  @include component-border-radius();
 
   .button {
     @include component-base();
-    @include component-border();
+    @include component-border-style();
     @include component-padding();
-    @include component-border();
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: end;
     gap: 1rem;
   
     &.primary {
@@ -39,6 +41,8 @@
   }
   
   .menu {
+    display: block;
+
     position: absolute;
     left: -1.5px;
     top: calc(100% + .35rem);
@@ -54,9 +58,5 @@
     overflow-y: auto;
   
     z-index: 1000;
-  }
-
-  &.open .menu {
-    display: block;
   }
 }

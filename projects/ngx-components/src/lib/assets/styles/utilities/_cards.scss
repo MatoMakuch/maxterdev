@@ -1,11 +1,10 @@
 .card {
 	box-sizing: border-box;
   background-color: var(--color-background);
-  width: 100%;
+  width: fit-content;
   border-color: var(--color-border-primary);
-  @include component-font();
-  @include component-border();
-  @include component-padding();
+  @include component-font-text();
+  @include component-padding-text();
 
   .text {
     margin: 0;

@@ -1,7 +1,5 @@
-@import '../base/components';
-
 .rounded {
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-lg);
 }
 
 .rounded-left {
@@ -24,23 +22,28 @@
   border-bottom-right-radius: var(--border-radius-sm);
 }
 
-.rounded-top-left {
+.rounded-left-top {
   border-top-left-radius: var(--border-radius-sm);
 }
 
-.rounded-top-right {
-  border-top-right-radius: var(--border-radius-sm);
-}
-
-.rounded-bottom-left {
+.rounded-left-bottom {
   border-bottom-left-radius: var(--border-radius-sm);
 }
 
-.rounded-bottom-right {
+.rounded-right-top {
+  border-top-right-radius: var(--border-radius-sm);
+}
+
+.rounded-right-bottom {
   border-bottom-right-radius: var(--border-radius-sm);
 }
 
+.width-fit {
+  width: fit-content;
+}
+
 .border {
-  @include component-border-style();
+  border-style: solid;
+  border-width: var(--border-width-sm);
   border-color: var(--color-border-primary);
 }

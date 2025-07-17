@@ -1,12 +1,12 @@
 @mixin input() {
   background-color: var(--color-input-background-inactive);
 
-  border-color: var(--color-border-primary);
+  border-color: var(--color-input-border);
   border-bottom-color: var(--color-input-line);
 
   &:not(:focus-within):hover {
     background-color: var(--color-input-background-inactive-hover);
-    border-color: var(--color-hover-outline);
+    border-color: var(--color-input-border-hover);
     border-bottom-color: var(--color-input-line);
   }
 

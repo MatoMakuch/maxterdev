@@ -3,12 +3,21 @@
 
   margin: 0;
 
+  border-radius: inherit;
+  
+  font-size: inherit;
+
   outline: none;
 }
 
 @mixin component-padding() {
-  padding-inline: 0.6rem;
+  padding-inline: 0.55rem;
   padding-block: 0.45rem;
+}
+
+@mixin component-padding-text() {
+  padding-inline: 0.8rem;
+  padding-block: 0.55rem;
 }
 
 @mixin component-height() {
@@ -16,7 +25,7 @@
 }
 
 @mixin component-border-radius() {
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-md);
 }
 
 @mixin component-border-style() {
@@ -32,5 +41,11 @@
 @mixin component-font() {
   font-family: var(--font-family);
   font-size: var(--font-size-sm);
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin component-font-text() {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
   -webkit-font-smoothing: antialiased;
 }

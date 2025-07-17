@@ -1,0 +1,9 @@
+<button
+  class="button"
+  [ngClass]="getClass()"
+  (click)="onButtonClick()">
+  
+  <span class="text">
+    <ng-content>Click Me</ng-content>
+  </span>
+</button>

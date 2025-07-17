@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: []
 })
 export class ListComponent {
   @Input() items: any[] = [];
