@@ -2,8 +2,9 @@
 
   <!-- Multiline -->
   <ng-container *ngIf="multiline;">
-    <textarea 
-    rows="1"
+    <textarea
+      [name]="name" 
+      rows="1"
       autosize 
       [autosizeDisabled]="autosizeDisabled"
       #autosizeDir="autosize"
@@ -18,7 +19,12 @@
 
   <!-- Singleline -->
   <ng-container *ngIf="!multiline;">
-    <input type="text" [placeholder]="placeholder" [(ngModel)]="value" (ngModelChange)="onValueChange()" />
+    <input 
+      [type]="type"
+      [name]="name"
+      [placeholder]="placeholder"
+      [(ngModel)]="value"
+      (ngModelChange)="onValueChange()" />
   </ng-container>
 
   <div class="top" *ngIf="contentTop">

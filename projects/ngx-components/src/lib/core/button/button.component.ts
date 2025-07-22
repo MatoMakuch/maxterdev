@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: [],
 })
 export class ButtonComponent {
+  @Input() type: string = "";
+  @Input() name: string = "";
   @Input() severity: 'primary' | 'secondary' = 'primary';
   @Input() text: boolean = false;
   @Input() disabled: boolean = false;

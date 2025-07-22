@@ -11,6 +11,8 @@ import { AutosizeDirective } from '../../directives/autosize.directive';
   styleUrls: [],
 })
 export class InputComponent {
+  @Input() type: string = "";
+  @Input() name: string = "";
   @Input() placeholder: string = 'Select an option';
   @Input() multiline: boolean = false;
 
