@@ -1,0 +1,13 @@
+<div class="popup-overlay" *ngIf="isOpen">
+  <div class="popup-container">
+    <div class="popup-header">
+      <ng-content select="[header]"></ng-content>
+    </div>
+    <div class="popup-body">
+      <ng-content select="[body]"></ng-content>
+    </div>
+    <div class="popup-footer">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

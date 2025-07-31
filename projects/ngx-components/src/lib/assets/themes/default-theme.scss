@@ -18,7 +18,7 @@
 
   --color-hover-outline: #dfdfdf;
   --color-hover-background: #F4F7F9;
-  --color-border-primary: #b9b9b9;
+  --color-border-primary: #dfdfdf;
   --color-hover-fill: #3f3f3f;
   --color-primary-hover: #{lighten(#0064FA, 5%)};
   --color-primary-active: #{lighten(#0064FA, 10%)};
@@ -177,6 +177,7 @@
 @import '../styles/components/_dropdowns.scss';
 @import '../styles/components/_inputs.scss';
 @import '../styles/components/_lists.scss';
+@import '../styles/components/_popups.scss';
 
 @import '../styles/utilities/_cards.scss';
 @import '../styles/utilities/_groups.scss';

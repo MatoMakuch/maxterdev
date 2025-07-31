@@ -14,6 +14,7 @@ export class ButtonComponent {
   @Input() severity: 'primary' | 'secondary' = 'primary';
   @Input() text: boolean = false;
   @Input() disabled: boolean = false;
+  @Input() textAlign: 'left' | 'center' | 'right' = 'center';
   @Output() onClick = new EventEmitter<any>();
 
   protected getClass() {

@@ -1,0 +1,61 @@
+@import '../base/components';
+
+maxterdev-popup {
+  display: block;
+
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000; 
+    background-color: rgba(0, 0, 0, 0.3); 
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .popup-container {
+    @include component-base(); 
+    @include component-border();
+    @include component-padding();
+    @include component-font-text();
+
+    border-color: var(--color-border-primary);
+    background-color: var(--color-background); 
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -2px rgba(0,0,0,0.1);
+    
+    display: flex;
+    flex-direction: column;
+  }
+
+  .popup-header,
+  .popup-body,
+  .popup-footer {
+    width: 100%;
+  }
+
+  .popup-header {
+    @include component-base();
+    padding: var(--padding-md); 
+  }
+  
+  .popup-body {
+    @include component-base();
+    @include component-font();
+    padding: var(--padding-md); 
+  }
+
+  .popup-footer {
+    @include component-base();
+    gap: 0.5rem;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    padding: var(--padding-md); 
+    justify-content: flex-end;
+  }
+}
