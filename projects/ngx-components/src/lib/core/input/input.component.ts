@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ContentChild, ViewChild, TemplateRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ContentChild, ViewChild, TemplateRef, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AutosizeDirective } from '../../directives/autosize.directive';
@@ -15,6 +15,12 @@ export class InputComponent {
   @Input() name: string = "";
   @Input() placeholder: string = 'Select an option';
   @Input() multiline: boolean = false;
+  @Input() fontSize: 'sm' | 'md' = 'md';
+
+  @HostBinding('class')
+  get fontSizeClass(): string {
+    return `font-size-${this.fontSize}`;
+  }
 
   @Input() value: string = '';
   @Output() valueChange = new EventEmitter<string>();

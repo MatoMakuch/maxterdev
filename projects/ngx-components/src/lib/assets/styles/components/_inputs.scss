@@ -11,8 +11,15 @@ maxterdev-input {
   @include component-base();
   @include component-height();
   @include component-border-style();
-  @include component-font-text();
   @include input();
+
+  &.font-size-sm {
+    @include component-font();
+  }
+
+  &.font-size-md {
+    @include component-font-text();
+  }
 
   .content {
     display: grid;
