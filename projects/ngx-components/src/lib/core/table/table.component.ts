@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ColumnComponent } from './column.component';
 import { ColumnHeaderTemplateDirective, ColumnBodyTemplateDirective } from '../../directives/table-column.directive';
 
-export type ComponentSize = 'sm' | 'md' | 'lg';
 export type Row = Record<string, unknown>;
 
 @Component({
@@ -20,7 +19,7 @@ export type Row = Record<string, unknown>;
 })
 export class TableComponent<T extends Row = Row> {
   @Input() data: ReadonlyArray<T> = [];
-  @Input() size: ComponentSize = 'md';
+  @Input() size: 'sm' | 'md' | 'lg' = 'md';
   @Input() caption?: string;
   @Input() noDataText = 'No data';
   @Input() trackBy: (index: number, item: T) => unknown = (_, item) => item;

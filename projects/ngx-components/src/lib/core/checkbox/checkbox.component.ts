@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 let nextId = 0;
 
-export type ComponentSize = 'sm' | 'md' | 'lg';
-
 @Component({
   selector: 'maxterdev-checkbox',
   standalone: true,
@@ -18,7 +16,7 @@ export class CheckboxComponent {
   @Input() label: string = '';
   @Input() disabled: boolean = false;
   @Input() checked: boolean = false;
-  @Input() size: ComponentSize = 'md';
+  @Input() size: 'sm' | 'md' | 'lg' = 'md';
 
   private _indeterminate = false;
 

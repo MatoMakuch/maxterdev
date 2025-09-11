@@ -9,8 +9,6 @@ import {
 } from '@angular/forms';
 import { AutosizeDirective } from '../../directives/autosize.directive';
 
-export type FontSize = 'sm' | 'md';
-
 @Component({
   selector: 'maxterdev-input',
   standalone: true,
@@ -35,7 +33,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() required = false;
 
   // ---- UX extras ----
-  @Input() fontSize: FontSize = 'md';
+  @Input() fontSize: 'sm' | 'md' = 'md';
   @Input() autocomplete?: string;
   @Input() inputMode?: string;
   @Input() enterKeyHint?: string;

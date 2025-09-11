@@ -8,8 +8,6 @@ import { ColumnComponent } from '../table/column.component';
 import { ColumnBodyTemplateDirective, ColumnHeaderTemplateDirective } from '../../directives/table-column.directive';
 import { TreeNode } from './tree-node.interface';
 
-export type ComponentSize = 'sm' | 'md' | 'lg';
-
 // Per-node runtime state (kept out of input data)
 type NodeMeta = {
   level: number;
@@ -36,7 +34,7 @@ type NodeMeta = {
 export class TreeTableComponent implements OnChanges {
   @Input() data: ReadonlyArray<TreeNode> = [];
   @Input() isMultiSelect = false;
-  @Input() size: ComponentSize = 'md';
+  @Input() size: 'sm' | 'md' | 'lg' = 'md';
   @Output() selectionChange = new EventEmitter<ReadonlyArray<TreeNode>>();
 
   @ContentChildren(ColumnComponent, { descendants: true }) columns!: QueryList<ColumnComponent>;
