@@ -14,11 +14,12 @@
 
   --color-text: #202020;
   --color-text-active: #202020;
-  --color-text-secondary: #525252;
+  --color-text-secondary: #707070;
 
   --color-hover-outline: #dfdfdf;
   --color-hover-background: #F4F7F9;
   --color-border-primary: #dfdfdf;
+  --color-border-active: #b8b8b8;
   --color-hover-fill: #3f3f3f;
   --color-primary-hover: #{lighten(#0064FA, 5%)};
   --color-primary-active: #{lighten(#0064FA, 10%)};
@@ -96,30 +97,30 @@
   --color-button-disabled-text-active: #5E5E5F;
 
   --color-selectable-button-unselected-background-inactive: transparent;
-  --color-selectable-button-unselected-background-hover: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-background-hover: transparent;
   --color-selectable-button-unselected-background-active: rgba(211, 211, 211, 0.2);
   --color-selectable-button-unselected-border-inactive: transparent;
-  --color-selectable-button-unselected-border-hover: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-hover: transparent;
   --color-selectable-button-unselected-border-active: rgba(211, 211, 211, 0.2);
   --color-selectable-button-unselected-border-bottom-inactive: transparent;
-  --color-selectable-button-unselected-border-bottom-hover: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-bottom-hover: transparent;
   --color-selectable-button-unselected-border-bottom-active: rgba(211, 211, 211, 0.2);
   --color-selectable-button-unselected-text-inactive: #202020;
-  --color-selectable-button-unselected-text-hover: #202020;
+  --color-selectable-button-unselected-text-hover: #555555;
   --color-selectable-button-unselected-text-active: #202020;
 
-  --color-selectable-button-selected-background-inactive: #0064FA;
-  --color-selectable-button-selected-background-hover: #{lighten(#0064FA, 5%)};
-  --color-selectable-button-selected-background-active: #{lighten(#0064FA, 5%)};
-  --color-selectable-button-selected-border-inactive: #0064FA;
-  --color-selectable-button-selected-border-hover: #{lighten(#0064FA, 5%)};
-  --color-selectable-button-selected-border-active: #{lighten(#0064FA, 5%)};
-  --color-selectable-button-selected-border-bottom-inactive: #0064FA;
-  --color-selectable-button-selected-border-bottom-hover: #{lighten(#0064FA, 5%)};
-  --color-selectable-button-selected-border-bottom-active: #{lighten(#0064FA, 5%)};
-  --color-selectable-button-selected-text-inactive: #FFFFFF;
-  --color-selectable-button-selected-text-hover: #FFFFFF;
-  --color-selectable-button-selected-text-active: #FFFFFF;
+  --color-selectable-button-selected-background-inactive: #DADADA;
+  --color-selectable-button-selected-background-hover: #e0e0e0;
+  --color-selectable-button-selected-background-active: #DADADA;
+  --color-selectable-button-selected-border-inactive: #DADADA;
+  --color-selectable-button-selected-border-hover: transparent;
+  --color-selectable-button-selected-border-active: #DADADA;
+  --color-selectable-button-selected-border-bottom-inactive: #DADADA;
+  --color-selectable-button-selected-border-bottom-hover: transparent;
+  --color-selectable-button-selected-border-bottom-active: #DADADA;
+  --color-selectable-button-selected-text-inactive: #202020;
+  --color-selectable-button-selected-text-hover: #202020;
+  --color-selectable-button-selected-text-active: #202020;
 
   --color-input-background-inactive: transparent;
   --color-input-background-inactive-hover: #fbfcfd;
@@ -178,7 +179,27 @@
 @import '../styles/components/_inputs.scss';
 @import '../styles/components/_lists.scss';
 @import '../styles/components/_popups.scss';
+@import '../styles/components/tabs';
+@import '../styles/components/tab';
+@import '../styles/components/checkboxes';
+@import '../styles/components/tables';
+@import '../styles/components/trees';
+@import '../styles/components/menus';
+@import '../styles/components/progress-bars';
 
 @import '../styles/utilities/_cards.scss';
 @import '../styles/utilities/_groups.scss';
 @import '../styles/utilities/_helpers.scss';
+
+@import '@angular/cdk/overlay-prebuilt.css';
+
+.cdk-overlay-container {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 999999 !important;
+}
+.cdk-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+}

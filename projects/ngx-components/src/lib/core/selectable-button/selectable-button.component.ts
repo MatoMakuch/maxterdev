@@ -12,6 +12,7 @@ export class SelectableButtonComponent {
   @Input() selected: boolean = false;
   @Input() disabled: boolean = false;
   @Output() onClick = new EventEmitter<any>();
+  @Input() textAlign: 'left' | 'center' | 'right' = 'center';
 
   protected getClass() {
     if (!this.disabled) {

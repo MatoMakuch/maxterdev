@@ -1,0 +1,41 @@
+<div class="table-container">
+  <table class="table-element">
+    <caption *ngIf="caption">{{ caption }}</caption>
+
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns" scope="col">
+          <ng-container *ngIf="col.headerTemplate; else defaultHeader">
+            <ng-container [ngTemplateOutlet]="col.headerTemplate"></ng-container>
+          </ng-container>
+          <ng-template #defaultHeader>{{ col.header }}</ng-template>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody *ngIf="data?.length; else noData">
+      <tr *ngFor="let row of data; index as rowIndex; trackBy: trackBy">
+        <td *ngFor="let col of columns; index as colIndex">
+          <div class="cell-content-wrapper">
+            <ng-container *ngIf="col.bodyTemplate; else defaultCell"
+              [ngTemplateOutlet]="col.bodyTemplate"
+              [ngTemplateOutletContext]="{ $implicit: row, column: col, rowIndex: rowIndex, colIndex: colIndex }">
+            </ng-container>
+
+            <ng-template #defaultCell>
+              {{ $any(row)[col.field] }}
+            </ng-template>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+
+    <ng-template #noData>
+      <tbody>
+        <tr>
+          <td [attr.colspan]="columns?.length || 1">{{ noDataText }}</td>
+        </tr>
+      </tbody>
+    </ng-template>
+  </table>
+</div>

@@ -15,14 +15,14 @@ maxterdev-dropdown {
 
   .button {
     @include component-base();
-    @include component-border-style();
+    @include component-border();
     @include component-padding();
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: end;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.5rem;
   
     &.primary {
       @include button(primary);
@@ -38,25 +38,43 @@ maxterdev-dropdown {
       display: flex;
       align-items: center;
     }
-  }
-  
-  .menu {
-    display: block;
 
-    position: absolute;
-    left: -1.5px;
-    top: calc(100% + .35rem);
-    width: calc(100% + 3px);
-  
-    @include component-base();
-    @include component-border();
-    border-radius: 0.45rem;
-  
-    background-color: var(--color-button-secondary-background-inactive);
-    border-color: var(--color-button-secondary-border-inactive);
-  
-    overflow-y: auto;
-  
-    z-index: 1000;
+    .placeholder, .selected {
+      // Ensure text doesn't overflow the button
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
+
+  &[ng-reflect-is-open="true"] .menu, 
+  .menu:hover { 
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+  
+.dropdown-menu-panel {
+  display: block;
+
+  //position: absolute;
+  //left: -1.5px;
+  //top: calc(100% + .35rem);
+  width: 180px;
+  z-index: 2000;
+  padding: 0.5rem;
+
+  @include component-base();
+  @include component-border();
+  //border-radius: 0.45rem;
+
+  background-color: var(--color-button-secondary-background-inactive);
+  border-color: var(--color-button-secondary-border-inactive);
+
+  overflow-y: auto;
+
+  z-index: 21000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

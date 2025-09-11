@@ -1,10 +1,11 @@
-import { Component, ContentChild, Input, TemplateRef, Output, EventEmitter } from '@angular/core';
+import { Component, ContentChild, Input, TemplateRef, Output, EventEmitter, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 
 @Component({
   selector: 'maxterdev-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CheckboxComponent],
   templateUrl: './list.component.html',
   styleUrls: []
 })
@@ -12,10 +13,15 @@ export class ListComponent {
   @Input() items: any[] = [];
   @Input() isMultiSelect: boolean = false;
   @Input() selectedItems: any[] = [];
+  @Input() size: 'md' | 'sm' = 'md';
   @Output() selectedItemsChange = new EventEmitter<any[]>();
   @Output() itemSelected = new EventEmitter<any>();
 
   @Input() itemTemplate?: TemplateRef<any>;
+  
+  @HostBinding('class') get sizeClass() {
+    return this.size;
+  }
 
   @ContentChild('item', { read: TemplateRef }) itemContentChild?: TemplateRef<any>;
 

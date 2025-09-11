@@ -3,7 +3,9 @@
   [ngClass]="getClass()"
   (click)="onButtonClick()">
   
-  <span class="text">
-    <ng-content>Click Me</ng-content>
+  <span 
+    class="text" 
+    [style.justify-content]="textAlign === 'left' ? 'flex-start' : (textAlign === 'right' ? 'flex-end' : 'center')">
+    <ng-content>Click me</ng-content>
   </span>
 </button>

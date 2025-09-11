@@ -1,0 +1,25 @@
+@import '../base/components'; // Assuming this is the correct path
+
+// The main container for the entire tabs component
+maxterdev-tabs {
+  display: block;
+  @include component-base(); 
+}
+
+// Container for the clickable tab headers
+.tab-headers {
+  display: flex;
+  flex-direction: row;
+  border-bottom: var(--border-width-sm) solid var(--border-color, #ccc); // Use CSS variables for colors if you have them
+}
+
+.tab-header {
+  cursor: pointer;
+  position: relative;
+  bottom: calc(-1 * var(--border-width-sm));
+}
+
+.tab-content {
+  @include component-base();
+  padding: 1rem;
+}

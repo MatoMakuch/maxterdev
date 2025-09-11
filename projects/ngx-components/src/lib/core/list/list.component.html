@@ -11,17 +11,18 @@
         (click)="$event.stopPropagation();"
         (mousedown)="$event.stopPropagation()">
 
-        <div *ngIf="selectedItems.includes(item)" class="indicator">
-        </div>
+        <div class="indicator"></div>
 
-      <!-- <maxterdev-checkbox
+      <maxterdev-checkbox
+        class="checkbox"
+        size="sm"
         [checked]="selectedItems.includes(item)"
         (checkedChange)="toggleItem(item, $event)">
       </maxterdev-checkbox>
       <ng-container *ngIf="itemTemplate; else defaultTemplate" 
                     [ngTemplateOutlet]="itemTemplate" 
                     [ngTemplateOutletContext]="{ $implicit: item }">
-      </ng-container> -->
+      </ng-container>
     </div>
 
     <!-- Single-Select Mode -->
@@ -30,8 +31,7 @@
           (click)="selectItem(item)"
           (mousedown)="$event.stopPropagation()">
 
-        <div *ngIf="selectedItems.includes(item)" class="indicator">
-        </div>
+        <div class="indicator"></div>
 
         <ng-container *ngIf="itemTemplate; else defaultTemplate" 
                       [ngTemplateOutlet]="itemTemplate" 

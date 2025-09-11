@@ -1,0 +1,44 @@
+@import '../base/components'; // Adjust path if needed
+
+.menu-trigger-wrapper {
+  display: inline-block;
+	position: relative;
+}
+
+.menu-panel {
+	@include component-base;
+	@include component-font;
+  position: absolute;
+  top: calc(100% + var(--margin-sm)); 
+  left: 0;
+  z-index: 1000; 
+
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-md);
+  border: var(--border-width-sm) solid var(--color-border-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding-top: var(--padding-sm);
+  padding-bottom: var(--padding-sm);
+  min-width: 120px; 
+
+  opacity: 0;
+  transform: scale(0.95) translateY(-10px);
+  visibility: hidden;
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out, visibility 0.15s;
+
+  &.open {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    visibility: visible;
+  }
+}
+
+.menu-item {
+  maxterdev-button {
+    width: 100%; 
+
+    .button .text {
+      justify-content: flex-start;
+    }
+}
+}

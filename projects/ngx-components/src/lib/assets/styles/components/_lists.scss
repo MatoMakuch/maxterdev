@@ -2,7 +2,6 @@
 
 maxterdev-list {
   display: block;
-
   position: relative;
 
   .list {
@@ -11,30 +10,53 @@ maxterdev-list {
 
     @include component-base();
 
-    padding: 0.35rem;
-    gap: 0.35rem;
     margin: 0;
-
+    padding: 0;               /* ✅ remove default UL padding */
+    list-style: none;
+    gap: 0.1rem;
     border-radius: 0.45rem;
-
-    list-style-type: none;
 
     .item {
       @include component-base();
-      @include component-height();
       @include component-border-radius();
-      border-width: 0;
       @include component-font();
 
       display: flex;
-      flex-direction: row;
-      
+      align-items: center;
+      border-width: 0;
       cursor: pointer;
 
+      /* Base colors */
       background-color: var(--color-button-secondary-background-inactive);
       border-color: var(--color-button-secondary-background-inactive);
       color: var(--color-button-secondary-text-inactive);
-      
+
+      .indicator {
+        width: 4px;
+        height: var(--font-size-lg);
+        background-color: var(--color-primary);
+        border-radius: 2px;
+        opacity: 0;                     /* visible when selected/hovered if you want */
+        //margin-left: var(--padding-sm); /* small inset from the left edge */
+        margin-right: 0.5rem;
+        transition: opacity 0.12s ease-in-out;
+        flex: 0 0 auto;
+      }
+
+      .content {
+        @include component-padding();
+        display: flex;
+        align-items: center;
+        flex: 1 1 auto;
+        min-width: 0; /* allow text ellipsis if needed */
+      }
+
+      .checkbox {
+        margin-right: var(--margin-md);
+        flex: 0 0 auto;
+      }
+
+      /* States */
       &:hover {
         background-color: var(--color-button-secondary-background-hover);
         border-color: var(--color-button-secondary-background-hover);
@@ -45,40 +67,39 @@ maxterdev-list {
         background-color: var(--color-button-secondary-background-active);
         border-color: var(--color-button-secondary-background-active);
         color: var(--color-button-secondary-text-active);
-
-        .indicator{
-          top: 0.2rem;
-          height: var(--font-size-sm);
-          transition: all 0.2s ease-in-out;
-        }
       }
-      
+
       &.selected {
         background-color: var(--color-button-secondary-background-hover);
         border-color: var(--color-button-secondary-background-hover);
+
+        .indicator {
+          opacity: 1; /* ✅ show indicator when selected */
+        }
       }
 
-      .indicator {
-        position: relative;
-        top: 0;
-        left: calc(0rem - var(--padding-lg));
-        width: 4px;
-        height: var(--font-size-lg);
-        background-color: var(--color-primary);
-        border-radius: 2px;
+      /* Keyboard focus */
+      &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
       }
+    }
 
-      .content {
-        @include component-padding();
-        
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        flex: 1;
-      }
-      
-      .checkbox {
-        margin-right: var(--margin-md);
+    /* Size variant: small */
+    &.sm {
+      .item {
+        font-size: var(--font-size-sm);
+
+        .content {
+          /* slightly tighter padding for compact density */
+          padding: var(--padding-sm);
+        }
+
+        .indicator {
+          height: var(--font-size-md);
+          margin-left: var(--padding-xs);
+          margin-right: var(--margin-sm);
+        }
       }
     }
   }

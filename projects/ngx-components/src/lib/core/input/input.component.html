@@ -1,49 +1,76 @@
-<div class="content">
+<div class="content" [attr.aria-disabled]="disabled || null">
+  <div class="top" *ngIf="topTpl">
+    <ng-container
+      [ngTemplateOutlet]="topTpl"
+      [ngTemplateOutletContext]="{ value: value }">
+    </ng-container>
+  </div>
 
-  <!-- Multiline -->
-  <ng-container *ngIf="multiline;">
+  <div class="left" *ngIf="leftTpl">
+    <ng-container
+      [ngTemplateOutlet]="leftTpl"
+      [ngTemplateOutletContext]="{ value: value }">
+    </ng-container>
+  </div>
+
+  <ng-container *ngIf="multiline; else singleline">
     <textarea
-      [name]="name" 
+      #textareaEl
+      [attr.id]="id ?? null"
+      [attr.name]="name ?? null"
+      [attr.placeholder]="placeholder ?? null"
+      [readonly]="readonly"
+      [required]="required"
+      [disabled]="disabled"
+      [attr.aria-invalid]="required ? (value.length ? null : true) : null"
+      [attr.aria-describedby]="describedBy ?? null"
       rows="1"
-      autosize 
+      autosize
       [autosizeDisabled]="autosizeDisabled"
       #autosizeDir="autosize"
       [maxRows]="maxRows"
-      [placeholder]="placeholder" 
-      [(ngModel)]="value" 
-      (ngModelChange)="onValueChange()"
+      [ngModel]="value"
+      (ngModelChange)="value = $event"
+      (blur)="handleBlur()"
       [style.height]="autosizeDisabled ? 'unset' : null"
       [style.overflow-y]="autosizeDisabled ? 'auto' : null">
     </textarea>
   </ng-container>
 
-  <!-- Singleline -->
-  <ng-container *ngIf="!multiline;">
-    <input 
-      [type]="type"
-      [name]="name"
-      [placeholder]="placeholder"
-      [(ngModel)]="value"
-      (ngModelChange)="onValueChange()" />
-  </ng-container>
+  <ng-template #singleline>
+    <input
+      #inputEl
+      [attr.id]="id ?? null"
+      [attr.name]="name ?? null"
+      [attr.type]="type || 'text'"
+      [attr.placeholder]="placeholder ?? null"
+      [readonly]="readonly"
+      [required]="required"
+      [disabled]="disabled"
+      [attr.autocomplete]="autocomplete ?? null"
+      [attr.inputmode]="inputMode ?? null"
+      [attr.enterkeyhint]="enterKeyHint ?? null"
+      [attr.maxlength]="maxlength ?? null"
+      [attr.minlength]="minlength ?? null"
+      [attr.pattern]="pattern ?? null"
+      [attr.aria-describedby]="describedBy ?? null"
+      [ngModel]="value"
+      (ngModelChange)="value = $event"/>
+  </ng-template>
 
-  <div class="top" *ngIf="contentTop">
-    <ng-container [ngTemplateOutlet]="contentTop"></ng-container>
+  <div class="right" *ngIf="rightTpl">
+    <ng-container
+      [ngTemplateOutlet]="rightTpl"
+      [ngTemplateOutletContext]="{ value: value }">
+    </ng-container>
   </div>
 
-  <div class="left" *ngIf="contentLeft">
-    <ng-container [ngTemplateOutlet]="contentLeft"></ng-container>
+  <div class="bottom" *ngIf="bottomTpl">
+    <ng-container
+      [ngTemplateOutlet]="bottomTpl"
+      [ngTemplateOutletContext]="{ value: value }">
+    </ng-container>
   </div>
-
-  <div class="right" *ngIf="contentRight">
-    <ng-container [ngTemplateOutlet]="contentRight"></ng-container>
-  </div>
-
-  <div class="bottom" *ngIf="contentBottom">
-    <ng-container [ngTemplateOutlet]="contentBottom"></ng-container>
-  </div>
-
 </div>
 
-<!-- Input line -->
 <div class="input-line"></div>

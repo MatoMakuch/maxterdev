@@ -1,0 +1,42 @@
+// _progress-bar.scss
+@import '../base/components';
+
+maxterdev-progress-bar {
+  display: block;
+  width: 100%;
+
+  // Apply base component styles to the host element
+  @include component-base();
+  //@include component-height();
+  @include component-font();
+
+  .progress-bar-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 8px; // Space between bar and text
+  }
+
+  .progress-track {
+    flex-grow: 1; // Allows the track to fill available space
+    height: 10px; // Or use a variable, e.g., $progress-bar-height
+    border-radius: 999px;
+    background-color: var(--color-surface); // Replace with your theme's neutral color variable
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background-color: #111; // Replace with your theme's primary color variable
+    //transition: width 160ms ease-out;
+  }
+
+  .value {
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-primary); // Replace with your theme's secondary text color variable
+    white-space: nowrap;
+  }
+}

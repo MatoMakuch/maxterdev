@@ -21,15 +21,17 @@ maxterdev-popup {
   .popup-container {
     @include component-base(); 
     @include component-border();
-    @include component-padding();
     @include component-font-text();
 
     border-color: var(--color-border-primary);
-    background-color: var(--color-background); 
+    background-color: var(--color-background);
+    padding-inline: 0.55rem; 
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -2px rgba(0,0,0,0.1);
     
     display: flex;
     flex-direction: column;
+
+    --popup-inset-inline: 0.55rem;
   }
 
   .popup-header,
@@ -40,14 +42,30 @@ maxterdev-popup {
 
   .popup-header {
     @include component-base();
-    padding: var(--padding-md); 
+    padding-bottom: var(--padding-lg); 
+    padding-top: var(--padding-lg); 
+    padding-left: var(--padding-md); 
+    padding-right: var(--padding-md); 
   }
   
   .popup-body {
     @include component-base();
     @include component-font();
     padding: var(--padding-md); 
+    position: relative;
   }
+
+  .popup-header + .popup-body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(-1 * var(--popup-inset-inline));
+    right: calc(-1 * var(--popup-inset-inline));
+    height: 1px;
+    background: var(--color-input-border);
+    pointer-events: none;
+  }
+
 
   .popup-footer {
     @include component-base();
@@ -55,7 +73,10 @@ maxterdev-popup {
     display: flex;
     width: 100%;
     flex-direction: row;
-    padding: var(--padding-md); 
+    padding-bottom: var(--padding-lg); 
+    padding-top: var(--padding-lg); 
+    padding-left: var(--padding-md); 
+    padding-right: var(--padding-md); 
     justify-content: flex-end;
   }
 }

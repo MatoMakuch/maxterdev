@@ -1,66 +1,125 @@
-import { Component, Input, Output, EventEmitter, ContentChild, ViewChild, TemplateRef, HostBinding } from '@angular/core';
+import {
+  Component, Input, Output, EventEmitter, ContentChild, TemplateRef,
+  ViewChild, ElementRef, HostBinding, ChangeDetectionStrategy,
+  forwardRef
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {
+  ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule
+} from '@angular/forms';
 import { AutosizeDirective } from '../../directives/autosize.directive';
+
+export type FontSize = 'sm' | 'md';
 
 @Component({
   selector: 'maxterdev-input',
   standalone: true,
   imports: [CommonModule, FormsModule, AutosizeDirective],
   templateUrl: './input.component.html',
-  styleUrls: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => InputComponent),
+    multi: true
+  }]
 })
-export class InputComponent {
-  @Input() type: string = "";
-  @Input() name: string = "";
-  @Input() placeholder: string = 'Select an option';
-  @Input() multiline: boolean = false;
-  @Input() fontSize: 'sm' | 'md' = 'md';
+export class InputComponent implements ControlValueAccessor {
+  // ---- Core API ----
+  @Input() multiline = false;
+  @Input() type: string = 'text';
+  @Input() name = '';
+  @Input() id?: string;
+  @Input() placeholder = '';
+  @Input() disabled = false;
+  @Input() readonly = false;
+  @Input() required = false;
 
-  @HostBinding('class')
-  get fontSizeClass(): string {
-    return `font-size-${this.fontSize}`;
+  // ---- UX extras ----
+  @Input() fontSize: FontSize = 'md';
+  @Input() autocomplete?: string;
+  @Input() inputMode?: string;
+  @Input() enterKeyHint?: string;
+  @Input() maxlength?: number;
+  @Input() minlength?: number;
+  @Input() pattern?: string;
+  @Input() label?: string;
+  @Input() describedBy?: string;
+
+  // ---- Autosize ----
+  @Input() autosizeDisabled = false;
+  @Input() maxRows?: number;
+  @ViewChild('autosizeDir') autosizeDirective?: AutosizeDirective;
+
+  // ---- Projected templates ----
+  @ContentChild('contentTop', { read: TemplateRef }) topTpl?: TemplateRef<unknown>;
+  @ContentChild('contentLeft', { read: TemplateRef }) leftTpl?: TemplateRef<unknown>;
+  @ContentChild('contentRight', { read: TemplateRef }) rightTpl?: TemplateRef<unknown>;
+  @ContentChild('contentBottom', { read: TemplateRef }) bottomTpl?: TemplateRef<unknown>;
+
+  // ---- DOM Refs ----
+  @ViewChild('inputEl') inputEl?: ElementRef<HTMLInputElement>;
+  @ViewChild('textareaEl') textareaEl?: ElementRef<HTMLTextAreaElement>;
+
+  // ---- Host classes ----
+  @HostBinding('class.maxterdev-input') base = true;
+  @HostBinding('class.font-size-sm') get isSm() { return this.fontSize === 'sm'; }
+  @HostBinding('class.font-size-md') get isMd() { return this.fontSize === 'md'; }
+
+  // ---- CVA + [(value)] Support ----
+  private _value = '';
+  private writing = false;
+
+  @Input()
+  get value(): string {
+    return this._value;
+  }
+  set value(v: string) {
+    if (v !== this._value) {
+      this._value = v ?? '';
+      this.onChange(this._value);
+      if (!this.writing) {
+        this.valueChange.emit(this._value);
+      }
+    }
   }
 
-  @Input() value: string = '';
   @Output() valueChange = new EventEmitter<string>();
 
-  @Input() autosizeDisabled: boolean = false;
-  @Input() maxRows?: number;
+  // CVA methods
+  onChange: (v: string) => void = () => {};
+  onTouched: () => void = () => {};
 
-  @Input() contentTopTemplate?: TemplateRef<any>;
-  @Input() contentLeftTemplate?: TemplateRef<any>;
-  @Input() contentRightTemplate?: TemplateRef<any>;
-  @Input() contentBottomTemplate?: TemplateRef<any>;
-
-  @ContentChild('contentTop', { read: TemplateRef }) contentTopContentChild?: TemplateRef<any>;
-  @ContentChild('contentLeft', { read: TemplateRef }) contentLeftContentChild?: TemplateRef<any>;
-  @ContentChild('contentRight', { read: TemplateRef }) contentRightContentChild?: TemplateRef<any>;
-  @ContentChild('contentBottom', { read: TemplateRef }) contentBottomContentChild?: TemplateRef<any>;
-
-  get contentTop(): TemplateRef<any> | null {
-    return this.contentTopTemplate || this.contentTopContentChild || null;
+  writeValue(v: string): void {
+    this.writing = true;
+    this._value = v ?? '';
+    this.writing = false;
   }
-  get contentLeft(): TemplateRef<any> | null {
-    return this.contentLeftTemplate || this.contentLeftContentChild || null;
+  registerOnChange(fn: (v: string) => void): void {
+    this.onChange = fn;
   }
-  get contentRight(): TemplateRef<any> | null {
-    return this.contentRightTemplate || this.contentRightContentChild || null;
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
   }
-  get contentBottom(): TemplateRef<any> | null {
-    return this.contentBottomTemplate || this.contentBottomContentChild || null;
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
-  @ViewChild('autosizeDir') 
-  autosizeDirective?: AutosizeDirective;
-
-  public resetHeight() {
-    setTimeout(() => {
-      this.autosizeDirective?.forceReset();
-    }, 0);
+  // ---- Public helpers ----
+  focus() {
+    (this.multiline ? this.textareaEl : this.inputEl)?.nativeElement.focus();
   }
-  
-  protected onValueChange(): void {
-    this.valueChange.emit(this.value);
+  blur() {
+    (this.multiline ? this.textareaEl : this.inputEl)?.nativeElement.blur();
+  }
+  resetHeight() {
+    requestAnimationFrame(() => this.autosizeDirective?.forceReset());
+  }
+
+  // ---- Events ----
+  handleInput(e: Event) {
+    this.value = (e.target as HTMLInputElement).value;
+  }
+  handleBlur() {
+    this.onTouched();
   }
 }

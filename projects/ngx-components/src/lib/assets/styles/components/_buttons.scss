@@ -70,7 +70,7 @@ maxterdev-selectable-button {
     cursor: pointer;
 
     @include component-base();
-    @include component-border-style();
+    @include component-border();
     @include component-padding();
     
     width: 100%;

@@ -1,0 +1,14 @@
+<div class="tab-headers">
+  <maxterdev-selectable-button
+    *ngFor="let tab of tabs"
+    [selected]="tab.active"
+    [disabled]="tab.disabled"
+    class="rounded-top"
+    (onClick)="selectTab(tab)">
+    {{ tab.title }}
+  </maxterdev-selectable-button>
+</div>
+
+<div class="tab-content">
+  <ng-content></ng-content>
+</div>

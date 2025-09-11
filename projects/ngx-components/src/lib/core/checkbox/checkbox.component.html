@@ -1,0 +1,24 @@
+<label [for]="id" class="checkbox-wrapper">
+  <input
+    [id]="id"
+    type="checkbox"
+    class="native-checkbox"
+    [checked]="checked"
+    [disabled]="disabled"
+    [indeterminate]="indeterminate">
+
+  <div 
+    class="custom-checkbox" 
+    [class.checked]="checked" 
+    (click)="onToggle()"
+    [ngClass]="'size-' + size">
+    <i class="pi pi-check"></i>
+  </div>
+
+  <span *ngIf="label" class="checkbox-label">
+    {{ label }}
+  </span>
+  <span *ngIf="!label" class="checkbox-label">
+    <ng-content></ng-content>
+  </span>
+</label>
