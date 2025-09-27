@@ -10,3 +10,5 @@ export * from './lib/core/selectable-button/selectable-button.component';
 export * from './lib/core/tab/tab.component';
 export * from './lib/core/table/table.component';
 export * from './lib/core/tree/tree.component';
+export * from './lib/core/timeline/timeline.component';
+
