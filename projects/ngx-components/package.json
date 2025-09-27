@@ -1,6 +1,6 @@
 {
   "name": "@maxter-dev/ngx-components", 
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Angular standalone component library with PrimeIcons support",
   "author": "Mato Makuch",
   "license": "MIT",
@@ -18,6 +18,7 @@
   ],
   "peerDependencies": {
     "@angular/common": "^18.2.0",
+    "@angular/cdk": "^18.2.0",
     "@angular/core": "^18.2.0",
     "primeicons": "7.0.0"
   },
