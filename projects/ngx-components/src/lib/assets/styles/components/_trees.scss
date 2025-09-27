@@ -1,4 +1,4 @@
-@import '../base/components'; 
+@import "../base/components";
 
 // Wrap all styles inside the component's selector for consistency
 maxterdev-treetable {
@@ -17,7 +17,8 @@ maxterdev-treetable {
     font-family: var(--font-family);
   }
 
-  th, td {
+  th,
+  td {
     vertical-align: middle;
   }
 
@@ -62,7 +63,7 @@ maxterdev-treetable {
     cursor: pointer;
     color: var(--color-text-secondary);
     border-radius: var(--border-radius-sm);
-    flex-shrink: 0; 
+    flex-shrink: 0;
 
     &:hover {
       background-color: var(--color-hover-outline);
@@ -74,21 +75,23 @@ maxterdev-treetable {
   }
 
   .expander-spacer {
-    display: inline-block; 
+    display: inline-block;
     width: $expander-size;
     height: $expander-size;
-    flex-shrink: 0; 
-  } 
+    flex-shrink: 0;
+  }
 
   &.size-sm {
-    th, td {
+    th,
+    td {
       padding: var(--padding-md) var(--padding-md);
       font-size: var(--font-size-sm);
     }
   }
 
   &.size-md {
-    th, td {
+    th,
+    td {
       padding: var(--padding-lg) var(--padding-lg);
     }
     td {
@@ -100,14 +103,15 @@ maxterdev-treetable {
   }
 
   &.size-lg {
-    th, td {
+    th,
+    td {
       padding: 1.2rem 1.2rem;
     }
     td {
       font-size: var(--font-size-lg);
     }
     th {
-      font-size: var(--font-size-lg); 
+      font-size: var(--font-size-lg);
     }
   }
 }

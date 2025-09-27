@@ -1,0 +1,254 @@
+@import "../base/components";
+
+.timeline-container ul {
+  --gap-divider-header: var(--margin-lg, 12px);
+  --gap-header-body: var(--margin-lg, 12px);
+  --gap-body-divider: var(--margin-lg, 12px);
+  --gap-body-sources: var(--margin-md, 12px);
+  --rail-col: calc(var(--dot-size) + 2 * var(--dot-stroke));
+  --rail-width: var(--border-width-sm, 2px);
+  --content-gap-x: var(--margin-md, 12px);
+  --dot-size: 22px; /* ⟵ make the circle bigger/smaller */
+  --dot-stroke: 3px; /* ring thickness around the dot */
+  --dot-glyph-scale: 0.55; /* glyph-to-dot ratio (0.58–0.70) */
+  --dot-offset-y: -0.125rem;
+
+  list-style: none;
+  margin: 0;
+  padding-left: 0; /* keep 0 so rail centering math is stable */
+  position: relative;
+  @include component-font;
+  box-sizing: border-box;
+
+  /* Vertical rail centered in the rail column */
+  &::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--rail-col) / 2 - var(--border-width-sm, 2px) / 2);
+    top: 5px;
+    bottom: 5px;
+    width: var(--rail-width);
+    background-color: var(--color-border-primary);
+  }
+}
+
+/* Expand/Collapse container (height animated in TS) */
+.timeline-body {
+  display: block;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height 250ms ease, opacity 200ms ease;
+}
+
+.timeline-inner {
+  /* general padding for the whole list content (optional) */
+  padding-top: var(--margin-sm, 8px);
+}
+
+/* Each LI = [item] + [divider]; row-gap controls BODY↔DIVIDER spacing */
+.timeline-li {
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto auto;
+  row-gap: var(--gap-body-divider); /* BODY - DIVIDER */
+  padding-top: var(
+    --gap-divider-header
+  ); /* DIVIDER - HEADER (previous divider to this header) */
+}
+
+.timeline-li:last-child .icon-wrapper::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - var(--rail-width) / 2); /* center on rail */
+  top: calc(50% + var(--dot-size) / 2); /* start just under the dot’s center */
+  width: var(--rail-width);
+  height: 2000px; /* long enough to cover to the bottom */
+  background: var(--color-background); /* same bg as the page/card */
+  pointer-events: none;
+}
+
+/* Item = 2 columns (dot column + content column) */
+.timeline-item {
+  display: grid;
+  grid-template-columns: var(--rail-col) 1fr;
+  column-gap: var(--content-gap-x); /* items - left bar horizontal spacing */
+  align-items: start;
+  margin: 0;
+
+  &.clickable {
+    cursor: pointer;
+  }
+}
+
+/* Dot centered in the rail column and visually on the rail */
+.icon-wrapper {
+  position: relative;
+  z-index: 10;
+  justify-self: center; /* centers horizontally in rail col */
+  align-self: start;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  box-sizing: border-box;
+  border-radius: 50%;
+  //border: 3px solid var(--color-background);
+  background-color: var(--color-surface, #f0f4f9);
+  color: var(--color-text-secondary);
+  display: grid;
+  place-items: center;
+  justify-self: center; /* horizontally center in rail column */
+  align-self: start;
+  transform: translateY(var(--dot-offset-y)); /* micro tweak if needed */
+}
+.icon-wrapper i {
+  line-height: 1;
+  display: block;
+  font-size: calc(var(--dot-size) * var(--dot-glyph-scale));
+}
+
+/* Content column with HEADER - BODY spacing via row-gap */
+.item-content {
+  min-width: 0;
+  display: grid;
+  row-gap: var(--gap-header-body); /* HEADER - BODY */
+}
+
+/* Header area */
+.item-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--margin-sm, 8px);
+}
+
+.item-title {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  flex: 1;
+}
+
+.item-meta {
+  display: inline-flex;
+  gap: var(--margin-sm, 8px);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* Body text (let gaps handle spacing; keep margins neutral) */
+.item-body .body-text {
+  margin: 0;
+  color: var(--color-text-primary);
+}
+/* Avoid doubled spacing from first/last child margins */
+.item-body > :first-child {
+  margin-top: 0;
+}
+.item-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Sources */
+.sources-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--margin-lg, 8px);
+}
+
+.source-pill {
+  @include component-base;
+  @include component-font;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-surface, #f1f3f4);
+  border-radius: var(--border-radius-lg, 16px);
+  padding: var(--padding-md);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+  /* Reset UA button styles */
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+
+  &:hover {
+    background-color: var(--color-background-hover, #e8eaed);
+  }
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-border-primary);
+  }
+}
+
+.source-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Header button (top control) */
+.timeline-header {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-lg, 16px);
+  width: 100%;
+  padding: var(--padding-sm, 8px) 0;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font: inherit;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-border-primary);
+  }
+}
+
+.chevron {
+  position: relative;
+  top: -0.1rem;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: var(--border-width-sm, 2px) solid currentColor;
+  border-bottom: var(--border-width-sm, 2px) solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  margin-left: var(--margin-sm, 8px);
+}
+
+/* Divider aligned with content column */
+.timeline-divider {
+  height: 1px;
+  background-color: var(--color-border-primary);
+  margin-left: calc(var(--rail-col) + var(--content-gap-x));
+}
+
+.item-body {
+  display: grid;
+  grid-auto-rows: min-content;
+  row-gap: var(--gap-body-sources); /* <p> - .sources-wrapper padding */
+}
+
+.timeline-header-btn {
+  width: fit-content;
+}
+
+.tl-btn-content {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-lg, 16px);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.tl-title {
+  flex: 1 1 auto; /* pushes chevron to the far right */
+  min-width: 0;
+}

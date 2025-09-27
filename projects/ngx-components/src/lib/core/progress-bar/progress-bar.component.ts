@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './progress-bar.component.html',
-  styleUrls: [] // Assuming you will import the SCSS globally or via angular.json
+  styleUrls: [], // Assuming you will import the SCSS globally or via angular.json
 })
 export class ProgressBarComponent {
   /**

@@ -1,13 +1,6 @@
 <div class="progress-bar-container">
   <div class="progress-track">
-    <div 
-      class="progress-fill" 
-      [style.width.%]="sanitizedValue">
-    </div>
+    <div class="progress-fill" [style.width.%]="sanitizedValue"></div>
   </div>
-  <span 
-    *ngIf="showValue" 
-    class="value">
-    {{ sanitizedValue }}{{ unit }}
-  </span>
+  <span *ngIf="showValue" class="value"> {{ sanitizedValue }}{{ unit }} </span>
 </div>

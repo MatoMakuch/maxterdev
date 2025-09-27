@@ -6,8 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `<ng-content></ng-content>`,
-  styleUrls: []
-
+  styleUrls: [],
 })
 export class TabComponent {
   @Input() title: string = '';

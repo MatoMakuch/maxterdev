@@ -1,17 +1,17 @@
-@import '../base/components'; // Adjust path if needed
+@import "../base/components"; // Adjust path if needed
 
 .menu-trigger-wrapper {
   display: inline-block;
-	position: relative;
+  position: relative;
 }
 
 .menu-panel {
-	@include component-base;
-	@include component-font;
+  @include component-base;
+  @include component-font;
   position: absolute;
-  top: calc(100% + var(--margin-sm)); 
+  top: calc(100% + var(--margin-sm));
   left: 0;
-  z-index: 1000; 
+  z-index: 1000;
 
   background-color: var(--color-background);
   border-radius: var(--border-radius-md);
@@ -19,12 +19,15 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding-top: var(--padding-sm);
   padding-bottom: var(--padding-sm);
-  min-width: 120px; 
+  min-width: 120px;
 
   opacity: 0;
   transform: scale(0.95) translateY(-10px);
   visibility: hidden;
-  transition: opacity 0.15s ease-out, transform 0.15s ease-out, visibility 0.15s;
+  transition:
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out,
+    visibility 0.15s;
 
   &.open {
     opacity: 1;
@@ -35,10 +38,10 @@
 
 .menu-item {
   maxterdev-button {
-    width: 100%; 
+    width: 100%;
 
     .button .text {
       justify-content: flex-start;
     }
-}
+  }
 }

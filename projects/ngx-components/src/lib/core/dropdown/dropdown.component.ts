@@ -1,5 +1,13 @@
 import {
-  Component, Input, Output, EventEmitter, ElementRef, ViewChild, TemplateRef, ViewContainerRef, OnDestroy,
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ElementRef,
+  ViewChild,
+  TemplateRef,
+  ViewContainerRef,
+  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from '../list/list.component';
@@ -22,7 +30,8 @@ import { Subscription } from 'rxjs';
 })
 export class DropdownComponent implements OnDestroy {
   @ViewChild('menuTemplate') menuTemplate!: TemplateRef<any>;
-  @ViewChild('trigger', { read: ElementRef }) triggerRef!: ElementRef<HTMLElement>;
+  @ViewChild('trigger', { read: ElementRef })
+  triggerRef!: ElementRef<HTMLElement>;
 
   @Input() variant: 'primary' | 'secondary' = 'primary';
   @Input() options: any[] = [];
@@ -47,7 +56,7 @@ export class DropdownComponent implements OnDestroy {
   constructor(
     private overlay: Overlay,
     private elementRef: ElementRef<HTMLElement>,
-    private viewContainerRef: ViewContainerRef
+    private viewContainerRef: ViewContainerRef,
   ) {}
 
   toggleDropdown(): void {
@@ -58,7 +67,9 @@ export class DropdownComponent implements OnDestroy {
     }
   }
 
-  private buildPositionStrategy(originEl: HTMLElement): FlexibleConnectedPositionStrategy {
+  private buildPositionStrategy(
+    originEl: HTMLElement,
+  ): FlexibleConnectedPositionStrategy {
     return this.overlay
       .position()
       .flexibleConnectedTo(originEl)
@@ -85,7 +96,8 @@ export class DropdownComponent implements OnDestroy {
   }
 
   private openMenu(): void {
-    const originEl = this.triggerRef?.nativeElement ?? this.elementRef.nativeElement;
+    const originEl =
+      this.triggerRef?.nativeElement ?? this.elementRef.nativeElement;
 
     const positionStrategy = this.buildPositionStrategy(originEl);
 
@@ -99,7 +111,9 @@ export class DropdownComponent implements OnDestroy {
     });
 
     // Close when clicking outside
-    this.backdropClickSubscription = this.overlayRef.backdropClick().subscribe(() => this.closeMenu());
+    this.backdropClickSubscription = this.overlayRef
+      .backdropClick()
+      .subscribe(() => this.closeMenu());
 
     // Attach template
     const portal = new TemplatePortal(this.menuTemplate, this.viewContainerRef);

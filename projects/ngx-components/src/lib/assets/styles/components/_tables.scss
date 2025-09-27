@@ -1,4 +1,4 @@
-@import '../base/components'; 
+@import "../base/components";
 
 maxterdev-table {
   .table-container {
@@ -16,7 +16,8 @@ maxterdev-table {
     font-family: var(--font-family);
   }
 
-  th, td {
+  th,
+  td {
     vertical-align: middle;
   }
 
@@ -39,14 +40,16 @@ maxterdev-table {
   }
 
   &.size-sm {
-    th, td {
+    th,
+    td {
       padding: var(--padding-md) var(--padding-md);
       font-size: var(--font-size-sm);
     }
   }
 
   &.size-md {
-    th, td {
+    th,
+    td {
       padding: var(--padding-lg) var(--padding-lg);
     }
     td {
@@ -58,14 +61,15 @@ maxterdev-table {
   }
 
   &.size-lg {
-    th, td {
+    th,
+    td {
       padding: 1.2rem 1.2rem;
     }
     td {
       font-size: var(--font-size-lg);
     }
     th {
-      font-size: var(--font-size-lg); 
+      font-size: var(--font-size-lg);
     }
   }
 }

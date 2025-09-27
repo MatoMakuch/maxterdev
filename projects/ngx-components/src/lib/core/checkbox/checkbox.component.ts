@@ -1,33 +1,45 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, OnChanges, Input, Output, EventEmitter, HostBinding } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  OnChanges,
+  Input,
+  Output,
+  EventEmitter,
+  HostBinding,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 let nextId = 0;
+
+export type ComponentSize = 'sm' | 'md' | 'lg';
 
 @Component({
   selector: 'maxterdev-checkbox',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './checkbox.component.html'
+  templateUrl: './checkbox.component.html',
 })
 export class CheckboxComponent {
-
-  @ViewChild('nativeCheckbox') private inputElement!: ElementRef<HTMLInputElement>;
+  @ViewChild('nativeCheckbox')
+  private inputElement!: ElementRef<HTMLInputElement>;
 
   @Input() label: string = '';
   @Input() disabled: boolean = false;
   @Input() checked: boolean = false;
-  @Input() size: 'sm' | 'md' | 'lg' = 'md';
+  @Input() size: ComponentSize = 'md';
 
   private _indeterminate = false;
 
   @Input()
-    set indeterminate(value: boolean) {
-      this._indeterminate = value;
-      this.updateIndeterminateState();
-    }
-    get indeterminate(): boolean {
-      return this._indeterminate;
-    }
+  set indeterminate(value: boolean) {
+    this._indeterminate = value;
+    this.updateIndeterminateState();
+  }
+  get indeterminate(): boolean {
+    return this._indeterminate;
+  }
 
   // This naming convention allows for two-way binding: [(checked)]="myVar"
   @Output() checkedChange = new EventEmitter<boolean>();
@@ -36,18 +48,18 @@ export class CheckboxComponent {
   @Input() id: string = `maxterdev-checkbox-${++nextId}`;
 
   @HostBinding('class.checked')
-  get isChecked() { 
-    return this.checked; 
+  get isChecked() {
+    return this.checked;
   }
 
   @HostBinding('class.disabled')
-  get isDisabled() { 
-    return this.disabled; 
+  get isDisabled() {
+    return this.disabled;
   }
 
   @HostBinding('class.indeterminate')
-  get isIndeterminate() { 
-    return this.indeterminate; 
+  get isIndeterminate() {
+    return this.indeterminate;
   }
 
   ngAfterViewInit(): void {
@@ -66,7 +78,7 @@ export class CheckboxComponent {
     }
 
     this.checked = !this.checked;
-    this.indeterminate = false; 
+    this.indeterminate = false;
 
     this.checkedChange.emit(this.checked);
   }

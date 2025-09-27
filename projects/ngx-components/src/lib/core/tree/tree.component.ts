@@ -1,12 +1,25 @@
 import {
-  Component, Input, Output, EventEmitter, ContentChildren, QueryList,
-  HostBinding, ChangeDetectionStrategy, SimpleChanges, OnChanges
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ContentChildren,
+  QueryList,
+  HostBinding,
+  ChangeDetectionStrategy,
+  SimpleChanges,
+  OnChanges,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { ColumnComponent } from '../table/column.component';
-import { ColumnBodyTemplateDirective, ColumnHeaderTemplateDirective } from '../../directives/table-column.directive';
+import {
+  ColumnBodyTemplateDirective,
+  ColumnHeaderTemplateDirective,
+} from '../../directives/table-column.directive';
 import { TreeNode } from './tree-node.interface';
+
+export type ComponentSize = 'sm' | 'md' | 'lg';
 
 // Per-node runtime state (kept out of input data)
 type NodeMeta = {
@@ -25,7 +38,7 @@ type NodeMeta = {
     CheckboxComponent,
     ColumnComponent,
     ColumnHeaderTemplateDirective,
-    ColumnBodyTemplateDirective
+    ColumnBodyTemplateDirective,
   ],
   templateUrl: './tree.component.html',
   styleUrls: [],
@@ -34,16 +47,23 @@ type NodeMeta = {
 export class TreeTableComponent implements OnChanges {
   @Input() data: ReadonlyArray<TreeNode> = [];
   @Input() isMultiSelect = false;
-  @Input() size: 'sm' | 'md' | 'lg' = 'md';
+  @Input() size: ComponentSize = 'md';
   @Output() selectionChange = new EventEmitter<ReadonlyArray<TreeNode>>();
 
-  @ContentChildren(ColumnComponent, { descendants: true }) columns!: QueryList<ColumnComponent>;
+  @ContentChildren(ColumnComponent, { descendants: true })
+  columns!: QueryList<ColumnComponent>;
 
   // host classes
   @HostBinding('class.maxterdev-treetable') base = true;
-  @HostBinding('class.size-sm') get isSm() { return this.size === 'sm'; }
-  @HostBinding('class.size-md') get isMd() { return this.size === 'md'; }
-  @HostBinding('class.size-lg') get isLg() { return this.size === 'lg'; }
+  @HostBinding('class.size-sm') get isSm() {
+    return this.size === 'sm';
+  }
+  @HostBinding('class.size-md') get isMd() {
+    return this.size === 'md';
+  }
+  @HostBinding('class.size-lg') get isLg() {
+    return this.size === 'lg';
+  }
 
   /** Flat list of nodes to render (respecting expansion) */
   public flattenedData: ReadonlyArray<TreeNode> = [];
@@ -70,18 +90,32 @@ export class TreeTableComponent implements OnChanges {
       this.meta.set(node, m);
     }
     return m;
-    }
-  level(node: TreeNode): number { return this.getMeta(node).level; }
-  isExpanded(node: TreeNode): boolean { return this.getMeta(node).expanded; }
-  isSelected(node: TreeNode): boolean { return this.getMeta(node).selected; }
-  isIndeterminate(node: TreeNode): boolean { return this.getMeta(node).indeterminate; }
-  parent(node: TreeNode): TreeNode | undefined { return this.getMeta(node).parent; }
+  }
+  level(node: TreeNode): number {
+    return this.getMeta(node).level;
+  }
+  isExpanded(node: TreeNode): boolean {
+    return this.getMeta(node).expanded;
+  }
+  isSelected(node: TreeNode): boolean {
+    return this.getMeta(node).selected;
+  }
+  isIndeterminate(node: TreeNode): boolean {
+    return this.getMeta(node).indeterminate;
+  }
+  parent(node: TreeNode): TreeNode | undefined {
+    return this.getMeta(node).parent;
+  }
 
   // Preserve expanded/selected state across rebuilds
   private rebuildMetaAndFlatten(): void {
     const nextMeta = new WeakMap<TreeNode, NodeMeta>();
 
-    const setMeta = (nodes: ReadonlyArray<TreeNode>, level: number, parent?: TreeNode) => {
+    const setMeta = (
+      nodes: ReadonlyArray<TreeNode>,
+      level: number,
+      parent?: TreeNode,
+    ) => {
       for (const n of nodes) {
         const prev = this.meta.get(n);
         const m: NodeMeta = {
@@ -125,7 +159,8 @@ export class TreeTableComponent implements OnChanges {
     m.selected = !m.selected;
     m.indeterminate = false;
 
-    if (node.children?.length) this.setChildSelection(node.children, m.selected);
+    if (node.children?.length)
+      this.setChildSelection(node.children, m.selected);
     this.updateAllParentStates(this.parent(node));
     this.emitSelection();
   }
@@ -135,7 +170,8 @@ export class TreeTableComponent implements OnChanges {
       const cm = this.getMeta(child);
       cm.selected = selected;
       cm.indeterminate = false;
-      if (child.children?.length) this.setChildSelection(child.children, selected);
+      if (child.children?.length)
+        this.setChildSelection(child.children, selected);
     }
   }
 
@@ -146,12 +182,23 @@ export class TreeTableComponent implements OnChanges {
       const m = this.getMeta(node);
       m.indeterminate = false;
     } else {
-      const everySel = kids.every(k => this.getMeta(k).selected && !this.getMeta(k).indeterminate);
-      const noneSel = kids.every(k => !this.getMeta(k).selected && !this.getMeta(k).indeterminate);
+      const everySel = kids.every(
+        (k) => this.getMeta(k).selected && !this.getMeta(k).indeterminate,
+      );
+      const noneSel = kids.every(
+        (k) => !this.getMeta(k).selected && !this.getMeta(k).indeterminate,
+      );
       const pm = this.getMeta(node);
-      if (everySel) { pm.selected = true; pm.indeterminate = false; }
-      else if (noneSel) { pm.selected = false; pm.indeterminate = false; }
-      else { pm.selected = false; pm.indeterminate = true; }
+      if (everySel) {
+        pm.selected = true;
+        pm.indeterminate = false;
+      } else if (noneSel) {
+        pm.selected = false;
+        pm.indeterminate = false;
+      } else {
+        pm.selected = false;
+        pm.indeterminate = true;
+      }
     }
     this.updateAllParentStates(this.parent(node));
   }
@@ -171,5 +218,6 @@ export class TreeTableComponent implements OnChanges {
 
   // -------- trackBy ----------
   rowTrackBy = (_: number, node: TreeNode) => node.id ?? node;
-  colTrackBy = (_: number, col: ColumnComponent) => col.field ?? col.header ?? col;
+  colTrackBy = (_: number, col: ColumnComponent) =>
+    col.field ?? col.header ?? col;
 }

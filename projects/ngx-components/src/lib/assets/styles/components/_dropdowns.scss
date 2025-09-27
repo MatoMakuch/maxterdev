@@ -1,5 +1,5 @@
-@import '../base/components';
-@import '../base/buttons';
+@import "../base/components";
+@import "../base/buttons";
 
 // Dropdown container and button styling
 maxterdev-dropdown {
@@ -23,7 +23,7 @@ maxterdev-dropdown {
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-  
+
     &.primary {
       @include button(primary);
     }
@@ -39,7 +39,8 @@ maxterdev-dropdown {
       align-items: center;
     }
 
-    .placeholder, .selected {
+    .placeholder,
+    .selected {
       // Ensure text doesn't overflow the button
       white-space: nowrap;
       overflow: hidden;
@@ -47,15 +48,14 @@ maxterdev-dropdown {
     }
   }
 
-  &[ng-reflect-is-open="true"] .menu, 
-  .menu:hover { 
+  &[ng-reflect-is-open="true"] .menu,
+  .menu:hover {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
 }
 
-  
 .dropdown-menu-panel {
   display: block;
 

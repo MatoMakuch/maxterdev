@@ -2,14 +2,16 @@
   <div class="top" *ngIf="topTpl">
     <ng-container
       [ngTemplateOutlet]="topTpl"
-      [ngTemplateOutletContext]="{ value: value }">
+      [ngTemplateOutletContext]="{ value: value }"
+    >
     </ng-container>
   </div>
 
   <div class="left" *ngIf="leftTpl">
     <ng-container
       [ngTemplateOutlet]="leftTpl"
-      [ngTemplateOutletContext]="{ value: value }">
+      [ngTemplateOutletContext]="{ value: value }"
+    >
     </ng-container>
   </div>
 
@@ -33,7 +35,8 @@
       (ngModelChange)="value = $event"
       (blur)="handleBlur()"
       [style.height]="autosizeDisabled ? 'unset' : null"
-      [style.overflow-y]="autosizeDisabled ? 'auto' : null">
+      [style.overflow-y]="autosizeDisabled ? 'auto' : null"
+    >
     </textarea>
   </ng-container>
 
@@ -55,20 +58,23 @@
       [attr.pattern]="pattern ?? null"
       [attr.aria-describedby]="describedBy ?? null"
       [ngModel]="value"
-      (ngModelChange)="value = $event"/>
+      (ngModelChange)="value = $event"
+    />
   </ng-template>
 
   <div class="right" *ngIf="rightTpl">
     <ng-container
       [ngTemplateOutlet]="rightTpl"
-      [ngTemplateOutletContext]="{ value: value }">
+      [ngTemplateOutletContext]="{ value: value }"
+    >
     </ng-container>
   </div>
 
   <div class="bottom" *ngIf="bottomTpl">
     <ng-container
       [ngTemplateOutlet]="bottomTpl"
-      [ngTemplateOutletContext]="{ value: value }">
+      [ngTemplateOutletContext]="{ value: value }"
+    >
     </ng-container>
   </div>
 </div>

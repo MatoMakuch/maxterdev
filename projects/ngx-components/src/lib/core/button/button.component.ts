@@ -6,11 +6,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './button.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class ButtonComponent {
-  @Input() type: string = "";
-  @Input() name: string = "";
+  @Input() type: string = '';
+  @Input() name: string = '';
   @Input() severity: 'primary' | 'secondary' = 'primary';
   @Input() text: boolean = false;
   @Input() disabled: boolean = false;
@@ -22,12 +22,10 @@ export class ButtonComponent {
       var cl = this.severity;
       if (this.text) cl += ' text';
       return cl;
-    }
-    else return 'disabled';
+    } else return 'disabled';
   }
 
   onButtonClick() {
-
     if (this.disabled) {
       return;
     }

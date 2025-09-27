@@ -1,6 +1,6 @@
 // _buttons.scss
-@import '../base/components';
-@import '../base/buttons';
+@import "../base/components";
+@import "../base/buttons";
 
 maxterdev-button {
   display: block;
@@ -17,7 +17,7 @@ maxterdev-button {
     @include component-base();
     @include component-border-style();
     @include component-padding();
-    
+
     width: 100%;
 
     @include button(primary);
@@ -49,7 +49,7 @@ maxterdev-button {
 
       width: 100%;
       height: 100%;
-      
+
       display: flex;
       align-items: center;
       //justify-content: center;
@@ -72,7 +72,7 @@ maxterdev-selectable-button {
     @include component-base();
     @include component-border();
     @include component-padding();
-    
+
     width: 100%;
 
     &.selected {
@@ -88,7 +88,7 @@ maxterdev-selectable-button {
 
       width: 100%;
       height: 100%;
-      
+
       display: flex;
       align-items: center;
       justify-content: center;

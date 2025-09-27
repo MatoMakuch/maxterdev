@@ -5,13 +5,15 @@
     class="native-checkbox"
     [checked]="checked"
     [disabled]="disabled"
-    [indeterminate]="indeterminate">
+    [indeterminate]="indeterminate"
+  />
 
-  <div 
-    class="custom-checkbox" 
-    [class.checked]="checked" 
+  <div
+    class="custom-checkbox"
+    [class.checked]="checked"
     (click)="onToggle()"
-    [ngClass]="'size-' + size">
+    [ngClass]="'size-' + size"
+  >
     <i class="pi pi-check"></i>
   </div>
 

@@ -1,4 +1,12 @@
-import { Component, ContentChild, Input, TemplateRef, Output, EventEmitter, HostBinding } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  Input,
+  TemplateRef,
+  Output,
+  EventEmitter,
+  HostBinding,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 
@@ -7,7 +15,7 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
   standalone: true,
   imports: [CommonModule, CheckboxComponent],
   templateUrl: './list.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class ListComponent {
   @Input() items: any[] = [];
@@ -18,12 +26,13 @@ export class ListComponent {
   @Output() itemSelected = new EventEmitter<any>();
 
   @Input() itemTemplate?: TemplateRef<any>;
-  
+
   @HostBinding('class') get sizeClass() {
     return this.size;
   }
 
-  @ContentChild('item', { read: TemplateRef }) itemContentChild?: TemplateRef<any>;
+  @ContentChild('item', { read: TemplateRef })
+  itemContentChild?: TemplateRef<any>;
 
   get item(): TemplateRef<any> | null {
     return this.itemTemplate || this.itemContentChild || null;

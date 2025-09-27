@@ -4,7 +4,13 @@
   </div>
 
   <!-- Add [class.open]="isOpen" so CSS can flip visibility -->
-  <div class="menu-panel" *ngIf="isOpen" [class.open]="isOpen" [ngStyle]="panelStyles" (click)="$event.stopPropagation()">
+  <div
+    class="menu-panel"
+    *ngIf="isOpen"
+    [class.open]="isOpen"
+    [ngStyle]="panelStyles"
+    (click)="$event.stopPropagation()"
+  >
     <ng-content></ng-content>
   </div>
 </div>

@@ -1,13 +1,25 @@
 import {
-  Component, Input, Output, EventEmitter, ContentChild, TemplateRef,
-  ViewChild, ElementRef, HostBinding, ChangeDetectionStrategy,
-  forwardRef
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ContentChild,
+  TemplateRef,
+  ViewChild,
+  ElementRef,
+  HostBinding,
+  ChangeDetectionStrategy,
+  forwardRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  FormsModule,
 } from '@angular/forms';
 import { AutosizeDirective } from '../../directives/autosize.directive';
+
+export type FontSize = 'sm' | 'md';
 
 @Component({
   selector: 'maxterdev-input',
@@ -15,11 +27,13 @@ import { AutosizeDirective } from '../../directives/autosize.directive';
   imports: [CommonModule, FormsModule, AutosizeDirective],
   templateUrl: './input.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => InputComponent),
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true,
+    },
+  ],
 })
 export class InputComponent implements ControlValueAccessor {
   // ---- Core API ----
@@ -33,7 +47,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() required = false;
 
   // ---- UX extras ----
-  @Input() fontSize: 'sm' | 'md' = 'md';
+  @Input() fontSize: FontSize = 'md';
   @Input() autocomplete?: string;
   @Input() inputMode?: string;
   @Input() enterKeyHint?: string;
@@ -49,10 +63,14 @@ export class InputComponent implements ControlValueAccessor {
   @ViewChild('autosizeDir') autosizeDirective?: AutosizeDirective;
 
   // ---- Projected templates ----
-  @ContentChild('contentTop', { read: TemplateRef }) topTpl?: TemplateRef<unknown>;
-  @ContentChild('contentLeft', { read: TemplateRef }) leftTpl?: TemplateRef<unknown>;
-  @ContentChild('contentRight', { read: TemplateRef }) rightTpl?: TemplateRef<unknown>;
-  @ContentChild('contentBottom', { read: TemplateRef }) bottomTpl?: TemplateRef<unknown>;
+  @ContentChild('contentTop', { read: TemplateRef })
+  topTpl?: TemplateRef<unknown>;
+  @ContentChild('contentLeft', { read: TemplateRef })
+  leftTpl?: TemplateRef<unknown>;
+  @ContentChild('contentRight', { read: TemplateRef })
+  rightTpl?: TemplateRef<unknown>;
+  @ContentChild('contentBottom', { read: TemplateRef })
+  bottomTpl?: TemplateRef<unknown>;
 
   // ---- DOM Refs ----
   @ViewChild('inputEl') inputEl?: ElementRef<HTMLInputElement>;
@@ -60,8 +78,12 @@ export class InputComponent implements ControlValueAccessor {
 
   // ---- Host classes ----
   @HostBinding('class.maxterdev-input') base = true;
-  @HostBinding('class.font-size-sm') get isSm() { return this.fontSize === 'sm'; }
-  @HostBinding('class.font-size-md') get isMd() { return this.fontSize === 'md'; }
+  @HostBinding('class.font-size-sm') get isSm() {
+    return this.fontSize === 'sm';
+  }
+  @HostBinding('class.font-size-md') get isMd() {
+    return this.fontSize === 'md';
+  }
 
   // ---- CVA + [(value)] Support ----
   private _value = '';

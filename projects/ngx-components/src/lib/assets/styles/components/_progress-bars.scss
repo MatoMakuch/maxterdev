@@ -1,5 +1,5 @@
 // _progress-bar.scss
-@import '../base/components';
+@import "../base/components";
 
 maxterdev-progress-bar {
   display: block;
@@ -22,7 +22,9 @@ maxterdev-progress-bar {
     flex-grow: 1; // Allows the track to fill available space
     height: 10px; // Or use a variable, e.g., $progress-bar-height
     border-radius: 999px;
-    background-color: var(--color-surface); // Replace with your theme's neutral color variable
+    background-color: var(
+      --color-surface
+    ); // Replace with your theme's neutral color variable
     overflow: hidden;
     position: relative;
   }
@@ -36,7 +38,9 @@ maxterdev-progress-bar {
 
   .value {
     font-variant-numeric: tabular-nums;
-    color: var(--color-text-primary); // Replace with your theme's secondary text color variable
+    color: var(
+      --color-text-primary
+    ); // Replace with your theme's secondary text color variable
     white-space: nowrap;
   }
 }

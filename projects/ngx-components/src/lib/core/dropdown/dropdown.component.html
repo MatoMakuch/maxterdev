@@ -1,13 +1,11 @@
-<div
-  #trigger
-  class="button"
-  [ngClass]="variant"
-  (click)="toggleDropdown()">
-
+<div #trigger class="button" [ngClass]="variant" (click)="toggleDropdown()">
   <span *ngIf="!isMultiSelect && selectedOptions.length > 0" class="selected">
     {{ selectedOptions[0] }}
   </span>
-  <span *ngIf="!isMultiSelect && selectedOptions.length === 0" class="placeholder">
+  <span
+    *ngIf="!isMultiSelect && selectedOptions.length === 0"
+    class="placeholder"
+  >
     {{ placeholder }}
   </span>
   <span class="icon">
@@ -23,7 +21,8 @@
       [isMultiSelect]="isMultiSelect"
       [selectedItems]="selectedOptions"
       (selectedItemsChange)="handleSelectedItemsChange($event)"
-      (itemSelected)="handleSingleSelect($event)">
+      (itemSelected)="handleSingleSelect($event)"
+    >
       <ng-template let-item>
         <span>{{ item }}</span>
       </ng-template>

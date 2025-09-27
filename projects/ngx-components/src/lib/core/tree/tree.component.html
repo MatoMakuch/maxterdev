@@ -4,7 +4,9 @@
       <tr role="row">
         <th *ngFor="let col of columns; trackBy: colTrackBy" scope="col">
           <ng-container *ngIf="col.headerTemplate; else defaultHeader">
-            <ng-container [ngTemplateOutlet]="col.headerTemplate"></ng-container>
+            <ng-container
+              [ngTemplateOutlet]="col.headerTemplate"
+            ></ng-container>
           </ng-container>
           <ng-template #defaultHeader>{{ col.header }}</ng-template>
         </th>
@@ -12,22 +14,36 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let node of flattenedData; trackBy: rowTrackBy"
-          role="row"
-          [attr.aria-level]="level(node)"
-          [attr.aria-expanded]="(node.children?.length ? isExpanded(node) : null)">
-        <td *ngFor="let col of columns; let isFirst = first; trackBy: colTrackBy" role="gridcell">
+      <tr
+        *ngFor="let node of flattenedData; trackBy: rowTrackBy"
+        role="row"
+        [attr.aria-level]="level(node)"
+        [attr.aria-expanded]="node.children?.length ? isExpanded(node) : null"
+      >
+        <td
+          *ngFor="let col of columns; let isFirst = first; trackBy: colTrackBy"
+          role="gridcell"
+        >
           <!-- First column: tree controls + cell -->
-          <div *ngIf="isFirst"
-               class="tree-cell-content"
-               [style.paddingLeft]="(level(node) * 1.5) + 'rem'">
-            <button *ngIf="node.children?.length"
-                    type="button"
-                    class="expand-toggle"
-                    (click)="toggleExpand(node)"
-                    [attr.aria-label]="isExpanded(node) ? 'Collapse' : 'Expand'"
-                    [attr.aria-expanded]="isExpanded(node)">
-              <i class="pi" [ngClass]="isExpanded(node) ? 'pi-chevron-down' : 'pi-chevron-right'"></i>
+          <div
+            *ngIf="isFirst"
+            class="tree-cell-content"
+            [style.paddingLeft]="level(node) * 1.5 + 'rem'"
+          >
+            <button
+              *ngIf="node.children?.length"
+              type="button"
+              class="expand-toggle"
+              (click)="toggleExpand(node)"
+              [attr.aria-label]="isExpanded(node) ? 'Collapse' : 'Expand'"
+              [attr.aria-expanded]="isExpanded(node)"
+            >
+              <i
+                class="pi"
+                [ngClass]="
+                  isExpanded(node) ? 'pi-chevron-down' : 'pi-chevron-right'
+                "
+              ></i>
             </button>
 
             <span *ngIf="!node.children?.length" class="expander-spacer"></span>
@@ -37,12 +53,14 @@
               size="sm"
               [checked]="isSelected(node)"
               [indeterminate]="isIndeterminate(node)"
-              (checkedChange)="toggleNodeSelection(node)">
+              (checkedChange)="toggleNodeSelection(node)"
+            >
             </maxterdev-checkbox>
 
             <ng-container
               [ngTemplateOutlet]="col.bodyTemplate || defaultCell"
-              [ngTemplateOutletContext]="{ $implicit: node }">
+              [ngTemplateOutletContext]="{ $implicit: node }"
+            >
             </ng-container>
           </div>
 
@@ -50,7 +68,8 @@
           <ng-container *ngIf="!isFirst">
             <ng-container
               [ngTemplateOutlet]="col.bodyTemplate || defaultCell"
-              [ngTemplateOutletContext]="{ $implicit: node }">
+              [ngTemplateOutletContext]="{ $implicit: node }"
+            >
             </ng-container>
           </ng-container>
 

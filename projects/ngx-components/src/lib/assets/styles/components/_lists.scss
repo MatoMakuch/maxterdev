@@ -1,4 +1,4 @@
-@import '../base/components';
+@import "../base/components";
 
 maxterdev-list {
   display: block;
@@ -11,7 +11,7 @@ maxterdev-list {
     @include component-base();
 
     margin: 0;
-    padding: 0;               /* ✅ remove default UL padding */
+    padding: 0; /* ✅ remove default UL padding */
     list-style: none;
     gap: 0.1rem;
     border-radius: 0.45rem;
@@ -36,7 +36,7 @@ maxterdev-list {
         height: var(--font-size-lg);
         background-color: var(--color-primary);
         border-radius: 2px;
-        opacity: 0;                     /* visible when selected/hovered if you want */
+        opacity: 0; /* visible when selected/hovered if you want */
         //margin-left: var(--padding-sm); /* small inset from the left edge */
         margin-right: 0.5rem;
         transition: opacity 0.12s ease-in-out;

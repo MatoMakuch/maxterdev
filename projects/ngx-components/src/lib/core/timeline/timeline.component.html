@@ -1,0 +1,99 @@
+<div class="timeline-container">
+  <div class="timeline-container">
+    <maxterdev-button
+      class="timeline-header-btn"
+      [text]="true"
+      [type]="'button'"
+      [name]="'timeline-toggle'"
+      (onClick)="toggleTimeline()"
+      [attr.aria-expanded]="!collapsed"
+    >
+      <span class="tl-btn-content">
+        <span class="tl-title">
+          <ng-content select="[timeline-header]"></ng-content>
+        </span>
+        <span class="chevron" aria-hidden="true"></span>
+      </span>
+    </maxterdev-button>
+
+    <div
+      #body
+      class="timeline-body"
+      role="region"
+      [attr.aria-hidden]="collapsed"
+    >
+      <div #content class="timeline-inner">
+        <ul>
+          <li
+            class="timeline-li"
+            *ngFor="let item of timelineData; let last = last"
+          >
+            <div class="timeline-item">
+              <div class="icon-wrapper" *ngIf="item.icon">
+                <i [class]="item.icon"></i>
+              </div>
+
+              <div class="item-content">
+                <!-- Header -->
+                <header class="item-header">
+                  <div class="item-title">
+                    {{ getItemHeader(item) }}
+                  </div>
+                  <div class="item-meta">
+                    <small class="item-note" *ngIf="item.note">{{
+                      item.note
+                    }}</small>
+                    <small class="item-time" *ngIf="item.at">{{
+                      item.at | date : "medium"
+                    }}</small>
+                  </div>
+                </header>
+
+                <!-- Body -->
+                <section class="item-body">
+                  <p class="body-text" *ngIf="item.body">{{ item.body }}</p>
+
+                  <div class="sources-wrapper" *ngIf="item.sources?.length">
+                    <ng-container *ngFor="let source of item.sources">
+                      <a
+                        *ngIf="source.url; else pill"
+                        [href]="source.url"
+                        target="_blank"
+                        rel="noopener"
+                        class="source-pill"
+                      >
+                        <i
+                          [ngClass]="['pi', getSourceIcon(source)]"
+                          class="source-icon"
+                          aria-hidden="true"
+                        ></i>
+                        <span>{{ source.name }}</span>
+                      </a>
+                      <ng-template #pill>
+                        <button
+                          type="button"
+                          class="source-pill"
+                          (click)="onSourceClick(source)"
+                        >
+                          <i
+                            [ngClass]="['pi', getSourceIcon(source)]"
+                            class="source-icon"
+                            aria-hidden="true"
+                          ></i>
+                          <span>{{ source.name }}</span>
+                        </button>
+                      </ng-template>
+                    </ng-container>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <!-- Horizontal divider between items -->
+            <!-- <div class="timeline-divider" *ngIf="!last"></div> -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

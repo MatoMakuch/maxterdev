@@ -1,9 +1,9 @@
-@import '../base/components'; // Assuming this is the correct path
+@import "../base/components"; // Assuming this is the correct path
 
 // The main container for the entire tabs component
 maxterdev-tabs {
   display: block;
-  @include component-base(); 
+  @include component-base();
 }
 
 // Container for the clickable tab headers

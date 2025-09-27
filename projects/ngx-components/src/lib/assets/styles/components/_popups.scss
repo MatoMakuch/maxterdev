@@ -1,4 +1,4 @@
-@import '../base/components';
+@import "../base/components";
 
 maxterdev-popup {
   display: block;
@@ -9,9 +9,8 @@ maxterdev-popup {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1000; 
-    background-color: rgba(0, 0, 0, 0.3); 
-
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.3);
 
     display: flex;
     align-items: center;
@@ -19,15 +18,17 @@ maxterdev-popup {
   }
 
   .popup-container {
-    @include component-base(); 
+    @include component-base();
     @include component-border();
     @include component-font-text();
 
     border-color: var(--color-border-primary);
     background-color: var(--color-background);
-    padding-inline: 0.55rem; 
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -2px rgba(0,0,0,0.1);
-    
+    padding-inline: 0.55rem;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
     display: flex;
     flex-direction: column;
 
@@ -42,16 +43,16 @@ maxterdev-popup {
 
   .popup-header {
     @include component-base();
-    padding-bottom: var(--padding-lg); 
-    padding-top: var(--padding-lg); 
-    padding-left: var(--padding-md); 
-    padding-right: var(--padding-md); 
+    padding-bottom: var(--padding-lg);
+    padding-top: var(--padding-lg);
+    padding-left: var(--padding-md);
+    padding-right: var(--padding-md);
   }
-  
+
   .popup-body {
     @include component-base();
     @include component-font();
-    padding: var(--padding-md); 
+    padding: var(--padding-md);
     position: relative;
   }
 
@@ -66,17 +67,16 @@ maxterdev-popup {
     pointer-events: none;
   }
 
-
   .popup-footer {
     @include component-base();
     gap: 0.5rem;
     display: flex;
     width: 100%;
     flex-direction: row;
-    padding-bottom: var(--padding-lg); 
-    padding-top: var(--padding-lg); 
-    padding-left: var(--padding-md); 
-    padding-right: var(--padding-md); 
+    padding-bottom: var(--padding-lg);
+    padding-top: var(--padding-lg);
+    padding-left: var(--padding-md);
+    padding-right: var(--padding-md);
     justify-content: flex-end;
   }
 }

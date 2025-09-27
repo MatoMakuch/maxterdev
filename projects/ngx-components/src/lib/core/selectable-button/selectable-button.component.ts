@@ -18,12 +18,10 @@ export class SelectableButtonComponent {
     if (!this.disabled) {
       if (this.selected) return 'selected';
       else return 'unselected';
-    }
-    else return 'disabled';
+    } else return 'disabled';
   }
 
   onButtonClick() {
-
     if (this.disabled) {
       return;
     }
