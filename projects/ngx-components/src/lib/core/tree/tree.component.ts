@@ -19,8 +19,6 @@ import {
 } from '../../directives/table-column.directive';
 import { TreeNode } from './tree-node.interface';
 
-export type ComponentSize = 'sm' | 'md' | 'lg';
-
 // Per-node runtime state (kept out of input data)
 type NodeMeta = {
   level: number;
@@ -47,7 +45,7 @@ type NodeMeta = {
 export class TreeTableComponent implements OnChanges {
   @Input() data: ReadonlyArray<TreeNode> = [];
   @Input() isMultiSelect = false;
-  @Input() size: ComponentSize = 'md';
+  @Input() size: 'sm' | 'md' | 'lg' = 'md';
   @Output() selectionChange = new EventEmitter<ReadonlyArray<TreeNode>>();
 
   @ContentChildren(ColumnComponent, { descendants: true })
@@ -114,7 +112,7 @@ export class TreeTableComponent implements OnChanges {
     const setMeta = (
       nodes: ReadonlyArray<TreeNode>,
       level: number,
-      parent?: TreeNode,
+      parent?: TreeNode
     ) => {
       for (const n of nodes) {
         const prev = this.meta.get(n);
@@ -183,10 +181,10 @@ export class TreeTableComponent implements OnChanges {
       m.indeterminate = false;
     } else {
       const everySel = kids.every(
-        (k) => this.getMeta(k).selected && !this.getMeta(k).indeterminate,
+        (k) => this.getMeta(k).selected && !this.getMeta(k).indeterminate
       );
       const noneSel = kids.every(
-        (k) => !this.getMeta(k).selected && !this.getMeta(k).indeterminate,
+        (k) => !this.getMeta(k).selected && !this.getMeta(k).indeterminate
       );
       const pm = this.getMeta(node);
       if (everySel) {
