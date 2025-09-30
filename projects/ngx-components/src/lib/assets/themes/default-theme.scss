@@ -1,125 +1,185 @@
-@import '../styles/base/buttons.scss';
-@import '../styles/base/inputs.scss';
-
+@import "../styles/base/buttons.scss";
+@import "../styles/base/inputs.scss";
 
 :root {
-  // ======== Colors ======== //
-  --color-primary: #0064FA;
-  --color-primary-accent: #{lighten(#0064FA, 45%)};
-  --color-secondary: #FEFEFE;
-  --color-surface:	#f2f1f1;
+  //primary
+  --color-primary: #0064fa;
+  --color-primary-accent: #{lighten(#0064fa, 45%)};
+  --on-primary: #ffffff;
+
   --color-background: #ffffff;
+  --color-surface: #f2f1f1;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f7f8fa;
+  --color-surface-3: #eff2f6;
+
   --color-border-bottom-input: #dfdfdf;
-  //--color-border-bottom-button: #d4d4d4;
 
   --color-text: #202020;
   --color-text-active: #202020;
   --color-text-secondary: #707070;
+  --on-surface: #202020;
+  --on-background: #202020;
+
+  --color-success: #16a34a;
+  --on-success: #ffffff;
+  --color-warning: #e53e3e;
+  --on-warning: #1f1f1f;
+  --color-danger: #dc2626;
+  --on-danger: #ffffff;
+  --color-info: #2563eb;
+  --on-info: #ffffff;
 
   --color-hover-outline: #dfdfdf;
-  --color-hover-background: #F4F7F9;
+  --color-hover-background: #f4f7f9;
   --color-border-primary: #dfdfdf;
   --color-border-active: #b8b8b8;
   --color-hover-fill: #3f3f3f;
-  --color-primary-hover: #{lighten(#0064FA, 5%)};
-  --color-primary-active: #{lighten(#0064FA, 10%)};
-  --color-secondary-hover: #F6F7F9;
-  --color-secondary-active: #F6F7F9;
+  --color-primary-hover: #{lighten(#0064fa, 5%)};
+  --color-primary-active: #{lighten(#0064fa, 10%)};
+  --color-secondary-hover: #f6f7f9;
+  --color-secondary-active: #f6f7f9;
   --color-inactive: #d4d4d4;
   --color-inactive2: #{darken(#d4d4d4, 10%)};
   --color-active: #1d1d1d;
-  --color-warning: #e53e3e;
 
-  --color-button-primary-background-inactive: #0064FA;
-  --color-button-primary-background-hover: #{lighten(#0064FA, 5%)};
-  --color-button-primary-background-active: #{lighten(#0064FA, 10%)};
-  --color-button-primary-border-inactive: #0064FA;
-  --color-button-primary-border-hover: #{lighten(#0064FA, 5%)};
-  --color-button-primary-border-active: #{lighten(#0064FA, 10%)};
-  --color-button-primary-border-bottom-inactive: #0064FA;
-  --color-button-primary-border-bottom-hover: #{lighten(#0064FA, 5%)};
-  --color-button-primary-border-bottom-active: #{lighten(#0064FA, 10%)};
-  --color-button-primary-text-inactive: #FFFFFF;
-  --color-button-primary-text-hover: #FFFFFF;
-  --color-button-primary-text-active: #FFFFFF;
+  --color-button-primary-background-inactive: #0064fa;
+  --color-button-primary-border-inactive: #0064fa;
+  --color-button-primary-border-bottom-inactive: #0064fa;
+  --color-button-primary-text-inactive: #ffffff;
 
-  --color-button-secondary-background-inactive: #FFFFFF;
-  --color-button-secondary-background-hover: #FAFAFB;
-  --color-button-secondary-background-active: #F6F7F9;
+  --color-button-primary-background-hover: #{lighten(#0064fa, 5%)};
+  --color-button-primary-border-hover: #{lighten(#0064fa, 5%)};
+  --color-button-primary-border-bottom-hover: #{lighten(#0064fa, 5%)};
+  --color-button-primary-text-hover: #ffffff;
+
+  --color-button-primary-background-active: #{lighten(#0064fa, 10%)};
+  --color-button-primary-border-active: #{lighten(#0064fa, 10%)};
+  --color-button-primary-border-bottom-active: #{lighten(#0064fa, 10%)};
+  --color-button-primary-text-active: #ffffff;
+
+  --color-button-secondary-background-inactive: #ffffff;
   --color-button-secondary-border-inactive: #dfdfdf;
-  --color-button-secondary-border-hover: #dfdfdf;
-  --color-button-secondary-border-active: #dfdfdf;
   --color-button-secondary-border-bottom-inactive: #dfdfdf;
-  --color-button-secondary-border-bottom-hover: #dfdfdf;
-  --color-button-secondary-border-bottom-active: #dfdfdf;
   --color-button-secondary-text-inactive: #202020;
-  --color-button-secondary-text-hover: #3c3c3c;
+
+  --color-button-secondary-background-hover: #fafafb;
+  --color-button-secondary-border-hover: #dfdfdf;
+  --color-button-secondary-border-bottom-hover: #dfdfdf;
+  --color-button-secondary-text-hover: #202020;
+
+  --color-button-secondary-background-active: #f6f7f9;
+  --color-button-secondary-border-active: #dfdfdf;
+  --color-button-secondary-border-bottom-active: #dfdfdf;
   --color-button-secondary-text-active: #202020;
 
   --color-button-primary-text-background-inactive: transparent;
-  --color-button-primary-text-background-hover: transparent;
-  --color-button-primary-text-background-active: transparent;
   --color-button-primary-text-border-inactive: transparent;
-  --color-button-primary-text-border-hover: transparent;
-  --color-button-primary-text-border-active: transparent;
   --color-button-primary-text-border-bottom-inactive: transparent;
+  --color-button-primary-text-text-inactive: #0064fa;
+
+  --color-button-primary-text-background-hover: transparent;
+  --color-button-primary-text-border-hover: transparent;
   --color-button-primary-text-border-bottom-hover: transparent;
+  --color-button-primary-text-text-hover: #{lighten(#0064fa, 5%)};
+
+  --color-button-primary-text-background-active: transparent;
+  --color-button-primary-text-border-active: transparent;
   --color-button-primary-text-border-bottom-active: transparent;
-  --color-button-primary-text-text-inactive: #0064FA;
-  --color-button-primary-text-text-hover: #{lighten(#0064FA, 5%)};
-  --color-button-primary-text-text-active: #{lighten(#0064FA, 10%)};
+  --color-button-primary-text-text-active: #{lighten(#0064fa, 10%)};
 
   --color-button-secondary-text-background-inactive: transparent;
-  --color-button-secondary-text-background-hover: transparent;
-  --color-button-secondary-text-background-active: transparent;
-  --color-button-secondary-text-background-disabled: transparent;
   --color-button-secondary-text-border-inactive: transparent;
-  --color-button-secondary-text-border-hover: transparent;
-  --color-button-secondary-text-border-active: transparent;
   --color-button-secondary-text-border-bottom-inactive: transparent;
-  --color-button-secondary-text-border-bottom-hover: transparent;
-  --color-button-secondary-text-border-bottom-active: transparent;
   --color-button-secondary-text-text-inactive: #202020;
-  --color-button-secondary-text-text-hover: #474747;
-  --color-button-secondary-text-text-active: #656565;
 
-  --color-button-disabled-background-inactive: #F5F7FA;
-  --color-button-disabled-background-hover: #F5F7FA;
-  --color-button-disabled-background-active: #F5F7FA;
-  --color-button-disabled-border-inactive: #F5F7FA;
-  --color-button-disabled-border-hover: #F5F7FA;
-  --color-button-disabled-border-active: #F5F7FA;
-  --color-button-disabled-border-bottom-inactive: #F6F7F9;
-  --color-button-disabled-border-bottom-hover: #F6F7F9;
-  --color-button-disabled-border-bottom-active: #F6F7F9;
-  --color-button-disabled-text-inactive: #5E5E5F;
-  --color-button-disabled-text-hover: #5E5E5F;
-  --color-button-disabled-text-active: #5E5E5F;
+  --color-button-secondary-text-background-hover: transparent;
+  --color-button-secondary-text-border-hover: transparent;
+  --color-button-secondary-text-border-bottom-hover: transparent;
+  --color-button-secondary-text-text-hover: #3c3c3c;
+
+  --color-button-secondary-text-background-active: transparent;
+  --color-button-secondary-text-border-active: transparent;
+  --color-button-secondary-text-border-bottom-active: transparent;
+  --color-button-secondary-text-text-active: #1d1d1d;
+
+  --color-button-disabled-background-inactive: #f5f7fa;
+  --color-button-disabled-border-inactive: #f5f7fa;
+  --color-button-disabled-border-bottom-inactive: #f6f7f9;
+  --color-button-disabled-text-inactive: #9aa0a6; /* was #5e5e5f */
+
+  --color-button-disabled-background-hover: #f5f7fa;
+  --color-button-disabled-border-hover: #f5f7fa;
+  --color-button-disabled-border-bottom-hover: #f6f7f9;
+  --color-button-disabled-text-hover: #9aa0a6;
+
+  --color-button-disabled-background-active: #f5f7fa;
+  --color-button-disabled-border-active: #f5f7fa;
+  --color-button-disabled-border-bottom-active: #f6f7f9;
+  --color-button-disabled-text-active: #9aa0a6;
 
   --color-selectable-button-unselected-background-inactive: transparent;
   --color-selectable-button-unselected-background-hover: transparent;
-  --color-selectable-button-unselected-background-active: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-background-active: rgba(
+    211,
+    211,
+    211,
+    0.2
+  );
   --color-selectable-button-unselected-border-inactive: transparent;
   --color-selectable-button-unselected-border-hover: transparent;
   --color-selectable-button-unselected-border-active: rgba(211, 211, 211, 0.2);
   --color-selectable-button-unselected-border-bottom-inactive: transparent;
   --color-selectable-button-unselected-border-bottom-hover: transparent;
-  --color-selectable-button-unselected-border-bottom-active: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-bottom-active: rgba(
+    211,
+    211,
+    211,
+    0.2
+  );
   --color-selectable-button-unselected-text-inactive: #202020;
   --color-selectable-button-unselected-text-hover: #555555;
   --color-selectable-button-unselected-text-active: #202020;
 
-  --color-selectable-button-selected-background-inactive: #DADADA;
-  --color-selectable-button-selected-background-hover: #e0e0e0;
-  --color-selectable-button-selected-background-active: #DADADA;
-  --color-selectable-button-selected-border-inactive: #DADADA;
-  --color-selectable-button-selected-border-hover: transparent;
-  --color-selectable-button-selected-border-active: #DADADA;
-  --color-selectable-button-selected-border-bottom-inactive: #DADADA;
-  --color-selectable-button-selected-border-bottom-hover: transparent;
-  --color-selectable-button-selected-border-bottom-active: #DADADA;
+  --color-selectable-button-unselected-background-inactive: transparent;
+  --color-selectable-button-unselected-border-inactive: transparent;
+  --color-selectable-button-unselected-border-bottom-inactive: transparent;
+  --color-selectable-button-unselected-text-inactive: #202020;
+
+  --color-selectable-button-unselected-background-hover: transparent;
+  --color-selectable-button-unselected-border-hover: transparent;
+  --color-selectable-button-unselected-border-bottom-hover: transparent;
+  --color-selectable-button-unselected-text-hover: #555555;
+
+  --color-selectable-button-unselected-background-active: rgba(
+    211,
+    211,
+    211,
+    0.2
+  );
+  --color-selectable-button-unselected-border-active: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-bottom-active: rgba(
+    211,
+    211,
+    211,
+    0.2
+  );
+  --color-selectable-button-unselected-text-active: #202020;
+
+  /* ===== Selectable Buttons: SELECTED ===== */
+  --color-selectable-button-selected-background-inactive: #dadada;
+  --color-selectable-button-selected-border-inactive: #dadada;
+  --color-selectable-button-selected-border-bottom-inactive: #dadada;
   --color-selectable-button-selected-text-inactive: #202020;
+
+  --color-selectable-button-selected-background-hover: #e0e0e0;
+  --color-selectable-button-selected-border-hover: #e0e0e0;
+  --color-selectable-button-selected-border-bottom-hover: #e0e0e0;
   --color-selectable-button-selected-text-hover: #202020;
+
+  --color-selectable-button-selected-background-active: #cfcfcf;
+  --color-selectable-button-selected-border-active: #cfcfcf;
+  --color-selectable-button-selected-border-bottom-active: #cfcfcf;
   --color-selectable-button-selected-text-active: #202020;
 
   --color-input-background-inactive: transparent;
@@ -132,7 +192,7 @@
 
   // --color-list-item-hover: #EEF0F1;
   // --color-list-item-active: #F0F1F1;
-  --color-list-item-indicator: #0067C0;
+  --color-list-item-indicator: #0067c0;
 
   --color-card-response: rgba(255, 255, 255, 0);
   --color-card-input: #e3eefd;
@@ -142,64 +202,320 @@
 
   --show-line: 0;
 
-  // ======== Spacing ======== //
-  --padding-sm: 0.2rem;
-  --padding-md: 0.4rem;
-  --padding-lg: 0.6rem;
-  --margin-sm: 0.2rem;
-  --margin-md: 0.4rem;
-  --margin-lg: 0.8rem;
+  //shadow
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-3: 0 12px 28px rgba(0, 0, 0, 0.16);
 
-  // ======== Borders ======== //
-  --border-width-sm: 1.2px;
-  --border-width-md: 1.6px;
+  // Spacing
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-6: 1.5rem; /* 24px */
+
+  --padding-sm: var(--space-1);
+  --padding-md: var(--space-2);
+  --padding-lg: var(--space-3);
+  --margin-sm: var(--space-1);
+  --margin-md: var(--space-2);
+  --margin-lg: var(--space-4);
+
+  // z-index
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-dropdown: 1000;
+  --z-overlay: 1100;
+  --z-modal: 1200;
+  --z-toast: 1300;
+
+  // Border
+  --border-width-sm: 1px;
+  --border-width-md: 1.5px;
   --border-width-lg: 2px;
   --border-radius-sm: 6px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 10px;
-  --border-bottom-focus: 2.2px solid #0477BF;
+  --border-radius-md: 10px;
+  --border-radius-lg: 14px;
+  --border-radius-xl: 18px;
+  --border-radius-pill: 9999px;
 
-  // ======== Typography ======== //
-  --font-size-sm: 0.8rem;
-  --font-size-md: 1rem;
-  --font-size-lg: 1.25rem;
-  --font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  --line-height-sm: 1;
+  --border-bottom-focus: 2.2px solid #0477bf;
+
+  // Typography
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+
+  --line-height-sm: 1.3;
   --line-height-md: 1.5;
-  --line-height-lg: 2;
+  --line-height-lg: 1.65;
 
-  // ======== Components ======== //
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+
+  // Components
   --height-input: 40px;
   --height-md: 1;
   --height-lg: 2;
 }
 
-@import '../styles/components/_buttons.scss';
-@import '../styles/components/_dropdowns.scss';
-@import '../styles/components/_inputs.scss';
-@import '../styles/components/_lists.scss';
-@import '../styles/components/_popups.scss';
-@import '../styles/components/tabs';
-@import '../styles/components/tab';
-@import '../styles/components/checkboxes';
-@import '../styles/components/tables';
-@import '../styles/components/trees';
-@import '../styles/components/menus';
-@import '../styles/components/progress-bars';
+/* ==========================
+   Dark theme overrides
+   ========================== */
 
-@import '../styles/utilities/_cards.scss';
-@import '../styles/utilities/_groups.scss';
-@import '../styles/utilities/_helpers.scss';
+@mixin dark-theme-tokens() {
+  /* Brand */
+  --color-primary: #0064fa;
+  --color-primary-accent: #{lighten(#0064fa, 45%)};
+  --on-primary: #ffffff;
+  --color-primary-hover: #{lighten(#0064fa, 5%)};
+  --color-primary-active: #{lighten(#0064fa, 10%)};
 
-@import '@angular/cdk/overlay-prebuilt.css';
+  /* Backgrounds & surfaces */
+  --color-background: #0b0c0e;
+  --color-surface: #0f1115;
+  --color-surface-1: #13161b;
+  --color-surface-2: #161a20;
+  --color-surface-3: #1a1f26;
+
+  /* Text */
+  --color-text: #e6e9ef;
+  --color-text-active: #f3f4f6;
+  --color-text-secondary: #b0b7c3;
+  --on-surface: #e6e9ef;
+  --on-background: #e6e9ef;
+
+  /* Borders & outlines */
+  --color-border-bottom-input: #2a2f36;
+  --color-border-primary: #2a2f36;
+  --color-border-active: #3a404a;
+  --color-hover-outline: #343a44;
+
+  /* Hovers / actives */
+  --color-hover-background: #161a20;
+  --color-hover-fill: #e6e9ef;
+  --color-inactive: #4b525d;
+  --color-inactive2: #{lighten(#4b525d, 12%)};
+  --color-active: #f3f4f6;
+
+  /* Status */
+  --color-success: #16a34a;
+  --on-success: #ffffff;
+  --color-warning: #f59e0b; /* keep as your warning; see note below */
+  --on-warning: #1f1f1f;
+  --color-danger: #dc2626;
+  --on-danger: #ffffff;
+  --color-info: #2563eb;
+  --on-info: #ffffff;
+
+  /* Buttons — primary */
+  --color-button-primary-background-inactive: #0064fa;
+  --color-button-primary-border-inactive: #0064fa;
+  --color-button-primary-border-bottom-inactive: #0064fa;
+  --color-button-primary-text-inactive: #ffffff;
+
+  --color-button-primary-background-hover: #{lighten(#0064fa, 5%)};
+  --color-button-primary-border-hover: #{lighten(#0064fa, 5%)};
+  --color-button-primary-border-bottom-hover: #{lighten(#0064fa, 5%)};
+  --color-button-primary-text-hover: #ffffff;
+
+  --color-button-primary-background-active: #{lighten(#0064fa, 10%)};
+  --color-button-primary-border-active: #{lighten(#0064fa, 10%)};
+  --color-button-primary-border-bottom-active: #{lighten(#0064fa, 10%)};
+  --color-button-primary-text-active: #ffffff;
+
+  /* Buttons — secondary (filled) */
+  --color-button-secondary-background-inactive: #12161b;
+  --color-button-secondary-border-inactive: #2a2f36;
+  --color-button-secondary-border-bottom-inactive: #2a2f36;
+  --color-button-secondary-text-inactive: #e6e9ef;
+
+  --color-button-secondary-background-hover: #161a20;
+  --color-button-secondary-border-hover: #343a44;
+  --color-button-secondary-border-bottom-hover: #343a44;
+  --color-button-secondary-text-hover: #f3f4f6;
+
+  --color-button-secondary-background-active: #0f1318;
+  --color-button-secondary-border-active: #3a404a;
+  --color-button-secondary-border-bottom-active: #3a404a;
+  --color-button-secondary-text-active: #ffffff;
+
+  /* Buttons — primary text (ghost) */
+  --color-button-primary-text-background-inactive: transparent;
+  --color-button-primary-text-border-inactive: transparent;
+  --color-button-primary-text-border-bottom-inactive: transparent;
+  --color-button-primary-text-text-inactive: #{lighten(#0064fa, 10%)};
+
+  --color-button-primary-text-background-hover: transparent;
+  --color-button-primary-text-border-hover: transparent;
+  --color-button-primary-text-border-bottom-hover: transparent;
+  --color-button-primary-text-text-hover: #{lighten(#0064fa, 15%)};
+
+  --color-button-primary-text-background-active: transparent;
+  --color-button-primary-text-border-active: transparent;
+  --color-button-primary-text-border-bottom-active: transparent;
+  --color-button-primary-text-text-active: #{lighten(#0064fa, 20%)};
+
+  /* Buttons — secondary text (ghost) */
+  --color-button-secondary-text-background-inactive: transparent;
+  --color-button-secondary-text-border-inactive: transparent;
+  --color-button-secondary-text-border-bottom-inactive: transparent;
+  --color-button-secondary-text-text-inactive: #e6e9ef;
+
+  --color-button-secondary-text-background-hover: transparent;
+  --color-button-secondary-text-border-hover: transparent;
+  --color-button-secondary-text-border-bottom-hover: transparent;
+  --color-button-secondary-text-text-hover: #ffffff;
+
+  --color-button-secondary-text-background-active: transparent;
+  --color-button-secondary-text-border-active: transparent;
+  --color-button-secondary-text-border-bottom-active: transparent;
+  --color-button-secondary-text-text-active: #ffffff;
+
+  /* Buttons — disabled */
+  --color-button-disabled-background-inactive: #141820;
+  --color-button-disabled-border-inactive: #141820;
+  --color-button-disabled-border-bottom-inactive: #161a22;
+  --color-button-disabled-text-inactive: #6b7280;
+
+  --color-button-disabled-background-hover: #141820;
+  --color-button-disabled-border-hover: #141820;
+  --color-button-disabled-border-bottom-hover: #161a22;
+  --color-button-disabled-text-hover: #6b7280;
+
+  --color-button-disabled-background-active: #141820;
+  --color-button-disabled-border-active: #141820;
+  --color-button-disabled-border-bottom-active: #161a22;
+  --color-button-disabled-text-active: #6b7280;
+
+  /* Selectable buttons — UNSELECTED */
+  --color-selectable-button-unselected-background-inactive: transparent;
+  --color-selectable-button-unselected-border-inactive: transparent;
+  --color-selectable-button-unselected-border-bottom-inactive: transparent;
+  --color-selectable-button-unselected-text-inactive: #e6e9ef;
+
+  --color-selectable-button-unselected-background-hover: transparent;
+  --color-selectable-button-unselected-border-hover: transparent;
+  --color-selectable-button-unselected-border-bottom-hover: transparent;
+  --color-selectable-button-unselected-text-hover: #cfd4dd;
+
+  --color-selectable-button-unselected-background-active: rgba(
+    255,
+    255,
+    255,
+    0.06
+  );
+  --color-selectable-button-unselected-border-active: rgba(255, 255, 255, 0.06);
+  --color-selectable-button-unselected-border-bottom-active: rgba(
+    255,
+    255,
+    255,
+    0.06
+  );
+  --color-selectable-button-unselected-text-active: #ffffff;
+
+  /* Selectable buttons — SELECTED */
+  --color-selectable-button-selected-background-inactive: #1b2129;
+  --color-selectable-button-selected-border-inactive: #1b2129;
+  --color-selectable-button-selected-border-bottom-inactive: #1b2129;
+  --color-selectable-button-selected-text-inactive: #e6e9ef;
+
+  --color-selectable-button-selected-background-hover: #232a33;
+  --color-selectable-button-selected-border-hover: #232a33;
+  --color-selectable-button-selected-border-bottom-hover: #232a33;
+  --color-selectable-button-selected-text-hover: #ffffff;
+
+  --color-selectable-button-selected-background-active: #12181f;
+  --color-selectable-button-selected-border-active: #12181f;
+  --color-selectable-button-selected-border-bottom-active: #12181f;
+  --color-selectable-button-selected-text-active: #ffffff;
+
+  /* Inputs */
+  --color-input-background-inactive: transparent;
+  --color-input-background-inactive-hover: #12161b;
+  --color-input-background-active: transparent;
+  --color-input-border: #2a2f36;
+  --color-input-border-hover: #343a44;
+  --color-input-border-active: #3a404a;
+  --color-input-line: #2a2f36;
+
+  --color-list-item-indicator: #0067c0;
+  --color-card-response: rgba(0, 0, 0, 0);
+  --color-card-input: rgba(0, 100, 250, 0.12); /* brand-tinted */
+  --color-card-border: transparent;
+
+  --border-bottom-focus: 2.2px solid #{lighten(#0064fa, 5%)};
+
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-3: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* Apply when explicitly set on <html> or any container */
+:root[data-theme="dark"],
+[data-theme="dark"],
+.cdk-overlay-container[data-theme="dark"] {
+  @include dark-theme-tokens();
+}
+
+/* Respect OS preference if no explicit data-theme is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark-theme-tokens();
+  }
+}
+
+@import "../styles/components/_buttons.scss";
+@import "../styles/components/_dropdowns.scss";
+@import "../styles/components/_inputs.scss";
+@import "../styles/components/_lists.scss";
+@import "../styles/components/_popups.scss";
+@import "../styles/components/tabs";
+@import "../styles/components/tab";
+@import "../styles/components/checkboxes";
+@import "../styles/components/tables";
+@import "../styles/components/trees";
+@import "../styles/components/menus";
+@import "../styles/components/progress-bars";
+@import "../styles/components/timelines";
+
+@import "../styles/utilities/_cards.scss";
+@import "../styles/utilities/_groups.scss";
+@import "../styles/utilities/_helpers.scss";
+
+@import "@angular/cdk/overlay-prebuilt.css";
 
 .cdk-overlay-container {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  z-index: 999999 !important;
+  z-index: 21000 !important;
 }
+
 .cdk-overlay-pane {
-  position: absolute;
+  position: absolute; /* CDK expects absolute */
   pointer-events: auto;
+}
+
+.cdk-overlay-backdrop {
+  &.cdk-overlay-transparent-backdrop {
+    background-color: transparent;
+  }
+}
+
+.maxterdev-dropdown-panel {
+  z-index: 1001; // Higher than menu
 }

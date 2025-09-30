@@ -19,13 +19,13 @@
     <textarea
       #textareaEl
       [attr.id]="id ?? null"
-      [attr.name]="name ?? null"
-      [attr.placeholder]="placeholder ?? null"
+      [attr.name]="name"
+      [attr.placeholder]="placeholder"
       [readonly]="readonly"
       [required]="required"
       [disabled]="disabled"
       [attr.aria-invalid]="required ? (value.length ? null : true) : null"
-      [attr.aria-describedby]="describedBy ?? null"
+      [attr.aria-describedby]="describedBy"
       rows="1"
       autosize
       [autosizeDisabled]="autosizeDisabled"
@@ -44,9 +44,9 @@
     <input
       #inputEl
       [attr.id]="id ?? null"
-      [attr.name]="name ?? null"
+      [attr.name]="name"
       [attr.type]="type || 'text'"
-      [attr.placeholder]="placeholder ?? null"
+      [attr.placeholder]="placeholder"
       [readonly]="readonly"
       [required]="required"
       [disabled]="disabled"

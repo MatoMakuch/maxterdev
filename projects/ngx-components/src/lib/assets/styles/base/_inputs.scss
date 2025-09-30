@@ -4,8 +4,6 @@
   border-color: var(--color-input-border);
   border-bottom-color: var(--color-input-line);
 
-  //box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-
   &:not(:focus-within):hover {
     background-color: var(--color-input-background-inactive-hover);
     border-color: var(--color-input-border-hover);
@@ -38,7 +36,11 @@
   }
 
   &:focus-within .input-line {
-    background: linear-gradient(to top, var(--color-list-item-indicator) 2px, transparent 2px);
+    background: linear-gradient(
+      to top,
+      var(--color-list-item-indicator) 2px,
+      transparent 2px
+    );
     background-repeat: no-repeat;
   }
 }

@@ -10,7 +10,8 @@ maxterdev-tabs {
 .tab-headers {
   display: flex;
   flex-direction: row;
-  border-bottom: var(--border-width-sm) solid var(--border-color, #ccc); // Use CSS variables for colors if you have them
+  border-bottom: var(--border-width-sm) solid var(--border-color, #ccc);
+  @include component-padding;
 }
 
 .tab-header {

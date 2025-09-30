@@ -31,16 +31,16 @@ maxterdev-progress-bar {
 
   .progress-fill {
     height: 100%;
-    border-radius: 999px;
-    background-color: #111; // Replace with your theme's primary color variable
+    border-radius: var(--border-radius-pill);
+    background-color: var(
+      --color-active
+    ); // Replace with your theme's primary color variable
     //transition: width 160ms ease-out;
   }
 
   .value {
     font-variant-numeric: tabular-nums;
-    color: var(
-      --color-text-primary
-    ); // Replace with your theme's secondary text color variable
+    color: var(--color-text);
     white-space: nowrap;
   }
 }

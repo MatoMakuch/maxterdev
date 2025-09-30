@@ -4,7 +4,8 @@
   border-bottom-color: var(--color-button-#{$variant}-border-bottom-inactive);
   color: var(--color-button-#{$variant}-text-inactive);
 
-  &:hover, &:focus-visible {
+  &:hover,
+  &:focus-visible {
     background-color: var(--color-button-#{$variant}-background-hover);
     border-color: var(--color-button-#{$variant}-border-hover);
     border-bottom-color: var(--color-button-#{$variant}-border-bottom-hover);
@@ -20,22 +21,35 @@
 }
 
 @mixin selectable-button($variant) {
-  background-color: var(--color-selectable-button-#{$variant}-background-inactive);
+  background-color: var(
+    --color-selectable-button-#{$variant}-background-inactive
+  );
   border-color: var(--color-selectable-button-#{$variant}-border-inactive);
-  border-bottom-color: var(--color-selectable-button-#{$variant}-border-bottom-inactive);
+  border-bottom-color: var(
+    --color-selectable-button-#{$variant}-border-bottom-inactive
+  );
   color: var(--color-selectable-button-#{$variant}-text-inactive);
 
-  &:hover, &:focus-visible {
-    background-color: var(--color-selectable-button-#{$variant}-background-hover);
+  &:hover,
+  &:focus-visible {
+    background-color: var(
+      --color-selectable-button-#{$variant}-background-hover
+    );
     border-color: var(--color-selectable-button-#{$variant}-border-hover);
-    border-bottom-color: var(--color-selectable-button-#{$variant}-border-bottom-hover);
+    border-bottom-color: var(
+      --color-selectable-button-#{$variant}-border-bottom-hover
+    );
     color: var(--color-selectable-button-#{$variant}-text-hover);
   }
 
   &:active {
-    background-color: var(--color-selectable-button-#{$variant}-background-active);
+    background-color: var(
+      --color-selectable-button-#{$variant}-background-active
+    );
     border-color: var(--color-selectable-button-#{$variant}-border-active);
-    border-bottom-color: var(--color-selectable-button-#{$variant}-border-bottom-active);
+    border-bottom-color: var(
+      --color-selectable-button-#{$variant}-border-bottom-active
+    );
     color: var(--color-selectable-button-#{$variant}-text-active);
   }
 }

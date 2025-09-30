@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  HostBinding,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -16,6 +22,17 @@ export class ButtonComponent {
   @Input() disabled: boolean = false;
   @Input() textAlign: 'left' | 'center' | 'right' = 'center';
   @Output() onClick = new EventEmitter<any>();
+  @Input() size: 'sm' | 'md' | 'lg' = 'md';
+
+  @HostBinding('class.sm') get hostSm() {
+    return this.size === 'sm';
+  }
+  @HostBinding('class.lg') get hostLg() {
+    return this.size === 'lg';
+  }
+  @HostBinding('attr.size') get sizeAttr() {
+    return this.size;
+  }
 
   protected getClass() {
     if (!this.disabled) {

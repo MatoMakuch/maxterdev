@@ -1,38 +1,48 @@
 @import "../base/components";
 
+/* ==========================
+   Root list (small by default)
+   ========================== */
 .timeline-container ul {
   --gap-divider-header: var(--margin-lg, 12px);
   --gap-header-body: var(--margin-lg, 12px);
   --gap-body-divider: var(--margin-lg, 12px);
   --gap-body-sources: var(--margin-md, 12px);
+
+  --dot-size: 22px;
+  --dot-stroke: 3px;
+  --dot-glyph-scale: 0.55;
+  --dot-offset-y: -0.125rem;
+
   --rail-col: calc(var(--dot-size) + 2 * var(--dot-stroke));
   --rail-width: var(--border-width-sm, 2px);
   --content-gap-x: var(--margin-md, 12px);
-  --dot-size: 22px; /* ⟵ make the circle bigger/smaller */
-  --dot-stroke: 3px; /* ring thickness around the dot */
-  --dot-glyph-scale: 0.55; /* glyph-to-dot ratio (0.58–0.70) */
-  --dot-offset-y: -0.125rem;
 
   list-style: none;
   margin: 0;
-  padding-left: 0; /* keep 0 so rail centering math is stable */
+  padding-left: 0; /* keeps rail math stable */
   position: relative;
-  @include component-font;
+
+  @include component-font(sm);
   box-sizing: border-box;
 
-  /* Vertical rail centered in the rail column */
+  /* Ensure no legacy global rail */
   &::before {
     content: "";
     position: absolute;
-    left: calc(var(--rail-col) / 2 - var(--border-width-sm, 2px) / 2);
+    left: calc(var(--rail-col) / 2 - var(--rail-width) / 2);
     top: 5px;
     bottom: 5px;
     width: var(--rail-width);
     background-color: var(--color-border-primary);
+    pointer-events: none;
+    z-index: 0;
   }
 }
 
-/* Expand/Collapse container (height animated in TS) */
+/* ==========================
+   Expand/Collapse container
+   ========================== */
 .timeline-body {
   display: block;
   overflow: hidden;
@@ -42,37 +52,26 @@
 }
 
 .timeline-inner {
-  /* general padding for the whole list content (optional) */
   padding-top: var(--margin-sm, 8px);
 }
 
-/* Each LI = [item] + [divider]; row-gap controls BODY↔DIVIDER spacing */
+/* ==========================
+   Each LI = [item] + [divider]
+   ========================== */
 .timeline-li {
-  z-index: 1;
+  position: relative; /* anchor the per-row rail segment */
+  z-index: 0;
   display: grid;
   grid-template-rows: auto auto;
   row-gap: var(--gap-body-divider); /* BODY - DIVIDER */
-  padding-top: var(
-    --gap-divider-header
-  ); /* DIVIDER - HEADER (previous divider to this header) */
+  padding-top: var(--gap-divider-header); /* DIVIDER - HEADER (prev→this) */
 }
 
-.timeline-li:last-child .icon-wrapper::after {
-  content: "";
-  position: absolute;
-  left: calc(50% - var(--rail-width) / 2); /* center on rail */
-  top: calc(50% + var(--dot-size) / 2); /* start just under the dot’s center */
-  width: var(--rail-width);
-  height: 2000px; /* long enough to cover to the bottom */
-  background: var(--color-background); /* same bg as the page/card */
-  pointer-events: none;
-}
-
-/* Item = 2 columns (dot column + content column) */
 .timeline-item {
+  position: relative;
   display: grid;
   grid-template-columns: var(--rail-col) 1fr;
-  column-gap: var(--content-gap-x); /* items - left bar horizontal spacing */
+  column-gap: var(--content-gap-x);
   align-items: start;
   margin: 0;
 
@@ -81,24 +80,20 @@
   }
 }
 
-/* Dot centered in the rail column and visually on the rail */
+/* Dot centered in the rail column */
 .icon-wrapper {
   position: relative;
-  z-index: 10;
-  justify-self: center; /* centers horizontally in rail col */
+  z-index: 1; /* above the per-row segment */
+  justify-self: center;
   align-self: start;
   width: var(--dot-size);
   height: var(--dot-size);
-  box-sizing: border-box;
   border-radius: 50%;
-  //border: 3px solid var(--color-background);
   background-color: var(--color-surface, #f0f4f9);
   color: var(--color-text-secondary);
   display: grid;
   place-items: center;
-  justify-self: center; /* horizontally center in rail column */
-  align-self: start;
-  transform: translateY(var(--dot-offset-y)); /* micro tweak if needed */
+  transform: translateY(var(--dot-offset-y));
 }
 .icon-wrapper i {
   line-height: 1;
@@ -110,37 +105,42 @@
 .item-content {
   min-width: 0;
   display: grid;
-  row-gap: var(--gap-header-body); /* HEADER - BODY */
+  row-gap: var(--gap-header-body);
 }
 
-/* Header area */
+/* ==========================
+   Header area
+   ========================== */
 .item-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--margin-sm, 8px);
 }
 
 .item-title {
-  font-weight: 600;
+  @include component-font(sm, var(--fw-semibold, 600));
   line-height: 1.2;
-  color: var(--color-text-primary);
-  flex: 1;
+  color: var(--color-text);
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .item-meta {
+  @include component-font(sm);
   display: inline-flex;
   gap: var(--margin-sm, 8px);
   color: var(--color-text-secondary);
   white-space: nowrap;
 }
 
-/* Body text (let gaps handle spacing; keep margins neutral) */
+/* ==========================
+   Body text
+   ========================== */
 .item-body .body-text {
   margin: 0;
-  color: var(--color-text-primary);
+  color: var(--color-text);
 }
-/* Avoid doubled spacing from first/last child margins */
 .item-body > :first-child {
   margin-top: 0;
 }
@@ -148,98 +148,53 @@
   margin-bottom: 0;
 }
 
-/* Sources */
+/* ==========================
+   Sources
+   ========================== */
 .sources-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--margin-lg, 8px);
+  gap: var(--margin-lg, 12px);
 }
-
 .source-pill {
   @include component-base;
-  @include component-font;
+  @include component-font(sm);
 
   display: inline-flex;
   align-items: center;
   gap: 6px;
   background-color: var(--color-surface, #f1f3f4);
-  border-radius: var(--border-radius-lg, 16px);
-  padding: var(--padding-md);
-  color: var(--color-text-primary);
+  border-radius: var(--border-radius-pill, 9999px);
+  padding-inline: sz(sm, pad-inline);
+  padding-block: sz(sm, pad-block);
+  color: var(--color-text);
   text-decoration: none;
   transition: background-color 0.2s ease;
-
-  /* Reset UA button styles */
   appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  outline: none;
+  border: 0;
+  outline: 0;
   box-shadow: none;
   cursor: pointer;
-  font: inherit;
   line-height: 1;
 
   &:hover {
-    background-color: var(--color-background-hover, #e8eaed);
+    background-color: var(--color-secondary-hover, #fafafb);
   }
   &:focus-visible {
     box-shadow: 0 0 0 2px var(--color-border-primary);
   }
 }
-
 .source-icon {
   font-size: 1rem;
   line-height: 1;
 }
 
-/* Header button (top control) */
-.timeline-header {
-  display: flex;
-  align-items: center;
-  gap: var(--padding-lg, 16px);
-  width: 100%;
-  padding: var(--padding-sm, 8px) 0;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  font: inherit;
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--color-border-primary);
-  }
-}
-
-.chevron {
-  position: relative;
-  top: -0.1rem;
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-right: var(--border-width-sm, 2px) solid currentColor;
-  border-bottom: var(--border-width-sm, 2px) solid currentColor;
-  transform: rotate(45deg);
-  transition: transform 0.2s ease;
-  margin-left: var(--margin-sm, 8px);
-}
-
-/* Divider aligned with content column */
-.timeline-divider {
-  height: 1px;
-  background-color: var(--color-border-primary);
-  margin-left: calc(var(--rail-col) + var(--content-gap-x));
-}
-
-.item-body {
-  display: grid;
-  grid-auto-rows: min-content;
-  row-gap: var(--gap-body-sources); /* <p> - .sources-wrapper padding */
-}
-
+/* ==========================
+   Header button (maxterdev-button)
+   ========================== */
 .timeline-header-btn {
   width: fit-content;
 }
-
 .tl-btn-content {
   display: flex;
   align-items: center;
@@ -247,8 +202,60 @@
   color: var(--color-text);
   width: 100%;
 }
-
 .tl-title {
-  flex: 1 1 auto; /* pushes chevron to the far right */
+  flex: 1 1 auto; /* pushes icon to far right */
   min-width: 0;
+}
+
+/* ==========================
+   Toggle icon: default + custom slot
+   ========================== */
+.tl-icon.default {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  font-size: 0.95rem;
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+.is-collapsed .tl-icon.default {
+  transform: rotate(-90deg);
+}
+
+/* Hide default icon if a custom one is projected */
+.tl-btn-content:has([timeline-toggle-icon]) .tl-icon.default {
+  display: none;
+}
+
+/* Ensure any custom icon behaves like the default */
+[timeline-toggle-icon] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+}
+
+/* ==========================
+   Optional divider aligned with content column
+   ========================== */
+.timeline-divider {
+  height: 1px;
+  background-color: var(--color-border-primary);
+  margin-left: calc(var(--rail-col) + var(--content-gap-x));
+}
+
+/* ==========================
+   Body grid spacing
+   ========================== */
+.item-body {
+  display: grid;
+  grid-auto-rows: min-content;
+  row-gap: var(--gap-body-sources);
 }

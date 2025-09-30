@@ -2,96 +2,193 @@
 @import "../base/components";
 @import "../base/buttons";
 
+// ======================================
+// <maxterdev-button>
+// ======================================
 maxterdev-button {
   display: block;
-
   position: relative;
 
+  // Host defaults
   @include component-base();
-  @include component-height();
-  @include component-font();
+  @include component-height(sm); // default size
+  @include component-font(sm);
+  @include reduce-motion();
+
+  // Size modifiers on the host (optional)
+  &.sm {
+    @include component-height(sm);
+    @include component-font(sm);
+  }
+  &.lg {
+    @include component-height(lg);
+    @include component-font(lg);
+  }
 
   .button {
-    cursor: pointer;
-
-    @include component-base();
-    @include component-border-style();
-    @include component-padding();
-
+    // Interactive container
+    @include control-base(
+      sm,
+      transparent
+    ); // base: padding, radius, border width, transitions, focus-ring
+    @include component-border-radius(lg);
     width: 100%;
+    cursor: pointer;
+    border-color: transparent; // color comes from variant tokens
+    background-color: transparent;
 
+    &.sm {
+      @include control-base(sm, transparent);
+    }
+    &.lg {
+      @include control-base(lg, transparent);
+    }
+
+    // ----- Variants -----
+    // Primary (default)
     @include button(primary);
 
     &.primary {
       @include button(primary);
 
       &.text {
+        @include control-text-base(sm);
         @include button(primary-text);
       }
     }
 
+    // Secondary
     &.secondary {
       @include button(secondary);
 
       &.text {
+        @include control-text-base(sm);
         @include button(secondary-text);
       }
     }
 
-    &.disabled {
+    // Disabled (applies regardless of variant)
+    &.disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
       @include button(disabled);
-
+      @include is-disabled();
       cursor: default;
+      // keep focus outline off for disabled
+      &:focus,
+      &:focus-visible {
+        box-shadow: none;
+      }
     }
 
+    // Keyboard focus
+    &:focus-visible {
+      @include focus-ring();
+    }
+
+    // Content layout
     .text {
       @include component-base();
-
+      @include center-content(var(--space-2, 0.5rem));
       width: 100%;
       height: 100%;
+      // Truncate long labels safely
+      @include truncate();
 
-      display: flex;
-      align-items: center;
-      //justify-content: center;
+      // Optional icon helpers if you use <i> or <svg> slots
+      .icon,
+      .pi,
+      svg {
+        @include icon-size(1em);
+      }
+    }
+
+    // Subtle active press feedback for all non-text variants
+    &:active:not(.text):not(.disabled):not([disabled]) {
+      transform: translateY(0.5px);
     }
   }
 }
 
+// ======================================
+// <maxterdev-selectable-button>
+// ======================================
 maxterdev-selectable-button {
   display: block;
-
   position: relative;
 
   @include component-base();
-  @include component-height();
-  @include component-font();
+  @include component-height(sm);
+  @include component-font(sm);
+  @include reduce-motion();
+
+  // Size modifiers on host (optional)
+  &.sm {
+    @include component-height(sm);
+    @include component-font(sm);
+  }
+  &.lg {
+    @include component-height(lg);
+    @include component-font(lg);
+  }
 
   .button {
-    cursor: pointer;
-
-    @include component-base();
-    @include component-border();
-    @include component-padding();
-
+    // Uses bordered control by default for better affordance
+    @include control-base(sm, var(--color-border-primary, #dfdfdf));
+    @include component-padding(md);
+    @include component-border-radius(lg);
     width: 100%;
+    cursor: pointer;
+    background-color: var(--color-surface-1, #fff);
+    color: var(--on-surface, #202020);
 
-    &.selected {
-      @include selectable-button(selected);
+    // Size modifiers
+    &.sm {
+      @include control-base(sm, var(--color-border-primary, #dfdfdf));
+      @include component-padding(sm);
+    }
+    &.lg {
+      @include control-base(lg, var(--color-border-primary, #dfdfdf));
+      @include component-padding(lg);
     }
 
+    // Unselected / Selected state wiring (tokens normalized earlier)
     &.unselected {
       @include selectable-button(unselected);
+    }
+    &.selected,
+    &[aria-pressed="true"] {
+      @include selectable-button(selected);
+      @include elevation(1);
+    }
+
+    // Disabled selectable
+    &.disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
+      @include is-disabled();
+      cursor: default;
+      box-shadow: var(--shadow-0);
+    }
+
+    // Keyboard focus
+    &:focus-visible {
+      @include focus-ring();
     }
 
     .text {
       @include component-base();
-
+      @include center-content(var(--space-2, 0.5rem));
       width: 100%;
       height: 100%;
-
-      display: flex;
-      align-items: center;
+      @include truncate();
       justify-content: center;
+
+      .icon,
+      .pi,
+      svg {
+        @include icon-size(1em);
+      }
     }
   }
 }

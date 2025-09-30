@@ -1,47 +1,179 @@
-@import "../base/components"; // Adjust path if needed
+@import "../base/components"; // keep your path
 
+/* ==========================
+   Trigger wrapper
+   ========================== */
 .menu-trigger-wrapper {
   display: inline-block;
   position: relative;
 }
 
+/* ==========================
+   Panel (popup)
+   ========================== */
 .menu-panel {
-  @include component-base;
-  @include component-font;
+  @include component-base();
+  @include component-font(sm);
+  @include elevation(2);
+  @include state-transitions();
+
   position: absolute;
-  top: calc(100% + var(--margin-sm));
+  top: calc(100% + var(--space-1, 0.25rem));
   left: 0;
-  z-index: 1000;
+  z-index: var(--z-dropdown, 1000);
 
-  background-color: var(--color-background);
-  border-radius: var(--border-radius-md);
-  border: var(--border-width-sm) solid var(--color-border-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding-top: var(--padding-sm);
-  padding-bottom: var(--padding-sm);
-  min-width: 120px;
+  background-color: var(--color-surface-1, var(--color-background));
+  @include component-border(xl);
 
+  max-width: 22rem;
+  transform-origin: top left;
+
+  padding-block: var(--space-1, 0.25rem);
+
+  /* open/close animation + interaction lock when hidden */
   opacity: 0;
-  transform: scale(0.95) translateY(-10px);
+  transform: scale(0.96) translateY(-6px);
   visibility: hidden;
-  transition:
-    opacity 0.15s ease-out,
-    transform 0.15s ease-out,
-    visibility 0.15s;
+  pointer-events: none;
 
-  &.open {
+  transition: opacity var(--dur-fast, 120ms)
+      var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)),
+    transform var(--dur-fast, 120ms)
+      var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)),
+    visibility var(--dur-fast, 120ms);
+
+  &.open,
+  &[data-open="true"] {
     opacity: 1;
     transform: scale(1) translateY(0);
     visibility: visible;
+    pointer-events: auto;
+  }
+
+  &.--align-right {
+    left: auto;
+    right: 0;
+    transform-origin: top right;
+  }
+  &.--drop-up {
+    top: auto;
+    bottom: calc(100% + var(--space-1, 0.25rem));
+    transform-origin: bottom left;
+  }
+  &.--drop-up.--align-right {
+    transform-origin: bottom right;
+  }
+
+  &.sm {
+    @include component-font(sm);
+  }
+  &.md {
+    @include component-font(md);
+  }
+  &.lg {
+    @include component-font(lg);
   }
 }
 
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 20rem;
+  overflow-y: auto;
+
+  /* hide scrollbar visuals */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+/* Separator line */
+.menu-separator {
+  height: 1px;
+  margin: var(--space-1, 0.25rem) 0;
+  background: var(--color-border-primary);
+}
+
+/* ==========================
+   Item
+   ========================== */
 .menu-item {
+  /* makes the entire row clickable and full-width */
   maxterdev-button {
     width: 100%;
+    display: block;
+    @include component-base();
+    @include reduce-motion();
+  }
 
-    .button .text {
-      justify-content: flex-start;
+  /* Style the internal button via parts */
+  maxterdev-button::part(button) {
+    @include control-base(lg, transparent); /* size default = sm for menus */
+    border-color: transparent;
+    background: transparent;
+    width: 100%;
+    min-height: var(--height-input-sm, 36px); /* keeps touch target */
+    padding-inline: var(--space-3, 0.75rem); /* comfy sides */
+    padding-block: calc(var(--space-1, 0.25rem) + 2px);
+
+    &:hover {
+      background: var(--state-hover, rgba(0, 0, 0, 0.04));
+    }
+    &:active {
+      background: var(--state-pressed, rgba(0, 0, 0, 0.08));
+      transform: none;
+    }
+    &:focus-visible {
+      @include focus-ring();
+    }
+
+    /* Selected/current item */
+    &.is-active,
+    &[aria-current="true"] {
+      background: var(--state-hover, rgba(0, 0, 0, 0.04));
+    }
+
+    /* Disabled */
+    &.disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
+      @include is-disabled();
+      background: transparent;
     }
   }
+
+  /* Text/content area via part */
+  maxterdev-button::part(text) {
+    @include center-content(var(--space-2, 0.5rem));
+    justify-content: flex-start;
+    width: 100%;
+    @include truncate();
+  }
+
+  /* Density modifiers on item (override size via parts) */
+  &.sm maxterdev-button::part(button) {
+    @include control-base(sm, transparent);
+    min-height: var(--height-input-sm, 36px);
+  }
+  &.md maxterdev-button::part(button) {
+    @include control-base(md, transparent);
+    min-height: var(--height-input, 40px);
+  }
+  &.lg maxterdev-button::part(button) {
+    @include control-base(lg, transparent);
+    min-height: var(--height-input-lg, 48px);
+  }
+}
+
+.menu-panel.--align-right.open {
+  transform-origin: top right;
+}
+.menu-panel.--drop-up.open {
+  transform-origin: bottom left;
+}
+.menu-panel.--drop-up.--align-right.open {
+  transform-origin: bottom right;
 }

@@ -1,23 +1,18 @@
 @import "../base/components";
 @import "../base/buttons";
 
-// Dropdown container and button styling
 maxterdev-dropdown {
   display: block;
-
   position: relative;
-
   cursor: pointer;
-
   @include component-base();
   @include component-height();
-  @include component-font();
+  @include component-font(sm);
 
   .button {
     @include component-base();
-    @include component-border();
+    @include component-border(xl);
     @include component-padding();
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -41,10 +36,7 @@ maxterdev-dropdown {
 
     .placeholder,
     .selected {
-      // Ensure text doesn't overflow the button
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      @include truncate;
     }
   }
 
@@ -56,25 +48,19 @@ maxterdev-dropdown {
   }
 }
 
+::ng-deep .maxterdev-dropdown-panel {
+  z-index: 20001 !important;
+}
+
 .dropdown-menu-panel {
   display: block;
-
-  //position: absolute;
-  //left: -1.5px;
-  //top: calc(100% + .35rem);
   width: 180px;
-  z-index: 2000;
   padding: 0.5rem;
-
   @include component-base();
-  @include component-border();
-  //border-radius: 0.45rem;
-
+  @include component-border(xl);
+  @include component-font(sm);
   background-color: var(--color-button-secondary-background-inactive);
   border-color: var(--color-button-secondary-border-inactive);
-
   overflow-y: auto;
-
-  z-index: 21000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  @include elevation(2);
 }

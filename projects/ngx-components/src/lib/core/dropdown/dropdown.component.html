@@ -14,7 +14,7 @@
 </div>
 
 <ng-template #menuTemplate>
-  <div class="dropdown-menu-panel">
+  <div class="dropdown-menu-panel" (click)="$event.stopPropagation()">
     <maxterdev-list
       [size]="size"
       [items]="options"

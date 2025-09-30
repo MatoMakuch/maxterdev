@@ -1,5 +1,4 @@
 .group-container {
-
   .group-item {
     margin-left: -1px;
     margin-top: -1px;
@@ -10,7 +9,7 @@
       z-index: 2;
     }
 
-    &:focus, 
+    &:focus,
     &:focus-within {
       z-index: 3;
     }

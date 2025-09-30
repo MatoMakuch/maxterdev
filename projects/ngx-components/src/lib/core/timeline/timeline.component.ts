@@ -38,7 +38,7 @@ export class TimelineComponent implements AfterViewInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  // === Interaction ===
+  // Interaction
   onSourceClick(src: TimelineSource) {
     this.sourceSelected.emit(src);
   }
@@ -48,11 +48,10 @@ export class TimelineComponent implements AfterViewInit, OnDestroy {
   }
 
   getSourceIcon(src: TimelineSource): string {
-    // Prefer explicit icon; otherwise let the host app decide; fallback safe icon.
     return src.icon ?? this.sourceIconResolver?.(src) ?? 'pi-file';
   }
 
-  // === Expand/Collapse (height-based animation, bullet-proof) ===
+  // Expand/Collapse (height animation)
   ngAfterViewInit(): void {
     const body = this.bodyRef.nativeElement;
 
@@ -67,7 +66,7 @@ export class TimelineComponent implements AfterViewInit, OnDestroy {
 
     // Keep expanded height natural as content changes
     this.ro = new ResizeObserver(() => {
-      if (!this.collapsed && body.style.height !== 'auto') return; // anim in flight
+      if (!this.collapsed && body.style.height !== 'auto') return;
       if (!this.collapsed) body.style.height = 'auto';
     });
     this.ro.observe(this.contentRef.nativeElement);
@@ -84,7 +83,7 @@ export class TimelineComponent implements AfterViewInit, OnDestroy {
     body.style.transition = 'height 250ms ease, opacity 200ms ease';
 
     if (this.collapsed) {
-      // EXPAND: 0 -> scrollHeight -> auto
+      // expand
       body.style.opacity = '1';
       body.style.height = `${content.scrollHeight}px`;
       this.collapsed = false;
@@ -98,9 +97,9 @@ export class TimelineComponent implements AfterViewInit, OnDestroy {
       };
       body.addEventListener('transitionend', onEnd);
     } else {
-      // COLLAPSE: snapshot px -> reflow -> 0
+      // collapse
       body.style.height = `${content.scrollHeight}px`;
-      void body.getBoundingClientRect(); // force reflow
+      void body.getBoundingClientRect();
       body.style.opacity = '0';
       body.style.height = '0px';
 

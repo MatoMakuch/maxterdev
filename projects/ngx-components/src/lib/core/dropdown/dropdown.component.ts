@@ -8,6 +8,9 @@ import {
   TemplateRef,
   ViewContainerRef,
   OnDestroy,
+  HostBinding,
+  Inject,
+  Optional,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from '../list/list.component';
@@ -20,6 +23,8 @@ import {
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Subscription } from 'rxjs';
+
+import { MENU_PARENT, MenuCloseBoundary } from '../menu/menu.component';
 
 @Component({
   selector: 'maxterdev-dropdown',
@@ -39,42 +44,39 @@ export class DropdownComponent implements OnDestroy {
   @Input() isMultiSelect: boolean = false;
   @Input() selectedOptions: any[] = [];
   @Input() size: 'md' | 'sm' = 'md';
-
-  /** Optional: match panel width to trigger width */
   @Input() matchTriggerWidth = true;
-
-  /** Optional: viewport margin to keep overlay from touching edges */
   @Input() viewportMargin = 8;
 
   @Output() selectedOptionsChange = new EventEmitter<any[]>();
 
-  // Internal state management for the overlay
+  @HostBinding('class') get hostSizeClass() {
+    return this.size;
+  }
+
   private isOpen = false;
   private overlayRef: OverlayRef | null = null;
-  private backdropClickSubscription: Subscription = Subscription.EMPTY;
+  private backdropClickSub: Subscription = Subscription.EMPTY;
+  private contentCaptureHandler?: (ev: Event) => void;
 
   constructor(
     private overlay: Overlay,
     private elementRef: ElementRef<HTMLElement>,
     private viewContainerRef: ViewContainerRef,
+    @Optional() @Inject(MENU_PARENT) private parentMenu?: MenuCloseBoundary
   ) {}
 
   toggleDropdown(): void {
-    if (this.isOpen) {
-      this.closeMenu();
-    } else {
-      this.openMenu();
-    }
+    if (this.isOpen) this.closeMenu();
+    else this.openMenu();
   }
 
   private buildPositionStrategy(
-    originEl: HTMLElement,
+    originEl: HTMLElement
   ): FlexibleConnectedPositionStrategy {
     return this.overlay
       .position()
       .flexibleConnectedTo(originEl)
       .withPositions([
-        // Primary: below, left-aligned
         {
           originX: 'start',
           originY: 'bottom',
@@ -82,7 +84,6 @@ export class DropdownComponent implements OnDestroy {
           overlayY: 'top',
           offsetY: 4,
         },
-        // Fallback: above, left-aligned
         {
           originX: 'start',
           originY: 'top',
@@ -98,61 +99,107 @@ export class DropdownComponent implements OnDestroy {
   private openMenu(): void {
     const originEl =
       this.triggerRef?.nativeElement ?? this.elementRef.nativeElement;
-
     const positionStrategy = this.buildPositionStrategy(originEl);
 
     this.overlayRef = this.overlay.create({
       positionStrategy,
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
-      // Reposition when the user scrolls or layout shifts (good inside nested menus/panels)
       scrollStrategy: this.overlay.scrollStrategies.reposition(),
       panelClass: 'maxterdev-dropdown-panel',
     });
 
-    // Close when clicking outside
-    this.backdropClickSubscription = this.overlayRef
+    // Register roots so the parent menu treats them as “inside”.
+    this.parentMenu?.registerRelatedRoot(this.overlayRef.overlayElement);
+    if (this.overlayRef.backdropElement) {
+      this.parentMenu?.registerRelatedRoot(this.overlayRef.backdropElement);
+    }
+
+    // Capture clicks INSIDE overlay content before they bubble to document,
+    // and tell the menu to ignore this event once (prevents menu from closing
+    // when the dropdown closes itself in response to selection).
+    this.contentCaptureHandler = (ev: Event) =>
+      this.parentMenu?.suppressOutsideCloseForEvent(ev);
+    this.overlayRef.overlayElement.addEventListener(
+      'click',
+      this.contentCaptureHandler,
+      true
+    );
+
+    // Close dropdown on backdrop clicks (but keep the menu open because backdrop is registered)
+    this.backdropClickSub = this.overlayRef
       .backdropClick()
       .subscribe(() => this.closeMenu());
 
-    // Attach template
+    // Attach portal
     const portal = new TemplatePortal(this.menuTemplate, this.viewContainerRef);
     this.overlayRef.attach(portal);
 
-    // Size to trigger width if desired
+    // Optional: match width
     if (this.matchTriggerWidth) {
       const triggerWidth = originEl.getBoundingClientRect().width;
       this.overlayRef.updateSize({ width: triggerWidth });
     }
 
-    // Ensure final geometry after attachment
     this.overlayRef.updatePosition();
     this.isOpen = true;
   }
 
-  private destroyOverlay(): void {
-    if (this.overlayRef) {
-      this.overlayRef.dispose();
-      this.overlayRef = null;
-    }
-  }
-
   private closeMenu(): void {
-    if (this.overlayRef) {
-      this.overlayRef.detach();
+    if (!this.overlayRef) {
+      this.isOpen = false;
+      return;
     }
+
+    // Remove capture listener first
+    if (this.contentCaptureHandler) {
+      this.overlayRef.overlayElement.removeEventListener(
+        'click',
+        this.contentCaptureHandler,
+        true
+      );
+      this.contentCaptureHandler = undefined;
+    }
+
+    // Unregister related roots (overlay + backdrop)
+    this.parentMenu?.unregisterRelatedRoot(this.overlayRef.overlayElement);
+    if (this.overlayRef.backdropElement) {
+      this.parentMenu?.unregisterRelatedRoot(this.overlayRef.backdropElement);
+    }
+
+    this.overlayRef.detach();
     this.isOpen = false;
   }
 
-  // Clean up when the component is destroyed to prevent memory leaks
+  private destroyOverlay(): void {
+    if (!this.overlayRef) return;
+
+    if (this.contentCaptureHandler) {
+      this.overlayRef.overlayElement.removeEventListener(
+        'click',
+        this.contentCaptureHandler,
+        true
+      );
+      this.contentCaptureHandler = undefined;
+    }
+
+    this.parentMenu?.unregisterRelatedRoot(this.overlayRef.overlayElement);
+    if (this.overlayRef.backdropElement) {
+      this.parentMenu?.unregisterRelatedRoot(this.overlayRef.backdropElement);
+    }
+
+    this.overlayRef.dispose();
+    this.overlayRef = null;
+  }
+
   ngOnDestroy(): void {
     try {
-      this.backdropClickSubscription.unsubscribe();
+      this.backdropClickSub.unsubscribe();
     } catch {}
     this.destroyOverlay();
   }
 
-  // Selection handlers
+  // -------- Selection handlers --------------------------------------
   handleSelectedItemsChange(items: any[]): void {
     this.selectedOptions = items ?? [];
     this.selectedOptionsChange.emit(this.selectedOptions);
@@ -161,13 +208,12 @@ export class DropdownComponent implements OnDestroy {
   handleSingleSelect(item: any): void {
     this.selectedOptions = [item];
     this.selectedOptionsChange.emit(this.selectedOptions);
-    this.closeMenu(); // Close the dropdown on single selection
+    this.closeMenu(); // closes only the dropdown; menu stays open
   }
 
   getSelectedOptionText(): string {
-    if (this.selectedOptions?.length) {
-      return this.selectedOptions.join(', ');
-    }
-    return this.placeholder;
+    return this.selectedOptions?.length
+      ? this.selectedOptions.join(', ')
+      : this.placeholder;
   }
 }

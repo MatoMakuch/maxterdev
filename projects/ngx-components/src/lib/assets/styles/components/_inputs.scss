@@ -12,6 +12,7 @@ maxterdev-input {
   @include component-height();
   @include component-border-style();
   @include input();
+  @include component-font();
 
   &.font-size-sm {
     @include component-font();
@@ -69,6 +70,8 @@ maxterdev-input {
 
     > textarea {
       resize: none;
+      color: var(--color-text);
+      caret-color: var(--color-text);
     }
   }
 }

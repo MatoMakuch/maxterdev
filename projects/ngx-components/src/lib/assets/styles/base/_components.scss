@@ -1,51 +1,246 @@
-@mixin component-base() {  
+:root {
+  --height-input-sm: 36px;
+  --height-input: 40px;
+  --height-input-lg: 48px;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+}
+
+/* size map (from earlier mixins) */
+$size-map: (
+  sm: (
+    pad-inline: 0.5rem,
+    pad-block: 0.35rem,
+    font: var(--font-size-sm, 0.875rem),
+    line-height: var(--line-height-sm, 1.3),
+    height: var(--height-input-sm, 36px),
+    /* ← here */ radius: var(--border-radius-sm, 6px),
+    border: var(--border-width-sm, 1px),
+  ),
+  md: (
+    pad-inline: 0.75rem,
+    pad-block: 0.5rem,
+    font: var(--font-size-md, 1rem),
+    line-height: var(--line-height-md, 1.5),
+    height: var(--height-input, 40px),
+    radius: var(--border-radius-md, 10px),
+    border: var(--border-width-md, 1.5px),
+  ),
+  lg: (
+    pad-inline: 1rem,
+    pad-block: 0.65rem,
+    font: var(--font-size-lg, 1.125rem),
+    line-height: var(--line-height-lg, 1.65),
+    height: var(--height-input-lg, 48px),
+    radius: var(--border-radius-lg, 14px),
+    border: var(--border-width-md, 2px),
+  ),
+  xl: (
+    pad-inline: 1rem,
+    pad-block: 0.65rem,
+    font: var(--font-size-lg, 1.125rem),
+    line-height: var(--line-height-lg, 1.65),
+    height: var(--height-input-lg, 48px),
+    radius: var(--border-radius-xl, 14px),
+    border: var(--border-width-md, 2px),
+  ),
+);
+
+@function sz($size, $key) {
+  $bucket: map-get($size-map, $size);
+  @if $bucket == null {
+    @error "Unknown size `#{$size}`";
+  }
+  $val: map-get($bucket, $key);
+  @if $val == null {
+    @error "Unknown key `#{$key}` for size `#{$size}`";
+  }
+  @return $val;
+}
+
+@mixin component-base() {
   box-sizing: border-box;
 
   margin: 0;
 
   border-radius: inherit;
-  
+
   font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
 
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@mixin component-padding() {
-  padding-inline: 0.55rem;
-  padding-block: 0.45rem;
+@mixin component-padding($size: md) {
+  padding-inline: sz($size, pad-inline);
+  padding-block: sz($size, pad-block);
 }
 
-@mixin component-padding-text() {
-  padding-inline: 0.8rem;
-  padding-block: 0.55rem;
+@mixin component-padding-text($size: md) {
+  // a tad wider for text buttons/links
+  padding-inline: calc(sz($size, pad-inline) + 0.25rem);
+  padding-block: calc(sz($size, pad-block) + 0.1rem);
 }
 
-@mixin component-height() {
-  min-height: calc(1.55rem + 3px);
+@mixin component-height($size: md) {
+  // ensures minimum tappable height but lets content grow if needed
+  min-height: sz($size, height);
+}
+@mixin component-border-radius($size: md) {
+  border-radius: sz($size, radius);
 }
 
-@mixin component-border-radius() {
-  border-radius: var(--border-radius-md);
-}
-
-@mixin component-border-style() {
+@mixin component-border-style($size: md) {
   border-style: solid;
-  border-width: var(--border-width-sm);
+  border-width: sz($size, border);
 }
 
-@mixin component-border() {
-  @include component-border-radius();
-  @include component-border-style();
+@mixin component-border(
+  $size: md,
+  $color: var(--color-border-primary, #dfdfdf)
+) {
+  @include component-border-radius($size);
+  @include component-border-style($size);
+  border-color: $color;
 }
 
-@mixin component-font() {
+@mixin component-font($size: md, $weight: var(--fw-regular, 400)) {
   font-family: var(--font-family);
-  font-size: var(--font-size-sm);
+  font-size: sz($size, font);
+  line-height: sz($size, line-height);
+  font-weight: $weight;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-@mixin component-font-text() {
+@mixin component-font-text($size: md, $weight: var(--fw-regular, 400)) {
   font-family: var(--font-family);
-  font-size: var(--font-size-md);
+  font-size: sz($size, font);
+  line-height: sz($size, line-height);
+  font-weight: $weight;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+// Unified focus ring
+@mixin focus-ring() {
+  &:focus-visible {
+    box-shadow: var(
+      --focus-ring,
+      0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35))
+    );
+  }
+}
+
+// Motion & state transitions (applies to common props)
+@mixin state-transitions(
+  $duration: var(--dur-md, 200ms),
+  $easing: var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1))
+) {
+  transition: background-color $duration $easing, color $duration $easing,
+    border-color $duration $easing, box-shadow $duration $easing,
+    transform $duration $easing;
+}
+
+// Elevated surfaces
+@mixin elevation($level: 1) {
+  @if $level == 0 {
+    box-shadow: var(--shadow-0, none);
+  } @else if $level == 1 {
+    box-shadow: var(--shadow-1, 0 1px 2px rgba(0, 0, 0, 0.06));
+  } @else if $level == 2 {
+    box-shadow: var(--shadow-2, 0 4px 12px rgba(0, 0, 0, 0.1));
+  } @else {
+    box-shadow: var(--shadow-3, 0 12px 28px rgba(0, 0, 0, 0.16));
+  }
+}
+
+// Disabled state
+@mixin is-disabled() {
+  opacity: 0.65; // keep AA contrast if using text on bg
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// Flex centering for controls
+@mixin center-content($gap: var(--space-2, 0.5rem)) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $gap;
+}
+
+// Icon sizing relative to text
+@mixin icon-size($em: 1em) {
+  width: $em;
+  height: $em;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+
+// One-line truncation
+@mixin truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Respect reduced motion
+@mixin reduce-motion() {
+  @media (prefers-reduced-motion: reduce) {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+// Cursor + interactivity defaults for clickable controls
+@mixin interactive() {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@mixin control-base(
+  $size: md,
+  $border-color: var(--color-border-primary, #dfdfdf)
+) {
+  @include component-base();
+  @include center-content();
+  @include component-font($size);
+  @include component-padding($size);
+  @include component-height($size);
+  @include component-border($size, $border-color);
+  @include state-transitions();
+  @include focus-ring();
+  @include reduce-motion();
+
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
+}
+
+// Text-style control
+@mixin control-text-base($size: md) {
+  @include component-base();
+  @include center-content();
+  @include component-font-text($size);
+  @include component-padding-text($size);
+  @include state-transitions();
+  @include focus-ring();
+  @include reduce-motion();
+
+  background-color: transparent;
+  border: 0;
+  color: var(--color-primary, #0064fa);
+
+  &:hover {
+    background-color: var(--state-hover, rgba(0, 0, 0, 0.04));
+  }
+  &:active {
+    background-color: var(--state-pressed, rgba(0, 0, 0, 0.08));
+  }
 }

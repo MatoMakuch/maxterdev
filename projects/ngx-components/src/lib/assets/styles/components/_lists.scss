@@ -7,11 +7,9 @@ maxterdev-list {
   .list {
     display: flex;
     flex-direction: column;
-
     @include component-base();
-
     margin: 0;
-    padding: 0; /* ✅ remove default UL padding */
+    padding: 0;
     list-style: none;
     gap: 0.1rem;
     border-radius: 0.45rem;
@@ -20,7 +18,6 @@ maxterdev-list {
       @include component-base();
       @include component-border-radius();
       @include component-font();
-
       display: flex;
       align-items: center;
       border-width: 0;
@@ -37,7 +34,6 @@ maxterdev-list {
         background-color: var(--color-primary);
         border-radius: 2px;
         opacity: 0; /* visible when selected/hovered if you want */
-        //margin-left: var(--padding-sm); /* small inset from the left edge */
         margin-right: 0.5rem;
         transition: opacity 0.12s ease-in-out;
         flex: 0 0 auto;
@@ -74,7 +70,7 @@ maxterdev-list {
         border-color: var(--color-button-secondary-background-hover);
 
         .indicator {
-          opacity: 1; /* ✅ show indicator when selected */
+          opacity: 1;
         }
       }
 
@@ -84,23 +80,25 @@ maxterdev-list {
         outline-offset: 2px;
       }
     }
+  }
 
-    /* Size variant: small */
-    &.sm {
-      .item {
-        font-size: var(--font-size-sm);
+  /* Size variant: small - applied to the component host */
+  &.sm {
+    .list .item {
+      @include component-font(sm);
 
-        .content {
-          /* slightly tighter padding for compact density */
-          padding: var(--padding-sm);
-        }
-
-        .indicator {
-          height: var(--font-size-md);
-          margin-left: var(--padding-xs);
-          margin-right: var(--margin-sm);
-        }
+      .indicator {
+        height: var(--font-size-md);
+        margin-left: var(--padding-xs);
+        margin-right: var(--margin-sm);
       }
+    }
+  }
+
+  /* Size variant: medium (default) */
+  &.md {
+    .list .item {
+      @include component-font(md);
     }
   }
 }

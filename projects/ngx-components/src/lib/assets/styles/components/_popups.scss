@@ -1,82 +1,139 @@
-@import "../base/components";
+@import "../base/components"; // brings in size map + mixins
+
+// Helpers: one place to apply size-specific values
+@mixin popup-size($size: md) {
+  // container padding & inset (used by the divider)
+  padding-inline: sz($size, pad-inline);
+  // padding-block: sz($size, pad-block);
+  --popup-inset-inline: #{sz($size, pad-inline)};
+
+  // header/body/footer paddings
+  .popup-header,
+  .popup-footer {
+    padding-inline: sz($size, pad-inline);
+    padding-block: sz(lg, pad-block);
+  }
+  .popup-body {
+    padding: sz($size, pad-inline);
+    padding-top: 0; // symmetric feels good for content
+  }
+
+  // border radius & thickness harmonized with size
+  @include component-border(xl);
+  @include component-font($size);
+}
 
 maxterdev-popup {
   display: block;
 
+  /* ===== Overlay ===== */
   .popup-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.3);
+    inset: 0;
+    z-index: var(--z-overlay, 1100);
+    background-color: rgba(0, 0, 0, 0.35);
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include state-transitions();
+    @include reduce-motion();
   }
 
+  /* ===== Container ===== */
   .popup-container {
     @include component-base();
-    @include component-border();
-    @include component-font-text();
+    @include elevation(2);
+    @include state-transitions(); // bg, border, shadow, transform, etc.
+    @include focus-ring();
 
-    border-color: var(--color-border-primary);
-    background-color: var(--color-background);
-    padding-inline: 0.55rem;
-    box-shadow:
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    // base visuals from tokens
+    background-color: var(--color-surface-1, var(--color-background));
+    color: var(--on-surface, #202020);
+    border-color: var(--color-border-primary, #dfdfdf);
+
+    // sizing defaults (md) + allow responsive max-width
+    @include popup-size(md);
+    max-width: min(90vw, 720px);
+    width: max-content; // shrink-wrap to content (up to max-width)
+    min-width: 320px;
 
     display: flex;
     flex-direction: column;
 
-    --popup-inset-inline: 0.55rem;
+    // subtle entry motion (scale/translate), respects reduce-motion
+    transform: translateY(2px) scale(0.995);
+    &[data-state="enter"] {
+      transform: translateY(0) scale(1);
+    }
   }
 
+  /* Size modifiers (opt-in via host class) */
+  &.is-sm .popup-container {
+    @include popup-size(sm);
+    max-width: min(92vw, 560px);
+  }
+  &.is-lg .popup-container {
+    @include popup-size(lg);
+    max-width: min(92vw, 960px);
+  }
+
+  /* Elevation modifiers (optional) */
+  &.elev-0 .popup-container {
+    @include elevation(0);
+  }
+  &.elev-3 .popup-container {
+    @include elevation(3);
+  }
+
+  /* Sections */
   .popup-header,
   .popup-body,
   .popup-footer {
+    @include component-base();
     width: 100%;
   }
 
   .popup-header {
-    @include component-base();
-    padding-bottom: var(--padding-lg);
-    padding-top: var(--padding-lg);
-    padding-left: var(--padding-md);
-    padding-right: var(--padding-md);
+    @include component-font(md, var(--fw-semibold, 600));
+    // spacing comes from popup-size()
   }
 
   .popup-body {
-    @include component-base();
-    @include component-font();
-    padding: var(--padding-md);
+    @include component-font(); // uses current size from popup-size()
     position: relative;
   }
 
+  // Full-bleed divider that ignores inner paddings
   .popup-header + .popup-body::before {
     content: "";
     position: absolute;
     top: 0;
-    left: calc(-1 * var(--popup-inset-inline));
-    right: calc(-1 * var(--popup-inset-inline));
+    left: calc(-1 * var(--popup-inset-inline, 0.75rem));
+    right: calc(-1 * var(--popup-inset-inline, 0.75rem));
     height: 1px;
-    background: var(--color-input-border);
+    background: var(--color-input-border, #dfdfdf);
     pointer-events: none;
   }
 
   .popup-footer {
-    @include component-base();
-    gap: 0.5rem;
     display: flex;
-    width: 100%;
-    flex-direction: row;
-    padding-bottom: var(--padding-lg);
-    padding-top: var(--padding-lg);
-    padding-left: var(--padding-md);
-    padding-right: var(--padding-md);
     justify-content: flex-end;
+    gap: var(--space-2, 0.5rem);
+    // spacing comes from popup-size()
+  }
+
+  /* Interactive affordances when the container itself is clickable */
+  .popup-container[role="dialog"] {
+    @include interactive();
+  }
+
+  /* Mobile friendliness */
+  @media (max-width: 480px) {
+    .popup-container {
+      max-width: 96vw;
+      min-width: unset;
+    }
   }
 }
