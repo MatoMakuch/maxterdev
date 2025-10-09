@@ -1,22 +1,22 @@
 // autosize.directive.ts
-import { 
-  Directive, 
-  ElementRef, 
-  HostListener, 
-  Input, 
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
   AfterViewInit,
-  OnDestroy
+  OnDestroy,
 } from '@angular/core';
 
 @Directive({
   selector: 'textarea[autosize]',
   standalone: true,
-  exportAs: 'autosize'
+  exportAs: 'autosize',
 })
 export class AutosizeDirective implements AfterViewInit, OnDestroy {
   @Input() autosizeDisabled = false;
   @Input() maxRows?: number;
-  
+
   private observer: ResizeObserver;
   private readonly BORDER_BOX_ADJUSTMENT = 1;
 
@@ -43,16 +43,20 @@ export class AutosizeDirective implements AfterViewInit, OnDestroy {
 
     const textarea = this.elementRef.nativeElement;
     const computed = window.getComputedStyle(textarea);
-    
+
     textarea.style.height = 'auto';
-    
+
     let contentHeight = textarea.scrollHeight;
     let maxHeight = Infinity;
 
     if (this.maxRows && this.maxRows > 0) {
       const lineHeight = this.getLineHeight(computed);
       const verticalPadding = this.getVerticalPadding(computed);
-      maxHeight = Math.ceil(lineHeight * this.maxRows + verticalPadding + this.BORDER_BOX_ADJUSTMENT);
+      maxHeight = Math.ceil(
+        lineHeight * this.maxRows +
+          verticalPadding +
+          this.BORDER_BOX_ADJUSTMENT,
+      );
     }
 
     const newHeight = Math.min(contentHeight, maxHeight);
@@ -75,9 +79,6 @@ export class AutosizeDirective implements AfterViewInit, OnDestroy {
   }
 
   private getVerticalPadding(computed: CSSStyleDeclaration): number {
-    return (
-      parseFloat(computed.paddingTop) +
-      parseFloat(computed.paddingBottom)
-    );
+    return parseFloat(computed.paddingTop) + parseFloat(computed.paddingBottom);
   }
 }

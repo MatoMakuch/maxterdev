@@ -1,6 +1,16 @@
-<div class="progress-bar-container">
+<div
+  class="progress-bar-container"
+  role="progressbar"
+  [attr.aria-valuenow]="sanitizedValue"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
   <div class="progress-track">
     <div class="progress-fill" [style.width.%]="sanitizedValue"></div>
   </div>
-  <span *ngIf="showValue" class="value"> {{ sanitizedValue }}{{ unit }} </span>
+
+  <span *ngIf="showValue" class="value">
+    {{ sanitizedValue | number : "1.0-0"
+    }}<ng-container *ngIf="showUnit">{{ unit }}</ng-container>
+  </span>
 </div>

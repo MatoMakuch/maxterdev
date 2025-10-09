@@ -3,6 +3,7 @@
   [name]="name"
   class="button"
   part="button"
+  [class.xs]="size === 'xs' || chip"
   [class.sm]="size === 'sm'"
   [class.lg]="size === 'lg'"
   [ngClass]="getClass()"

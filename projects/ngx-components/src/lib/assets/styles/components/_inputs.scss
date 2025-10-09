@@ -1,27 +1,57 @@
 @import "../base/components";
 @import "../base/inputs";
 
+/* Theme provides:
+:root { --shadow-input-1: 0 1px 2px rgba(0, 0, 0, 0.02); }
+*/
+
 maxterdev-input {
   display: block;
-
   position: relative;
-
+  box-sizing: border-box;
   height: 100%;
 
   @include component-base();
   @include component-height();
-  @include component-border-style();
+  @include component-border-style(
+
+  ); // provides radius; we'll draw border on ::before
   @include input();
   @include component-font();
 
-  &.font-size-sm {
-    @include component-font();
+  /* Host paints nothing so we don't double the border */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow: visible; /* allow shadow to render outside */
+  /* default: no shadow */
+  --_shadow: none;
+
+  /* Shadowable surface (single source of truth for shadow) */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: var(--color-input-background-inactive);
+    border: 1px solid var(--color-input-border);
+    box-shadow: var(--_shadow);
+    pointer-events: none;
+    z-index: 0;
+    transition: background-color 120ms ease, border-color 120ms ease;
   }
 
-  &.font-size-md {
-    @include component-font-text();
+  /* Content above the surface */
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+  .input-line {
+    position: absolute;
+    z-index: 2;
   }
 
+  /* Your layout for slots/inputs (unchanged) */
   .content {
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -32,17 +62,14 @@ maxterdev-input {
       grid-row: 2;
       grid-column: 1;
     }
-
     .right {
       grid-row: 2;
       grid-column: 3;
     }
-
     .top {
       grid-row: 1;
       grid-column: 1 / -1;
     }
-
     .bottom {
       grid-row: 3;
       grid-column: 1 / -1;
@@ -52,19 +79,14 @@ maxterdev-input {
     > textarea {
       grid-row: 2;
       grid-column: 2;
-
       @include component-base();
       @include component-padding-text();
-
       width: 100%;
       height: 100%;
-
       border: none;
       border-radius: inherit;
-
-      background-color: transparent;
+      background: transparent;
       color: inherit;
-
       font: inherit;
     }
 
@@ -73,5 +95,46 @@ maxterdev-input {
       color: var(--color-text);
       caret-color: var(--color-text);
     }
+  }
+
+  /* Indicator line (unchanged) */
+  .input-line {
+    box-sizing: border-box;
+    border-radius: inherit;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--show-line);
+    background: transparent;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &:focus-within .input-line {
+    background: linear-gradient(
+      to top,
+      var(--color-list-item-indicator) 2px,
+      transparent 2px
+    );
+    background-repeat: no-repeat;
+  }
+
+  /* STATES: only colors; do NOT set box-shadow here */
+  &:not(:focus-within):hover::before {
+    background-color: var(--color-input-background-inactive-hover);
+    border-color: var(--color-input-border-hover);
+  }
+  &:focus-within::before {
+    background-color: var(--color-input-background-active);
+    border-color: var(--color-input-border-active);
+  }
+  &--invalid::before {
+    border-color: var(--warning-color);
+  }
+
+  /* Single, static shadow opt-in */
+  &.shadow {
+    --_shadow: var(--shadow-input-1, 0 1px 2px rgba(0, 0, 0, 0.02));
   }
 }

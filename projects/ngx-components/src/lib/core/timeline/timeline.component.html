@@ -1,22 +1,7 @@
-<div class="timeline-container">
-  <maxterdev-button
-    class="timeline-header-btn"
-    [text]="true"
-    [type]="'button'"
-    [name]="'timeline-toggle'"
-    (onClick)="toggleTimeline()"
-    [attr.aria-expanded]="!collapsed"
-  >
-    <span class="tl-btn-content">
-      <span class="tl-title">
-        <ng-content select="[timeline-header]"></ng-content>
-      </span>
-
-      <!-- Default static icon (can be replaced by projecting your own) -->
-      <ng-content select="[timeline-toggle-icon]"></ng-content>
-      <i class="pi pi-chevron-down tl-icon" aria-hidden="true"></i>
-    </span>
-  </maxterdev-button>
+<div class="timeline-container" [class.is-collapsed]="collapsed">
+  <div class="timeline-header">
+    <ng-content select="[timeline-header]"></ng-content>
+  </div>
 
   <div #body class="timeline-body" role="region" [attr.aria-hidden]="collapsed">
     <div #content class="timeline-inner">
@@ -32,9 +17,7 @@
 
             <div class="item-content">
               <header class="item-header">
-                <div class="item-title">
-                  {{ getItemHeader(item) }}
-                </div>
+                <div class="item-title">{{ getItemHeader(item) }}</div>
                 <div class="item-meta">
                   <small class="item-note" *ngIf="item.note">{{
                     item.note
@@ -50,8 +33,9 @@
 
                 <div class="sources-wrapper" *ngIf="item.sources?.length">
                   <ng-container *ngFor="let source of item.sources">
+                    <!-- link pill -->
                     <a
-                      *ngIf="source.url; else pill"
+                      *ngIf="source.url; else buttonPill"
                       [href]="source.url"
                       target="_blank"
                       rel="noopener"
@@ -64,10 +48,12 @@
                       ></i>
                       <span>{{ source.name }}</span>
                     </a>
-                    <ng-template #pill>
-                      <button
-                        type="button"
-                        class="source-pill"
+
+                    <!-- your custom button pill (restored) -->
+                    <ng-template #buttonPill>
+                      <maxterdev-button
+                        severity="secondary"
+                        class="pill"
                         (click)="onSourceClick(source)"
                       >
                         <i
@@ -76,16 +62,13 @@
                           aria-hidden="true"
                         ></i>
                         <span>{{ source.name }}</span>
-                      </button>
+                      </maxterdev-button>
                     </ng-template>
                   </ng-container>
                 </div>
               </section>
             </div>
           </div>
-
-          <!-- Optional horizontal divider: enable if you want lines between items -->
-          <!-- <div class="timeline-divider" *ngIf="!last"></div> -->
         </li>
       </ul>
     </div>

@@ -156,90 +156,10 @@
   flex-wrap: wrap;
   gap: var(--margin-lg, 12px);
 }
-.source-pill {
-  @include component-base;
-  @include component-font(sm);
 
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background-color: var(--color-surface, #f1f3f4);
-  border-radius: var(--border-radius-pill, 9999px);
-  padding-inline: sz(sm, pad-inline);
-  padding-block: sz(sm, pad-block);
-  color: var(--color-text);
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-  appearance: none;
-  border: 0;
-  outline: 0;
-  box-shadow: none;
-  cursor: pointer;
-  line-height: 1;
-
-  &:hover {
-    background-color: var(--color-secondary-hover, #fafafb);
-  }
-  &:focus-visible {
-    box-shadow: 0 0 0 2px var(--color-border-primary);
-  }
-}
 .source-icon {
   font-size: 1rem;
   line-height: 1;
-}
-
-/* ==========================
-   Header button (maxterdev-button)
-   ========================== */
-.timeline-header-btn {
-  width: fit-content;
-}
-.tl-btn-content {
-  display: flex;
-  align-items: center;
-  gap: var(--padding-lg, 16px);
-  color: var(--color-text);
-  width: 100%;
-}
-.tl-title {
-  flex: 1 1 auto; /* pushes icon to far right */
-  min-width: 0;
-}
-
-/* ==========================
-   Toggle icon: default + custom slot
-   ========================== */
-.tl-icon.default {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  font-size: 0.95rem;
-  line-height: 1;
-  width: 1em;
-  height: 1em;
-  transform: rotate(0deg);
-  transition: transform 0.2s ease;
-}
-.is-collapsed .tl-icon.default {
-  transform: rotate(-90deg);
-}
-
-/* Hide default icon if a custom one is projected */
-.tl-btn-content:has([timeline-toggle-icon]) .tl-icon.default {
-  display: none;
-}
-
-/* Ensure any custom icon behaves like the default */
-[timeline-toggle-icon] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  line-height: 1;
-  width: 1em;
-  height: 1em;
 }
 
 /* ==========================

@@ -1,4 +1,5 @@
 :root {
+  --height-input-xs: 24px;
   --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
@@ -11,13 +12,22 @@
 
 /* size map (from earlier mixins) */
 $size-map: (
+  xs: (
+    pad-inline: 0.5rem,
+    pad-block: 0.125rem,
+    font: var(--font-size-xs, 0.8125rem),
+    line-height: var(--line-height-xs, 1.2),
+    height: var(--height-input-xs, 24px),
+    radius: var(--border-radius-sm, 6px),
+    border: var(--border-width-sm, 1px),
+  ),
   sm: (
     pad-inline: 0.5rem,
     pad-block: 0.35rem,
     font: var(--font-size-sm, 0.875rem),
     line-height: var(--line-height-sm, 1.3),
     height: var(--height-input-sm, 36px),
-    /* ← here */ radius: var(--border-radius-sm, 6px),
+    radius: var(--border-radius-lg, 6px),
     border: var(--border-width-sm, 1px),
   ),
   md: (
@@ -26,7 +36,7 @@ $size-map: (
     font: var(--font-size-md, 1rem),
     line-height: var(--line-height-md, 1.5),
     height: var(--height-input, 40px),
-    radius: var(--border-radius-md, 10px),
+    radius: var(--border-radius-lg, 10px),
     border: var(--border-width-md, 1.5px),
   ),
   lg: (

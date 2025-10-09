@@ -8,10 +8,10 @@
   --on-primary: #ffffff;
 
   --color-background: #ffffff;
-  --color-surface: #f2f1f1;
+  --color-surface: #f7f8fb;
   --color-surface-1: #ffffff;
-  --color-surface-2: #f7f8fa;
-  --color-surface-3: #eff2f6;
+  --color-surface-2: #fbfcff;
+  --color-surface-3: #f3f6fb;
 
   --color-border-bottom-input: #dfdfdf;
 
@@ -24,6 +24,10 @@
   --color-success: #16a34a;
   --on-success: #ffffff;
   --color-warning: #e53e3e;
+  --color-danger-hover: #e04646;
+  --color-danger-active: #da5b5b;
+  --color-danger-border: #d33c3c;
+  --color-danger-ghost: #e53e3e1a;
   --on-warning: #1f1f1f;
   --color-danger: #dc2626;
   --on-danger: #ffffff;
@@ -114,73 +118,56 @@
   --color-button-disabled-text-hover: #9aa0a6;
 
   --color-button-disabled-background-active: #f5f7fa;
-  --color-button-disabled-border-active: #f5f7fa;
+  --color-button-disabled-border-active: #f5f7f9;
   --color-button-disabled-border-bottom-active: #f6f7f9;
   --color-button-disabled-text-active: #9aa0a6;
 
-  --color-selectable-button-unselected-background-inactive: transparent;
-  --color-selectable-button-unselected-background-hover: transparent;
-  --color-selectable-button-unselected-background-active: rgba(
-    211,
-    211,
-    211,
-    0.2
-  );
-  --color-selectable-button-unselected-border-inactive: transparent;
-  --color-selectable-button-unselected-border-hover: transparent;
-  --color-selectable-button-unselected-border-active: rgba(211, 211, 211, 0.2);
-  --color-selectable-button-unselected-border-bottom-inactive: transparent;
-  --color-selectable-button-unselected-border-bottom-hover: transparent;
-  --color-selectable-button-unselected-border-bottom-active: rgba(
-    211,
-    211,
-    211,
-    0.2
-  );
-  --color-selectable-button-unselected-text-inactive: #202020;
-  --color-selectable-button-unselected-text-hover: #555555;
-  --color-selectable-button-unselected-text-active: #202020;
-
+  /* ===== Selectable Buttons: UNSELECTED ===== */
   --color-selectable-button-unselected-background-inactive: transparent;
   --color-selectable-button-unselected-border-inactive: transparent;
   --color-selectable-button-unselected-border-bottom-inactive: transparent;
   --color-selectable-button-unselected-text-inactive: #202020;
 
-  --color-selectable-button-unselected-background-hover: transparent;
+  --color-selectable-button-unselected-background-hover: rgba(
+    226,
+    229,
+    234,
+    0.28
+  );
   --color-selectable-button-unselected-border-hover: transparent;
   --color-selectable-button-unselected-border-bottom-hover: transparent;
-  --color-selectable-button-unselected-text-hover: #555555;
+  --color-selectable-button-unselected-text-hover: #4a4a4a;
 
   --color-selectable-button-unselected-background-active: rgba(
-    211,
-    211,
-    211,
-    0.2
+    226,
+    229,
+    234,
+    0.35
   );
-  --color-selectable-button-unselected-border-active: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-active: rgba(226, 229, 234, 0.28);
   --color-selectable-button-unselected-border-bottom-active: rgba(
-    211,
-    211,
-    211,
-    0.2
+    226,
+    229,
+    234,
+    0.28
   );
-  --color-selectable-button-unselected-text-active: #202020;
+  --color-selectable-button-unselected-text-active: #2a2a2a;
 
   /* ===== Selectable Buttons: SELECTED ===== */
-  --color-selectable-button-selected-background-inactive: #dadada;
-  --color-selectable-button-selected-border-inactive: #dadada;
-  --color-selectable-button-selected-border-bottom-inactive: #dadada;
-  --color-selectable-button-selected-text-inactive: #202020;
+  --color-selectable-button-selected-background-inactive: #e4e6ea;
+  --color-selectable-button-selected-border-inactive: #e4e6ea;
+  --color-selectable-button-selected-border-bottom-inactive: #e4e6ea;
+  --color-selectable-button-selected-text-inactive: #2a2a2a;
 
-  --color-selectable-button-selected-background-hover: #e0e0e0;
-  --color-selectable-button-selected-border-hover: #e0e0e0;
-  --color-selectable-button-selected-border-bottom-hover: #e0e0e0;
-  --color-selectable-button-selected-text-hover: #202020;
+  --color-selectable-button-selected-background-hover: #e5e9ee;
+  --color-selectable-button-selected-border-hover: #e5e9ee;
+  --color-selectable-button-selected-border-bottom-hover: #e5e9ee;
+  --color-selectable-button-selected-text-hover: #2a2a2a;
 
-  --color-selectable-button-selected-background-active: #cfcfcf;
-  --color-selectable-button-selected-border-active: #cfcfcf;
-  --color-selectable-button-selected-border-bottom-active: #cfcfcf;
-  --color-selectable-button-selected-text-active: #202020;
+  --color-selectable-button-selected-background-active: #dfe4ec;
+  --color-selectable-button-selected-border-active: #dfe4ec;
+  --color-selectable-button-selected-border-bottom-active: #dfe4ec;
+  --color-selectable-button-selected-text-active: #2a2a2a;
 
   --color-input-background-inactive: transparent;
   --color-input-background-inactive-hover: #fbfcfd;
@@ -207,6 +194,8 @@
   --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06);
   --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.1);
   --shadow-3: 0 12px 28px rgba(0, 0, 0, 0.16);
+
+  --shadow-input-1: 0 4px 8px rgba(0, 0, 0, 0.04);
 
   // Spacing
   --space-1: 0.25rem; /* 4px */
@@ -310,13 +299,16 @@
   /* Status */
   --color-success: #16a34a;
   --on-success: #ffffff;
-  --color-warning: #f59e0b; /* keep as your warning; see note below */
+  --color-warning: #e53e3e;
+  --color-danger-hover: #e04646;
+  --color-danger-active: #da5b5b;
+  --color-danger-border: #d33c3c;
+  --color-danger-ghost: #e53e3e1a;
   --on-warning: #1f1f1f;
   --color-danger: #dc2626;
   --on-danger: #ffffff;
   --color-info: #2563eb;
   --on-info: #ffffff;
-
   /* Buttons — primary */
   --color-button-primary-background-inactive: #0064fa;
   --color-button-primary-border-inactive: #0064fa;

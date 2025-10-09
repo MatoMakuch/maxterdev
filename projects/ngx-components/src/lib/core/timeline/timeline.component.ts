@@ -7,6 +7,8 @@ import {
   ElementRef,
   AfterViewInit,
   OnDestroy,
+  OnChanges,
+  SimpleChanges,
   ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,8 +22,10 @@ import { ButtonComponent } from '../button/button.component';
   templateUrl: './timeline.component.html',
   styleUrls: [],
 })
-export class TimelineComponent implements AfterViewInit, OnDestroy {
+export class TimelineComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Input() timelineData: TimelineItem[] = [];
+
+  /** Expanded by default */
   @Input() collapsed = false;
   @Output() collapsedChange = new EventEmitter<boolean>();
 
@@ -38,7 +42,18 @@ export class TimelineComponent implements AfterViewInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  // Interaction
+  // ---------- Public helpers (optional) ----------
+  /** Programmatically toggle (usable via template ref) */
+  public toggle(): void {
+    this.setCollapsed(!this.collapsed, true);
+  }
+  /** Programmatically set state (animate by default) */
+  public setCollapsed(value: boolean, animate = true): void {
+    if (value === this.collapsed) return;
+    this.animateTo(value, animate);
+  }
+
+  // ---------- Interaction ----------
   onSourceClick(src: TimelineSource) {
     this.sourceSelected.emit(src);
   }
@@ -51,23 +66,33 @@ export class TimelineComponent implements AfterViewInit, OnDestroy {
     return src.icon ?? this.sourceIconResolver?.(src) ?? 'pi-file';
   }
 
-  // Expand/Collapse (height animation)
+  // ---------- Lifecycle ----------
   ngAfterViewInit(): void {
     const body = this.bodyRef.nativeElement;
 
+    // Initial paint: set immediately (no transition)
+    body.style.transition = 'none';
     if (this.collapsed) {
       body.style.height = '0px';
       body.style.opacity = '0';
     } else {
       body.style.height = `${this.contentRef.nativeElement.scrollHeight}px`;
       body.style.opacity = '1';
+      // Let layout settle, then unlock height
       requestAnimationFrame(() => (body.style.height = 'auto'));
     }
+    // Re-enable transitions after first frame
+    requestAnimationFrame(() => {
+      body.style.transition = 'height 250ms ease, opacity 200ms ease';
+    });
 
     // Keep expanded height natural as content changes
     this.ro = new ResizeObserver(() => {
-      if (!this.collapsed && body.style.height !== 'auto') return;
-      if (!this.collapsed) body.style.height = 'auto';
+      if (!this.collapsed) {
+        const el = this.bodyRef.nativeElement;
+        if (el.style.height === 'auto') return;
+        el.style.height = 'auto';
+      }
     });
     this.ro.observe(this.contentRef.nativeElement);
   }
@@ -76,37 +101,59 @@ export class TimelineComponent implements AfterViewInit, OnDestroy {
     this.ro?.disconnect();
   }
 
-  toggleTimeline(): void {
-    const body = this.bodyRef.nativeElement;
-    const content = this.contentRef.nativeElement;
+  ngOnChanges(changes: SimpleChanges): void {
+    // Handle external [(collapsed)] changes after init
+    if ('collapsed' in changes && !changes['collapsed'].firstChange) {
+      this.animateTo(this.collapsed, true);
+    }
+  }
 
-    body.style.transition = 'height 250ms ease, opacity 200ms ease';
+  // ---------- Animation core ----------
+  private animateTo(targetCollapsed: boolean, animate: boolean): void {
+    const body = this.bodyRef?.nativeElement;
+    const content = this.contentRef?.nativeElement;
+    if (!body || !content) return;
 
-    if (this.collapsed) {
-      // expand
-      body.style.opacity = '1';
-      body.style.height = `${content.scrollHeight}px`;
-      this.collapsed = false;
-      this.collapsedChange.emit(false);
-
-      const onEnd = (e: TransitionEvent) => {
-        if (e.propertyName === 'height') {
-          body.style.height = 'auto';
-          body.removeEventListener('transitionend', onEnd);
-        }
-      };
-      body.addEventListener('transitionend', onEnd);
+    if (!animate) {
+      body.style.transition = 'none';
+      if (targetCollapsed) {
+        body.style.height = '0px';
+        body.style.opacity = '0';
+      } else {
+        body.style.height = 'auto';
+        body.style.opacity = '1';
+      }
+      // Restore transitions
+      requestAnimationFrame(() => {
+        body.style.transition = 'height 250ms ease, opacity 200ms ease';
+      });
     } else {
-      // collapse
-      body.style.height = `${content.scrollHeight}px`;
-      void body.getBoundingClientRect();
-      body.style.opacity = '0';
-      body.style.height = '0px';
+      // Ensure transitions are on
+      body.style.transition = 'height 250ms ease, opacity 200ms ease';
 
-      this.collapsed = true;
-      this.collapsedChange.emit(true);
+      if (!targetCollapsed) {
+        // expand
+        body.style.opacity = '1';
+        body.style.height = `${content.scrollHeight}px`;
+
+        const onEnd = (e: TransitionEvent) => {
+          if (e.propertyName === 'height') {
+            body.style.height = 'auto';
+            body.removeEventListener('transitionend', onEnd);
+          }
+        };
+        body.addEventListener('transitionend', onEnd);
+      } else {
+        // collapse
+        body.style.height = `${content.scrollHeight}px`;
+        void body.getBoundingClientRect(); // force reflow
+        body.style.opacity = '0';
+        body.style.height = '0px';
+      }
     }
 
+    this.collapsed = targetCollapsed;
+    this.collapsedChange.emit(this.collapsed);
     this.cdr.markForCheck();
   }
 }

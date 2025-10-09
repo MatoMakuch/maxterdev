@@ -17,13 +17,17 @@ import { CommonModule } from '@angular/common';
 export class ButtonComponent {
   @Input() type: string = '';
   @Input() name: string = '';
-  @Input() severity: 'primary' | 'secondary' = 'primary';
+  @Input() severity: 'primary' | 'secondary' | 'danger' | 'accent' = 'primary';
   @Input() text: boolean = false;
   @Input() disabled: boolean = false;
   @Input() textAlign: 'left' | 'center' | 'right' = 'center';
   @Output() onClick = new EventEmitter<any>();
-  @Input() size: 'sm' | 'md' | 'lg' = 'md';
+  @Input() size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
+  @Input() chip: boolean = false;
 
+  @HostBinding('class.xs') get hostXs() {
+    return this.size === 'xs' || this.chip;
+  }
   @HostBinding('class.sm') get hostSm() {
     return this.size === 'sm';
   }
@@ -36,8 +40,10 @@ export class ButtonComponent {
 
   protected getClass() {
     if (!this.disabled) {
-      var cl = this.severity;
-      if (this.text) cl += ' text';
+      let cl = this.severity;
+      const isChip = this.size === 'xs' || this.chip;
+      if (this.text || isChip) cl += ' text';
+      if (isChip) cl += ' chip';
       return cl;
     } else return 'disabled';
   }

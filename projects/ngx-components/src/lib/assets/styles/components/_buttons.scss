@@ -2,20 +2,24 @@
 @import "../base/components";
 @import "../base/buttons";
 
-// ======================================
-// <maxterdev-button>
-// ======================================
+/* Assumes: $size-map now contains an `xs` bucket in your mixins file
+   (height ~24px, font ~0.8125rem, etc.) */
+
 maxterdev-button {
   display: block;
   position: relative;
 
-  // Host defaults
+  // original host base (kept)
   @include component-base();
-  @include component-height(sm); // default size
+  @include component-height(sm);
   @include component-font(sm);
   @include reduce-motion();
 
-  // Size modifiers on the host (optional)
+  // Host sizes (now includes xs via mixins)
+  &.xs {
+    @include component-height(xs);
+    @include component-font(xs);
+  }
   &.sm {
     @include component-height(sm);
     @include component-font(sm);
@@ -26,17 +30,18 @@ maxterdev-button {
   }
 
   .button {
-    // Interactive container
-    @include control-base(
-      sm,
-      transparent
-    ); // base: padding, radius, border width, transitions, focus-ring
+    @include control-base(sm, transparent);
     @include component-border-radius(lg);
     width: 100%;
     cursor: pointer;
-    border-color: transparent; // color comes from variant tokens
+    border-color: transparent;
     background-color: transparent;
 
+    // Button-level sizes (xs now mixin-driven)
+    &.xs {
+      @include control-base(xs, transparent);
+      @include component-border-radius(xs);
+    }
     &.sm {
       @include control-base(sm, transparent);
     }
@@ -44,58 +49,180 @@ maxterdev-button {
       @include control-base(lg, transparent);
     }
 
-    // ----- Variants -----
-    // Primary (default)
+    // original default wiring (kept)
     @include button(primary);
 
     &.primary {
       @include button(primary);
 
       &.text {
-        @include control-text-base(sm);
+        @include control-text-base(sm); // default text size
         @include button(primary-text);
       }
     }
 
-    // Secondary
     &.secondary {
       @include button(secondary);
 
       &.text {
-        @include control-text-base(sm);
+        @include control-text-base(sm); // default text size
         @include button(secondary-text);
       }
     }
 
-    // Disabled (applies regardless of variant)
+    &.accent {
+      border-color: var(--color-primary);
+      border-width: var(--border-width-sm);
+      background-color: var(--color-primary-ghost, rgba(0, 100, 250, 0.06));
+      color: var(--color-primary);
+
+      &:hover:not(.disabled):not([disabled]) {
+        background-color: var(
+          --color-primary-ghost-strong,
+          rgba(0, 100, 250, 0.12)
+        );
+        border-color: var(--color-primary);
+      }
+
+      &:active:not(.disabled):not([disabled]) {
+        background-color: var(
+          --color-primary-ghost-strong,
+          rgba(0, 100, 250, 0.16)
+        );
+        border-color: var(--color-primary);
+        transform: translateY(0.5px);
+      }
+    }
+
+    &.danger {
+      background-color: var(--color-danger);
+      color: var(--on-danger);
+      border-color: var(--color-danger-border);
+
+      &:hover:not(.disabled):not([disabled]) {
+        background-color: var(--color-danger-hover);
+        border-color: var(--color-danger-hover);
+      }
+      &:active:not(.disabled):not([disabled]) {
+        background-color: var(--color-danger-active);
+        border-color: var(--color-danger-active);
+        transform: translateY(0.5px);
+      }
+
+      &.text {
+        @include control-text-base(sm); // default text size
+        background-color: transparent !important;
+        color: var(--color-danger);
+        border-color: transparent;
+
+        &:hover:not(.disabled):not([disabled]) {
+          background-color: var(--color-danger-ghost);
+        }
+        &:active:not(.disabled):not([disabled]) {
+          background-color: var(--color-danger-ghost);
+          transform: translateY(0.5px);
+        }
+      }
+    }
+
+    /* Make text-style padding truly tiny when size is xs */
+    &.xs.text {
+      @include control-text-base(xs);
+    }
+
+    /* CHIP: stylistic layer on top of xs (pill + ghost states) */
+    &.chip {
+      @include control-text-base(xs); // tiny font/padding/height
+      border: 0;
+      border-radius: var(--border-radius-pill, 9999px) !important;
+      font-weight: var(--fw-medium, 500);
+      background-color: transparent !important;
+
+      &.primary {
+        color: var(--color-primary);
+        &:hover:not(.disabled):not([disabled]) {
+          background-color: var(--color-primary-ghost, rgba(0, 100, 250, 0.08));
+        }
+        &:active:not(.disabled):not([disabled]) {
+          background-color: var(
+            --color-primary-ghost-strong,
+            rgba(0, 100, 250, 0.14)
+          );
+          transform: translateY(0.25px);
+        }
+      }
+
+      &.secondary {
+        color: var(--color-text);
+        &:hover:not(.disabled):not([disabled]) {
+          background-color: var(--color-surface-3, #f3f6fb);
+        }
+        &:active:not(.disabled):not([disabled]) {
+          background-color: var(--color-surface-2, #fbfcff);
+          transform: translateY(0.25px);
+        }
+      }
+
+      &.danger {
+        color: var(--color-danger);
+        &:hover:not(.disabled):not([disabled]) {
+          background-color: var(--color-danger-ghost, rgba(229, 62, 62, 0.08));
+        }
+        &:active:not(.disabled):not([disabled]) {
+          background-color: var(
+            --color-danger-ghost-strong,
+            rgba(229, 62, 62, 0.16)
+          );
+          transform: translateY(0.25px);
+        }
+      }
+
+      .text {
+        @include component-base();
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-1, 0.25rem);
+        width: 100%;
+        height: 100%;
+
+        .icon,
+        .pi,
+        svg {
+          @include icon-size(1em);
+        }
+      }
+    }
+
+    // Disabled + focus + content (kept)
     &.disabled,
     &[disabled],
     &[aria-disabled="true"] {
       @include button(disabled);
       @include is-disabled();
       cursor: default;
-      // keep focus outline off for disabled
+
       &:focus,
       &:focus-visible {
         box-shadow: none;
       }
     }
 
-    // Keyboard focus
+    &.text {
+      background-color: transparent !important;
+    }
+
     &:focus-visible {
       @include focus-ring();
     }
 
-    // Content layout
     .text {
       @include component-base();
       @include center-content(var(--space-2, 0.5rem));
       width: 100%;
       height: 100%;
-      // Truncate long labels safely
-      @include truncate();
+      //@include truncate();
 
-      // Optional icon helpers if you use <i> or <svg> slots
       .icon,
       .pi,
       svg {
@@ -103,16 +230,12 @@ maxterdev-button {
       }
     }
 
-    // Subtle active press feedback for all non-text variants
     &:active:not(.text):not(.disabled):not([disabled]) {
       transform: translateY(0.5px);
     }
   }
 }
 
-// ======================================
-// <maxterdev-selectable-button>
-// ======================================
 maxterdev-selectable-button {
   display: block;
   position: relative;
@@ -122,7 +245,7 @@ maxterdev-selectable-button {
   @include component-font(sm);
   @include reduce-motion();
 
-  // Size modifiers on host (optional)
+  // Host sizes (original kept)
   &.sm {
     @include component-height(sm);
     @include component-font(sm);
@@ -133,7 +256,7 @@ maxterdev-selectable-button {
   }
 
   .button {
-    // Uses bordered control by default for better affordance
+    // original bordered control (kept)
     @include control-base(sm, var(--color-border-primary, #dfdfdf));
     @include component-padding(md);
     @include component-border-radius(lg);
@@ -142,7 +265,7 @@ maxterdev-selectable-button {
     background-color: var(--color-surface-1, #fff);
     color: var(--on-surface, #202020);
 
-    // Size modifiers
+    // Sizes (original kept)
     &.sm {
       @include control-base(sm, var(--color-border-primary, #dfdfdf));
       @include component-padding(sm);
@@ -152,7 +275,7 @@ maxterdev-selectable-button {
       @include component-padding(lg);
     }
 
-    // Unselected / Selected state wiring (tokens normalized earlier)
+    // State wiring (original kept)
     &.unselected {
       @include selectable-button(unselected);
     }
@@ -162,7 +285,34 @@ maxterdev-selectable-button {
       @include elevation(1);
     }
 
-    // Disabled selectable
+    &.danger {
+      border-color: var(--color-danger-border);
+      color: var(--color-danger);
+      background-color: transparent;
+
+      &:hover:not(.disabled):not([disabled]) {
+        background-color: var(--color-danger-ghost);
+        border-color: var(--color-danger-hover);
+      }
+
+      &.selected,
+      &[aria-pressed="true"] {
+        background-color: var(--color-danger-ghost);
+        border-color: var(--color-danger);
+        color: var(--color-danger);
+      }
+
+      &.text {
+        background-color: transparent !important;
+        border-color: transparent;
+        color: var(--color-danger);
+
+        &:hover:not(.disabled):not([disabled]) {
+          background-color: var(--color-danger-ghost);
+        }
+      }
+    }
+
     &.disabled,
     &[disabled],
     &[aria-disabled="true"] {
@@ -171,7 +321,6 @@ maxterdev-selectable-button {
       box-shadow: var(--shadow-0);
     }
 
-    // Keyboard focus
     &:focus-visible {
       @include focus-ring();
     }
@@ -181,14 +330,29 @@ maxterdev-selectable-button {
       @include center-content(var(--space-2, 0.5rem));
       width: 100%;
       height: 100%;
-      @include truncate();
+      //@include truncate();
       justify-content: center;
 
       .icon,
       .pi,
       svg {
-        @include icon-size(1em);
+        @include icon-size(1rem);
       }
     }
+
+    &.text {
+      background-color: transparent !important;
+    }
+  }
+}
+
+maxterdev-button,
+maxterdev-selectable-button {
+  &.pill .button {
+    border-radius: var(--border-radius-pill, 9999px) !important;
+  }
+
+  .button.pill {
+    border-radius: var(--border-radius-pill, 9999px) !important;
   }
 }
