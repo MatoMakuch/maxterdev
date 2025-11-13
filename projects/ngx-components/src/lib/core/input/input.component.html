@@ -1,10 +1,33 @@
-<div class="content" [attr.aria-disabled]="disabled || null">
-  <div class="top" *ngIf="topTpl">
-    <ng-container
-      [ngTemplateOutlet]="topTpl"
-      [ngTemplateOutletContext]="{ value: value }"
+<div
+  class="content"
+  [attr.aria-disabled]="disabled || null"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+  (drop)="onDrop($event)"
+>
+  <!-- single top row that stacks your projected topTpl AND the attachments -->
+  <div class="top-row">
+    <div class="top" *ngIf="topTpl">
+      <ng-container
+        [ngTemplateOutlet]="topTpl"
+        [ngTemplateOutletContext]="{ value: value }"
+      >
+      </ng-container>
+    </div>
+
+    <!-- Moved here: attachment well now lives in TOP row -->
+    <div
+      class="attachment-well"
+      *ngIf="allowAttachments && attachments?.length"
+      role="list"
     >
-    </ng-container>
+      <maxterdev-attachment-chip
+        *ngFor="let a of attachments; trackBy: trackById"
+        [attachment]="a"
+        (remove)="onRemove($event)"
+      >
+      </maxterdev-attachment-chip>
+    </div>
   </div>
 
   <div class="left" *ngIf="leftTpl">
@@ -34,6 +57,7 @@
       [ngModel]="value"
       (ngModelChange)="value = $event"
       (blur)="handleBlur()"
+      (paste)="onPaste($event)"
       [style.height]="autosizeDisabled ? 'unset' : null"
       [style.overflow-y]="autosizeDisabled ? 'auto' : null"
     >
@@ -59,6 +83,7 @@
       [attr.aria-describedby]="describedBy ?? null"
       [ngModel]="value"
       (ngModelChange)="value = $event"
+      (paste)="onPaste($event)"
     />
   </ng-template>
 
@@ -77,6 +102,18 @@
     >
     </ng-container>
   </div>
+
+  <input
+    #fileInput
+    type="file"
+    [attr.accept]="accept || null"
+    [attr.multiple]="multiple ? '' : null"
+    (change)="onNativeFiles($event)"
+    hidden
+  />
 </div>
 
+<div class="drop-overlay" *ngIf="isDragOver && allowAttachments">
+  Drop files to attach
+</div>
 <div class="input-line"></div>

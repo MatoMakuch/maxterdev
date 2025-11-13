@@ -40,6 +40,11 @@
   }
 }
 
+.timeline-header {
+  color: var(--color-text);
+  @include component-font(md);
+}
+
 /* ==========================
    Expand/Collapse container
    ========================== */

@@ -24,6 +24,7 @@ maxterdev-input {
   border: 0;
   box-shadow: none;
   overflow: visible; /* allow shadow to render outside */
+
   /* default: no shadow */
   --_shadow: none;
 
@@ -51,12 +52,21 @@ maxterdev-input {
     z-index: 2;
   }
 
-  /* Your layout for slots/inputs (unchanged) */
+  /* Layout */
   .content {
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto; /* top row (topTpl + attachments), editor, bottom */
+    grid-template-columns: auto 1fr auto; /* left | editor | right */
     height: 100%;
+
+    .top-row {
+      grid-row: 1;
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem; /* distance between topTpl and attachment well */
+      min-width: 0;
+    }
 
     .left {
       grid-row: 2;
@@ -66,6 +76,7 @@ maxterdev-input {
       grid-row: 2;
       grid-column: 3;
     }
+    /* keep .top/.bottom for backwards compatibility (topTpl can still target .top) */
     .top {
       grid-row: 1;
       grid-column: 1 / -1;
@@ -97,7 +108,7 @@ maxterdev-input {
     }
   }
 
-  /* Indicator line (unchanged) */
+  /* ---- Indicator line --------------------------------------------------- */
   .input-line {
     box-sizing: border-box;
     border-radius: inherit;
@@ -120,7 +131,7 @@ maxterdev-input {
     background-repeat: no-repeat;
   }
 
-  /* STATES: only colors; do NOT set box-shadow here */
+  /* ---- States: only colors here; do NOT set box-shadow ------------------ */
   &:not(:focus-within):hover::before {
     background-color: var(--color-input-background-inactive-hover);
     border-color: var(--color-input-border-hover);
@@ -133,8 +144,51 @@ maxterdev-input {
     border-color: var(--warning-color);
   }
 
-  /* Single, static shadow opt-in */
+  /* ---- Single, static shadow opt-in ------------------------------------- */
   &.shadow {
     --_shadow: var(--shadow-input-1, 0 1px 2px rgba(0, 0, 0, 0.02));
+  }
+
+  /* ---- Attachments UI --------------------------------------------------- */
+  .attachment-well {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.5rem;
+
+    /* lightweight look: let the input surface define bg/border */
+    background: transparent;
+    border: none;
+
+    /* allow chips to truncate nicely */
+    min-width: 0;
+  }
+
+  /* Drag overlay (visual only; events handled on .content) */
+  .drop-overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    z-index: 3; /* above .input-line and ::before */
+    border-radius: inherit;
+    background: color-mix(
+      in srgb,
+      var(--color-surface-1, #fff),
+      transparent 40%
+    );
+    border: 2px dashed var(--att-drag-outline, #a6c8ff);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .clip-1 {
+    --title-width: 16ch;
+    display: block;
+    width: calc(var(--title-width) - 3ch);
+    max-width: calc(var(--title-width) - 3ch);
+    @include truncate();
+    text-overflow: ellipsis; /* shows … */
   }
 }

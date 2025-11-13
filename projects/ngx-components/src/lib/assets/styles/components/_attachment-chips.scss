@@ -1,0 +1,153 @@
+@import "../base/components";
+
+/* Chip root */
+.md-att-chip {
+  /* base + theming */
+  @include component-base();
+  @include state-transitions();
+
+  display: grid;
+  grid-template-columns: var(--chip-thumb, 2rem) 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+
+  @include component-border(sm, var(--att-border, #e6e8ef));
+  background: var(--color-surface-1, #fff);
+  color: var(--att-text, var(--color-text, #202020));
+
+  /* spacing & typography (default size = sm) */
+  @include component-font(sm);
+  @include component-padding(sm);
+  @include component-border-radius(sm);
+
+  /* allow truncation inside */
+  min-width: 0;
+  max-width: 20rem;
+
+  --chip-name-width: 16ch;
+
+  /* thumb size via CSS var; overridden by size modifiers */
+  --chip-thumb: 2rem;
+
+  /* subtle hover to match inputs/buttons feel */
+  &:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--color-surface-1, #fff),
+      rgba(0, 0, 0, 0.04) 100%
+    );
+  }
+
+  &.error {
+    @include component-border(md, var(--att-error, #cc3535));
+  }
+
+  /* ---------- Size modifiers ---------- */
+  &.xs {
+    --chip-thumb: 1.5rem;
+    @include component-font(xs);
+    @include component-padding(xs);
+    @include component-border-radius(xs);
+    @include component-border(xs, var(--att-border, #e6e8ef));
+  }
+
+  &.sm {
+    --chip-thumb: 2rem;
+    @include component-font(sm);
+    @include component-padding(sm);
+    @include component-border-radius(sm);
+    @include component-border(sm, var(--att-border, #e6e8ef));
+  }
+
+  &.md {
+    --chip-thumb: 2rem;
+    @include component-font(md);
+    @include component-padding(md);
+    @include component-border-radius(md);
+    @include component-border(md, var(--att-border, #e6e8ef));
+  }
+
+  &.lg {
+    --chip-thumb: 2.25rem;
+    @include component-font(lg);
+    @include component-padding(lg);
+    @include component-border-radius(lg);
+    @include component-border(lg, var(--att-border, #e6e8ef));
+  }
+}
+
+/* ---------- Parts ---------- */
+
+.thumb {
+  width: var(--chip-thumb);
+  height: var(--chip-thumb);
+  border-radius: calc(sz(sm, radius) / 2);
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.icon {
+  @include center-content();
+  width: var(--chip-thumb);
+  height: var(--chip-thumb);
+  opacity: 0.7;
+}
+
+.meta {
+  min-width: 0;
+
+  .name {
+    width: calc(var(--chip-name-width) - 3ch);
+    max-width: calc(var(--chip-name-width) - 3ch);
+    @include truncate(); /* single-line, overflow hidden */
+    text-overflow: ellipsis;
+  }
+
+  .sub {
+    @include component-font(xs);
+    opacity: 0.7;
+  }
+
+  .err {
+    @include component-font(xs, var(--fw-medium, 500));
+    color: var(--color-danger, #cc3535);
+    margin-top: 0.1rem;
+  }
+
+  maxterdev-progress-bar {
+    display: block;
+    margin-top: 0.25rem;
+  }
+}
+
+.close-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.close {
+  @include component-base();
+  @include interactive();
+  @include component-font(xs, var(--fw-semibold, 600));
+
+  border: 0;
+  background: transparent;
+  line-height: 1;
+  padding: 0.1rem 0.25rem;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+  &:active {
+    transform: scale(0.96);
+  }
+}

@@ -1,4 +1,3 @@
-// _buttons.scss
 @import "../base/components";
 @import "../base/buttons";
 
@@ -9,7 +8,7 @@ maxterdev-button {
   display: block;
   position: relative;
 
-  // original host base (kept)
+  // original host base
   @include component-base();
   @include component-height(sm);
   @include component-font(sm);
@@ -37,10 +36,12 @@ maxterdev-button {
     border-color: transparent;
     background-color: transparent;
 
-    // Button-level sizes (xs now mixin-driven)
+    // Button-level sizes
     &.xs {
       @include control-base(xs, transparent);
       @include component-border-radius(xs);
+      padding-inline: 0 !important;
+      padding-block: 0 !important;
     }
     &.sm {
       @include control-base(sm, transparent);
@@ -243,7 +244,6 @@ maxterdev-selectable-button {
   @include component-base();
   @include component-height(sm);
   @include component-font(sm);
-  @include reduce-motion();
 
   // Host sizes (original kept)
   &.sm {
@@ -282,7 +282,7 @@ maxterdev-selectable-button {
     &.selected,
     &[aria-pressed="true"] {
       @include selectable-button(selected);
-      @include elevation(1);
+      //@include elevation(3);
     }
 
     &.danger {

@@ -1,0 +1,37 @@
+<div class="md-att-chip" [class.error]="attachment?.error">
+  <div class="thumb" *ngIf="attachment?.previewUrl; else icon">
+    <img [src]="attachment!.previewUrl!" alt="" />
+  </div>
+  <ng-template #icon>
+    <div class="icon" aria-hidden="true">📎</div>
+  </ng-template>
+
+  <div class="meta">
+    <div class="name" [title]="attachment?.name">{{ attachment?.name }}</div>
+    <div class="sub">
+      {{ attachment?.type || "file" }} • {{ formatBytes(attachment?.size) }}
+    </div>
+
+    <div class="err" *ngIf="attachment?.error">{{ attachment?.error }}</div>
+
+    <maxterdev-progress-bar
+      *ngIf="attachment?.progress !== undefined"
+      [value]="attachment!.progress || 0"
+      variant="ultra-thin"
+      [showValue]="false"
+      [showUnit]="false"
+    >
+    </maxterdev-progress-bar>
+  </div>
+
+  <div class="close-button">
+    <button
+      type="button"
+      class="close"
+      (click)="removeSelf()"
+      [attr.aria-label]="'Remove ' + (attachment?.name || 'attachment')"
+    >
+      ×
+    </button>
+  </div>
+</div>

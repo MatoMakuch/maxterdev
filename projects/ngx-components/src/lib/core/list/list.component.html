@@ -17,7 +17,7 @@
       (click)="$event.stopPropagation()"
       (mousedown)="$event.stopPropagation()"
     >
-      <div class="indicator"></div>
+      <!-- <div class="indicator"></div> -->
 
       <maxterdev-checkbox
         class="checkbox"
@@ -41,7 +41,7 @@
         (click)="selectItem(item)"
         (mousedown)="$event.stopPropagation()"
       >
-        <div class="indicator"></div>
+        <!-- <div class="indicator"></div> -->
 
         <ng-container
           *ngIf="itemTemplate; else defaultTemplate"
