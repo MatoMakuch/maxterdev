@@ -8,12 +8,17 @@ export * from './lib/core/menu/menu.component';
 export * from './lib/core/popup/popup.component';
 export * from './lib/core/progress-bar/progress-bar.component';
 export * from './lib/core/selectable-button/selectable-button.component';
+export * from './lib/core/tab/tabs.component'
 export * from './lib/core/tab/tab.component';
 export * from './lib/core/table/table.component';
+export * from './lib/core/table/column.component'
 export * from './lib/core/timeline/timeline.component';
+export * from './lib/core/timeline/timeline-item.model'
 export * from './lib/core/tree/tree.component';
+export * from './lib/core/tree/tree-node.interface'
 
 export * from './lib/directives/table-column.directive'
+export * from './lib/directives/autosize.directive'
 
 
 
