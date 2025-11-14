@@ -13,9 +13,8 @@ maxterdev-input {
 
   @include component-base();
   @include component-height();
-  @include component-border-style(
-
-  ); // provides radius; we'll draw border on ::before
+  @include component-border-style();
+  @include component-border-radius(sm);
   @include input();
   @include component-font();
 

@@ -18,6 +18,7 @@
   --color-text: #202020;
   --color-text-active: #202020;
   --color-text-secondary: #707070;
+  --color-text-tertiary: #a4a4a4;
   --on-surface: #202020;
   --on-background: #202020;
 
@@ -204,9 +205,10 @@
   --space-4: 1rem; /* 16px */
   --space-6: 1.5rem; /* 24px */
 
-  --padding-sm: var(--space-1);
-  --padding-md: var(--space-2);
-  --padding-lg: var(--space-3);
+  --padding-sm: 0.5rem; /* 8px */
+  --padding-md: 0.75rem; /* 12px */
+  --padding-lg: 1rem; /* 16px */
+  --padding-xl: 1.25rem; /* 20px */
   --margin-sm: var(--space-1);
   --margin-md: var(--space-2);
   --margin-lg: var(--space-4);
@@ -223,10 +225,10 @@
   --border-width-sm: 1px;
   --border-width-md: 1.5px;
   --border-width-lg: 2px;
-  --border-radius-sm: 6px;
-  --border-radius-md: 10px;
-  --border-radius-lg: 14px;
-  --border-radius-xl: 18px;
+  --border-radius-sm: 10px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 18px;
+  --border-radius-xl: 22px;
   --border-radius-pill: 9999px;
 
   --border-bottom-focus: 2.2px solid #0477bf;

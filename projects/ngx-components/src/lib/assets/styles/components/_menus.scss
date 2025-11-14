@@ -23,7 +23,7 @@
   z-index: var(--z-dropdown, 1000);
 
   background-color: var(--color-surface-1, var(--color-background));
-  @include component-border(xl);
+  @include component-border(md);
 
   max-width: 22rem;
   transform-origin: top left;

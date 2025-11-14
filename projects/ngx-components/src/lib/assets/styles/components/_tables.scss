@@ -3,10 +3,12 @@
 maxterdev-table {
   .table-container {
     @include component-base();
-    @include component-border(xl);
+    border: var(--border-width-sm) solid var(--color-border-primary);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-surface-1);
+    box-shadow: var(--shadow-1, 0 1px 2px rgba(0, 0, 0, 0.06));
     overflow-x: auto;
-    background-color: var(--color-background);
-    padding: 1.5rem;
+    padding: 0;
   }
 
   .table-element {
@@ -18,20 +20,23 @@ maxterdev-table {
   th,
   td {
     vertical-align: middle;
+    padding-block: var(--space-3, 0.75rem);
+    padding-inline: var(--space-4, 1rem);
   }
 
   th {
+    @include component-font(sm);
     text-align: left;
-    font-weight: 600;
-    color: var(--color-text-secondary);
-    background-color: var(--color-background);
+    font-weight: var(--fw-semibold, 600);
+    color: var(--color-text-tertiary);
+    background-color: var(--color-surface-1);
     border-bottom: var(--border-width-sm) solid var(--color-border-primary);
-    letter-spacing: 0.5px;
   }
 
   td {
+    @include component-font(sm);
     color: var(--color-text);
-    border-bottom: var(--border-width-sm) solid var(--color-surface);
+    border-bottom: var(--border-width-sm) solid var(--color-border-primary);
   }
 
   tbody tr:last-child td {
@@ -41,34 +46,50 @@ maxterdev-table {
   &.size-sm {
     th,
     td {
-      @include component-padding-text;
-      @include component-font(sm);
+      padding-block: var(--space-3, 0.75rem);
+      padding-inline: var(--space-4, 1rem);
     }
   }
 
   &.size-md {
     th,
     td {
-      @include component-padding-text(lg);
-    }
-    td {
       @include component-font(md);
     }
     th {
-      @include component-font(md); // Headers are one step smaller
+      font-weight: var(--fw-semibold, 600);
     }
   }
 
   &.size-lg {
     th,
     td {
-      @include component-padding-text(lg);
+      padding-block: var(--space-4, 1rem);
+      padding-inline: var(--space-4, 1rem);
     }
     td {
       @include component-font(lg);
     }
     th {
       @include component-font(lg);
+      font-weight: var(--fw-semibold, 600);
+    }
+  }
+
+  &.variant-borderless {
+    .table-container {
+      border: none;
+      box-shadow: none;
+    }
+
+    th,
+    td {
+      border-bottom: none;
+    }
+
+    th {
+      color: var(--color-text-tertiary);
+      font-weight: var(--fw-bold, 700);
     }
   }
 }

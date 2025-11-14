@@ -4,17 +4,38 @@
 /* Assumes: $size-map now contains an `xs` bucket in your mixins file
    (height ~24px, font ~0.8125rem, etc.) */
 
+@mixin button-tight-padding($size) {
+  $inline: sz($size, pad-inline);
+  $block: sz($size, pad-block);
+  $inline-adjust: 0rem;
+  $block-adjust: 0rem;
+
+  @if $size == sm {
+    $inline-adjust: 0.1rem;
+    $block-adjust: 0.05rem;
+  } @else if $size == md {
+    $inline-adjust: -0.2rem;
+    $block-adjust: -0.125rem;
+  } @else if $size == lg {
+    $inline-adjust: -0.15rem;
+    $block-adjust: -0.1rem;
+  }
+
+  padding-inline: calc(#{$inline} + #{$inline-adjust});
+  padding-block: calc(#{$block} + #{$block-adjust});
+}
+
 maxterdev-button {
   display: block;
   position: relative;
 
-  // original host base
+  // host default (md)
   @include component-base();
-  @include component-height(sm);
-  @include component-font(sm);
+  @include component-height(md);
+  @include component-font(md);
   @include reduce-motion();
 
-  // Host sizes (now includes xs via mixins)
+  // Host size modifiers
   &.xs {
     @include component-height(xs);
     @include component-font(xs);
@@ -29,8 +50,9 @@ maxterdev-button {
   }
 
   .button {
-    @include control-base(sm, transparent);
-    @include component-border-radius(lg);
+    @include control-base(md, transparent);
+    @include component-border-radius(md);
+    @include button-tight-padding(md);
     width: 100%;
     cursor: pointer;
     border-color: transparent;
@@ -45,9 +67,13 @@ maxterdev-button {
     }
     &.sm {
       @include control-base(sm, transparent);
+      @include component-border-radius(sm);
+      @include button-tight-padding(sm);
     }
     &.lg {
       @include control-base(lg, transparent);
+      @include component-border-radius(lg);
+      @include button-tight-padding(lg);
     }
 
     // original default wiring (kept)
@@ -259,7 +285,7 @@ maxterdev-selectable-button {
     // original bordered control (kept)
     @include control-base(sm, var(--color-border-primary, #dfdfdf));
     @include component-padding(md);
-    @include component-border-radius(lg);
+    @include component-border-radius(sm);
     width: 100%;
     cursor: pointer;
     background-color: var(--color-surface-1, #fff);
@@ -269,10 +295,12 @@ maxterdev-selectable-button {
     &.sm {
       @include control-base(sm, var(--color-border-primary, #dfdfdf));
       @include component-padding(sm);
+      @include component-border-radius(sm);
     }
     &.lg {
       @include control-base(lg, var(--color-border-primary, #dfdfdf));
       @include component-padding(lg);
+      @include component-border-radius(lg);
     }
 
     // State wiring (original kept)

@@ -4,10 +4,11 @@
 maxterdev-treetable {
   .treetable-container {
     @include component-base();
-    @include component-border(xl);
-    @include component-padding-text;
+    border: var(--border-width-sm) solid var(--color-border-primary);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-surface-1);
+    box-shadow: var(--shadow-1, 0 1px 2px rgba(0, 0, 0, 0.06));
     overflow: hidden;
-    background-color: var(--color-background);
   }
 
   .treetable-element {
@@ -18,18 +19,23 @@ maxterdev-treetable {
   th,
   td {
     vertical-align: middle;
+    padding-block: var(--space-3, 0.75rem);
+    padding-inline: var(--space-4, 1rem);
   }
 
   th {
-    @include component-font;
+    @include component-font(sm);
     text-align: left;
-    background-color: var(--color-background);
+    background-color: var(--color-surface-1);
     border-bottom: var(--border-width-sm) solid var(--color-border-primary);
+    color: var(--color-text-tertiary);
+    font-weight: var(--fw-regular, 400);
   }
 
   td {
+    @include component-font(sm);
     color: var(--color-text);
-    border-bottom: var(--border-width-sm) solid var(--color-surface);
+    border-bottom: var(--border-width-sm) solid var(--color-border-primary);
   }
 
   tbody tr:last-child td {
@@ -47,6 +53,7 @@ maxterdev-treetable {
   }
 
   $expander-size: 1.5rem;
+
 
   .expand-toggle {
     display: inline-flex;
@@ -66,7 +73,7 @@ maxterdev-treetable {
     }
 
     .pi {
-      font-size: 0.8rem;
+      font-size: var(--font-size-sm);
     }
   }
 
@@ -80,34 +87,50 @@ maxterdev-treetable {
   &.size-sm {
     th,
     td {
-      @include component-padding-text;
-      @include component-font(sm);
+      padding-block: var(--space-3, 0.75rem);
+      padding-inline: var(--space-4, 1rem);
     }
   }
 
   &.size-md {
     th,
     td {
-      @include component-padding-text(lg);
-    }
-    td {
       @include component-font(md);
     }
     th {
-      @include component-font(md); // Headers are one step smaller
+      font-weight: var(--fw-regular, 400);
     }
   }
 
   &.size-lg {
     th,
     td {
-      @include component-padding-text(lg);
+      padding-block: var(--space-4, 1rem);
+      padding-inline: var(--space-4, 1rem);
     }
     td {
       @include component-font(lg);
     }
     th {
       @include component-font(lg);
+      font-weight: var(--fw-regular, 4600);
+    }
+  }
+
+  &.variant-borderless {
+    .treetable-container {
+      border: none;
+      box-shadow: none;
+    }
+
+    th,
+    td {
+      border-bottom: none;
+    }
+
+    th {
+      color: var(--color-text-tertiary);
+      font-weight: var(--fw-semibold, 600);
     }
   }
 }

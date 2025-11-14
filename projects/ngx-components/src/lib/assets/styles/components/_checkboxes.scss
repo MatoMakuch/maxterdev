@@ -48,7 +48,7 @@
   width: calc((1.55rem + 3px) * 0.75);
   height: calc((1.55rem + 3px) * 0.75);
   @include component-border-style(sm);
-  border-radius: var(--border-radius-sm);
+  border-radius: 6px;
   .pi-check {
     font-size: var(--font-size-sm);
   }
@@ -61,7 +61,7 @@
   height: calc(1.55rem + 3px);
   width: calc(1.55rem + 3px);
   @include component-border-style(sm);
-  border-radius: var(--border-radius-sm);
+  border-radius: 8px;
   .pi-check {
     font-size: var(--font-size-md);
   }
