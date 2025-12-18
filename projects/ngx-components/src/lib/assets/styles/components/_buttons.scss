@@ -62,8 +62,7 @@ maxterdev-button {
     &.xs {
       @include control-base(xs, transparent);
       @include component-border-radius(xs);
-      padding-inline: 0 !important;
-      padding-block: 0 !important;
+      @include button-tight-padding(xs);
     }
     &.sm {
       @include control-base(sm, transparent);

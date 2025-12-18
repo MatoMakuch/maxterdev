@@ -1,13 +1,10 @@
 @import "../base/components";
 
-/* ==========================
-   Root list (small by default)
-   ========================== */
 .timeline-container ul {
-  --gap-divider-header: var(--margin-lg, 12px);
-  --gap-header-body: var(--margin-lg, 12px);
-  --gap-body-divider: var(--margin-lg, 12px);
-  --gap-body-sources: var(--margin-md, 12px);
+  --gap-divider-header: var(--space-3, 0.75rem);
+  --gap-header-body: var(--space-2, 0.5rem);
+  --gap-body-divider: var(--space-3, 0.75rem);
+  --gap-body-sources: var(--space-1, 0.25rem);
 
   --dot-size: 22px;
   --dot-stroke: 3px;
@@ -16,7 +13,7 @@
 
   --rail-col: calc(var(--dot-size) + 2 * var(--dot-stroke));
   --rail-width: var(--border-width-sm, 2px);
-  --content-gap-x: var(--margin-md, 12px);
+  --content-gap-x: var(--space-2, 0.5rem);
 
   list-style: none;
   margin: 0;
@@ -25,24 +22,11 @@
 
   @include component-font(sm);
   box-sizing: border-box;
-
-  /* Ensure no legacy global rail */
-  &::before {
-    content: "";
-    position: absolute;
-    left: calc(var(--rail-col) / 2 - var(--rail-width) / 2);
-    top: 5px;
-    bottom: 5px;
-    width: var(--rail-width);
-    background-color: var(--color-border-primary);
-    pointer-events: none;
-    z-index: 0;
-  }
 }
 
 .timeline-header {
   color: var(--color-text);
-  @include component-font(md);
+  @include component-font(sm);
 }
 
 /* ==========================
@@ -57,19 +41,40 @@
 }
 
 .timeline-inner {
-  padding-top: var(--margin-sm, 8px);
+  padding-top: var(--space-1, 0.25rem);
 }
 
-/* ==========================
-   Each LI = [item] + [divider]
-   ========================== */
 .timeline-li {
+  --dot-center-offset: calc(
+    var(--gap-divider-header) + (var(--dot-size) / 2) + var(--dot-offset-y)
+  );
+
   position: relative; /* anchor the per-row rail segment */
   z-index: 0;
   display: grid;
   grid-template-rows: auto auto;
   row-gap: var(--gap-body-divider); /* BODY - DIVIDER */
-  padding-top: var(--gap-divider-header); /* DIVIDER - HEADER (prev→this) */
+  padding-top: var(--gap-divider-header); /* DIVIDER - HEADER */
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--rail-col) / 2 - var(--rail-width) / 2);
+    top: 0;
+    bottom: 0;
+    width: var(--rail-width);
+    background-color: var(--color-border-primary);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &:first-child::before {
+    top: var(--dot-center-offset);
+  }
+
+  &:last-child::before {
+    bottom: calc(100% - var(--dot-center-offset));
+  }
 }
 
 .timeline-item {
@@ -113,18 +118,15 @@
   row-gap: var(--gap-header-body);
 }
 
-/* ==========================
-   Header area
-   ========================== */
 .item-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--margin-sm, 8px);
+  gap: var(--space-1, 0.25rem);
 }
 
 .item-title {
-  @include component-font(sm, var(--fw-semibold, 600));
+  @include component-font(sm, var(--fw-regular, 600));
   line-height: 1.2;
   color: var(--color-text);
   flex: 1 1 auto;
@@ -134,17 +136,14 @@
 .item-meta {
   @include component-font(sm);
   display: inline-flex;
-  gap: var(--margin-sm, 8px);
+  gap: var(--space-1, 0.25rem);
   color: var(--color-text-secondary);
   white-space: nowrap;
 }
 
-/* ==========================
-   Body text
-   ========================== */
 .item-body .body-text {
   margin: 0;
-  color: var(--color-text);
+  color: var(--color-text-secondary);
 }
 .item-body > :first-child {
   margin-top: 0;
@@ -159,11 +158,11 @@
 .sources-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--margin-lg, 12px);
+  gap: var(--space-2, 0.5rem);
 }
 
 .source-icon {
-  font-size: 1rem;
+  font-size: var(--font-size-xs, 0.8125rem);
   line-height: 1;
 }
 

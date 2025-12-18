@@ -41,9 +41,8 @@ export class ButtonComponent {
   protected getClass() {
     if (!this.disabled) {
       let cl = this.severity;
-      const isChip = this.size === 'xs' || this.chip;
-      if (this.text || isChip) cl += ' text';
-      if (isChip) cl += ' chip';
+      if (this.text || this.chip) cl += ' text';
+      if (this.chip) cl += ' chip';
       return cl;
     } else return 'disabled';
   }

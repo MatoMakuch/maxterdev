@@ -29,7 +29,6 @@ export class TimelineComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Input() collapsed = false;
   @Output() collapsedChange = new EventEmitter<boolean>();
 
-  /** Optional: app-level resolver so icons are NOT hard-coded in the library */
   @Input() sourceIconResolver?: (src: TimelineSource) => string;
 
   @Output() sourceSelected = new EventEmitter<TimelineSource>();
