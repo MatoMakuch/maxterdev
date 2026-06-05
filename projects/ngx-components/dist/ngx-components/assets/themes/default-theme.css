@@ -2,30 +2,22 @@
 @import "@angular/cdk/overlay-prebuilt.css";
 :root {
   --color-primary: #0064fa;
-  --color-primary-accent: rgb(224.5, 236.7, 255);
+  --color-primary-accent: #e1edff;
   --on-primary: #ffffff;
   --color-background: #ffffff;
-  --color-surface: #f7f8fb;
+  --color-surface: #f2f1f1;
   --color-surface-1: #ffffff;
-  --color-surface-2: #fbfcff;
-  --color-surface-3: #f3f6fb;
+  --color-surface-2: #f7f8fa;
+  --color-surface-3: #eff2f6;
   --color-border-bottom-input: #dfdfdf;
   --color-text: #202020;
   --color-text-active: #202020;
   --color-text-secondary: #707070;
-  --color-text-tertiary: #a4a4a4;
   --on-surface: #202020;
   --on-background: #202020;
   --color-success: #16a34a;
   --on-success: #ffffff;
   --color-warning: #e53e3e;
-  --color-danger-hover: #e04646;
-  --color-danger-active: #da5b5b;
-  --color-danger-border: #d33c3c;
-  --color-danger-ghost: #e53e3e1a;
-  --color-error-surface: #fef2f2;
-  --color-error-border-strong: #ef4444;
-  --color-error-text: #b91c1c;
   --on-warning: #1f1f1f;
   --color-danger: #dc2626;
   --on-danger: #ffffff;
@@ -36,24 +28,24 @@
   --color-border-primary: #dfdfdf;
   --color-border-active: #b8b8b8;
   --color-hover-fill: #3f3f3f;
-  --color-primary-hover: rgb(20.5, 114.3, 255);
-  --color-primary-active: rgb(46, 129.6, 255);
+  --color-primary-hover: #1572ff;
+  --color-primary-active: #2e82ff;
   --color-secondary-hover: #f6f7f9;
   --color-secondary-active: #f6f7f9;
   --color-inactive: #d4d4d4;
-  --color-inactive2: rgb(186.5, 186.5, 186.5);
+  --color-inactive2: #bbbbbb;
   --color-active: #1d1d1d;
   --color-button-primary-background-inactive: #0064fa;
   --color-button-primary-border-inactive: #0064fa;
   --color-button-primary-border-bottom-inactive: #0064fa;
   --color-button-primary-text-inactive: #ffffff;
-  --color-button-primary-background-hover: rgb(20.5, 114.3, 255);
-  --color-button-primary-border-hover: rgb(20.5, 114.3, 255);
-  --color-button-primary-border-bottom-hover: rgb(20.5, 114.3, 255);
+  --color-button-primary-background-hover: #1572ff;
+  --color-button-primary-border-hover: #1572ff;
+  --color-button-primary-border-bottom-hover: #1572ff;
   --color-button-primary-text-hover: #ffffff;
-  --color-button-primary-background-active: rgb(46, 129.6, 255);
-  --color-button-primary-border-active: rgb(46, 129.6, 255);
-  --color-button-primary-border-bottom-active: rgb(46, 129.6, 255);
+  --color-button-primary-background-active: #2e82ff;
+  --color-button-primary-border-active: #2e82ff;
+  --color-button-primary-border-bottom-active: #2e82ff;
   --color-button-primary-text-active: #ffffff;
   --color-button-secondary-background-inactive: #ffffff;
   --color-button-secondary-border-inactive: #dfdfdf;
@@ -74,11 +66,11 @@
   --color-button-primary-text-background-hover: transparent;
   --color-button-primary-text-border-hover: transparent;
   --color-button-primary-text-border-bottom-hover: transparent;
-  --color-button-primary-text-text-hover: rgb(20.5, 114.3, 255);
+  --color-button-primary-text-text-hover: #1572ff;
   --color-button-primary-text-background-active: transparent;
   --color-button-primary-text-border-active: transparent;
   --color-button-primary-text-border-bottom-active: transparent;
-  --color-button-primary-text-text-active: rgb(46, 129.6, 255);
+  --color-button-primary-text-text-active: #2e82ff;
   --color-button-secondary-text-background-inactive: transparent;
   --color-button-secondary-text-border-inactive: transparent;
   --color-button-secondary-text-border-bottom-inactive: transparent;
@@ -100,50 +92,66 @@
   --color-button-disabled-border-bottom-hover: #f6f7f9;
   --color-button-disabled-text-hover: #9aa0a6;
   --color-button-disabled-background-active: #f5f7fa;
-  --color-button-disabled-border-active: #f5f7f9;
+  --color-button-disabled-border-active: #f5f7fa;
   --color-button-disabled-border-bottom-active: #f6f7f9;
   --color-button-disabled-text-active: #9aa0a6;
-  /* ===== Selectable Buttons: UNSELECTED ===== */
+  --color-selectable-button-unselected-background-inactive: transparent;
+  --color-selectable-button-unselected-background-hover: transparent;
+  --color-selectable-button-unselected-background-active: rgba(
+    211,
+    211,
+    211,
+    0.2
+  );
+  --color-selectable-button-unselected-border-inactive: transparent;
+  --color-selectable-button-unselected-border-hover: transparent;
+  --color-selectable-button-unselected-border-active: rgba(211, 211, 211, 0.2);
+  --color-selectable-button-unselected-border-bottom-inactive: transparent;
+  --color-selectable-button-unselected-border-bottom-hover: transparent;
+  --color-selectable-button-unselected-border-bottom-active: rgba(
+    211,
+    211,
+    211,
+    0.2
+  );
+  --color-selectable-button-unselected-text-inactive: #202020;
+  --color-selectable-button-unselected-text-hover: #555555;
+  --color-selectable-button-unselected-text-active: #202020;
   --color-selectable-button-unselected-background-inactive: transparent;
   --color-selectable-button-unselected-border-inactive: transparent;
   --color-selectable-button-unselected-border-bottom-inactive: transparent;
   --color-selectable-button-unselected-text-inactive: #202020;
-  --color-selectable-button-unselected-background-hover: rgba(
-    226,
-    229,
-    234,
-    0.28
-  );
+  --color-selectable-button-unselected-background-hover: transparent;
   --color-selectable-button-unselected-border-hover: transparent;
   --color-selectable-button-unselected-border-bottom-hover: transparent;
-  --color-selectable-button-unselected-text-hover: #4a4a4a;
+  --color-selectable-button-unselected-text-hover: #555555;
   --color-selectable-button-unselected-background-active: rgba(
-    226,
-    229,
-    234,
-    0.35
+    211,
+    211,
+    211,
+    0.2
   );
-  --color-selectable-button-unselected-border-active: rgba(226, 229, 234, 0.28);
+  --color-selectable-button-unselected-border-active: rgba(211, 211, 211, 0.2);
   --color-selectable-button-unselected-border-bottom-active: rgba(
-    226,
-    229,
-    234,
-    0.28
+    211,
+    211,
+    211,
+    0.2
   );
-  --color-selectable-button-unselected-text-active: #2a2a2a;
+  --color-selectable-button-unselected-text-active: #202020;
   /* ===== Selectable Buttons: SELECTED ===== */
-  --color-selectable-button-selected-background-inactive: #e4e6ea;
-  --color-selectable-button-selected-border-inactive: #e4e6ea;
-  --color-selectable-button-selected-border-bottom-inactive: #e4e6ea;
-  --color-selectable-button-selected-text-inactive: #2a2a2a;
-  --color-selectable-button-selected-background-hover: #e5e9ee;
-  --color-selectable-button-selected-border-hover: #e5e9ee;
-  --color-selectable-button-selected-border-bottom-hover: #e5e9ee;
-  --color-selectable-button-selected-text-hover: #2a2a2a;
-  --color-selectable-button-selected-background-active: #dfe4ec;
-  --color-selectable-button-selected-border-active: #dfe4ec;
-  --color-selectable-button-selected-border-bottom-active: #dfe4ec;
-  --color-selectable-button-selected-text-active: #2a2a2a;
+  --color-selectable-button-selected-background-inactive: #dadada;
+  --color-selectable-button-selected-border-inactive: #dadada;
+  --color-selectable-button-selected-border-bottom-inactive: #dadada;
+  --color-selectable-button-selected-text-inactive: #202020;
+  --color-selectable-button-selected-background-hover: #e0e0e0;
+  --color-selectable-button-selected-border-hover: #e0e0e0;
+  --color-selectable-button-selected-border-bottom-hover: #e0e0e0;
+  --color-selectable-button-selected-text-hover: #202020;
+  --color-selectable-button-selected-background-active: #cfcfcf;
+  --color-selectable-button-selected-border-active: #cfcfcf;
+  --color-selectable-button-selected-border-bottom-active: #cfcfcf;
+  --color-selectable-button-selected-text-active: #202020;
   --color-input-background-inactive: transparent;
   --color-input-background-inactive-hover: #fbfcfd;
   --color-input-background-active: transparent;
@@ -160,16 +168,14 @@
   --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06);
   --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.1);
   --shadow-3: 0 12px 28px rgba(0, 0, 0, 0.16);
-  --shadow-input-1: 0 4px 8px rgba(0, 0, 0, 0.04);
   --space-1: 0.25rem; /* 4px */
   --space-2: 0.5rem; /* 8px */
   --space-3: 0.75rem; /* 12px */
   --space-4: 1rem; /* 16px */
   --space-6: 1.5rem; /* 24px */
-  --padding-sm: 0.5rem; /* 8px */
-  --padding-md: 0.75rem; /* 12px */
-  --padding-lg: 1rem; /* 16px */
-  --padding-xl: 1.25rem; /* 20px */
+  --padding-sm: var(--space-1);
+  --padding-md: var(--space-2);
+  --padding-lg: var(--space-3);
   --margin-sm: var(--space-1);
   --margin-md: var(--space-2);
   --margin-lg: var(--space-4);
@@ -182,10 +188,10 @@
   --border-width-sm: 1px;
   --border-width-md: 1.5px;
   --border-width-lg: 2px;
-  --border-radius-sm: 10px;
-  --border-radius-md: 14px;
-  --border-radius-lg: 18px;
-  --border-radius-xl: 22px;
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 14px;
+  --border-radius-xl: 18px;
   --border-radius-pill: 9999px;
   --border-bottom-focus: 2.2px solid #0477bf;
   --font-size-xs: 0.75rem; /* 12px */
@@ -217,44 +223,37 @@
 .cdk-overlay-container[data-theme=dark] {
   /* Brand */
   --color-primary: #0064fa;
-  --color-primary-accent: rgb(224.5, 236.7, 255);
+  --color-primary-accent: #e1edff;
   --on-primary: #ffffff;
-  --color-primary-hover: rgb(20.5, 114.3, 255);
-  --color-primary-active: rgb(46, 129.6, 255);
+  --color-primary-hover: #1572ff;
+  --color-primary-active: #2e82ff;
   /* Backgrounds & surfaces */
-  --color-background: #151a21;
-  --color-surface: #1b212b;
-  --color-surface-1: #202734;
-  --color-surface-2: #242d3b;
-  --color-surface-3: #293446;
+  --color-background: #0b0c0e;
+  --color-surface: #0f1115;
+  --color-surface-1: #13161b;
+  --color-surface-2: #161a20;
+  --color-surface-3: #1a1f26;
   /* Text */
-  --color-text: #e7ecf2;
-  --color-text-active: #f5f7fa;
-  --color-text-secondary: #c1c8d4;
-  --on-surface: #e7ecf2;
-  --on-background: #e7ecf2;
+  --color-text: #e6e9ef;
+  --color-text-active: #f3f4f6;
+  --color-text-secondary: #b0b7c3;
+  --on-surface: #e6e9ef;
+  --on-background: #e6e9ef;
   /* Borders & outlines */
-  --color-border-bottom-input: #3a4250;
-  --color-border-primary: #3a4250;
-  --color-border-active: #4a5566;
-  --color-hover-outline: #455061;
+  --color-border-bottom-input: #2a2f36;
+  --color-border-primary: #2a2f36;
+  --color-border-active: #3a404a;
+  --color-hover-outline: #343a44;
   /* Hovers / actives */
-  --color-hover-background: #212938;
-  --color-hover-fill: #eef2f6;
-  --color-inactive: #5b6475;
-  --color-inactive2: rgb(119.55, 129.9692307692, 149.65);
-  --color-active: #f5f7fa;
+  --color-hover-background: #161a20;
+  --color-hover-fill: #e6e9ef;
+  --color-inactive: #4b525d;
+  --color-inactive2: #66707f;
+  --color-active: #f3f4f6;
   /* Status */
   --color-success: #16a34a;
   --on-success: #ffffff;
-  --color-warning: #e53e3e;
-  --color-danger-hover: #e04646;
-  --color-danger-active: #da5b5b;
-  --color-danger-border: #d33c3c;
-  --color-danger-ghost: #e53e3e1a;
-  --color-error-surface: #3a1c1c;
-  --color-error-border-strong: #f87171;
-  --color-error-text: #fca5a5;
+  --color-warning: #f59e0b; /* keep as your warning; see note below */
   --on-warning: #1f1f1f;
   --color-danger: #dc2626;
   --on-danger: #ffffff;
@@ -265,45 +264,45 @@
   --color-button-primary-border-inactive: #0064fa;
   --color-button-primary-border-bottom-inactive: #0064fa;
   --color-button-primary-text-inactive: #ffffff;
-  --color-button-primary-background-hover: rgb(20.5, 114.3, 255);
-  --color-button-primary-border-hover: rgb(20.5, 114.3, 255);
-  --color-button-primary-border-bottom-hover: rgb(20.5, 114.3, 255);
+  --color-button-primary-background-hover: #1572ff;
+  --color-button-primary-border-hover: #1572ff;
+  --color-button-primary-border-bottom-hover: #1572ff;
   --color-button-primary-text-hover: #ffffff;
-  --color-button-primary-background-active: rgb(46, 129.6, 255);
-  --color-button-primary-border-active: rgb(46, 129.6, 255);
-  --color-button-primary-border-bottom-active: rgb(46, 129.6, 255);
+  --color-button-primary-background-active: #2e82ff;
+  --color-button-primary-border-active: #2e82ff;
+  --color-button-primary-border-bottom-active: #2e82ff;
   --color-button-primary-text-active: #ffffff;
   /* Buttons — secondary (filled) */
-  --color-button-secondary-background-inactive: #202734;
-  --color-button-secondary-border-inactive: #3a4250;
-  --color-button-secondary-border-bottom-inactive: #3a4250;
-  --color-button-secondary-text-inactive: #e7ecf2;
-  --color-button-secondary-background-hover: #242d3b;
-  --color-button-secondary-border-hover: #455061;
-  --color-button-secondary-border-bottom-hover: #455061;
-  --color-button-secondary-text-hover: #f5f7fa;
-  --color-button-secondary-background-active: #1b222e;
-  --color-button-secondary-border-active: #4a5566;
-  --color-button-secondary-border-bottom-active: #4a5566;
+  --color-button-secondary-background-inactive: #12161b;
+  --color-button-secondary-border-inactive: #2a2f36;
+  --color-button-secondary-border-bottom-inactive: #2a2f36;
+  --color-button-secondary-text-inactive: #e6e9ef;
+  --color-button-secondary-background-hover: #161a20;
+  --color-button-secondary-border-hover: #343a44;
+  --color-button-secondary-border-bottom-hover: #343a44;
+  --color-button-secondary-text-hover: #f3f4f6;
+  --color-button-secondary-background-active: #0f1318;
+  --color-button-secondary-border-active: #3a404a;
+  --color-button-secondary-border-bottom-active: #3a404a;
   --color-button-secondary-text-active: #ffffff;
   /* Buttons — primary text (ghost) */
   --color-button-primary-text-background-inactive: transparent;
   --color-button-primary-text-border-inactive: transparent;
   --color-button-primary-text-border-bottom-inactive: transparent;
-  --color-button-primary-text-text-inactive: rgb(46, 129.6, 255);
+  --color-button-primary-text-text-inactive: #2e82ff;
   --color-button-primary-text-background-hover: transparent;
   --color-button-primary-text-border-hover: transparent;
   --color-button-primary-text-border-bottom-hover: transparent;
-  --color-button-primary-text-text-hover: rgb(71.5, 144.9, 255);
+  --color-button-primary-text-text-hover: #4891ff;
   --color-button-primary-text-background-active: transparent;
   --color-button-primary-text-border-active: transparent;
   --color-button-primary-text-border-bottom-active: transparent;
-  --color-button-primary-text-text-active: rgb(97, 160.2, 255);
+  --color-button-primary-text-text-active: #61a0ff;
   /* Buttons — secondary text (ghost) */
   --color-button-secondary-text-background-inactive: transparent;
   --color-button-secondary-text-border-inactive: transparent;
   --color-button-secondary-text-border-bottom-inactive: transparent;
-  --color-button-secondary-text-text-inactive: #e7ecf2;
+  --color-button-secondary-text-text-inactive: #e6e9ef;
   --color-button-secondary-text-background-hover: transparent;
   --color-button-secondary-text-border-hover: transparent;
   --color-button-secondary-text-border-bottom-hover: transparent;
@@ -313,18 +312,18 @@
   --color-button-secondary-text-border-bottom-active: transparent;
   --color-button-secondary-text-text-active: #ffffff;
   /* Buttons — disabled */
-  --color-button-disabled-background-inactive: #222a35;
-  --color-button-disabled-border-inactive: #222a35;
-  --color-button-disabled-border-bottom-inactive: #26303c;
-  --color-button-disabled-text-inactive: #7a8494;
-  --color-button-disabled-background-hover: #222a35;
-  --color-button-disabled-border-hover: #222a35;
-  --color-button-disabled-border-bottom-hover: #26303c;
-  --color-button-disabled-text-hover: #7a8494;
-  --color-button-disabled-background-active: #222a35;
-  --color-button-disabled-border-active: #222a35;
-  --color-button-disabled-border-bottom-active: #26303c;
-  --color-button-disabled-text-active: #7a8494;
+  --color-button-disabled-background-inactive: #141820;
+  --color-button-disabled-border-inactive: #141820;
+  --color-button-disabled-border-bottom-inactive: #161a22;
+  --color-button-disabled-text-inactive: #6b7280;
+  --color-button-disabled-background-hover: #141820;
+  --color-button-disabled-border-hover: #141820;
+  --color-button-disabled-border-bottom-hover: #161a22;
+  --color-button-disabled-text-hover: #6b7280;
+  --color-button-disabled-background-active: #141820;
+  --color-button-disabled-border-active: #141820;
+  --color-button-disabled-border-bottom-active: #161a22;
+  --color-button-disabled-text-active: #6b7280;
   /* Selectable buttons — UNSELECTED */
   --color-selectable-button-unselected-background-inactive: transparent;
   --color-selectable-button-unselected-border-inactive: transparent;
@@ -349,31 +348,31 @@
   );
   --color-selectable-button-unselected-text-active: #ffffff;
   /* Selectable buttons — SELECTED */
-  --color-selectable-button-selected-background-inactive: #2a3442;
-  --color-selectable-button-selected-border-inactive: #2a3442;
-  --color-selectable-button-selected-border-bottom-inactive: #2a3442;
-  --color-selectable-button-selected-text-inactive: #e7ecf2;
-  --color-selectable-button-selected-background-hover: #313c4b;
-  --color-selectable-button-selected-border-hover: #313c4b;
-  --color-selectable-button-selected-border-bottom-hover: #313c4b;
+  --color-selectable-button-selected-background-inactive: #1b2129;
+  --color-selectable-button-selected-border-inactive: #1b2129;
+  --color-selectable-button-selected-border-bottom-inactive: #1b2129;
+  --color-selectable-button-selected-text-inactive: #e6e9ef;
+  --color-selectable-button-selected-background-hover: #232a33;
+  --color-selectable-button-selected-border-hover: #232a33;
+  --color-selectable-button-selected-border-bottom-hover: #232a33;
   --color-selectable-button-selected-text-hover: #ffffff;
-  --color-selectable-button-selected-background-active: #252f3c;
-  --color-selectable-button-selected-border-active: #252f3c;
-  --color-selectable-button-selected-border-bottom-active: #252f3c;
+  --color-selectable-button-selected-background-active: #12181f;
+  --color-selectable-button-selected-border-active: #12181f;
+  --color-selectable-button-selected-border-bottom-active: #12181f;
   --color-selectable-button-selected-text-active: #ffffff;
   /* Inputs */
   --color-input-background-inactive: transparent;
-  --color-input-background-inactive-hover: #202734;
+  --color-input-background-inactive-hover: #12161b;
   --color-input-background-active: transparent;
-  --color-input-border: #3a4250;
-  --color-input-border-hover: #455061;
-  --color-input-border-active: #4a5566;
-  --color-input-line: #3a4250;
+  --color-input-border: #2a2f36;
+  --color-input-border-hover: #343a44;
+  --color-input-border-active: #3a404a;
+  --color-input-line: #2a2f36;
   --color-list-item-indicator: #0067c0;
   --color-card-response: rgba(0, 0, 0, 0);
   --color-card-input: rgba(0, 100, 250, 0.12); /* brand-tinted */
   --color-card-border: transparent;
-  --border-bottom-focus: 2.2px solid rgb(20.5, 114.3, 255);
+  --border-bottom-focus: 2.2px solid #1572ff;
   --shadow-0: none;
   --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.45);
@@ -385,44 +384,37 @@
   :root:not([data-theme]) {
     /* Brand */
     --color-primary: #0064fa;
-    --color-primary-accent: rgb(224.5, 236.7, 255);
+    --color-primary-accent: #e1edff;
     --on-primary: #ffffff;
-    --color-primary-hover: rgb(20.5, 114.3, 255);
-    --color-primary-active: rgb(46, 129.6, 255);
+    --color-primary-hover: #1572ff;
+    --color-primary-active: #2e82ff;
     /* Backgrounds & surfaces */
-    --color-background: #151a21;
-    --color-surface: #1b212b;
-    --color-surface-1: #202734;
-    --color-surface-2: #242d3b;
-    --color-surface-3: #293446;
+    --color-background: #0b0c0e;
+    --color-surface: #0f1115;
+    --color-surface-1: #13161b;
+    --color-surface-2: #161a20;
+    --color-surface-3: #1a1f26;
     /* Text */
-    --color-text: #e7ecf2;
-    --color-text-active: #f5f7fa;
-    --color-text-secondary: #c1c8d4;
-    --on-surface: #e7ecf2;
-    --on-background: #e7ecf2;
+    --color-text: #e6e9ef;
+    --color-text-active: #f3f4f6;
+    --color-text-secondary: #b0b7c3;
+    --on-surface: #e6e9ef;
+    --on-background: #e6e9ef;
     /* Borders & outlines */
-    --color-border-bottom-input: #3a4250;
-    --color-border-primary: #3a4250;
-    --color-border-active: #4a5566;
-    --color-hover-outline: #455061;
+    --color-border-bottom-input: #2a2f36;
+    --color-border-primary: #2a2f36;
+    --color-border-active: #3a404a;
+    --color-hover-outline: #343a44;
     /* Hovers / actives */
-    --color-hover-background: #212938;
-    --color-hover-fill: #eef2f6;
-    --color-inactive: #5b6475;
-    --color-inactive2: rgb(119.55, 129.9692307692, 149.65);
-    --color-active: #f5f7fa;
+    --color-hover-background: #161a20;
+    --color-hover-fill: #e6e9ef;
+    --color-inactive: #4b525d;
+    --color-inactive2: #66707f;
+    --color-active: #f3f4f6;
     /* Status */
     --color-success: #16a34a;
     --on-success: #ffffff;
-    --color-warning: #e53e3e;
-    --color-danger-hover: #e04646;
-    --color-danger-active: #da5b5b;
-    --color-danger-border: #d33c3c;
-    --color-danger-ghost: #e53e3e1a;
-    --color-error-surface: #3a1c1c;
-    --color-error-border-strong: #f87171;
-    --color-error-text: #fca5a5;
+    --color-warning: #f59e0b; /* keep as your warning; see note below */
     --on-warning: #1f1f1f;
     --color-danger: #dc2626;
     --on-danger: #ffffff;
@@ -433,45 +425,45 @@
     --color-button-primary-border-inactive: #0064fa;
     --color-button-primary-border-bottom-inactive: #0064fa;
     --color-button-primary-text-inactive: #ffffff;
-    --color-button-primary-background-hover: rgb(20.5, 114.3, 255);
-    --color-button-primary-border-hover: rgb(20.5, 114.3, 255);
-    --color-button-primary-border-bottom-hover: rgb(20.5, 114.3, 255);
+    --color-button-primary-background-hover: #1572ff;
+    --color-button-primary-border-hover: #1572ff;
+    --color-button-primary-border-bottom-hover: #1572ff;
     --color-button-primary-text-hover: #ffffff;
-    --color-button-primary-background-active: rgb(46, 129.6, 255);
-    --color-button-primary-border-active: rgb(46, 129.6, 255);
-    --color-button-primary-border-bottom-active: rgb(46, 129.6, 255);
+    --color-button-primary-background-active: #2e82ff;
+    --color-button-primary-border-active: #2e82ff;
+    --color-button-primary-border-bottom-active: #2e82ff;
     --color-button-primary-text-active: #ffffff;
     /* Buttons — secondary (filled) */
-    --color-button-secondary-background-inactive: #202734;
-    --color-button-secondary-border-inactive: #3a4250;
-    --color-button-secondary-border-bottom-inactive: #3a4250;
-    --color-button-secondary-text-inactive: #e7ecf2;
-    --color-button-secondary-background-hover: #242d3b;
-    --color-button-secondary-border-hover: #455061;
-    --color-button-secondary-border-bottom-hover: #455061;
-    --color-button-secondary-text-hover: #f5f7fa;
-    --color-button-secondary-background-active: #1b222e;
-    --color-button-secondary-border-active: #4a5566;
-    --color-button-secondary-border-bottom-active: #4a5566;
+    --color-button-secondary-background-inactive: #12161b;
+    --color-button-secondary-border-inactive: #2a2f36;
+    --color-button-secondary-border-bottom-inactive: #2a2f36;
+    --color-button-secondary-text-inactive: #e6e9ef;
+    --color-button-secondary-background-hover: #161a20;
+    --color-button-secondary-border-hover: #343a44;
+    --color-button-secondary-border-bottom-hover: #343a44;
+    --color-button-secondary-text-hover: #f3f4f6;
+    --color-button-secondary-background-active: #0f1318;
+    --color-button-secondary-border-active: #3a404a;
+    --color-button-secondary-border-bottom-active: #3a404a;
     --color-button-secondary-text-active: #ffffff;
     /* Buttons — primary text (ghost) */
     --color-button-primary-text-background-inactive: transparent;
     --color-button-primary-text-border-inactive: transparent;
     --color-button-primary-text-border-bottom-inactive: transparent;
-    --color-button-primary-text-text-inactive: rgb(46, 129.6, 255);
+    --color-button-primary-text-text-inactive: #2e82ff;
     --color-button-primary-text-background-hover: transparent;
     --color-button-primary-text-border-hover: transparent;
     --color-button-primary-text-border-bottom-hover: transparent;
-    --color-button-primary-text-text-hover: rgb(71.5, 144.9, 255);
+    --color-button-primary-text-text-hover: #4891ff;
     --color-button-primary-text-background-active: transparent;
     --color-button-primary-text-border-active: transparent;
     --color-button-primary-text-border-bottom-active: transparent;
-    --color-button-primary-text-text-active: rgb(97, 160.2, 255);
+    --color-button-primary-text-text-active: #61a0ff;
     /* Buttons — secondary text (ghost) */
     --color-button-secondary-text-background-inactive: transparent;
     --color-button-secondary-text-border-inactive: transparent;
     --color-button-secondary-text-border-bottom-inactive: transparent;
-    --color-button-secondary-text-text-inactive: #e7ecf2;
+    --color-button-secondary-text-text-inactive: #e6e9ef;
     --color-button-secondary-text-background-hover: transparent;
     --color-button-secondary-text-border-hover: transparent;
     --color-button-secondary-text-border-bottom-hover: transparent;
@@ -481,18 +473,18 @@
     --color-button-secondary-text-border-bottom-active: transparent;
     --color-button-secondary-text-text-active: #ffffff;
     /* Buttons — disabled */
-    --color-button-disabled-background-inactive: #222a35;
-    --color-button-disabled-border-inactive: #222a35;
-    --color-button-disabled-border-bottom-inactive: #26303c;
-    --color-button-disabled-text-inactive: #7a8494;
-    --color-button-disabled-background-hover: #222a35;
-    --color-button-disabled-border-hover: #222a35;
-    --color-button-disabled-border-bottom-hover: #26303c;
-    --color-button-disabled-text-hover: #7a8494;
-    --color-button-disabled-background-active: #222a35;
-    --color-button-disabled-border-active: #222a35;
-    --color-button-disabled-border-bottom-active: #26303c;
-    --color-button-disabled-text-active: #7a8494;
+    --color-button-disabled-background-inactive: #141820;
+    --color-button-disabled-border-inactive: #141820;
+    --color-button-disabled-border-bottom-inactive: #161a22;
+    --color-button-disabled-text-inactive: #6b7280;
+    --color-button-disabled-background-hover: #141820;
+    --color-button-disabled-border-hover: #141820;
+    --color-button-disabled-border-bottom-hover: #161a22;
+    --color-button-disabled-text-hover: #6b7280;
+    --color-button-disabled-background-active: #141820;
+    --color-button-disabled-border-active: #141820;
+    --color-button-disabled-border-bottom-active: #161a22;
+    --color-button-disabled-text-active: #6b7280;
     /* Selectable buttons — UNSELECTED */
     --color-selectable-button-unselected-background-inactive: transparent;
     --color-selectable-button-unselected-border-inactive: transparent;
@@ -517,31 +509,31 @@
     );
     --color-selectable-button-unselected-text-active: #ffffff;
     /* Selectable buttons — SELECTED */
-    --color-selectable-button-selected-background-inactive: #2a3442;
-    --color-selectable-button-selected-border-inactive: #2a3442;
-    --color-selectable-button-selected-border-bottom-inactive: #2a3442;
-    --color-selectable-button-selected-text-inactive: #e7ecf2;
-    --color-selectable-button-selected-background-hover: #313c4b;
-    --color-selectable-button-selected-border-hover: #313c4b;
-    --color-selectable-button-selected-border-bottom-hover: #313c4b;
+    --color-selectable-button-selected-background-inactive: #1b2129;
+    --color-selectable-button-selected-border-inactive: #1b2129;
+    --color-selectable-button-selected-border-bottom-inactive: #1b2129;
+    --color-selectable-button-selected-text-inactive: #e6e9ef;
+    --color-selectable-button-selected-background-hover: #232a33;
+    --color-selectable-button-selected-border-hover: #232a33;
+    --color-selectable-button-selected-border-bottom-hover: #232a33;
     --color-selectable-button-selected-text-hover: #ffffff;
-    --color-selectable-button-selected-background-active: #252f3c;
-    --color-selectable-button-selected-border-active: #252f3c;
-    --color-selectable-button-selected-border-bottom-active: #252f3c;
+    --color-selectable-button-selected-background-active: #12181f;
+    --color-selectable-button-selected-border-active: #12181f;
+    --color-selectable-button-selected-border-bottom-active: #12181f;
     --color-selectable-button-selected-text-active: #ffffff;
     /* Inputs */
     --color-input-background-inactive: transparent;
-    --color-input-background-inactive-hover: #202734;
+    --color-input-background-inactive-hover: #12161b;
     --color-input-background-active: transparent;
-    --color-input-border: #3a4250;
-    --color-input-border-hover: #455061;
-    --color-input-border-active: #4a5566;
-    --color-input-line: #3a4250;
+    --color-input-border: #2a2f36;
+    --color-input-border-hover: #343a44;
+    --color-input-border-active: #3a404a;
+    --color-input-line: #2a2f36;
     --color-list-item-indicator: #0067c0;
     --color-card-response: rgba(0, 0, 0, 0);
     --color-card-input: rgba(0, 100, 250, 0.12); /* brand-tinted */
     --color-card-border: transparent;
-    --border-bottom-focus: 2.2px solid rgb(20.5, 114.3, 255);
+    --border-bottom-focus: 2.2px solid #1572ff;
     --shadow-0: none;
     --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
     --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.45);
@@ -549,8 +541,7 @@
   }
 }
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -560,8 +551,6 @@
 }
 
 /* size map (from earlier mixins) */
-/* Assumes: $size-map now contains an `xs` bucket in your mixins file
-   (height ~24px, font ~0.8125rem, etc.) */
 maxterdev-button {
   display: block;
   position: relative;
@@ -573,10 +562,10 @@ maxterdev-button {
   line-height: inherit;
   outline: none;
   -webkit-tap-highlight-color: transparent;
-  min-height: var(--height-input, 40px);
+  min-height: var(--height-input-sm, 36px);
   font-family: var(--font-family);
-  font-size: var(--font-size-md, 1rem);
-  line-height: var(--line-height-md, 1.5);
+  font-size: var(--font-size-sm, 0.875rem);
+  line-height: var(--line-height-sm, 1.3);
   font-weight: var(--fw-regular, 400);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -586,15 +575,6 @@ maxterdev-button {
     transition: none !important;
     animation: none !important;
   }
-}
-maxterdev-button.xs {
-  min-height: var(--height-input-xs, 24px);
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs, 0.8125rem);
-  line-height: var(--line-height-xs, 1.2);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 maxterdev-button.sm {
   min-height: var(--height-input-sm, 36px);
@@ -628,19 +608,30 @@ maxterdev-button .button {
   justify-content: center;
   gap: var(--space-2, 0.5rem);
   font-family: var(--font-family);
-  font-size: var(--font-size-md, 1rem);
-  line-height: var(--line-height-md, 1.5);
+  font-size: var(--font-size-sm, 0.875rem);
+  line-height: var(--line-height-sm, 1.3);
   font-weight: var(--fw-regular, 400);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  padding-inline: 0.75rem;
-  padding-block: 0.5rem;
-  min-height: var(--height-input, 40px);
-  border-radius: var(--border-radius-md, 10px);
+  padding-inline: 0.5rem;
+  padding-block: 0.35rem;
+  min-height: var(--height-input-sm, 36px);
+  border-radius: var(--border-radius-sm, 6px);
   border-style: solid;
-  border-width: var(--border-width-md, 1.5px);
+  border-width: var(--border-width-sm, 1px);
   border-color: transparent;
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
+  border-radius: var(--border-radius-lg, 14px);
+  width: 100%;
+  cursor: pointer;
+  border-color: transparent;
+  background-color: transparent;
+  background-color: var(--color-button-primary-background-inactive);
+  border-color: var(--color-button-primary-border-inactive);
+  border-bottom-color: var(--color-button-primary-border-bottom-inactive);
+  color: var(--color-button-primary-text-inactive);
 }
 maxterdev-button .button:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -650,61 +641,6 @@ maxterdev-button .button:focus-visible {
     transition: none !important;
     animation: none !important;
   }
-}
-maxterdev-button .button {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  border-radius: var(--border-radius-md, 10px);
-  padding-inline: calc(0.75rem + -0.2rem);
-  padding-block: calc(0.5rem + -0.125rem);
-  width: 100%;
-  cursor: pointer;
-  border-color: transparent;
-  background-color: transparent;
-}
-maxterdev-button .button.xs {
-  box-sizing: border-box;
-  margin: 0;
-  border-radius: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2, 0.5rem);
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs, 0.8125rem);
-  line-height: var(--line-height-xs, 1.2);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding-inline: 0.5rem;
-  padding-block: 0.125rem;
-  min-height: var(--height-input-xs, 24px);
-  border-radius: var(--border-radius-sm, 6px);
-  border-style: solid;
-  border-width: var(--border-width-sm, 1px);
-  border-color: transparent;
-  transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
-}
-maxterdev-button .button.xs:focus-visible {
-  box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
-}
-@media (prefers-reduced-motion: reduce) {
-  maxterdev-button .button.xs {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-maxterdev-button .button.xs {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  border-radius: var(--border-radius-sm, 6px);
-  padding-inline: calc(0.5rem + 0rem);
-  padding-block: calc(0.125rem + 0rem);
 }
 maxterdev-button .button.sm {
   box-sizing: border-box;
@@ -733,6 +669,8 @@ maxterdev-button .button.sm {
   border-width: var(--border-width-sm, 1px);
   border-color: transparent;
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
 }
 maxterdev-button .button.sm:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -742,13 +680,6 @@ maxterdev-button .button.sm:focus-visible {
     transition: none !important;
     animation: none !important;
   }
-}
-maxterdev-button .button.sm {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  border-radius: var(--border-radius-sm, 6px);
-  padding-inline: calc(0.5rem + 0.1rem);
-  padding-block: calc(0.35rem + 0.05rem);
 }
 maxterdev-button .button.lg {
   box-sizing: border-box;
@@ -777,6 +708,8 @@ maxterdev-button .button.lg {
   border-width: var(--border-width-md, 2px);
   border-color: transparent;
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
 }
 maxterdev-button .button.lg:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -786,19 +719,6 @@ maxterdev-button .button.lg:focus-visible {
     transition: none !important;
     animation: none !important;
   }
-}
-maxterdev-button .button.lg {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  border-radius: var(--border-radius-lg, 14px);
-  padding-inline: calc(1rem + -0.15rem);
-  padding-block: calc(0.65rem + -0.1rem);
-}
-maxterdev-button .button {
-  background-color: var(--color-button-primary-background-inactive);
-  border-color: var(--color-button-primary-border-inactive);
-  border-bottom-color: var(--color-button-primary-border-bottom-inactive);
-  color: var(--color-button-primary-text-inactive);
 }
 maxterdev-button .button:hover, maxterdev-button .button:focus-visible {
   background-color: var(--color-button-primary-background-hover);
@@ -852,6 +772,13 @@ maxterdev-button .button.primary.text {
   padding-inline: 0.75rem;
   padding-block: 0.45rem;
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: transparent;
+  border: 0;
+  color: var(--color-primary, #0064fa);
+  background-color: var(--color-button-primary-text-background-inactive);
+  border-color: var(--color-button-primary-text-border-inactive);
+  border-bottom-color: var(--color-button-primary-text-border-bottom-inactive);
+  color: var(--color-button-primary-text-text-inactive);
 }
 maxterdev-button .button.primary.text:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -862,22 +789,11 @@ maxterdev-button .button.primary.text:focus-visible {
     animation: none !important;
   }
 }
-maxterdev-button .button.primary.text {
-  background-color: transparent;
-  border: 0;
-  color: var(--color-primary, #0064fa);
-}
 maxterdev-button .button.primary.text:hover {
   background-color: var(--state-hover, rgba(0, 0, 0, 0.04));
 }
 maxterdev-button .button.primary.text:active {
   background-color: var(--state-pressed, rgba(0, 0, 0, 0.08));
-}
-maxterdev-button .button.primary.text {
-  background-color: var(--color-button-primary-text-background-inactive);
-  border-color: var(--color-button-primary-text-border-inactive);
-  border-bottom-color: var(--color-button-primary-text-border-bottom-inactive);
-  color: var(--color-button-primary-text-text-inactive);
 }
 maxterdev-button .button.primary.text:hover, maxterdev-button .button.primary.text:focus-visible {
   background-color: var(--color-button-primary-text-background-hover);
@@ -931,6 +847,13 @@ maxterdev-button .button.secondary.text {
   padding-inline: 0.75rem;
   padding-block: 0.45rem;
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: transparent;
+  border: 0;
+  color: var(--color-primary, #0064fa);
+  background-color: var(--color-button-secondary-text-background-inactive);
+  border-color: var(--color-button-secondary-text-border-inactive);
+  border-bottom-color: var(--color-button-secondary-text-border-bottom-inactive);
+  color: var(--color-button-secondary-text-text-inactive);
 }
 maxterdev-button .button.secondary.text:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -941,22 +864,11 @@ maxterdev-button .button.secondary.text:focus-visible {
     animation: none !important;
   }
 }
-maxterdev-button .button.secondary.text {
-  background-color: transparent;
-  border: 0;
-  color: var(--color-primary, #0064fa);
-}
 maxterdev-button .button.secondary.text:hover {
   background-color: var(--state-hover, rgba(0, 0, 0, 0.04));
 }
 maxterdev-button .button.secondary.text:active {
   background-color: var(--state-pressed, rgba(0, 0, 0, 0.08));
-}
-maxterdev-button .button.secondary.text {
-  background-color: var(--color-button-secondary-text-background-inactive);
-  border-color: var(--color-button-secondary-text-border-inactive);
-  border-bottom-color: var(--color-button-secondary-text-border-bottom-inactive);
-  color: var(--color-button-secondary-text-text-inactive);
 }
 maxterdev-button .button.secondary.text:hover, maxterdev-button .button.secondary.text:focus-visible {
   background-color: var(--color-button-secondary-text-background-hover);
@@ -970,247 +882,15 @@ maxterdev-button .button.secondary.text:active {
   border-bottom-color: var(--color-button-secondary-text-border-bottom-active);
   color: var(--color-button-secondary-text-text-active);
 }
-maxterdev-button .button.accent {
-  border-color: var(--color-primary);
-  border-width: var(--border-width-sm);
-  background-color: var(--color-primary-ghost, rgba(0, 100, 250, 0.06));
-  color: var(--color-primary);
-}
-maxterdev-button .button.accent:hover:not(.disabled):not([disabled]) {
-  background-color: var(--color-primary-ghost-strong, rgba(0, 100, 250, 0.12));
-  border-color: var(--color-primary);
-}
-maxterdev-button .button.accent:active:not(.disabled):not([disabled]) {
-  background-color: var(--color-primary-ghost-strong, rgba(0, 100, 250, 0.16));
-  border-color: var(--color-primary);
-  transform: translateY(0.5px);
-}
-maxterdev-button .button.danger {
-  background-color: var(--color-danger);
-  color: var(--on-danger);
-  border-color: var(--color-danger-border);
-}
-maxterdev-button .button.danger:hover:not(.disabled):not([disabled]) {
-  background-color: var(--color-danger-hover);
-  border-color: var(--color-danger-hover);
-}
-maxterdev-button .button.danger:active:not(.disabled):not([disabled]) {
-  background-color: var(--color-danger-active);
-  border-color: var(--color-danger-active);
-  transform: translateY(0.5px);
-}
-maxterdev-button .button.danger.text {
-  box-sizing: border-box;
-  margin: 0;
-  border-radius: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2, 0.5rem);
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: var(--line-height-sm, 1.3);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding-inline: 0.75rem;
-  padding-block: 0.45rem;
-  transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
-}
-maxterdev-button .button.danger.text:focus-visible {
-  box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
-}
-@media (prefers-reduced-motion: reduce) {
-  maxterdev-button .button.danger.text {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-maxterdev-button .button.danger.text {
-  background-color: transparent;
-  border: 0;
-  color: var(--color-primary, #0064fa);
-}
-maxterdev-button .button.danger.text:hover {
-  background-color: var(--state-hover, rgba(0, 0, 0, 0.04));
-}
-maxterdev-button .button.danger.text:active {
-  background-color: var(--state-pressed, rgba(0, 0, 0, 0.08));
-}
-maxterdev-button .button.danger.text {
-  background-color: transparent !important;
-  color: var(--color-danger);
-  border-color: transparent;
-}
-maxterdev-button .button.danger.text:hover:not(.disabled):not([disabled]) {
-  background-color: var(--color-danger-ghost);
-}
-maxterdev-button .button.danger.text:active:not(.disabled):not([disabled]) {
-  background-color: var(--color-danger-ghost);
-  transform: translateY(0.5px);
-}
-maxterdev-button .button {
-  /* Make text-style padding truly tiny when size is xs */
-}
-maxterdev-button .button.xs.text {
-  box-sizing: border-box;
-  margin: 0;
-  border-radius: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2, 0.5rem);
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs, 0.8125rem);
-  line-height: var(--line-height-xs, 1.2);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding-inline: 0.75rem;
-  padding-block: 0.225rem;
-  transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
-}
-maxterdev-button .button.xs.text:focus-visible {
-  box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
-}
-@media (prefers-reduced-motion: reduce) {
-  maxterdev-button .button.xs.text {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-maxterdev-button .button.xs.text {
-  background-color: transparent;
-  border: 0;
-  color: var(--color-primary, #0064fa);
-}
-maxterdev-button .button.xs.text:hover {
-  background-color: var(--state-hover, rgba(0, 0, 0, 0.04));
-}
-maxterdev-button .button.xs.text:active {
-  background-color: var(--state-pressed, rgba(0, 0, 0, 0.08));
-}
-maxterdev-button .button {
-  /* CHIP: stylistic layer on top of xs (pill + ghost states) */
-}
-maxterdev-button .button.chip {
-  box-sizing: border-box;
-  margin: 0;
-  border-radius: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2, 0.5rem);
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs, 0.8125rem);
-  line-height: var(--line-height-xs, 1.2);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding-inline: 0.75rem;
-  padding-block: 0.225rem;
-  transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
-}
-maxterdev-button .button.chip:focus-visible {
-  box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
-}
-@media (prefers-reduced-motion: reduce) {
-  maxterdev-button .button.chip {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-maxterdev-button .button.chip {
-  background-color: transparent;
-  border: 0;
-  color: var(--color-primary, #0064fa);
-}
-maxterdev-button .button.chip:hover {
-  background-color: var(--state-hover, rgba(0, 0, 0, 0.04));
-}
-maxterdev-button .button.chip:active {
-  background-color: var(--state-pressed, rgba(0, 0, 0, 0.08));
-}
-maxterdev-button .button.chip {
-  border: 0;
-  border-radius: var(--border-radius-pill, 9999px) !important;
-  font-weight: var(--fw-medium, 500);
-  background-color: transparent !important;
-}
-maxterdev-button .button.chip.primary {
-  color: var(--color-primary);
-}
-maxterdev-button .button.chip.primary:hover:not(.disabled):not([disabled]) {
-  background-color: var(--color-primary-ghost, rgba(0, 100, 250, 0.08));
-}
-maxterdev-button .button.chip.primary:active:not(.disabled):not([disabled]) {
-  background-color: var(--color-primary-ghost-strong, rgba(0, 100, 250, 0.14));
-  transform: translateY(0.25px);
-}
-maxterdev-button .button.chip.secondary {
-  color: var(--color-text);
-}
-maxterdev-button .button.chip.secondary:hover:not(.disabled):not([disabled]) {
-  background-color: var(--color-surface-3, #f3f6fb);
-}
-maxterdev-button .button.chip.secondary:active:not(.disabled):not([disabled]) {
-  background-color: var(--color-surface-2, #fbfcff);
-  transform: translateY(0.25px);
-}
-maxterdev-button .button.chip.danger {
-  color: var(--color-danger);
-}
-maxterdev-button .button.chip.danger:hover:not(.disabled):not([disabled]) {
-  background-color: var(--color-danger-ghost, rgba(229, 62, 62, 0.08));
-}
-maxterdev-button .button.chip.danger:active:not(.disabled):not([disabled]) {
-  background-color: var(--color-danger-ghost-strong, rgba(229, 62, 62, 0.16));
-  transform: translateY(0.25px);
-}
-maxterdev-button .button.chip .text {
-  box-sizing: border-box;
-  margin: 0;
-  border-radius: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-1, 0.25rem);
-  width: 100%;
-  height: 100%;
-}
-maxterdev-button .button.chip .text .icon,
-maxterdev-button .button.chip .text .pi,
-maxterdev-button .button.chip .text svg {
-  width: 1em;
-  height: 1em;
-  flex: 0 0 auto;
-  vertical-align: middle;
-}
 maxterdev-button .button.disabled, maxterdev-button .button[disabled], maxterdev-button .button[aria-disabled=true] {
   background-color: var(--color-button-disabled-background-inactive);
   border-color: var(--color-button-disabled-border-inactive);
   border-bottom-color: var(--color-button-disabled-border-bottom-inactive);
   color: var(--color-button-disabled-text-inactive);
+  opacity: 0.65;
+  cursor: not-allowed;
+  pointer-events: none;
+  cursor: default;
 }
 maxterdev-button .button.disabled:hover, maxterdev-button .button.disabled:focus-visible, maxterdev-button .button[disabled]:hover, maxterdev-button .button[disabled]:focus-visible, maxterdev-button .button[aria-disabled=true]:hover, maxterdev-button .button[aria-disabled=true]:focus-visible {
   background-color: var(--color-button-disabled-background-hover);
@@ -1224,17 +904,8 @@ maxterdev-button .button.disabled:active, maxterdev-button .button[disabled]:act
   border-bottom-color: var(--color-button-disabled-border-bottom-active);
   color: var(--color-button-disabled-text-active);
 }
-maxterdev-button .button.disabled, maxterdev-button .button[disabled], maxterdev-button .button[aria-disabled=true] {
-  opacity: 0.65;
-  cursor: not-allowed;
-  pointer-events: none;
-  cursor: default;
-}
 maxterdev-button .button.disabled:focus, maxterdev-button .button.disabled:focus-visible, maxterdev-button .button[disabled]:focus, maxterdev-button .button[disabled]:focus-visible, maxterdev-button .button[aria-disabled=true]:focus, maxterdev-button .button[aria-disabled=true]:focus-visible {
   box-shadow: none;
-}
-maxterdev-button .button.text {
-  background-color: transparent !important;
 }
 maxterdev-button .button:focus-visible:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -1254,6 +925,9 @@ maxterdev-button .button .text {
   gap: var(--space-2, 0.5rem);
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 maxterdev-button .button .text .icon,
 maxterdev-button .button .text .pi,
@@ -1285,6 +959,12 @@ maxterdev-selectable-button {
   font-weight: var(--fw-regular, 400);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+@media (prefers-reduced-motion: reduce) {
+  maxterdev-selectable-button {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 maxterdev-selectable-button.sm {
   min-height: var(--height-input-sm, 36px);
@@ -1331,6 +1011,15 @@ maxterdev-selectable-button .button {
   border-width: var(--border-width-sm, 1px);
   border-color: var(--color-border-primary, #dfdfdf);
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
+  padding-inline: 0.75rem;
+  padding-block: 0.5rem;
+  border-radius: var(--border-radius-lg, 14px);
+  width: 100%;
+  cursor: pointer;
+  background-color: var(--color-surface-1, #fff);
+  color: var(--on-surface, #202020);
 }
 maxterdev-selectable-button .button:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -1340,17 +1029,6 @@ maxterdev-selectable-button .button:focus-visible {
     transition: none !important;
     animation: none !important;
   }
-}
-maxterdev-selectable-button .button {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  padding-inline: 0.75rem;
-  padding-block: 0.5rem;
-  border-radius: var(--border-radius-sm, 6px);
-  width: 100%;
-  cursor: pointer;
-  background-color: var(--color-surface-1, #fff);
-  color: var(--on-surface, #202020);
 }
 maxterdev-selectable-button .button.sm {
   box-sizing: border-box;
@@ -1379,6 +1057,10 @@ maxterdev-selectable-button .button.sm {
   border-width: var(--border-width-sm, 1px);
   border-color: var(--color-border-primary, #dfdfdf);
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
+  padding-inline: 0.5rem;
+  padding-block: 0.35rem;
 }
 maxterdev-selectable-button .button.sm:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -1388,13 +1070,6 @@ maxterdev-selectable-button .button.sm:focus-visible {
     transition: none !important;
     animation: none !important;
   }
-}
-maxterdev-selectable-button .button.sm {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  padding-inline: 0.5rem;
-  padding-block: 0.35rem;
-  border-radius: var(--border-radius-sm, 6px);
 }
 maxterdev-selectable-button .button.lg {
   box-sizing: border-box;
@@ -1423,6 +1098,10 @@ maxterdev-selectable-button .button.lg {
   border-width: var(--border-width-md, 2px);
   border-color: var(--color-border-primary, #dfdfdf);
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
+  padding-inline: 1rem;
+  padding-block: 0.65rem;
 }
 maxterdev-selectable-button .button.lg:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -1432,13 +1111,6 @@ maxterdev-selectable-button .button.lg:focus-visible {
     transition: none !important;
     animation: none !important;
   }
-}
-maxterdev-selectable-button .button.lg {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  padding-inline: 1rem;
-  padding-block: 0.65rem;
-  border-radius: var(--border-radius-lg, 14px);
 }
 maxterdev-selectable-button .button.unselected {
   background-color: var(--color-selectable-button-unselected-background-inactive);
@@ -1463,6 +1135,7 @@ maxterdev-selectable-button .button.selected, maxterdev-selectable-button .butto
   border-color: var(--color-selectable-button-selected-border-inactive);
   border-bottom-color: var(--color-selectable-button-selected-border-bottom-inactive);
   color: var(--color-selectable-button-selected-text-inactive);
+  box-shadow: var(--shadow-1, 0 1px 2px rgba(0, 0, 0, 0.06));
 }
 maxterdev-selectable-button .button.selected:hover, maxterdev-selectable-button .button.selected:focus-visible, maxterdev-selectable-button .button[aria-pressed=true]:hover, maxterdev-selectable-button .button[aria-pressed=true]:focus-visible {
   background-color: var(--color-selectable-button-selected-background-hover);
@@ -1475,28 +1148,6 @@ maxterdev-selectable-button .button.selected:active, maxterdev-selectable-button
   border-color: var(--color-selectable-button-selected-border-active);
   border-bottom-color: var(--color-selectable-button-selected-border-bottom-active);
   color: var(--color-selectable-button-selected-text-active);
-}
-maxterdev-selectable-button .button.danger {
-  border-color: var(--color-danger-border);
-  color: var(--color-danger);
-  background-color: transparent;
-}
-maxterdev-selectable-button .button.danger:hover:not(.disabled):not([disabled]) {
-  background-color: var(--color-danger-ghost);
-  border-color: var(--color-danger-hover);
-}
-maxterdev-selectable-button .button.danger.selected, maxterdev-selectable-button .button.danger[aria-pressed=true] {
-  background-color: var(--color-danger-ghost);
-  border-color: var(--color-danger);
-  color: var(--color-danger);
-}
-maxterdev-selectable-button .button.danger.text {
-  background-color: transparent !important;
-  border-color: transparent;
-  color: var(--color-danger);
-}
-maxterdev-selectable-button .button.danger.text:hover:not(.disabled):not([disabled]) {
-  background-color: var(--color-danger-ghost);
 }
 maxterdev-selectable-button .button.disabled, maxterdev-selectable-button .button[disabled], maxterdev-selectable-button .button[aria-disabled=true] {
   opacity: 0.65;
@@ -1523,32 +1174,22 @@ maxterdev-selectable-button .button .text {
   gap: var(--space-2, 0.5rem);
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   justify-content: center;
 }
 maxterdev-selectable-button .button .text .icon,
 maxterdev-selectable-button .button .text .pi,
 maxterdev-selectable-button .button .text svg {
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
   flex: 0 0 auto;
   vertical-align: middle;
 }
-maxterdev-selectable-button .button.text {
-  background-color: transparent !important;
-}
-
-maxterdev-button.pill .button,
-maxterdev-selectable-button.pill .button {
-  border-radius: var(--border-radius-pill, 9999px) !important;
-}
-maxterdev-button .button.pill,
-maxterdev-selectable-button .button.pill {
-  border-radius: var(--border-radius-pill, 9999px) !important;
-}
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -1687,8 +1328,7 @@ maxterdev-dropdown .menu:hover {
 }
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -1698,13 +1338,9 @@ maxterdev-dropdown .menu:hover {
 }
 
 /* size map (from earlier mixins) */
-/* Theme provides:
-:root { --shadow-input-1: 0 1px 2px rgba(0, 0, 0, 0.02); }
-*/
 maxterdev-input {
   display: block;
   position: relative;
-  box-sizing: border-box;
   height: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -1717,10 +1353,15 @@ maxterdev-input {
   min-height: var(--height-input, 40px);
   border-style: solid;
   border-width: var(--border-width-md, 1.5px);
-  border-radius: var(--border-radius-sm, 6px);
   background-color: var(--color-input-background-inactive);
   border-color: var(--color-input-border);
   border-bottom-color: var(--color-input-line);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md, 1rem);
+  line-height: var(--line-height-md, 1.5);
+  font-weight: var(--fw-regular, 400);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 maxterdev-input:not(:focus-within):hover {
   background-color: var(--color-input-background-inactive-hover);
@@ -1751,61 +1392,27 @@ maxterdev-input:focus-within .input-line {
   background: linear-gradient(to top, var(--color-list-item-indicator) 2px, transparent 2px);
   background-repeat: no-repeat;
 }
-maxterdev-input {
+maxterdev-input.font-size-sm {
   font-family: var(--font-family);
   font-size: var(--font-size-md, 1rem);
   line-height: var(--line-height-md, 1.5);
   font-weight: var(--fw-regular, 400);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  /* Host paints nothing so we don't double the border */
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  overflow: visible; /* allow shadow to render outside */
-  /* default: no shadow */
-  --_shadow: none;
-  /* Shadowable surface (single source of truth for shadow) */
 }
-maxterdev-input::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background-color: var(--color-input-background-inactive);
-  border: 1px solid var(--color-input-border);
-  box-shadow: var(--_shadow);
-  pointer-events: none;
-  z-index: 0;
-  transition: background-color 120ms ease, border-color 120ms ease;
-}
-maxterdev-input {
-  /* Content above the surface */
-}
-maxterdev-input .content {
-  position: relative;
-  z-index: 1;
-}
-maxterdev-input .input-line {
-  position: absolute;
-  z-index: 2;
-}
-maxterdev-input {
-  /* Layout */
+maxterdev-input.font-size-md {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md, 1rem);
+  line-height: var(--line-height-md, 1.5);
+  font-weight: var(--fw-regular, 400);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 maxterdev-input .content {
   display: grid;
-  grid-template-rows: auto 1fr auto; /* top row (topTpl + attachments), editor, bottom */
-  grid-template-columns: auto 1fr auto; /* left | editor | right */
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
   height: 100%;
-}
-maxterdev-input .content .top-row {
-  grid-row: 1;
-  grid-column: 1/-1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem; /* distance between topTpl and attachment well */
-  min-width: 0;
 }
 maxterdev-input .content .left {
   grid-row: 2;
@@ -1814,9 +1421,6 @@ maxterdev-input .content .left {
 maxterdev-input .content .right {
   grid-row: 2;
   grid-column: 3;
-}
-maxterdev-input .content {
-  /* keep .top/.bottom for backwards compatibility (topTpl can still target .top) */
 }
 maxterdev-input .content .top {
   grid-row: 1;
@@ -1844,7 +1448,7 @@ maxterdev-input .content > textarea {
   height: 100%;
   border: none;
   border-radius: inherit;
-  background: transparent;
+  background-color: transparent;
   color: inherit;
   font: inherit;
 }
@@ -1853,89 +1457,9 @@ maxterdev-input .content > textarea {
   color: var(--color-text);
   caret-color: var(--color-text);
 }
-maxterdev-input {
-  /* ---- Indicator line --------------------------------------------------- */
-}
-maxterdev-input .input-line {
-  box-sizing: border-box;
-  border-radius: inherit;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: var(--show-line);
-  background: transparent;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-maxterdev-input:focus-within .input-line {
-  background: linear-gradient(to top, var(--color-list-item-indicator) 2px, transparent 2px);
-  background-repeat: no-repeat;
-}
-maxterdev-input {
-  /* ---- States: only colors here; do NOT set box-shadow ------------------ */
-}
-maxterdev-input:not(:focus-within):hover::before {
-  background-color: var(--color-input-background-inactive-hover);
-  border-color: var(--color-input-border-hover);
-}
-maxterdev-input:focus-within::before {
-  background-color: var(--color-input-background-active);
-  border-color: var(--color-input-border-active);
-}
-maxterdev-input--invalid::before {
-  border-color: var(--warning-color);
-}
-maxterdev-input {
-  /* ---- Single, static shadow opt-in ------------------------------------- */
-}
-maxterdev-input.shadow {
-  --_shadow: var(--shadow-input-1, 0 1px 2px rgba(0, 0, 0, 0.02));
-}
-maxterdev-input {
-  /* ---- Attachments UI --------------------------------------------------- */
-}
-maxterdev-input .attachment-well {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  padding: 0.5rem;
-  /* lightweight look: let the input surface define bg/border */
-  background: transparent;
-  border: none;
-  /* allow chips to truncate nicely */
-  min-width: 0;
-}
-maxterdev-input {
-  /* Drag overlay (visual only; events handled on .content) */
-}
-maxterdev-input .drop-overlay {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  z-index: 3; /* above .input-line and ::before */
-  border-radius: inherit;
-  background: color-mix(in srgb, var(--color-surface-1, #fff), transparent 40%);
-  border: 2px dashed var(--att-drag-outline, #a6c8ff);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-maxterdev-input .clip-1 {
-  --title-width: 16ch;
-  display: block;
-  width: calc(var(--title-width) - 3ch);
-  max-width: calc(var(--title-width) - 3ch);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-overflow: ellipsis; /* shows … */
-}
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -1948,6 +1472,8 @@ maxterdev-input .clip-1 {
 maxterdev-list {
   display: block;
   position: relative;
+  /* Size variant: small - applied to the component host */
+  /* Size variant: medium (default) */
 }
 maxterdev-list .list {
   display: flex;
@@ -1990,6 +1516,8 @@ maxterdev-list .list .item {
   background-color: var(--color-button-secondary-background-inactive);
   border-color: var(--color-button-secondary-background-inactive);
   color: var(--color-button-secondary-text-inactive);
+  /* States */
+  /* Keyboard focus */
 }
 maxterdev-list .list .item .indicator {
   width: 4px;
@@ -2013,9 +1541,6 @@ maxterdev-list .list .item .checkbox {
   margin-right: var(--margin-md);
   flex: 0 0 auto;
 }
-maxterdev-list .list .item {
-  /* States */
-}
 maxterdev-list .list .item:hover {
   background-color: var(--color-button-secondary-background-hover);
   border-color: var(--color-button-secondary-background-hover);
@@ -2033,15 +1558,9 @@ maxterdev-list .list .item.selected {
 maxterdev-list .list .item.selected .indicator {
   opacity: 1;
 }
-maxterdev-list .list .item {
-  /* Keyboard focus */
-}
 maxterdev-list .list .item:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-}
-maxterdev-list {
-  /* Size variant: small - applied to the component host */
 }
 maxterdev-list.sm .list .item {
   font-family: var(--font-family);
@@ -2056,9 +1575,6 @@ maxterdev-list.sm .list .item .indicator {
   margin-left: var(--padding-xs);
   margin-right: var(--margin-sm);
 }
-maxterdev-list {
-  /* Size variant: medium (default) */
-}
 maxterdev-list.md .list .item {
   font-family: var(--font-family);
   font-size: var(--font-size-md, 1rem);
@@ -2069,8 +1585,7 @@ maxterdev-list.md .list .item {
 }
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -2083,6 +1598,12 @@ maxterdev-list.md .list .item {
 maxterdev-popup {
   display: block;
   /* ===== Overlay ===== */
+  /* ===== Container ===== */
+  /* Size modifiers (opt-in via host class) */
+  /* Elevation modifiers (optional) */
+  /* Sections */
+  /* Interactive affordances when the container itself is clickable */
+  /* Mobile friendliness */
 }
 maxterdev-popup .popup-overlay {
   position: fixed;
@@ -2100,9 +1621,6 @@ maxterdev-popup .popup-overlay {
     animation: none !important;
   }
 }
-maxterdev-popup {
-  /* ===== Container ===== */
-}
 maxterdev-popup .popup-container {
   box-sizing: border-box;
   margin: 0;
@@ -2114,27 +1632,11 @@ maxterdev-popup .popup-container {
   -webkit-tap-highlight-color: transparent;
   box-shadow: var(--shadow-2, 0 4px 12px rgba(0, 0, 0, 0.1));
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
-}
-maxterdev-popup .popup-container:focus-visible {
-  box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
-}
-maxterdev-popup .popup-container {
   background-color: var(--color-surface-1, var(--color-background));
   color: var(--on-surface, #202020);
   border-color: var(--color-border-primary, #dfdfdf);
   padding-inline: 0.75rem;
   --popup-inset-inline: 0.75rem;
-}
-maxterdev-popup .popup-container .popup-header,
-maxterdev-popup .popup-container .popup-footer {
-  padding-inline: 0.75rem;
-  padding-block: 0.65rem;
-}
-maxterdev-popup .popup-container .popup-body {
-  padding: 0.75rem;
-  padding-top: 0;
-}
-maxterdev-popup .popup-container {
   border-radius: var(--border-radius-xl, 14px);
   border-style: solid;
   border-width: var(--border-width-md, 2px);
@@ -2152,26 +1654,24 @@ maxterdev-popup .popup-container {
   flex-direction: column;
   transform: translateY(2px) scale(0.995);
 }
+maxterdev-popup .popup-container:focus-visible {
+  box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
+}
+maxterdev-popup .popup-container .popup-header,
+maxterdev-popup .popup-container .popup-footer {
+  padding-inline: 0.75rem;
+  padding-block: 0.65rem;
+}
+maxterdev-popup .popup-container .popup-body {
+  padding: 0.75rem;
+  padding-top: 0;
+}
 maxterdev-popup .popup-container[data-state=enter] {
   transform: translateY(0) scale(1);
-}
-maxterdev-popup {
-  /* Size modifiers (opt-in via host class) */
 }
 maxterdev-popup.is-sm .popup-container {
   padding-inline: 0.5rem;
   --popup-inset-inline: 0.5rem;
-}
-maxterdev-popup.is-sm .popup-container .popup-header,
-maxterdev-popup.is-sm .popup-container .popup-footer {
-  padding-inline: 0.5rem;
-  padding-block: 0.65rem;
-}
-maxterdev-popup.is-sm .popup-container .popup-body {
-  padding: 0.5rem;
-  padding-top: 0;
-}
-maxterdev-popup.is-sm .popup-container {
   border-radius: var(--border-radius-xl, 14px);
   border-style: solid;
   border-width: var(--border-width-md, 2px);
@@ -2184,20 +1684,18 @@ maxterdev-popup.is-sm .popup-container {
   text-rendering: optimizeLegibility;
   max-width: min(92vw, 560px);
 }
-maxterdev-popup.is-lg .popup-container {
-  padding-inline: 1rem;
-  --popup-inset-inline: 1rem;
-}
-maxterdev-popup.is-lg .popup-container .popup-header,
-maxterdev-popup.is-lg .popup-container .popup-footer {
-  padding-inline: 1rem;
+maxterdev-popup.is-sm .popup-container .popup-header,
+maxterdev-popup.is-sm .popup-container .popup-footer {
+  padding-inline: 0.5rem;
   padding-block: 0.65rem;
 }
-maxterdev-popup.is-lg .popup-container .popup-body {
-  padding: 1rem;
+maxterdev-popup.is-sm .popup-container .popup-body {
+  padding: 0.5rem;
   padding-top: 0;
 }
 maxterdev-popup.is-lg .popup-container {
+  padding-inline: 1rem;
+  --popup-inset-inline: 1rem;
   border-radius: var(--border-radius-xl, 14px);
   border-style: solid;
   border-width: var(--border-width-md, 2px);
@@ -2210,17 +1708,20 @@ maxterdev-popup.is-lg .popup-container {
   text-rendering: optimizeLegibility;
   max-width: min(92vw, 960px);
 }
-maxterdev-popup {
-  /* Elevation modifiers (optional) */
+maxterdev-popup.is-lg .popup-container .popup-header,
+maxterdev-popup.is-lg .popup-container .popup-footer {
+  padding-inline: 1rem;
+  padding-block: 0.65rem;
+}
+maxterdev-popup.is-lg .popup-container .popup-body {
+  padding: 1rem;
+  padding-top: 0;
 }
 maxterdev-popup.elev-0 .popup-container {
   box-shadow: var(--shadow-0, none);
 }
 maxterdev-popup.elev-3 .popup-container {
   box-shadow: var(--shadow-3, 0 12px 28px rgba(0, 0, 0, 0.16));
-}
-maxterdev-popup {
-  /* Sections */
 }
 maxterdev-popup .popup-header,
 maxterdev-popup .popup-body,
@@ -2267,16 +1768,10 @@ maxterdev-popup .popup-footer {
   justify-content: flex-end;
   gap: var(--space-2, 0.5rem);
 }
-maxterdev-popup {
-  /* Interactive affordances when the container itself is clickable */
-}
 maxterdev-popup .popup-container[role=dialog] {
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
-}
-maxterdev-popup {
-  /* Mobile friendliness */
 }
 @media (max-width: 480px) {
   maxterdev-popup .popup-container {
@@ -2286,8 +1781,7 @@ maxterdev-popup {
 }
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -2341,8 +1835,7 @@ maxterdev-tabs {
 }
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -2382,9 +1875,9 @@ maxterdev-tabs {
   line-height: inherit;
   outline: none;
   -webkit-tap-highlight-color: transparent;
-  border-radius: var(--border-radius-sm, 6px);
+  border-radius: var(--border-radius-xl, 14px);
   border-style: solid;
-  border-width: var(--border-width-sm, 1px);
+  border-width: var(--border-width-md, 2px);
   border-color: var(--color-border-primary, #dfdfdf);
   display: flex;
   align-items: center;
@@ -2397,7 +1890,7 @@ maxterdev-tabs {
 }
 
 .pi-check {
-  color: var(--on-primary);
+  color: var(--color-text);
   font-size: var(--font-size-md);
   opacity: 0;
   transform: scale(0.5);
@@ -2407,9 +1900,10 @@ maxterdev-tabs {
 .custom-checkbox.size-sm {
   width: calc((1.55rem + 3px) * 0.75);
   height: calc((1.55rem + 3px) * 0.75);
+  border-radius: var(--border-radius-sm, 6px);
   border-style: solid;
   border-width: var(--border-width-sm, 1px);
-  border-radius: 6px;
+  border-color: var(--color-border-primary, #dfdfdf);
 }
 .custom-checkbox.size-sm .pi-check {
   font-size: var(--font-size-sm);
@@ -2421,9 +1915,10 @@ maxterdev-tabs {
 .custom-checkbox.size-md {
   height: calc(1.55rem + 3px);
   width: calc(1.55rem + 3px);
+  border-radius: var(--border-radius-sm, 6px);
   border-style: solid;
   border-width: var(--border-width-sm, 1px);
-  border-radius: 8px;
+  border-color: var(--color-border-primary, #dfdfdf);
 }
 .custom-checkbox.size-md .pi-check {
   font-size: var(--font-size-md);
@@ -2435,21 +1930,21 @@ maxterdev-tabs {
 .custom-checkbox.size-lg {
   width: calc((1.55rem + 3px) * 1.25);
   height: calc((1.55rem + 3px) * 1.25);
+  border-radius: var(--border-radius-sm, 6px);
   border-style: solid;
   border-width: var(--border-width-sm, 1px);
-  border-radius: var(--border-radius-sm);
+  border-color: var(--color-border-primary, #dfdfdf);
 }
 .custom-checkbox.size-lg .pi-check {
-  font-size: var(--font-size-xl);
-  font-weight: 600;
+  font-size: var(--font-size-lg);
 }
 .custom-checkbox.size-lg .checkbox-label {
   font-size: var(--font-size-lg);
 }
 
 .custom-checkbox.checked {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: var(--color-background);
+  border-color: var(--color-border-active);
 }
 .custom-checkbox.checked .pi-check {
   opacity: 1;
@@ -2479,8 +1974,7 @@ maxterdev-tabs {
 }
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -2499,12 +1993,13 @@ maxterdev-table .table-container {
   line-height: inherit;
   outline: none;
   -webkit-tap-highlight-color: transparent;
-  border: var(--border-width-sm) solid var(--color-border-primary);
-  border-radius: var(--border-radius-lg);
-  background-color: var(--color-surface-1);
-  box-shadow: var(--shadow-1, 0 1px 2px rgba(0, 0, 0, 0.06));
+  border-radius: var(--border-radius-xl, 14px);
+  border-style: solid;
+  border-width: var(--border-width-md, 2px);
+  border-color: var(--color-border-primary, #dfdfdf);
   overflow-x: auto;
-  padding: 0;
+  background-color: var(--color-background);
+  padding: 1.5rem;
 }
 maxterdev-table .table-element {
   width: 100%;
@@ -2514,41 +2009,38 @@ maxterdev-table .table-element {
 maxterdev-table th,
 maxterdev-table td {
   vertical-align: middle;
-  padding-block: var(--space-3, 0.75rem);
-  padding-inline: var(--space-4, 1rem);
 }
 maxterdev-table th {
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: var(--line-height-sm, 1.3);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   text-align: left;
-  font-weight: var(--fw-semibold, 600);
-  color: var(--color-text-tertiary);
-  background-color: var(--color-surface-1);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background-color: var(--color-background);
   border-bottom: var(--border-width-sm) solid var(--color-border-primary);
+  letter-spacing: 0.5px;
 }
 maxterdev-table td {
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: var(--line-height-sm, 1.3);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   color: var(--color-text);
-  border-bottom: var(--border-width-sm) solid var(--color-border-primary);
+  border-bottom: var(--border-width-sm) solid var(--color-surface);
 }
 maxterdev-table tbody tr:last-child td {
   border-bottom: none;
 }
 maxterdev-table.size-sm th,
 maxterdev-table.size-sm td {
-  padding-block: var(--space-3, 0.75rem);
-  padding-inline: var(--space-4, 1rem);
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm, 0.875rem);
+  line-height: var(--line-height-sm, 1.3);
+  font-weight: var(--fw-regular, 400);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 maxterdev-table.size-md th,
+maxterdev-table.size-md td {
+  padding-inline: 1.25rem;
+  padding-block: 0.75rem;
+}
 maxterdev-table.size-md td {
   font-family: var(--font-family);
   font-size: var(--font-size-md, 1rem);
@@ -2558,12 +2050,17 @@ maxterdev-table.size-md td {
   text-rendering: optimizeLegibility;
 }
 maxterdev-table.size-md th {
-  font-weight: var(--fw-semibold, 600);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md, 1rem);
+  line-height: var(--line-height-md, 1.5);
+  font-weight: var(--fw-regular, 400);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 maxterdev-table.size-lg th,
 maxterdev-table.size-lg td {
-  padding-block: var(--space-4, 1rem);
-  padding-inline: var(--space-4, 1rem);
+  padding-inline: 1.25rem;
+  padding-block: 0.75rem;
 }
 maxterdev-table.size-lg td {
   font-family: var(--font-family);
@@ -2580,24 +2077,10 @@ maxterdev-table.size-lg th {
   font-weight: var(--fw-regular, 400);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-weight: var(--fw-semibold, 600);
-}
-maxterdev-table.variant-borderless .table-container {
-  border: none;
-  box-shadow: none;
-}
-maxterdev-table.variant-borderless th,
-maxterdev-table.variant-borderless td {
-  border-bottom: none;
-}
-maxterdev-table.variant-borderless th {
-  color: var(--color-text-tertiary);
-  font-weight: var(--fw-bold, 700);
 }
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -2616,11 +2099,14 @@ maxterdev-treetable .treetable-container {
   line-height: inherit;
   outline: none;
   -webkit-tap-highlight-color: transparent;
-  border: var(--border-width-sm) solid var(--color-border-primary);
-  border-radius: var(--border-radius-lg);
-  background-color: var(--color-surface-1);
-  box-shadow: var(--shadow-1, 0 1px 2px rgba(0, 0, 0, 0.06));
+  border-radius: var(--border-radius-xl, 14px);
+  border-style: solid;
+  border-width: var(--border-width-md, 2px);
+  border-color: var(--color-border-primary, #dfdfdf);
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
   overflow: hidden;
+  background-color: var(--color-background);
 }
 maxterdev-treetable .treetable-element {
   width: 100%;
@@ -2629,31 +2115,21 @@ maxterdev-treetable .treetable-element {
 maxterdev-treetable th,
 maxterdev-treetable td {
   vertical-align: middle;
-  padding-block: var(--space-3, 0.75rem);
-  padding-inline: var(--space-4, 1rem);
 }
 maxterdev-treetable th {
   font-family: var(--font-family);
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: var(--line-height-sm, 1.3);
+  font-size: var(--font-size-md, 1rem);
+  line-height: var(--line-height-md, 1.5);
   font-weight: var(--fw-regular, 400);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   text-align: left;
-  background-color: var(--color-surface-1);
+  background-color: var(--color-background);
   border-bottom: var(--border-width-sm) solid var(--color-border-primary);
-  color: var(--color-text-tertiary);
-  font-weight: var(--fw-regular, 400);
 }
 maxterdev-treetable td {
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: var(--line-height-sm, 1.3);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   color: var(--color-text);
-  border-bottom: var(--border-width-sm) solid var(--color-border-primary);
+  border-bottom: var(--border-width-sm) solid var(--color-surface);
 }
 maxterdev-treetable tbody tr:last-child td {
   border-bottom: none;
@@ -2683,7 +2159,7 @@ maxterdev-treetable .expand-toggle:hover {
   background-color: var(--color-hover-outline);
 }
 maxterdev-treetable .expand-toggle .pi {
-  font-size: var(--font-size-sm);
+  font-size: 0.8rem;
 }
 maxterdev-treetable .expander-spacer {
   display: inline-block;
@@ -2693,10 +2169,20 @@ maxterdev-treetable .expander-spacer {
 }
 maxterdev-treetable.size-sm th,
 maxterdev-treetable.size-sm td {
-  padding-block: var(--space-3, 0.75rem);
-  padding-inline: var(--space-4, 1rem);
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm, 0.875rem);
+  line-height: var(--line-height-sm, 1.3);
+  font-weight: var(--fw-regular, 400);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 maxterdev-treetable.size-md th,
+maxterdev-treetable.size-md td {
+  padding-inline: 1.25rem;
+  padding-block: 0.75rem;
+}
 maxterdev-treetable.size-md td {
   font-family: var(--font-family);
   font-size: var(--font-size-md, 1rem);
@@ -2706,12 +2192,17 @@ maxterdev-treetable.size-md td {
   text-rendering: optimizeLegibility;
 }
 maxterdev-treetable.size-md th {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md, 1rem);
+  line-height: var(--line-height-md, 1.5);
   font-weight: var(--fw-regular, 400);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 maxterdev-treetable.size-lg th,
 maxterdev-treetable.size-lg td {
-  padding-block: var(--space-4, 1rem);
-  padding-inline: var(--space-4, 1rem);
+  padding-inline: 1.25rem;
+  padding-block: 0.75rem;
 }
 maxterdev-treetable.size-lg td {
   font-family: var(--font-family);
@@ -2728,24 +2219,10 @@ maxterdev-treetable.size-lg th {
   font-weight: var(--fw-regular, 400);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-weight: var(--fw-regular, 4600);
-}
-maxterdev-treetable.variant-borderless .treetable-container {
-  border: none;
-  box-shadow: none;
-}
-maxterdev-treetable.variant-borderless th,
-maxterdev-treetable.variant-borderless td {
-  border-bottom: none;
-}
-maxterdev-treetable.variant-borderless th {
-  color: var(--color-text-tertiary);
-  font-weight: var(--fw-semibold, 600);
 }
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -2788,9 +2265,9 @@ maxterdev-treetable.variant-borderless th {
   left: 0;
   z-index: var(--z-dropdown, 1000);
   background-color: var(--color-surface-1, var(--color-background));
-  border-radius: var(--border-radius-md, 10px);
+  border-radius: var(--border-radius-xl, 14px);
   border-style: solid;
-  border-width: var(--border-width-md, 1.5px);
+  border-width: var(--border-width-md, 2px);
   border-color: var(--color-border-primary, #dfdfdf);
   max-width: 22rem;
   transform-origin: top left;
@@ -2872,6 +2349,9 @@ maxterdev-treetable.variant-borderless th {
    ========================== */
 .menu-item {
   /* makes the entire row clickable and full-width */
+  /* Style the internal button via parts */
+  /* Text/content area via part */
+  /* Density modifiers on item (override size via parts) */
 }
 .menu-item maxterdev-button {
   width: 100%;
@@ -2890,9 +2370,6 @@ maxterdev-treetable.variant-borderless th {
     transition: none !important;
     animation: none !important;
   }
-}
-.menu-item {
-  /* Style the internal button via parts */
 }
 .menu-item maxterdev-button::part(button) {
   box-sizing: border-box;
@@ -2921,17 +2398,6 @@ maxterdev-treetable.variant-borderless th {
   border-width: var(--border-width-md, 2px);
   border-color: transparent;
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
-}
-.menu-item maxterdev-button::part(button):focus-visible {
-  box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
-}
-@media (prefers-reduced-motion: reduce) {
-  .menu-item maxterdev-button::part(button) {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-.menu-item maxterdev-button::part(button) {
   background-color: var(--color-background, #fff);
   color: var(--on-surface, #202020);
   /* size default = sm for menus */
@@ -2941,6 +2407,17 @@ maxterdev-treetable.variant-borderless th {
   min-height: var(--height-input-sm, 36px); /* keeps touch target */
   padding-inline: var(--space-3, 0.75rem); /* comfy sides */
   padding-block: calc(var(--space-1, 0.25rem) + 2px);
+  /* Selected/current item */
+  /* Disabled */
+}
+.menu-item maxterdev-button::part(button):focus-visible {
+  box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-item maxterdev-button::part(button) {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 .menu-item maxterdev-button::part(button):hover {
   background: var(--state-hover, rgba(0, 0, 0, 0.04));
@@ -2952,23 +2429,14 @@ maxterdev-treetable.variant-borderless th {
 .menu-item maxterdev-button::part(button):focus-visible:focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
 }
-.menu-item maxterdev-button::part(button) {
-  /* Selected/current item */
-}
 .menu-item maxterdev-button::part(button).is-active, .menu-item maxterdev-button::part(button)[aria-current=true] {
   background: var(--state-hover, rgba(0, 0, 0, 0.04));
-}
-.menu-item maxterdev-button::part(button) {
-  /* Disabled */
 }
 .menu-item maxterdev-button::part(button).disabled, .menu-item maxterdev-button::part(button)[disabled], .menu-item maxterdev-button::part(button)[aria-disabled=true] {
   opacity: 0.65;
   cursor: not-allowed;
   pointer-events: none;
   background: transparent;
-}
-.menu-item {
-  /* Text/content area via part */
 }
 .menu-item maxterdev-button::part(text) {
   display: inline-flex;
@@ -2980,9 +2448,6 @@ maxterdev-treetable.variant-borderless th {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-.menu-item {
-  /* Density modifiers on item (override size via parts) */
 }
 .menu-item.sm maxterdev-button::part(button) {
   box-sizing: border-box;
@@ -3011,6 +2476,9 @@ maxterdev-treetable.variant-borderless th {
   border-width: var(--border-width-sm, 1px);
   border-color: transparent;
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
+  min-height: var(--height-input-sm, 36px);
 }
 .menu-item.sm maxterdev-button::part(button):focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -3020,11 +2488,6 @@ maxterdev-treetable.variant-borderless th {
     transition: none !important;
     animation: none !important;
   }
-}
-.menu-item.sm maxterdev-button::part(button) {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  min-height: var(--height-input-sm, 36px);
 }
 .menu-item.md maxterdev-button::part(button) {
   box-sizing: border-box;
@@ -3053,6 +2516,9 @@ maxterdev-treetable.variant-borderless th {
   border-width: var(--border-width-md, 1.5px);
   border-color: transparent;
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
+  min-height: var(--height-input, 40px);
 }
 .menu-item.md maxterdev-button::part(button):focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -3062,11 +2528,6 @@ maxterdev-treetable.variant-borderless th {
     transition: none !important;
     animation: none !important;
   }
-}
-.menu-item.md maxterdev-button::part(button) {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  min-height: var(--height-input, 40px);
 }
 .menu-item.lg maxterdev-button::part(button) {
   box-sizing: border-box;
@@ -3095,6 +2556,9 @@ maxterdev-treetable.variant-borderless th {
   border-width: var(--border-width-md, 2px);
   border-color: transparent;
   transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
+  background-color: var(--color-background, #fff);
+  color: var(--on-surface, #202020);
+  min-height: var(--height-input-lg, 48px);
 }
 .menu-item.lg maxterdev-button::part(button):focus-visible {
   box-shadow: var(--focus-ring, 0 0 0 3px var(--state-focus-ring, rgba(0, 100, 250, 0.35)));
@@ -3104,11 +2568,6 @@ maxterdev-treetable.variant-borderless th {
     transition: none !important;
     animation: none !important;
   }
-}
-.menu-item.lg maxterdev-button::part(button) {
-  background-color: var(--color-background, #fff);
-  color: var(--on-surface, #202020);
-  min-height: var(--height-input-lg, 48px);
 }
 
 .menu-panel.--align-right.open {
@@ -3124,8 +2583,7 @@ maxterdev-treetable.variant-borderless th {
 }
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -3152,18 +2610,17 @@ maxterdev-progress-bar {
   font-weight: var(--fw-regular, 400);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  --progress-bar-height: 10px;
-  --progress-value-weight: 400;
 }
 maxterdev-progress-bar .progress-bar-container {
   display: flex;
   align-items: center;
   width: 100%;
+  height: 100%;
   gap: 8px;
 }
 maxterdev-progress-bar .progress-track {
   flex-grow: 1;
-  height: var(--progress-bar-height);
+  height: 10px;
   border-radius: 999px;
   background-color: var(--color-surface);
   overflow: hidden;
@@ -3178,16 +2635,10 @@ maxterdev-progress-bar .value {
   font-variant-numeric: tabular-nums;
   color: var(--color-text);
   white-space: nowrap;
-  font-weight: var(--progress-value-weight);
-}
-maxterdev-progress-bar.ultra-thin {
-  --progress-bar-height: 2px;
-  --progress-value-weight: 200;
 }
 
 :root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
+  --height-input-sm: 36px;
   --height-input: 40px;
   --height-input-lg: 48px;
   --fw-regular: 400;
@@ -3197,18 +2648,21 @@ maxterdev-progress-bar.ultra-thin {
 }
 
 /* size map (from earlier mixins) */
+/* ==========================
+   Root list (small by default)
+   ========================== */
 .timeline-container ul {
-  --gap-divider-header: var(--space-3, 0.75rem);
-  --gap-header-body: var(--space-2, 0.5rem);
-  --gap-body-divider: var(--space-3, 0.75rem);
-  --gap-body-sources: var(--space-1, 0.25rem);
+  --gap-divider-header: var(--margin-lg, 12px);
+  --gap-header-body: var(--margin-lg, 12px);
+  --gap-body-divider: var(--margin-lg, 12px);
+  --gap-body-sources: var(--margin-md, 12px);
   --dot-size: 22px;
   --dot-stroke: 3px;
   --dot-glyph-scale: 0.55;
   --dot-offset-y: -0.125rem;
   --rail-col: calc(var(--dot-size) + 2 * var(--dot-stroke));
   --rail-width: var(--border-width-sm, 2px);
-  --content-gap-x: var(--space-2, 0.5rem);
+  --content-gap-x: var(--margin-md, 12px);
   list-style: none;
   margin: 0;
   padding-left: 0; /* keeps rail math stable */
@@ -3220,16 +2674,18 @@ maxterdev-progress-bar.ultra-thin {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
+  /* Ensure no legacy global rail */
 }
-
-.timeline-header {
-  color: var(--color-text);
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: var(--line-height-sm, 1.3);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+.timeline-container ul::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--rail-col) / 2 - var(--rail-width) / 2);
+  top: 5px;
+  bottom: 5px;
+  width: var(--rail-width);
+  background-color: var(--color-border-primary);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ==========================
@@ -3244,36 +2700,19 @@ maxterdev-progress-bar.ultra-thin {
 }
 
 .timeline-inner {
-  padding-top: var(--space-1, 0.25rem);
+  padding-top: var(--margin-sm, 8px);
 }
 
+/* ==========================
+   Each LI = [item] + [divider]
+   ========================== */
 .timeline-li {
-  --dot-center-offset: calc(
-    var(--gap-divider-header) + (var(--dot-size) / 2) + var(--dot-offset-y)
-  );
   position: relative; /* anchor the per-row rail segment */
   z-index: 0;
   display: grid;
   grid-template-rows: auto auto;
   row-gap: var(--gap-body-divider); /* BODY - DIVIDER */
-  padding-top: var(--gap-divider-header); /* DIVIDER - HEADER */
-}
-.timeline-li::before {
-  content: "";
-  position: absolute;
-  left: calc(var(--rail-col) / 2 - var(--rail-width) / 2);
-  top: 0;
-  bottom: 0;
-  width: var(--rail-width);
-  background-color: var(--color-border-primary);
-  pointer-events: none;
-  z-index: 0;
-}
-.timeline-li:first-child::before {
-  top: var(--dot-center-offset);
-}
-.timeline-li:last-child::before {
-  bottom: calc(100% - var(--dot-center-offset));
+  padding-top: var(--gap-divider-header); /* DIVIDER - HEADER (prev→this) */
 }
 
 .timeline-item {
@@ -3317,18 +2756,21 @@ maxterdev-progress-bar.ultra-thin {
   row-gap: var(--gap-header-body);
 }
 
+/* ==========================
+   Header area
+   ========================== */
 .item-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-1, 0.25rem);
+  gap: var(--margin-sm, 8px);
 }
 
 .item-title {
   font-family: var(--font-family);
   font-size: var(--font-size-sm, 0.875rem);
   line-height: var(--line-height-sm, 1.3);
-  font-weight: var(--fw-regular, 600);
+  font-weight: var(--fw-semibold, 600);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.2;
@@ -3345,14 +2787,17 @@ maxterdev-progress-bar.ultra-thin {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   display: inline-flex;
-  gap: var(--space-1, 0.25rem);
+  gap: var(--margin-sm, 8px);
   color: var(--color-text-secondary);
   white-space: nowrap;
 }
 
+/* ==========================
+   Body text
+   ========================== */
 .item-body .body-text {
   margin: 0;
-  color: var(--color-text-secondary);
+  color: var(--color-text);
 }
 
 .item-body > :first-child {
@@ -3369,12 +2814,107 @@ maxterdev-progress-bar.ultra-thin {
 .sources-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2, 0.5rem);
+  gap: var(--margin-lg, 12px);
+}
+
+.source-pill {
+  box-sizing: border-box;
+  margin: 0;
+  border-radius: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm, 0.875rem);
+  line-height: var(--line-height-sm, 1.3);
+  font-weight: var(--fw-regular, 400);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-surface, #f1f3f4);
+  border-radius: var(--border-radius-pill, 9999px);
+  padding-inline: 0.5rem;
+  padding-block: 0.35rem;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  cursor: pointer;
+  line-height: 1;
+}
+.source-pill:hover {
+  background-color: var(--color-secondary-hover, #fafafb);
+}
+.source-pill:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-border-primary);
 }
 
 .source-icon {
-  font-size: var(--font-size-xs, 0.8125rem);
+  font-size: 1rem;
   line-height: 1;
+}
+
+/* ==========================
+   Header button (maxterdev-button)
+   ========================== */
+.timeline-header-btn {
+  width: fit-content;
+}
+
+.tl-btn-content {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-lg, 16px);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.tl-title {
+  flex: 1 1 auto; /* pushes icon to far right */
+  min-width: 0;
+}
+
+/* ==========================
+   Toggle icon: default + custom slot
+   ========================== */
+.tl-icon.default {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  font-size: 0.95rem;
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+.is-collapsed .tl-icon.default {
+  transform: rotate(-90deg);
+}
+
+/* Hide default icon if a custom one is projected */
+.tl-btn-content:has([timeline-toggle-icon]) .tl-icon.default {
+  display: none;
+}
+
+/* Ensure any custom icon behaves like the default */
+[timeline-toggle-icon] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  line-height: 1;
+  width: 1em;
+  height: 1em;
 }
 
 /* ==========================
@@ -3393,233 +2933,6 @@ maxterdev-progress-bar.ultra-thin {
   display: grid;
   grid-auto-rows: min-content;
   row-gap: var(--gap-body-sources);
-}
-
-:root {
-  --height-input-xs: 24px;
-  --height-input-sm: 24px;
-  --height-input: 40px;
-  --height-input-lg: 48px;
-  --fw-regular: 400;
-  --fw-medium: 500;
-  --fw-semibold: 600;
-  --fw-bold: 700;
-}
-
-/* size map (from earlier mixins) */
-/* Chip root */
-.md-att-chip {
-  /* base + theming */
-  box-sizing: border-box;
-  margin: 0;
-  border-radius: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: background-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), border-color var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), box-shadow var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1)), transform var(--dur-md, 200ms) var(--easing-standard, cubic-bezier(0.2, 0, 0.2, 1));
-  display: grid;
-  grid-template-columns: var(--chip-thumb, 2rem) 1fr auto;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: var(--border-radius-sm, 6px);
-  border-style: solid;
-  border-width: var(--border-width-sm, 1px);
-  border-color: var(--att-border, #e6e8ef);
-  background: var(--color-surface-1, #fff);
-  color: var(--att-text, var(--color-text, #202020));
-  /* spacing & typography (default size = sm) */
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: var(--line-height-sm, 1.3);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding-inline: 0.5rem;
-  padding-block: 0.35rem;
-  border-radius: var(--border-radius-sm, 6px);
-  /* allow truncation inside */
-  min-width: 0;
-  max-width: 20rem;
-  --chip-name-width: 16ch;
-  /* thumb size via CSS var; overridden by size modifiers */
-  --chip-thumb: 2rem;
-  /* subtle hover to match inputs/buttons feel */
-}
-.md-att-chip:hover {
-  background-color: color-mix(in srgb, var(--color-surface-1, #fff), rgba(0, 0, 0, 0.04) 100%);
-}
-.md-att-chip.error {
-  border-radius: var(--border-radius-md, 10px);
-  border-style: solid;
-  border-width: var(--border-width-md, 1.5px);
-  border-color: var(--att-error, #cc3535);
-}
-.md-att-chip {
-  /* ---------- Size modifiers ---------- */
-}
-.md-att-chip.xs {
-  --chip-thumb: 1.5rem;
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs, 0.8125rem);
-  line-height: var(--line-height-xs, 1.2);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding-inline: 0.5rem;
-  padding-block: 0.125rem;
-  border-radius: var(--border-radius-sm, 6px);
-  border-radius: var(--border-radius-sm, 6px);
-  border-style: solid;
-  border-width: var(--border-width-sm, 1px);
-  border-color: var(--att-border, #e6e8ef);
-}
-.md-att-chip.sm {
-  --chip-thumb: 2rem;
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: var(--line-height-sm, 1.3);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding-inline: 0.5rem;
-  padding-block: 0.35rem;
-  border-radius: var(--border-radius-sm, 6px);
-  border-radius: var(--border-radius-sm, 6px);
-  border-style: solid;
-  border-width: var(--border-width-sm, 1px);
-  border-color: var(--att-border, #e6e8ef);
-}
-.md-att-chip.md {
-  --chip-thumb: 2rem;
-  font-family: var(--font-family);
-  font-size: var(--font-size-md, 1rem);
-  line-height: var(--line-height-md, 1.5);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding-inline: 0.75rem;
-  padding-block: 0.5rem;
-  border-radius: var(--border-radius-md, 10px);
-  border-radius: var(--border-radius-md, 10px);
-  border-style: solid;
-  border-width: var(--border-width-md, 1.5px);
-  border-color: var(--att-border, #e6e8ef);
-}
-.md-att-chip.lg {
-  --chip-thumb: 2.25rem;
-  font-family: var(--font-family);
-  font-size: var(--font-size-lg, 1.125rem);
-  line-height: var(--line-height-lg, 1.65);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding-inline: 1rem;
-  padding-block: 0.65rem;
-  border-radius: var(--border-radius-lg, 14px);
-  border-radius: var(--border-radius-lg, 14px);
-  border-style: solid;
-  border-width: var(--border-width-md, 2px);
-  border-color: var(--att-border, #e6e8ef);
-}
-
-/* ---------- Parts ---------- */
-.thumb {
-  width: var(--chip-thumb);
-  height: var(--chip-thumb);
-  border-radius: calc(var(--border-radius-sm, 6px) / 2);
-  overflow: hidden;
-}
-.thumb img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2, 0.5rem);
-  width: var(--chip-thumb);
-  height: var(--chip-thumb);
-  opacity: 0.7;
-}
-
-.meta {
-  min-width: 0;
-}
-.meta .name {
-  width: calc(var(--chip-name-width) - 3ch);
-  max-width: calc(var(--chip-name-width) - 3ch);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  /* single-line, overflow hidden */
-  text-overflow: ellipsis;
-}
-.meta .sub {
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs, 0.8125rem);
-  line-height: var(--line-height-xs, 1.2);
-  font-weight: var(--fw-regular, 400);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  opacity: 0.7;
-}
-.meta .err {
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs, 0.8125rem);
-  line-height: var(--line-height-xs, 1.2);
-  font-weight: var(--fw-medium, 500);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  color: var(--color-danger, #cc3535);
-  margin-top: 0.1rem;
-}
-.meta maxterdev-progress-bar {
-  display: block;
-  margin-top: 0.25rem;
-}
-
-.close-button {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  height: 100%;
-}
-
-.close {
-  box-sizing: border-box;
-  margin: 0;
-  border-radius: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs, 0.8125rem);
-  line-height: var(--line-height-xs, 1.2);
-  font-weight: var(--fw-semibold, 600);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  border: 0;
-  background: transparent;
-  line-height: 1;
-  padding: 0.1rem 0.25rem;
-  opacity: 0.7;
-}
-.close:hover {
-  opacity: 1;
-}
-.close:active {
-  transform: scale(0.96);
 }
 
 .card {
@@ -3693,7 +3006,7 @@ maxterdev-progress-bar.ultra-thin {
 }
 
 .rounded {
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--border-radius-xl);
 }
 
 .rounded-left {

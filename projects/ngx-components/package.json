@@ -26,7 +26,7 @@
     "tslib": "^2.3.0"
   },
   "scripts": {
-    "build:themes": "mkdir -p dist/ngx-components/assets/themes && sass src/lib/assets/themes/default-theme.scss dist/ngx-components/assets/themes/default-theme.css --no-source-map && sass src/lib/assets/themes/studiespoint-theme.scss dist/ngx-components/assets/themes/studiespoint-theme.css --no-source-map",
+    "build:themes": "mkdir -p dist/ngx-components/assets/themes && sass src/lib/assets/themes/studiespoint-theme.scss dist/ngx-components/assets/themes/studiespoint-theme.css --no-source-map",
     "build": "ng build ngx-components"
   },
   "sideEffects": false
